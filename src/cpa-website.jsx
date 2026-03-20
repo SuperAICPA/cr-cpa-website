@@ -192,6 +192,162 @@ const translations = {
       rights: "© 2025 CR Accountancy and Consulting. All rights reserved.",
       disclaimer: "Danny Kim, CPA · 캘리포니아 공인회계사"
     }
+  },
+  es: {
+    nav: { home: "Inicio", services: "Servicios", about: "Nosotros", contact: "Contacto" },
+    hero: { tagline: "Precisión. Integridad. Crecimiento.", subtitle: "Servicios confiables de CPA y consultoría", cta: "Programar una consulta", ctaSecondary: "Nuestros servicios" },
+    stats: [{ number: "25+", label: "Años de experiencia" }, { number: "500+", label: "Clientes atendidos" }, { number: "98%", label: "Retención de clientes" }, { number: "$50M+", label: "Ahorros fiscales" }],
+    services: { title: "Nuestros Servicios", subtitle: "Soluciones financieras integrales para su éxito",
+      items: [
+        { title: "Preparación de impuestos", desc: "Planificación fiscal estratégica y cumplimiento para individuos y empresas. Minimizamos su carga fiscal garantizando el cumplimiento regulatorio.", icon: "📊", features: ["Declaraciones individuales y empresariales", "Cumplimiento multi-estatal", "Representación ante el IRS", "Estrategia fiscal"] },
+        { title: "Contabilidad", desc: "Registros financieros meticulosos que le dan una imagen clara de la salud de su negocio.", icon: "📒", features: ["Estados financieros mensuales", "Cuentas por pagar/cobrar", "Conciliación bancaria", "Análisis financiero"] },
+        { title: "Consultoría empresarial", desc: "Servicios de asesoría estratégica para ayudarle a escalar, optimizar y proteger su negocio.", icon: "💼", features: ["Estructuración de entidades", "Valuación de negocios", "Estrategia de crecimiento", "Asesoría de préstamos SBA"] },
+        { title: "Gestión de nómina", desc: "Soluciones completas de nómina desde el procesamiento hasta el cumplimiento.", icon: "💰", features: ["Procesamiento de nómina", "Gestión de 1099 y W-2", "Declaración de impuestos laborales", "Cumplimiento de compensación laboral"] }
+      ]
+    },
+    about: { title: "Sobre nosotros", subtitle: "Una firma de CPA moderna basada en confianza e innovación",
+      bio: "Danny Kim, CPA aporta más de 25 años de experiencia sirviendo a individuos y empresas en diversas industrias.",
+      bio2: "Nos especializamos en servir a pequeñas y medianas empresas e individuos de alto patrimonio, brindando atención personalizada.",
+      values: [{ title: "Precisión", desc: "Cada número cuenta una historia." }, { title: "Integridad", desc: "Su confianza es nuestro activo más valioso." }, { title: "Innovación", desc: "Aprovechando la tecnología para resultados superiores." }, { title: "Crecimiento", desc: "Su éxito es nuestra medida de logro." }],
+      credentials: "CPA con licencia · Los Ángeles, California",
+      industriesTitle: "Industrias que servimos",
+      industries: [{ icon: "🍽️", name: "Restaurantes" }, { icon: "🏗️", name: "Construcción" }, { icon: "🏥", name: "Salud y medicina" }, { icon: "🎬", name: "Entretenimiento" }, { icon: "🚛", name: "Transporte" }, { icon: "🛍️", name: "Comercio" }, { icon: "💻", name: "Tecnología" }, { icon: "🏠", name: "Bienes raíces" }, { icon: "💇", name: "Belleza" }, { icon: "⚖️", name: "Servicios legales" }]
+    },
+    contact: { title: "Contáctenos", subtitle: "¿Listo para tomar control de su futuro financiero?",
+      info: { address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005", phone: "213-325-9800", email: "info.dkcpa@gmail.com", hours: "Lun – Vie: 9:00 AM – 6:00 PM\nSáb: Con cita" },
+      form: { name: "Nombre completo", email: "Correo electrónico", phone: "Teléfono", service: "Servicio de interés", serviceOptions: ["Impuestos", "Contabilidad", "Consultoría", "Nómina", "Otro"], message: "Cuéntenos sus necesidades", submit: "Solicitar consulta", success: "¡Gracias! Nos pondremos en contacto dentro de 24 horas." }
+    },
+    footer: { tagline: "Su socio financiero de confianza", rights: "© 2025 CR Accountancy and Consulting. All rights reserved.", disclaimer: "Danny Kim, CPA · Con licencia en el Estado de California" }
+  },
+  zh: {
+    nav: { home: "首页", services: "服务", about: "关于我们", contact: "联系我们" },
+    hero: { tagline: "精准。诚信。成长。", subtitle: "值得信赖的注册会计师和咨询服务", cta: "预约咨询", ctaSecondary: "我们的服务" },
+    stats: [{ number: "25+", label: "年经验" }, { number: "500+", label: "服务客户" }, { number: "98%", label: "客户保留率" }, { number: "$50M+", label: "节税成果" }],
+    services: { title: "我们的服务", subtitle: "为您的成功量身定制的全面财务解决方案",
+      items: [
+        { title: "税务申报与规划", desc: "为个人和企业提供战略性税务规划和合规服务。我们在确保全面合规的同时，最大限度地减少您的税务负担。", icon: "📊", features: ["个人和企业报税", "多州合规", "IRS代理", "税务策略规划"] },
+        { title: "簿记与会计", desc: "细致的财务记录管理，让您清晰了解企业的健康状况。", icon: "📒", features: ["月度财务报表", "应付/应收账款", "银行对账", "财务分析"] },
+        { title: "商业咨询", desc: "战略性咨询服务，帮助您扩展、优化和保护您的业务。", icon: "💼", features: ["公司架构设立", "企业估值", "增长战略", "SBA贷款咨询"] },
+        { title: "工资管理", desc: "从处理到合规的完整工资解决方案。", icon: "💰", features: ["工资处理", "1099和W-2管理", "就业税申报", "工伤保险合规"] }
+      ]
+    },
+    about: { title: "关于我们", subtitle: "建立在信任与创新基础上的现代会计事务所",
+      bio: "Danny Kim注册会计师拥有超过25年的经验，为各行各业的个人和企业客户提供服务。",
+      bio2: "我们专注于服务中小企业和高净值个人客户，提供大型事务所无法匹敌的个性化关注。",
+      values: [{ title: "精准", desc: "每个数字都有故事，我们确保准确无误。" }, { title: "诚信", desc: "您的信任是我们最宝贵的资产。" }, { title: "创新", desc: "利用技术创造卓越成果。" }, { title: "成长", desc: "您的成功是我们的衡量标准。" }],
+      credentials: "注册会计师(CPA) · 加利福尼亚州洛杉矶",
+      industriesTitle: "服务行业",
+      industries: [{ icon: "🍽️", name: "餐饮业" }, { icon: "🏗️", name: "建筑业" }, { icon: "🏥", name: "医疗健康" }, { icon: "🎬", name: "娱乐传媒" }, { icon: "🚛", name: "货运物流" }, { icon: "🛍️", name: "零售批发" }, { icon: "💻", name: "科技行业" }, { icon: "🏠", name: "房地产" }, { icon: "💇", name: "美容服务" }, { icon: "⚖️", name: "法律服务" }]
+    },
+    contact: { title: "联系我们", subtitle: "准备好掌控您的财务未来了吗？",
+      info: { address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005", phone: "213-325-9800", email: "info.dkcpa@gmail.com", hours: "周一至周五: 上午9点 – 下午6点\n周六: 预约制" },
+      form: { name: "姓名", email: "电子邮件", phone: "电话号码", service: "感兴趣的服务", serviceOptions: ["税务申报", "簿记会计", "商业咨询", "工资管理", "其他"], message: "请描述您的需求", submit: "预约咨询", success: "谢谢！我们将在24小时内与您联系。" }
+    },
+    footer: { tagline: "您值得信赖的财务伙伴", rights: "© 2025 CR Accountancy and Consulting. All rights reserved.", disclaimer: "Danny Kim, CPA · 加利福尼亚州执照注册会计师" }
+  },
+  vi: {
+    nav: { home: "Trang chủ", services: "Dịch vụ", about: "Giới thiệu", contact: "Liên hệ" },
+    hero: { tagline: "Chính xác. Liêm chính. Phát triển.", subtitle: "Dịch vụ CPA & Tư vấn đáng tin cậy", cta: "Đặt lịch tư vấn", ctaSecondary: "Dịch vụ của chúng tôi" },
+    stats: [{ number: "25+", label: "Năm kinh nghiệm" }, { number: "500+", label: "Khách hàng phục vụ" }, { number: "98%", label: "Tỷ lệ giữ chân KH" }, { number: "$50M+", label: "Tiết kiệm thuế" }],
+    services: { title: "Dịch vụ của chúng tôi", subtitle: "Giải pháp tài chính toàn diện cho sự thành công của bạn",
+      items: [
+        { title: "Khai thuế & Lập kế hoạch", desc: "Lập kế hoạch thuế chiến lược và tuân thủ cho cá nhân và doanh nghiệp.", icon: "📊", features: ["Khai thuế cá nhân & doanh nghiệp", "Tuân thủ đa tiểu bang", "Đại diện trước IRS", "Chiến lược thuế"] },
+        { title: "Kế toán & Sổ sách", desc: "Quản lý hồ sơ tài chính tỉ mỉ giúp bạn nắm rõ sức khỏe doanh nghiệp.", icon: "📒", features: ["Báo cáo tài chính hàng tháng", "Công nợ phải thu/trả", "Đối chiếu ngân hàng", "Phân tích tài chính"] },
+        { title: "Tư vấn kinh doanh", desc: "Dịch vụ tư vấn chiến lược giúp bạn mở rộng, tối ưu hóa và bảo vệ doanh nghiệp.", icon: "💼", features: ["Cấu trúc pháp nhân", "Định giá doanh nghiệp", "Chiến lược tăng trưởng", "Tư vấn vay SBA"] },
+        { title: "Quản lý lương", desc: "Giải pháp lương toàn diện từ xử lý đến tuân thủ.", icon: "💰", features: ["Xử lý lương", "Quản lý 1099 & W-2", "Khai thuế lao động", "Tuân thủ bảo hiểm lao động"] }
+      ]
+    },
+    about: { title: "Về chúng tôi", subtitle: "Văn phòng CPA hiện đại xây dựng trên nền tảng tin cậy và đổi mới",
+      bio: "Danny Kim, CPA có hơn 25 năm kinh nghiệm phục vụ cá nhân và doanh nghiệp trong nhiều ngành công nghiệp.",
+      bio2: "Chúng tôi chuyên phục vụ doanh nghiệp vừa và nhỏ cùng cá nhân có thu nhập cao, mang đến sự chú ý cá nhân hóa.",
+      values: [{ title: "Chính xác", desc: "Mỗi con số đều kể một câu chuyện." }, { title: "Liêm chính", desc: "Sự tin tưởng của bạn là tài sản quý giá nhất." }, { title: "Đổi mới", desc: "Tận dụng công nghệ để đạt kết quả vượt trội." }, { title: "Phát triển", desc: "Thành công của bạn là thước đo thành tựu." }],
+      credentials: "CPA được cấp phép · Los Angeles, California",
+      industriesTitle: "Ngành nghề phục vụ",
+      industries: [{ icon: "🍽️", name: "Nhà hàng" }, { icon: "🏗️", name: "Xây dựng" }, { icon: "🏥", name: "Y tế" }, { icon: "🎬", name: "Giải trí" }, { icon: "🚛", name: "Vận tải" }, { icon: "🛍️", name: "Bán lẻ" }, { icon: "💻", name: "Công nghệ" }, { icon: "🏠", name: "Bất động sản" }, { icon: "💇", name: "Làm đẹp" }, { icon: "⚖️", name: "Dịch vụ pháp lý" }]
+    },
+    contact: { title: "Liên hệ", subtitle: "Sẵn sàng kiểm soát tương lai tài chính của bạn?",
+      info: { address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005", phone: "213-325-9800", email: "info.dkcpa@gmail.com", hours: "T2 – T6: 9:00 SA – 6:00 CH\nT7: Theo hẹn" },
+      form: { name: "Họ và tên", email: "Email", phone: "Số điện thoại", service: "Dịch vụ quan tâm", serviceOptions: ["Khai thuế", "Kế toán", "Tư vấn kinh doanh", "Quản lý lương", "Khác"], message: "Cho chúng tôi biết nhu cầu của bạn", submit: "Yêu cầu tư vấn", success: "Cảm ơn bạn! Chúng tôi sẽ liên hệ trong 24 giờ." }
+    },
+    footer: { tagline: "Đối tác tài chính đáng tin cậy", rights: "© 2025 CR Accountancy and Consulting. All rights reserved.", disclaimer: "Danny Kim, CPA · Được cấp phép tại California" }
+  },
+  ja: {
+    nav: { home: "ホーム", services: "サービス", about: "事務所紹介", contact: "お問い合わせ" },
+    hero: { tagline: "正確さ。誠実さ。成長。", subtitle: "信頼できるCPA＆コンサルティングサービス", cta: "相談予約", ctaSecondary: "サービス一覧" },
+    stats: [{ number: "25+", label: "年の経験" }, { number: "500+", label: "顧客実績" }, { number: "98%", label: "顧客維持率" }, { number: "$50M+", label: "節税実績" }],
+    services: { title: "サービス案内", subtitle: "お客様の成功のための総合的な財務ソリューション",
+      items: [
+        { title: "税務申告＆プランニング", desc: "個人・法人向けの戦略的な税務計画とコンプライアンスサービス。", icon: "📊", features: ["個人・法人確定申告", "複数州対応", "IRS代理", "節税戦略"] },
+        { title: "記帳・会計サービス", desc: "綿密な財務記録管理で事業の健全性を明確に把握できます。", icon: "📒", features: ["月次財務諸表", "売掛・買掛管理", "銀行照合", "財務分析"] },
+        { title: "ビジネスコンサルティング", desc: "事業の拡大・最適化・保護のための戦略的アドバイザリーサービス。", icon: "💼", features: ["法人設立・構造化", "企業価値評価", "成長戦略", "SBAローン支援"] },
+        { title: "給与管理", desc: "処理からコンプライアンスまでの完全な給与ソリューション。", icon: "💰", features: ["給与処理", "1099・W-2管理", "雇用税申告", "労災保険対応"] }
+      ]
+    },
+    about: { title: "事務所紹介", subtitle: "信頼と革新に基づく現代的なCPA事務所",
+      bio: "Danny Kim公認会計士は25年以上の経験を持ち、様々な業界の個人・法人のお客様にサービスを提供しています。",
+      bio2: "中小企業および高所得個人のお客様を専門とし、大手事務所にはない個別対応を提供します。",
+      values: [{ title: "正確さ", desc: "すべての数字には物語があります。" }, { title: "誠実さ", desc: "お客様の信頼が最も大切な資産です。" }, { title: "革新", desc: "テクノロジーを活用し優れた成果を。" }, { title: "成長", desc: "お客様の成功が私たちの指標です。" }],
+      credentials: "公認会計士(CPA) · カリフォルニア州ロサンゼルス",
+      industriesTitle: "対応業種",
+      industries: [{ icon: "🍽️", name: "飲食業" }, { icon: "🏗️", name: "建設業" }, { icon: "🏥", name: "医療" }, { icon: "🎬", name: "エンターテイメント" }, { icon: "🚛", name: "運送業" }, { icon: "🛍️", name: "小売・卸売" }, { icon: "💻", name: "テクノロジー" }, { icon: "🏠", name: "不動産" }, { icon: "💇", name: "美容" }, { icon: "⚖️", name: "法律サービス" }]
+    },
+    contact: { title: "お問い合わせ", subtitle: "財務の未来をコントロールする準備はできましたか？",
+      info: { address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005", phone: "213-325-9800", email: "info.dkcpa@gmail.com", hours: "月〜金: 午前9時〜午後6時\n土: 予約制" },
+      form: { name: "お名前", email: "メールアドレス", phone: "電話番号", service: "ご希望のサービス", serviceOptions: ["税務申告", "記帳・会計", "ビジネスコンサルティング", "給与管理", "その他"], message: "ご要望をお聞かせください", submit: "相談を申し込む", success: "ありがとうございます！24時間以内にご連絡いたします。" }
+    },
+    footer: { tagline: "信頼できる財務パートナー", rights: "© 2025 CR Accountancy and Consulting. All rights reserved.", disclaimer: "Danny Kim, CPA · カリフォルニア州公認会計士" }
+  },
+  tl: {
+    nav: { home: "Home", services: "Serbisyo", about: "Tungkol sa amin", contact: "Makipag-ugnayan" },
+    hero: { tagline: "Katumpakan. Integridad. Pag-unlad.", subtitle: "Mapagkakatiwalaang CPA at Consulting Services", cta: "Mag-schedule ng konsultasyon", ctaSecondary: "Mga serbisyo namin" },
+    stats: [{ number: "25+", label: "Taon ng karanasan" }, { number: "500+", label: "Kliyenteng pinagsilbihan" }, { number: "98%", label: "Client retention" }, { number: "$50M+", label: "Tax savings" }],
+    services: { title: "Mga Serbisyo", subtitle: "Komprehensibong solusyon sa pananalapi para sa inyong tagumpay",
+      items: [
+        { title: "Paghahanda ng Buwis", desc: "Estratehikong pagpaplano ng buwis at pagsunod para sa mga indibidwal at negosyo.", icon: "📊", features: ["Individual at business returns", "Multi-state compliance", "Representasyon sa IRS", "Tax strategy"] },
+        { title: "Bookkeeping at Accounting", desc: "Masinsinang pangangasiwa ng financial records para sa malinaw na larawan ng inyong negosyo.", icon: "📒", features: ["Monthly financial statements", "Accounts payable/receivable", "Bank reconciliation", "Financial analysis"] },
+        { title: "Business Consulting", desc: "Estratehikong serbisyo ng payo para mapalago at maprotektahan ang inyong negosyo.", icon: "💼", features: ["Entity structuring", "Business valuations", "Growth strategy", "SBA loan advisory"] },
+        { title: "Payroll Management", desc: "Kumpletong solusyon sa payroll mula sa processing hanggang compliance.", icon: "💰", features: ["Payroll processing", "1099 at W-2 management", "Employment tax filing", "Workers' comp compliance"] }
+      ]
+    },
+    about: { title: "Tungkol sa amin", subtitle: "Modernong CPA practice na nakabase sa tiwala at inobasyon",
+      bio: "Si Danny Kim, CPA ay may higit sa 25 taon ng karanasan sa paglilingkod sa mga indibidwal at negosyo.",
+      bio2: "Nagse-specialize kami sa paglilingkod sa maliliit at katamtamang negosyo at mga high-net-worth na indibidwal.",
+      values: [{ title: "Katumpakan", desc: "Bawat numero ay may kwento." }, { title: "Integridad", desc: "Ang inyong tiwala ang pinakamahalagang asset." }, { title: "Inobasyon", desc: "Ginagamit ang teknolohiya para sa mas magandang resulta." }, { title: "Pag-unlad", desc: "Ang inyong tagumpay ang sukatan namin." }],
+      credentials: "Licensed CPA · Los Angeles, California",
+      industriesTitle: "Mga industriyang pinagsisilbihan",
+      industries: [{ icon: "🍽️", name: "Restaurant" }, { icon: "🏗️", name: "Construction" }, { icon: "🏥", name: "Healthcare" }, { icon: "🎬", name: "Entertainment" }, { icon: "🚛", name: "Trucking" }, { icon: "🛍️", name: "Retail" }, { icon: "💻", name: "Technology" }, { icon: "🏠", name: "Real estate" }, { icon: "💇", name: "Beauty" }, { icon: "⚖️", name: "Legal services" }]
+    },
+    contact: { title: "Makipag-ugnayan", subtitle: "Handa na bang kontrolin ang inyong financial future?",
+      info: { address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005", phone: "213-325-9800", email: "info.dkcpa@gmail.com", hours: "Lun – Biy: 9:00 AM – 6:00 PM\nSab: Sa appointment" },
+      form: { name: "Buong pangalan", email: "Email address", phone: "Numero ng telepono", service: "Serbisyong interesado", serviceOptions: ["Tax preparation", "Bookkeeping", "Business consulting", "Payroll", "Iba pa"], message: "Sabihin sa amin ang inyong pangangailangan", submit: "Humiling ng konsultasyon", success: "Salamat! Makikipag-ugnayan kami sa loob ng 24 na oras." }
+    },
+    footer: { tagline: "Ang inyong mapagkakatiwalaang financial partner", rights: "© 2025 CR Accountancy and Consulting. All rights reserved.", disclaimer: "Danny Kim, CPA · Licensed sa Estado ng California" }
+  },
+  mn: {
+    nav: { home: "Нүүр", services: "Үйлчилгээ", about: "Бидний тухай", contact: "Холбоо барих" },
+    hero: { tagline: "Нарийвчлал. Шударга байдал. Өсөлт.", subtitle: "Итгэлтэй CPA & Зөвлөх үйлчилгээ", cta: "Зөвлөгөө авах", ctaSecondary: "Үйлчилгээнүүд" },
+    stats: [{ number: "25+", label: "Жилийн туршлага" }, { number: "500+", label: "Үйлчлүүлэгч" }, { number: "98%", label: "Үйлчлүүлэгч хадгалалт" }, { number: "$50M+", label: "Татварын хэмнэлт" }],
+    services: { title: "Үйлчилгээний танилцуулга", subtitle: "Таны амжилтад зориулсан иж бүрэн санхүүгийн шийдэл",
+      items: [
+        { title: "Татварын мэдүүлэг & Төлөвлөлт", desc: "Хувь хүн болон бизнесүүдэд зориулсан стратегийн татварын төлөвлөлт.", icon: "📊", features: ["Хувь хүн & бизнесийн мэдүүлэг", "Олон мужийн нийцэл", "IRS төлөөлөл", "Татварын стратеги"] },
+        { title: "Нягтлан бодох бүртгэл", desc: "Бизнесийн эрүүл мэндийг тодорхой харуулах нарийвчилсан санхүүгийн бүртгэл.", icon: "📒", features: ["Сарын санхүүгийн тайлан", "Авлага/өглөгийн удирдлага", "Банкны тулгалт", "Санхүүгийн шинжилгээ"] },
+        { title: "Бизнес зөвлөх", desc: "Бизнесээ өргөжүүлж, оновчтой болгоход туслах стратегийн зөвлөх үйлчилгээ.", icon: "💼", features: ["Хуулийн этгээдийн бүтэц", "Бизнесийн үнэлгээ", "Өсөлтийн стратеги", "SBA зээлийн зөвлөгөө"] },
+        { title: "Цалингийн удирдлага", desc: "Боловсруулалтаас нийцэл хүртэлх бүрэн цалингийн шийдэл.", icon: "💰", features: ["Цалин боловсруулалт", "1099 & W-2 удирдлага", "Хөдөлмөрийн татварын мэдүүлэг", "Даатгалын нийцэл"] }
+      ]
+    },
+    about: { title: "Бидний тухай", subtitle: "Итгэлцэл ба инновац дээр суурилсан орчин үеийн CPA оффис",
+      bio: "Danny Kim, CPA нь 25 гаруй жилийн туршлагатай, олон салбарын хувь хүн болон бизнесийн үйлчлүүлэгчдэд үйлчилж байна.",
+      bio2: "Бид жижиг, дунд бизнес болон өндөр орлоготой хувь хүмүүст мэргэшсэн, том пүүсүүдийн өгч чадахгүй хувийн анхаарал хандуулдаг.",
+      values: [{ title: "Нарийвчлал", desc: "Тоо бүр өөрийн гэсэн түүхтэй." }, { title: "Шударга байдал", desc: "Таны итгэл бидний хамгийн үнэт хөрөнгө." }, { title: "Инноваци", desc: "Технологийг ашиглан илүү сайн үр дүнд хүрнэ." }, { title: "Өсөлт", desc: "Таны амжилт бидний хэмжүүр." }],
+      credentials: "CPA · Калифорни, Лос Анжелес",
+      industriesTitle: "Үйлчилгээний салбарууд",
+      industries: [{ icon: "🍽️", name: "Зоогийн газар" }, { icon: "🏗️", name: "Барилга" }, { icon: "🏥", name: "Эрүүл мэнд" }, { icon: "🎬", name: "Энтертайнмент" }, { icon: "🚛", name: "Тээвэр" }, { icon: "🛍️", name: "Жижиглэн худалдаа" }, { icon: "💻", name: "Технологи" }, { icon: "🏠", name: "Үл хөдлөх" }, { icon: "💇", name: "Гоо сайхан" }, { icon: "⚖️", name: "Хуулийн үйлчилгээ" }]
+    },
+    contact: { title: "Холбоо барих", subtitle: "Санхүүгийн ирээдүйгээ удирдахад бэлэн үү?",
+      info: { address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005", phone: "213-325-9800", email: "info.dkcpa@gmail.com", hours: "Даваа – Баасан: 9:00 – 18:00\nБямба: Цаг товлосноор" },
+      form: { name: "Бүтэн нэр", email: "Имэйл", phone: "Утасны дугаар", service: "Сонирхож буй үйлчилгээ", serviceOptions: ["Татварын мэдүүлэг", "Нягтлан бодох", "Бизнес зөвлөгөө", "Цалингийн удирдлага", "Бусад"], message: "Хэрэгцээгээ бидэнд хэлнэ үү", submit: "Зөвлөгөө хүсэх", success: "Баярлалаа! 24 цагийн дотор холбогдоно." }
+    },
+    footer: { tagline: "Итгэлтэй санхүүгийн түнш", rights: "© 2025 CR Accountancy and Consulting. All rights reserved.", disclaimer: "Danny Kim, CPA · Калифорни мужийн лицензтэй" }
   }
 };
 
@@ -532,7 +688,7 @@ export default function CRAccountancy() {
     <nav style={baseStyles.nav}>
       <div style={baseStyles.navInner}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/cr_logo_final.png" alt="CR Innovation Logo" style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
+          <img src="/cr_logo_final.png" alt="CR Innovation Logo" onError={(e) => { e.target.onerror = null; e.target.src = "/CR_LOGO.png"; }} style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
           <div>
             <div style={{ fontFamily: fonts.display, fontSize: 18, fontWeight: 700, color: colors.white, letterSpacing: 1 }}>
               DANNY KIM, CPA
@@ -570,23 +726,32 @@ export default function CRAccountancy() {
             ))}
           </div>
 
-          <button
-            onClick={() => setLang(lang === "en" ? "ko" : "en")}
+          <select
+            value={lang}
+            onChange={(e) => setLang(e.target.value)}
             style={{
               background: `${colors.gold}22`,
               border: `1px solid ${colors.gold}44`,
               color: colors.gold,
               fontSize: 12,
               fontWeight: 600,
-              padding: "8px 16px",
+              padding: "8px 12px",
               borderRadius: 4,
               cursor: "pointer",
               letterSpacing: 1,
-              fontFamily: fonts.sans
+              fontFamily: fonts.sans,
+              outline: "none"
             }}
           >
-            {lang === "en" ? "한국어" : "ENG"}
-          </button>
+            <option value="en" style={{color:"#000"}}>English</option>
+            <option value="ko" style={{color:"#000"}}>한국어</option>
+            <option value="es" style={{color:"#000"}}>Español</option>
+            <option value="zh" style={{color:"#000"}}>中文</option>
+            <option value="vi" style={{color:"#000"}}>Tiếng Việt</option>
+            <option value="ja" style={{color:"#000"}}>日本語</option>
+            <option value="tl" style={{color:"#000"}}>Tagalog</option>
+            <option value="mn" style={{color:"#000"}}>Монгол</option>
+          </select>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -666,6 +831,40 @@ export default function CRAccountancy() {
         <div style={{ position: "absolute", top: "15%", right: "8%", width: 1, height: "25%", background: `linear-gradient(to bottom, transparent, ${colors.gold}20, transparent)` }} />
 
         <div style={{ textAlign: "center", maxWidth: 800, padding: "0 40px", position: "relative", zIndex: 1 }}>
+          
+          {/* Multilingual consultation banner */}
+          <div style={{
+            display: "inline-block",
+            background: `${colors.gold}15`,
+            border: `1px solid ${colors.gold}33`,
+            borderRadius: 30,
+            padding: "10px 28px",
+            marginBottom: 28,
+          }}>
+            <span style={{ fontSize: 13, color: colors.gold, fontFamily: fonts.sans, fontWeight: 500 }}>
+              🌐 {lang === "ko" ? "8개 언어로 상담 가능" : lang === "es" ? "Consultas disponibles en 8 idiomas" : lang === "zh" ? "支持8种语言咨询" : lang === "vi" ? "Tư vấn bằng 8 ngôn ngữ" : lang === "ja" ? "8言語で相談可能" : lang === "tl" ? "Konsultasyon sa 8 na wika" : lang === "mn" ? "8 хэлээр зөвлөгөө авах боломжтой" : "Consultation Available in 8 Languages"}
+            </span>
+          </div>
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 8,
+            flexWrap: "wrap",
+            marginBottom: 32,
+          }}>
+            {["English", "한국어", "Español", "中文", "Tiếng Việt", "日本語", "Tagalog", "Монгол"].map((l, i) => (
+              <span key={i} style={{
+                fontSize: 11,
+                color: `${colors.cream}88`,
+                fontFamily: fonts.sans,
+                padding: "4px 10px",
+                borderRadius: 12,
+                background: `${colors.white}08`,
+                border: `1px solid ${colors.white}10`,
+              }}>{l}</span>
+            ))}
+          </div>
+
           <div style={{
             fontSize: 11,
             letterSpacing: 6,
@@ -699,10 +898,25 @@ export default function CRAccountancy() {
             fontSize: "clamp(18px, 2.5vw, 24px)",
             color: `${colors.cream}cc`,
             lineHeight: 1.6,
-            marginBottom: 48,
+            marginBottom: 20,
             fontWeight: 300
           }}>
             {t.hero.subtitle}
+          </p>
+
+          {/* Value focus message */}
+          <p style={{
+            fontFamily: fonts.sans,
+            fontSize: 14,
+            color: `${colors.gold}cc`,
+            lineHeight: 1.6,
+            marginBottom: 48,
+            fontWeight: 400,
+            maxWidth: 600,
+            margin: "0 auto 48px",
+            letterSpacing: 0.5,
+          }}>
+            {lang === "ko" ? "우리는 고객의 가치를 높이기 위한 전문성에 집중합니다" : lang === "es" ? "Nos enfocamos en la excelencia profesional para maximizar el valor de nuestros clientes" : lang === "zh" ? "我们专注于专业卓越，致力于提升客户价值" : lang === "vi" ? "Chúng tôi tập trung vào chuyên môn để nâng cao giá trị cho khách hàng" : lang === "ja" ? "私たちはお客様の価値を高めるための専門性に集中します" : lang === "tl" ? "Nakatuon kami sa propesyonal na kahusayan upang mapataas ang halaga ng aming mga kliyente" : lang === "mn" ? "Бид үйлчлүүлэгчдийнхээ үнэ цэнийг нэмэгдүүлэх мэргэжлийн чадварт анхаарлаа хандуулдаг" : "We focus on professional excellence to maximize our clients' value"}
           </p>
 
           <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
