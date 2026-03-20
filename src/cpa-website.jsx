@@ -334,7 +334,7 @@ export default function CRAccountancy() {
 
   const handleSubmit = () => {
     if (formData.name && formData.email) {
-      setFormSubmitted(true);
+      await fetch("https://formspree.io/f/meerdzov", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.st
       setTimeout(() => setFormSubmitted(false), 4000);
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
     }
