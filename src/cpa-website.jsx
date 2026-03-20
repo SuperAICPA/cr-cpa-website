@@ -56,7 +56,20 @@ const translations = {
         { title: "Innovation", desc: "Leveraging technology for superior results." },
         { title: "Growth", desc: "Your success is our measure of achievement." }
       ],
-      credentials: "Licensed CPA · Los Angeles, California"
+      credentials: "Licensed CPA · Los Angeles, California",
+      industriesTitle: "Industries We Serve",
+      industries: [
+        { icon: "🍽️", name: "Restaurants & Food Service" },
+        { icon: "🏗️", name: "Construction & Contractors" },
+        { icon: "🏥", name: "Healthcare & Medical" },
+        { icon: "🎬", name: "Entertainment & Media" },
+        { icon: "🚛", name: "Trucking & Transportation" },
+        { icon: "🛍️", name: "Retail & Wholesale" },
+        { icon: "💻", name: "Technology & Startups" },
+        { icon: "🏠", name: "Real Estate & Property" },
+        { icon: "💇", name: "Beauty & Personal Care" },
+        { icon: "⚖️", name: "Legal & Professional Services" }
+      ]
     },
     contact: {
       title: "Get In Touch",
@@ -139,7 +152,20 @@ const translations = {
         { title: "혁신", desc: "기술을 활용하여 더 나은 결과를 만듭니다." },
         { title: "성장", desc: "고객의 성공이 저희의 성과입니다." }
       ],
-      credentials: "공인회계사(CPA) · 캘리포니아 로스앤젤레스"
+      credentials: "공인회계사(CPA) · 캘리포니아 로스앤젤레스",
+      industriesTitle: "서비스 업종",
+      industries: [
+        { icon: "🍽️", name: "식당 및 요식업" },
+        { icon: "🏗️", name: "건설 및 시공업" },
+        { icon: "🏥", name: "병원 및 의료업" },
+        { icon: "🎬", name: "엔터테인먼트 및 미디어" },
+        { icon: "🚛", name: "트럭킹 및 운송업" },
+        { icon: "🛍️", name: "소매 및 도매업" },
+        { icon: "💻", name: "IT 및 스타트업" },
+        { icon: "🏠", name: "부동산 및 임대업" },
+        { icon: "💇", name: "뷰티 및 개인 서비스" },
+        { icon: "⚖️", name: "법률 및 전문 서비스" }
+      ]
     },
     contact: {
       title: "문의하기",
@@ -1021,6 +1047,26 @@ export default function CRAccountancy() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Industries */}
+            <div style={{ marginTop: 40 }}>
+              <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.navy, marginBottom: 20 }}>
+                {t.about.industriesTitle}
+              </h3>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                {t.about.industries.map((ind, i) => (
+                  <div key={i} style={{
+                    display: "flex", alignItems: "center", gap: 12,
+                    padding: "12px 16px", borderRadius: 4,
+                    background: i % 2 === 0 ? colors.cream : colors.white,
+                    border: `1px solid ${colors.lightGray}`,
+                  }}>
+                    <span style={{ fontSize: 22 }}>{ind.icon}</span>
+                    <span style={{ fontSize: 14, color: colors.navy, fontWeight: 500 }}>{ind.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
