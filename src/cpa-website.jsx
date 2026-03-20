@@ -687,13 +687,13 @@ export default function CRAccountancy() {
   const NavBar = () => (
     <nav style={baseStyles.nav}>
       <div style={baseStyles.navInner}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16, cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/cr_logo_final.png" alt="CR Innovation Logo" onError={(e) => { e.target.onerror = null; e.target.src = "/CR_LOGO.png"; }} style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 14, cursor: "pointer" }} onClick={() => navigate("home")}>
+          <img src="/cr_logo_final.png" alt="CR Innovation Logo" onError={(e) => { e.target.onerror = null; e.target.src = "/CR_LOGO.png"; }} style={{ height: 42, borderRadius: 4, background: "#fff", padding: 3 }} />
           <div>
-            <div style={{ fontFamily: fonts.display, fontSize: 18, fontWeight: 700, color: colors.white, letterSpacing: 1 }}>
+            <div style={{ fontFamily: fonts.sans, fontSize: 17, fontWeight: 800, color: colors.white, letterSpacing: 2.5, textTransform: "uppercase" }}>
               DANNY KIM, CPA
             </div>
-            <div style={{ fontSize: 10, color: colors.gold, letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>
+            <div style={{ fontFamily: fonts.sans, fontSize: 10.5, fontWeight: 600, color: colors.gold, letterSpacing: 5.2, textTransform: "uppercase", marginTop: 3 }}>
               CR Accountancy & Consulting
             </div>
           </div>
