@@ -332,11 +332,23 @@ export default function CRAccountancy() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleFormChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
   const handleSubmit = () => {
     if (formData.name && formData.email) {
-      await fetch("https://formspree.io/f/meerdzov", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.st
-      setTimeout(() => setFormSubmitted(false), 4000);
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      fetch("https://formspree.io/f/meerdzov", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }).then(() => {
+        setFormSubmitted(true);
+        setTimeout(() => setFormSubmitted(false), 4000);
+        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      }).catch(() => {
+        alert("Failed to send. Please call 213-325-9800.");
+      });
     }
   };
 
@@ -398,7 +410,7 @@ export default function CRAccountancy() {
     <nav style={baseStyles.nav}>
       <div style={baseStyles.navInner}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/cr_logo_final.png" alt="CR Innovation Logo" style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
+          <img src="/mnt/user-data/outputs/cr_logo_final.png" alt="CR Innovation Logo" style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
           <div>
             <div style={{ fontFamily: fonts.display, fontSize: 18, fontWeight: 700, color: colors.white, letterSpacing: 1 }}>
               DANNY KIM, CPA
@@ -1035,7 +1047,7 @@ export default function CRAccountancy() {
                   <input
                     type={field === "email" ? "email" : "text"}
                     value={formData[field]}
-                    onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
+                    onChange={(e) => handleFormChange(field, e.target.value)}
                     style={{
                       width: "100%",
                       padding: "14px 16px",
@@ -1060,7 +1072,7 @@ export default function CRAccountancy() {
                 </label>
                 <select
                   value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  onChange={(e) => handleFormChange("service", e.target.value)}
                   style={{
                     width: "100%",
                     padding: "14px 16px",
@@ -1087,7 +1099,7 @@ export default function CRAccountancy() {
                 </label>
                 <textarea
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => handleFormChange("message", e.target.value)}
                   rows={5}
                   style={{
                     width: "100%",
