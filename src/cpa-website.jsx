@@ -631,28 +631,28 @@ export default function CRAccountancy() {
   };
 
   const colors = {
-    navy: "#0A1628",
-    darkNavy: "#060F1F",
-    blue: "#1B4F8A",
-    lightBlue: "#2E6AB4",
-    gold: "#B8926A",
-    lightGold: "#D4B896",
-    cream: "#F5F0EB",
+    navy: "#1A2332",
+    darkNavy: "#0F1720",
+    blue: "#2563EB",
+    lightBlue: "#3B82F6",
+    gold: "#A0845C",
+    lightGold: "#C4A87A",
+    cream: "#FAFAFA",
     white: "#FFFFFF",
-    gray: "#8A95A5",
-    lightGray: "#E8E4DF"
+    gray: "#6B7280",
+    lightGray: "#E5E7EB"
   };
 
   const fonts = {
-    display: "'Playfair Display', Georgia, serif",
-    body: "'Cormorant Garamond', Georgia, serif",
-    sans: "'Libre Franklin', 'Helvetica Neue', sans-serif"
+    display: "'DM Serif Display', Georgia, serif",
+    body: "'Source Serif 4', Georgia, serif",
+    sans: "'DM Sans', 'Helvetica Neue', sans-serif"
   };
 
   const baseStyles = {
     page: {
       minHeight: "100vh",
-      background: colors.cream,
+      background: colors.white,
       fontFamily: fonts.sans,
       color: colors.navy,
       overflowX: "hidden"
@@ -965,9 +965,8 @@ export default function CRAccountancy() {
 
       {/* Stats Bar */}
       <div style={{
-        background: colors.white,
+        background: colors.cream,
         borderBottom: `1px solid ${colors.lightGray}`,
-        boxShadow: "0 2px 20px rgba(0,0,0,0.04)"
       }}>
         <div style={{
           maxWidth: 1200,
@@ -1453,7 +1452,7 @@ export default function CRAccountancy() {
 
   return (
     <div style={baseStyles.page}>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Source+Serif+4:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
