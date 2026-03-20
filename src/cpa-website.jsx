@@ -811,7 +811,7 @@ export default function CRAccountancy() {
       {/* Hero Section */}
       <div style={{
         minHeight: "100vh",
-        background: `linear-gradient(165deg, ${colors.darkNavy} 0%, ${colors.navy} 40%, ${colors.blue} 100%)`,
+        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 50%, #EEF2FF 100%)`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -822,26 +822,26 @@ export default function CRAccountancy() {
         <div style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `radial-gradient(circle at 20% 50%, ${colors.gold}08 0%, transparent 50%), radial-gradient(circle at 80% 20%, ${colors.lightBlue}15 0%, transparent 40%)`,
+          backgroundImage: `radial-gradient(circle at 20% 50%, ${colors.blue}08 0%, transparent 50%), radial-gradient(circle at 80% 20%, ${colors.gold}10 0%, transparent 40%)`,
           pointerEvents: "none"
         }} />
         
         {/* Decorative lines */}
-        <div style={{ position: "absolute", top: "20%", left: "5%", width: 1, height: "30%", background: `linear-gradient(to bottom, transparent, ${colors.gold}30, transparent)` }} />
-        <div style={{ position: "absolute", top: "15%", right: "8%", width: 1, height: "25%", background: `linear-gradient(to bottom, transparent, ${colors.gold}20, transparent)` }} />
+        <div style={{ position: "absolute", top: "20%", left: "5%", width: 1, height: "30%", background: `linear-gradient(to bottom, transparent, ${colors.blue}15, transparent)` }} />
+        <div style={{ position: "absolute", top: "15%", right: "8%", width: 1, height: "25%", background: `linear-gradient(to bottom, transparent, ${colors.gold}15, transparent)` }} />
 
         <div style={{ textAlign: "center", maxWidth: 800, padding: "0 40px", position: "relative", zIndex: 1 }}>
           
           {/* Multilingual consultation banner */}
           <div style={{
             display: "inline-block",
-            background: `${colors.gold}15`,
-            border: `1px solid ${colors.gold}33`,
+            background: `${colors.blue}08`,
+            border: `1px solid ${colors.blue}20`,
             borderRadius: 30,
             padding: "10px 28px",
             marginBottom: 28,
           }}>
-            <span style={{ fontSize: 13, color: colors.gold, fontFamily: fonts.sans, fontWeight: 500 }}>
+            <span style={{ fontSize: 13, color: colors.blue, fontFamily: fonts.sans, fontWeight: 600 }}>
               🌐 {lang === "ko" ? "8개 언어로 상담 가능" : lang === "es" ? "Consultas disponibles en 8 idiomas" : lang === "zh" ? "支持8种语言咨询" : lang === "vi" ? "Tư vấn bằng 8 ngôn ngữ" : lang === "ja" ? "8言語で相談可能" : lang === "tl" ? "Konsultasyon sa 8 na wika" : lang === "mn" ? "8 хэлээр зөвлөгөө авах боломжтой" : "Consultation Available in 8 Languages"}
             </span>
           </div>
@@ -855,12 +855,13 @@ export default function CRAccountancy() {
             {["English", "한국어", "Español", "中文", "Tiếng Việt", "日本語", "Tagalog", "Монгол"].map((l, i) => (
               <span key={i} style={{
                 fontSize: 11,
-                color: `${colors.cream}88`,
+                fontWeight: 500,
+                color: colors.gray,
                 fontFamily: fonts.sans,
                 padding: "4px 10px",
                 borderRadius: 12,
-                background: `${colors.white}08`,
-                border: `1px solid ${colors.white}10`,
+                background: `${colors.navy}05`,
+                border: `1px solid ${colors.lightGray}`,
               }}>{l}</span>
             ))}
           </div>
@@ -872,7 +873,7 @@ export default function CRAccountancy() {
             textTransform: "uppercase",
             marginBottom: 32,
             fontFamily: fonts.sans,
-            fontWeight: 500
+            fontWeight: 700
           }}>
             Danny Kim, CPA · CR Accountancy & Consulting
           </div>
@@ -881,7 +882,7 @@ export default function CRAccountancy() {
             fontFamily: fonts.display,
             fontSize: "clamp(40px, 6vw, 72px)",
             fontWeight: 700,
-            color: colors.white,
+            color: colors.navy,
             lineHeight: 1.1,
             marginBottom: 24,
             letterSpacing: -1
@@ -896,10 +897,10 @@ export default function CRAccountancy() {
           <p style={{
             fontFamily: fonts.body,
             fontSize: "clamp(18px, 2.5vw, 24px)",
-            color: `${colors.cream}cc`,
+            color: colors.gray,
             lineHeight: 1.6,
             marginBottom: 20,
-            fontWeight: 300
+            fontWeight: 500
           }}>
             {t.hero.subtitle}
           </p>
@@ -908,10 +909,10 @@ export default function CRAccountancy() {
           <p style={{
             fontFamily: fonts.sans,
             fontSize: 14,
-            color: `${colors.gold}cc`,
+            color: colors.gold,
             lineHeight: 1.6,
             marginBottom: 48,
-            fontWeight: 400,
+            fontWeight: 600,
             maxWidth: 600,
             margin: "0 auto 48px",
             letterSpacing: 0.5,
@@ -923,9 +924,9 @@ export default function CRAccountancy() {
             <button
               onClick={() => navigate("contact")}
               style={{
-                background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`,
+                background: colors.navy,
                 border: "none",
-                color: colors.darkNavy,
+                color: colors.white,
                 fontFamily: fonts.sans,
                 fontSize: 13,
                 fontWeight: 700,
@@ -933,9 +934,9 @@ export default function CRAccountancy() {
                 textTransform: "uppercase",
                 padding: "18px 44px",
                 cursor: "pointer",
-                borderRadius: 2,
+                borderRadius: 4,
                 transition: "all 0.3s ease",
-                boxShadow: `0 4px 24px ${colors.gold}44`
+                boxShadow: `0 4px 24px ${colors.navy}22`
               }}
             >
               {t.hero.cta}
@@ -944,16 +945,16 @@ export default function CRAccountancy() {
               onClick={() => navigate("services")}
               style={{
                 background: "transparent",
-                border: `1px solid ${colors.gold}66`,
-                color: colors.gold,
+                border: `2px solid ${colors.navy}`,
+                color: colors.navy,
                 fontFamily: fonts.sans,
                 fontSize: 13,
-                fontWeight: 500,
+                fontWeight: 700,
                 letterSpacing: 2,
                 textTransform: "uppercase",
-                padding: "18px 44px",
+                padding: "16px 44px",
                 cursor: "pointer",
-                borderRadius: 2,
+                borderRadius: 4,
                 transition: "all 0.3s ease"
               }}
             >
@@ -1056,29 +1057,23 @@ export default function CRAccountancy() {
 
       {/* CTA Banner */}
       <div style={{
-        background: `linear-gradient(135deg, ${colors.navy} 0%, ${colors.blue} 100%)`,
+        background: colors.cream,
         padding: "72px 40px",
         textAlign: "center",
         position: "relative"
       }}>
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `radial-gradient(circle at 50% 50%, ${colors.gold}0a 0%, transparent 70%)`,
-          pointerEvents: "none"
-        }} />
-        <h2 style={{ fontFamily: fonts.display, fontSize: 32, color: colors.white, marginBottom: 16, position: "relative" }}>
+        <h2 style={{ fontFamily: fonts.display, fontSize: 32, color: colors.navy, marginBottom: 16, position: "relative" }}>
           {lang === "en" ? "Ready to Get Started?" : "시작할 준비가 되셨나요?"}
         </h2>
-        <p style={{ fontFamily: fonts.body, fontSize: 18, color: `${colors.cream}aa`, marginBottom: 32, position: "relative" }}>
+        <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginBottom: 32, position: "relative", fontWeight: 500 }}>
           {lang === "en" ? "Schedule a free consultation today" : "지금 무료 상담을 예약하세요"}
         </p>
         <button
           onClick={() => navigate("contact")}
           style={{
-            background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`,
+            background: colors.navy,
             border: "none",
-            color: colors.darkNavy,
+            color: colors.white,
             fontFamily: fonts.sans,
             fontSize: 13,
             fontWeight: 700,
@@ -1086,9 +1081,9 @@ export default function CRAccountancy() {
             textTransform: "uppercase",
             padding: "18px 48px",
             cursor: "pointer",
-            borderRadius: 2,
+            borderRadius: 4,
             position: "relative",
-            boxShadow: `0 4px 24px ${colors.gold}33`
+            boxShadow: `0 4px 24px ${colors.navy}22`
           }}
         >
           {t.hero.cta}
@@ -1101,18 +1096,18 @@ export default function CRAccountancy() {
     <div>
       {/* Services Header */}
       <div style={{
-        background: `linear-gradient(165deg, ${colors.darkNavy} 0%, ${colors.navy} 60%, ${colors.blue} 100%)`,
+        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 60%, #EEF2FF 100%)`,
         padding: "160px 40px 80px",
         textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
           {lang === "en" ? "What We Do" : "서비스 안내"}
         </div>
-        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.white, fontWeight: 700, marginBottom: 20 }}>
+        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>
           {t.services.title}
         </h1>
         <GoldDivider />
-        <p style={{ fontFamily: fonts.body, fontSize: 20, color: `${colors.cream}aa`, marginTop: 24, maxWidth: 600, margin: "24px auto 0" }}>
+        <p style={{ fontFamily: fonts.body, fontSize: 20, color: colors.gray, marginTop: 24, maxWidth: 600, margin: "24px auto 0" }}>
           {t.services.subtitle}
         </p>
       </div>
@@ -1179,14 +1174,14 @@ export default function CRAccountancy() {
   const AboutPage = () => (
     <div>
       <div style={{
-        background: `linear-gradient(165deg, ${colors.darkNavy} 0%, ${colors.navy} 60%, ${colors.blue} 100%)`,
+        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 60%, #EEF2FF 100%)`,
         padding: "160px 40px 80px",
         textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
           {lang === "en" ? "Our Story" : "사무실 소개"}
         </div>
-        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.white, fontWeight: 700, marginBottom: 20 }}>
+        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>
           {t.about.title}
         </h1>
         <GoldDivider />
@@ -1196,7 +1191,7 @@ export default function CRAccountancy() {
         {/* Bio Section */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, marginBottom: 80, alignItems: "start" }}>
           <div style={{
-            background: `linear-gradient(135deg, ${colors.navy}, ${colors.blue})`,
+            background: colors.cream,
             padding: 48,
             borderRadius: 4,
             textAlign: "center",
@@ -1219,14 +1214,14 @@ export default function CRAccountancy() {
             }}>
               DK
             </div>
-            <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.white, marginBottom: 8 }}>
+            <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.navy, marginBottom: 8 }}>
               Danny Kim
             </h3>
             <div style={{ fontSize: 13, color: colors.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>
               CPA
             </div>
             <div style={{ width: 40, height: 1, background: colors.gold, margin: "0 auto 16px" }} />
-            <p style={{ fontSize: 13, color: `${colors.cream}88`, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.6 }}>
               {t.about.credentials}
             </p>
           </div>
@@ -1290,18 +1285,18 @@ export default function CRAccountancy() {
   const ContactPage = () => (
     <div>
       <div style={{
-        background: `linear-gradient(165deg, ${colors.darkNavy} 0%, ${colors.navy} 60%, ${colors.blue} 100%)`,
+        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 60%, #EEF2FF 100%)`,
         padding: "160px 40px 80px",
         textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
           {lang === "en" ? "Connect With Us" : "문의하기"}
         </div>
-        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.white, fontWeight: 700, marginBottom: 20 }}>
+        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>
           {t.contact.title}
         </h1>
         <GoldDivider />
-        <p style={{ fontFamily: fonts.body, fontSize: 20, color: `${colors.cream}aa`, marginTop: 24 }}>
+        <p style={{ fontFamily: fonts.body, fontSize: 20, color: colors.gray, marginTop: 24 }}>
           {t.contact.subtitle}
         </p>
       </div>
@@ -1348,7 +1343,7 @@ export default function CRAccountancy() {
 
             {/* Map placeholder */}
             <div style={{
-              background: `linear-gradient(135deg, ${colors.navy}, ${colors.blue})`,
+              background: colors.cream,
               padding: 32,
               borderRadius: 4,
               textAlign: "center"
@@ -1357,7 +1352,7 @@ export default function CRAccountancy() {
               <p style={{ fontSize: 13, color: colors.cream, lineHeight: 1.6 }}>
                 Koreatown, Los Angeles
               </p>
-              <p style={{ fontSize: 11, color: `${colors.cream}66`, marginTop: 8 }}>
+              <p style={{ fontSize: 11, color: colors.gray, marginTop: 8 }}>
                 {lang === "en" ? "Conveniently located in the heart of Koreatown" : "코리아타운 중심부에 위치"}
               </p>
             </div>
@@ -1385,7 +1380,7 @@ export default function CRAccountancy() {
             <div style={{ fontSize: 11, color: colors.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>
               CR Accountancy & Consulting
             </div>
-            <p style={{ fontSize: 13, color: `${colors.cream}66`, lineHeight: 1.7 }}>
+            <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.7 }}>
               {t.footer.tagline}
             </p>
           </div>
@@ -1402,7 +1397,7 @@ export default function CRAccountancy() {
                   display: "block",
                   background: "none",
                   border: "none",
-                  color: `${colors.cream}88`,
+                  color: colors.gray,
                   fontSize: 13,
                   padding: "6px 0",
                   cursor: "pointer",
@@ -1419,7 +1414,7 @@ export default function CRAccountancy() {
             <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 600 }}>
               {lang === "en" ? "Contact" : "연락처"}
             </div>
-            <p style={{ fontSize: 13, color: `${colors.cream}88`, lineHeight: 2 }}>
+            <p style={{ fontSize: 13, color: colors.gray, lineHeight: 2 }}>
               213-325-9800<br />
               info.dkcpa@gmail.com<br />
               611 S Catalina St #216<br />
