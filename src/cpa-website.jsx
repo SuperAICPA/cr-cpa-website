@@ -687,16 +687,8 @@ export default function CRAccountancy() {
   const NavBar = () => (
     <nav style={baseStyles.nav}>
       <div style={baseStyles.navInner}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/cr_logo_final.png" alt="CR Innovation Logo" onError={(e) => { e.target.onerror = null; e.target.src = "/CR_LOGO.png"; }} style={{ height: 42, borderRadius: 4, background: "#fff", padding: 3 }} />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontFamily: fonts.sans, fontSize: 17, fontWeight: 800, color: colors.white, letterSpacing: 2.5, textTransform: "uppercase" }}>
-              DANNY KIM, CPA
-            </div>
-            <div style={{ fontFamily: fonts.sans, fontSize: 9, fontWeight: 600, color: colors.gold, textTransform: "uppercase", marginTop: 3, width: "100%", textAlign: "justify", textAlignLast: "justify" }}>
-              {"CR ACCOUNTANCY & CONSULTING".split("").join("\u200A")}
-            </div>
-          </div>
+        <div style={{ cursor: "pointer" }} onClick={() => navigate("home")}>
+          <img src="/Logo_White_Final.png" alt="Danny Kim CPA - CR Accountancy & Consulting" onError={(e) => { e.target.onerror = null; e.target.src = "/Logo_Dark_Final.png"; }} style={{ height: 48 }} />
         </div>
 
         {/* Desktop Nav */}
