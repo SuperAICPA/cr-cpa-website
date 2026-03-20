@@ -10,7 +10,7 @@ const translations = {
       ctaSecondary: "Our Services"
     },
     stats: [
-      { number: "15+", label: "Years of Experience" },
+      { number: "25+", label: "Years of Experience" },
       { number: "500+", label: "Clients Served" },
       { number: "98%", label: "Client Retention" },
       { number: "$50M+", label: "Tax Savings Delivered" }
@@ -48,7 +48,7 @@ const translations = {
     about: {
       title: "About Our Firm",
       subtitle: "A Modern CPA Practice Built on Trust and Innovation",
-      bio: "Danny Kim, CPA brings over 15 years of experience serving individuals and businesses across diverse industries. Our firm combines deep expertise in tax, accounting, and business advisory with cutting-edge technology to deliver exceptional results.",
+      bio: "Danny Kim, CPA brings over 25 years of experience serving individuals and businesses across diverse industries. Our firm combines deep expertise in tax, accounting, and business advisory with cutting-edge technology to deliver exceptional results.",
       bio2: "We specialize in serving small to mid-sized businesses and high-net-worth individuals, providing personalized attention that larger firms simply cannot match. Our AI-enhanced workflows ensure accuracy and efficiency while our hands-on approach guarantees the personal touch you deserve.",
       values: [
         { title: "Precision", desc: "Every number tells a story. We ensure yours is accurate." },
@@ -93,7 +93,7 @@ const translations = {
       ctaSecondary: "서비스 보기"
     },
     stats: [
-      { number: "15+", label: "년 경력" },
+      { number: "25+", label: "년 경력" },
       { number: "500+", label: "고객 서비스" },
       { number: "98%", label: "고객 유지율" },
       { number: "$50M+", label: "절세 실적" }
@@ -131,7 +131,7 @@ const translations = {
     about: {
       title: "사무실 소개",
       subtitle: "신뢰와 혁신을 기반으로 한 현대적 CPA 사무실",
-      bio: "Danny Kim, CPA는 15년 이상의 경력으로 다양한 산업의 개인 및 기업 고객에게 서비스를 제공하고 있습니다. 세무, 회계, 경영 자문 분야의 깊은 전문성에 최첨단 기술을 결합하여 탁월한 결과를 제공합니다.",
+      bio: "Danny Kim, CPA는 25년 이상의 경력으로 다양한 산업의 개인 및 기업 고객에게 서비스를 제공하고 있습니다. 세무, 회계, 경영 자문 분야의 깊은 전문성에 최첨단 기술을 결합하여 탁월한 결과를 제공합니다.",
       bio2: "중소기업 및 고소득 개인 고객을 전문적으로 서비스하며, 대형 회계법인이 제공할 수 없는 맞춤형 관심을 드립니다. AI 기반 워크플로우로 정확성과 효율성을 보장하면서도 고객 한 분 한 분을 직접 케어합니다.",
       values: [
         { title: "정확함", desc: "모든 숫자에는 이야기가 있습니다. 정확하게 전달합니다." },
@@ -181,7 +181,7 @@ RULES:
 4. Be warm, professional, helpful. Represent a premium CPA firm.
 
 FIRM INFO:
-- Danny Kim, CPA - Licensed in California, 15+ years experience
+- Danny Kim, CPA - Licensed in California, 25+ years experience
 - Services: Tax Preparation, Bookkeeping, Business Consulting, Payroll, Forensic Accounting, Litigation Support, Business Valuations
 - Specialties: Korean-speaking clients, immigrant tax (FBAR/FATCA), multi-state, LLC/S-Corp setup
 - Location: 611 S Catalina St #216, Los Angeles, CA 90005 (Koreatown)
