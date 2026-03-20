@@ -410,7 +410,7 @@ export default function CRAccountancy() {
     <nav style={baseStyles.nav}>
       <div style={baseStyles.navInner}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/mnt/user-data/outputs/cr_logo_final.png" alt="CR Innovation Logo" style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
+          <img src="/cr_logo_final.png" alt="CR Innovation Logo" style={{ height: 44, borderRadius: 6, boxShadow: "0 2px 8px rgba(0,0,0,0.3)" }} />
           <div>
             <div style={{ fontFamily: fonts.display, fontSize: 18, fontWeight: 700, color: colors.white, letterSpacing: 1 }}>
               DANNY KIM, CPA
