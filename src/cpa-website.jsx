@@ -865,9 +865,11 @@ export default function CRAccountancy() {
             textTransform: "uppercase",
             marginBottom: 32,
             fontFamily: fonts.sans,
-            fontWeight: 700
+            fontWeight: 700,
+            lineHeight: 2.2,
+            textAlign: "center"
           }}>
-            Danny Kim, CPA · CR Accountancy & Consulting
+            Danny Kim, CPA<br />CR Accountancy & Consulting
           </div>
           
           <h1 style={{
