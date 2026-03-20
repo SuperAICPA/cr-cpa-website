@@ -1267,7 +1267,7 @@ export default function CRAccountancy() {
       </div>
       
       <Footer />
-      <AIChatbot lang={lang} />
+      {/* <AIChatbot lang={lang} /> */}
     </div>
   );
 }
