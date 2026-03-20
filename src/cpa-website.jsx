@@ -295,6 +295,102 @@ function AIChatbot({ lang }) {
   </>);
 }
 
+// ============================================================
+// CONTACT FORM - Standalone component with own state
+// ============================================================
+function ContactForm({ lang, t, colors, fonts }) {
+  const [fd, setFd] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (field, value) => {
+    setFd(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = () => {
+    if (fd.name && fd.email) {
+      fetch("https://formspree.io/f/meerdzov", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fd),
+      }).then(() => {
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 4000);
+        setFd({ name: "", email: "", phone: "", service: "", message: "" });
+      }).catch(() => {
+        alert("Failed to send. Please call 213-325-9800.");
+      });
+    }
+  };
+
+  const inputStyle = {
+    width: "100%", padding: "14px 16px", border: `1px solid ${colors.lightGray}`,
+    borderRadius: 4, fontSize: 15, fontFamily: fonts.sans, color: colors.navy,
+    outline: "none", transition: "border-color 0.3s", boxSizing: "border-box"
+  };
+
+  return (
+    <div style={{ background: colors.white, padding: 48, borderRadius: 4, border: `1px solid ${colors.lightGray}`, boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}>
+      <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.navy, marginBottom: 8 }}>
+        {lang === "en" ? "Request a Consultation" : "상담 신청"}
+      </h3>
+      <p style={{ fontSize: 14, color: colors.gray, marginBottom: 32 }}>
+        {lang === "en" ? "Fill out the form below and we'll get back to you within 24 hours." : "아래 양식을 작성하시면 24시간 이내에 연락드리겠습니다."}
+      </p>
+
+      {submitted && (
+        <div style={{ background: "#E8F5E9", border: "1px solid #66BB6A", color: "#2E7D32", padding: "16px 20px", borderRadius: 4, marginBottom: 24, fontSize: 14, fontWeight: 500 }}>
+          {t.contact.form.success}
+        </div>
+      )}
+
+      <div style={{ display: "grid", gap: 20 }}>
+        {["name", "email", "phone"].map((field) => (
+          <div key={field}>
+            <label style={{ display: "block", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: colors.gray, marginBottom: 8, fontWeight: 600 }}>
+              {t.contact.form[field]}
+            </label>
+            <input
+              type={field === "email" ? "email" : "text"}
+              value={fd[field]}
+              onChange={(e) => handleChange(field, e.target.value)}
+              style={inputStyle}
+              onFocus={(e) => e.target.style.borderColor = colors.gold}
+              onBlur={(e) => e.target.style.borderColor = colors.lightGray}
+            />
+          </div>
+        ))}
+
+        <div>
+          <label style={{ display: "block", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: colors.gray, marginBottom: 8, fontWeight: 600 }}>
+            {t.contact.form.service}
+          </label>
+          <select value={fd.service} onChange={(e) => handleChange("service", e.target.value)} style={{ ...inputStyle, color: fd.service ? colors.navy : colors.gray, background: colors.white }}>
+            <option value="">{lang === "en" ? "Select a service" : "서비스를 선택하세요"}</option>
+            {t.contact.form.serviceOptions.map((opt, i) => (<option key={i} value={opt}>{opt}</option>))}
+          </select>
+        </div>
+
+        <div>
+          <label style={{ display: "block", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: colors.gray, marginBottom: 8, fontWeight: 600 }}>
+            {t.contact.form.message}
+          </label>
+          <textarea value={fd.message} onChange={(e) => handleChange("message", e.target.value)} rows={5} style={{ ...inputStyle, resize: "vertical" }}
+            onFocus={(e) => e.target.style.borderColor = colors.gold} onBlur={(e) => e.target.style.borderColor = colors.lightGray} />
+        </div>
+
+        <button onClick={handleSubmit} style={{
+          background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`, border: "none", color: colors.darkNavy,
+          fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
+          padding: "18px 40px", cursor: "pointer", borderRadius: 2, marginTop: 8,
+          transition: "all 0.3s ease", boxShadow: `0 4px 16px ${colors.gold}33`
+        }}>
+          {t.contact.form.submit}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 const GoldDivider = () => (
   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, margin: "0 auto", maxWidth: 200 }}>
     <div style={{ height: 1, flex: 1, background: "linear-gradient(to right, transparent, #B8926A)" }} />
@@ -1009,138 +1105,7 @@ export default function CRAccountancy() {
           </div>
 
           {/* Contact Form */}
-          <div style={{
-            background: colors.white,
-            padding: 48,
-            borderRadius: 4,
-            border: `1px solid ${colors.lightGray}`,
-            boxShadow: "0 4px 24px rgba(0,0,0,0.04)"
-          }}>
-            <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.navy, marginBottom: 8 }}>
-              {lang === "en" ? "Request a Consultation" : "상담 신청"}
-            </h3>
-            <p style={{ fontSize: 14, color: colors.gray, marginBottom: 32 }}>
-              {lang === "en" ? "Fill out the form below and we'll get back to you within 24 hours." : "아래 양식을 작성하시면 24시간 이내에 연락드리겠습니다."}
-            </p>
-
-            {formSubmitted && (
-              <div style={{
-                background: "#E8F5E9",
-                border: "1px solid #66BB6A",
-                color: "#2E7D32",
-                padding: "16px 20px",
-                borderRadius: 4,
-                marginBottom: 24,
-                fontSize: 14,
-                fontWeight: 500
-              }}>
-                {t.contact.form.success}
-              </div>
-            )}
-
-            <div style={{ display: "grid", gap: 20 }}>
-              {["name", "email", "phone"].map((field) => (
-                <div key={field}>
-                  <label style={{ display: "block", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: colors.gray, marginBottom: 8, fontWeight: 600 }}>
-                    {t.contact.form[field]}
-                  </label>
-                  <input
-                    type={field === "email" ? "email" : "text"}
-                    value={formData[field]}
-                    onChange={(e) => handleFormChange(field, e.target.value)}
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      border: `1px solid ${colors.lightGray}`,
-                      borderRadius: 4,
-                      fontSize: 15,
-                      fontFamily: fonts.sans,
-                      color: colors.navy,
-                      outline: "none",
-                      transition: "border-color 0.3s",
-                      boxSizing: "border-box"
-                    }}
-                    onFocus={(e) => e.target.style.borderColor = colors.gold}
-                    onBlur={(e) => e.target.style.borderColor = colors.lightGray}
-                  />
-                </div>
-              ))}
-
-              <div>
-                <label style={{ display: "block", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: colors.gray, marginBottom: 8, fontWeight: 600 }}>
-                  {t.contact.form.service}
-                </label>
-                <select
-                  value={formData.service}
-                  onChange={(e) => handleFormChange("service", e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "14px 16px",
-                    border: `1px solid ${colors.lightGray}`,
-                    borderRadius: 4,
-                    fontSize: 15,
-                    fontFamily: fonts.sans,
-                    color: formData.service ? colors.navy : colors.gray,
-                    background: colors.white,
-                    outline: "none",
-                    boxSizing: "border-box"
-                  }}
-                >
-                  <option value="">{lang === "en" ? "Select a service" : "서비스를 선택하세요"}</option>
-                  {t.contact.form.serviceOptions.map((opt, i) => (
-                    <option key={i} value={opt}>{opt}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: colors.gray, marginBottom: 8, fontWeight: 600 }}>
-                  {t.contact.form.message}
-                </label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => handleFormChange("message", e.target.value)}
-                  rows={5}
-                  style={{
-                    width: "100%",
-                    padding: "14px 16px",
-                    border: `1px solid ${colors.lightGray}`,
-                    borderRadius: 4,
-                    fontSize: 15,
-                    fontFamily: fonts.sans,
-                    color: colors.navy,
-                    outline: "none",
-                    resize: "vertical",
-                    boxSizing: "border-box"
-                  }}
-                  onFocus={(e) => e.target.style.borderColor = colors.gold}
-                  onBlur={(e) => e.target.style.borderColor = colors.lightGray}
-                />
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                style={{
-                  background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`,
-                  border: "none",
-                  color: colors.darkNavy,
-                  fontFamily: fonts.sans,
-                  fontSize: 13,
-                  fontWeight: 700,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  padding: "18px 40px",
-                  cursor: "pointer",
-                  borderRadius: 2,
-                  marginTop: 8,
-                  transition: "all 0.3s ease",
-                  boxShadow: `0 4px 16px ${colors.gold}33`
-                }}
-              >
-                {t.contact.form.submit}
-              </button>
-            </div>
-          </div>
+          <ContactForm lang={lang} t={t} colors={colors} fonts={fonts} />
         </div>
       </div>
     </div>
