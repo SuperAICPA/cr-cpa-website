@@ -844,17 +844,28 @@ export default function CRAccountancy() {
             flexWrap: "wrap",
             marginBottom: 32,
           }}>
-            {["English", "한국어", "Español", "中文", "Tiếng Việt", "日本語", "Tagalog", "Монгол"].map((l, i) => (
-              <span key={i} style={{
+            {[
+              { label: "English", code: "en" },
+              { label: "한국어", code: "ko" },
+              { label: "Español", code: "es" },
+              { label: "中文", code: "zh" },
+              { label: "Tiếng Việt", code: "vi" },
+              { label: "日本語", code: "ja" },
+              { label: "Tagalog", code: "tl" },
+              { label: "Монгол", code: "mn" },
+            ].map((l, i) => (
+              <span key={i} onClick={() => setLang(l.code)} style={{
                 fontSize: 11,
-                fontWeight: 500,
-                color: colors.gray,
+                fontWeight: lang === l.code ? 700 : 500,
+                color: lang === l.code ? colors.blue : colors.gray,
                 fontFamily: fonts.sans,
-                padding: "4px 10px",
-                borderRadius: 12,
-                background: `${colors.navy}05`,
-                border: `1px solid ${colors.lightGray}`,
-              }}>{l}</span>
+                padding: "6px 14px",
+                borderRadius: 20,
+                background: lang === l.code ? `${colors.blue}10` : `${colors.navy}05`,
+                border: lang === l.code ? `2px solid ${colors.blue}` : `1px solid ${colors.lightGray}`,
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}>{l.label}</span>
             ))}
           </div>
 
