@@ -263,7 +263,7 @@ const serviceDetails = [
       { en: "Client Review & Signature", ko: "고객 검토 및 서명 — 작성된 신고서를 고객에게 설명하고 전자 서명 후 최종 제출합니다." },
       { en: "Filing & Follow-up", ko: "제출 및 사후 관리 — IRS/FTB에 전자 신고 후 접수 확인서를 제공하며, 이후 문의도 지속 지원합니다." }
     ],
-    docs: ["W-2 (근로소득)", "1099-NEC / 1099-MISC", "1099-INT / 1099-DIV", "1098 (모기지 이자)", "Schedule K-1", "전년도 세금 신고서", "부동산 임대 내역", "사업 수입/지출 내역", "해외 계좌 정보"],
+    docs: ["W-2 (Employment Income)", "1099-NEC / 1099-MISC", "1099-INT / 1099-DIV", "1098 (Mortgage Interest)", "Schedule K-1", "Prior Year Tax Returns", "Rental Income Records", "Business Income/Expense Records", "Foreign Account Information"],
     faq: [
       { q: { en: "Does a nonprofit need to file taxes annually?", ko: "비영리재단도 매년 세금 신고를 해야 하나요?" }, a: { en: "Yes. Tax-exempt organizations must file Form 990 annually. Missing 3 consecutive years results in automatic revocation of tax-exempt status.", ko: "네, 세금 면제(Tax-Exempt) 단체도 매년 Form 990 시리즈를 IRS에 제출해야 합니다. 3년 연속 미신고 시 면세 지위가 자동 취소됩니다." } },
       { q: { en: "Does a Revocable Trust need a separate tax filing?", ko: "Revocable Trust는 별도로 세금 신고를 해야 하나요?" }, a: { en: "A living revocable trust is included in the grantor's 1040 during their lifetime. After death, a separate Form 1041 is required.", ko: "생전 신탁(Revocable Living Trust)은 설정자(Grantor)가 살아있는 동안 별도 신고 없이 개인 1040에 포함됩니다. 설정자 사망 후는 별도 Form 1041 신고가 필요합니다." } },
@@ -289,7 +289,7 @@ const serviceDetails = [
       { en: "Monthly Processing", ko: "월별 정기 처리 — 매월 거래 분류, 은행 조정, 재무제표 작성 후 보고." },
       { en: "Quarterly Review", ko: "분기별 리뷰 — 재무 성과 검토 및 세금 준비를 위한 분기 결산." }
     ],
-    docs: ["은행 명세서", "신용카드 명세서", "인보이스/영수증", "급여 내역", "전년도 세금 신고서", "기존 QuickBooks 파일"],
+    docs: ["Bank Statements", "Credit Card Statements", "Invoices / Receipts", "Payroll Records", "Prior Year Tax Returns", "Existing QuickBooks File"],
     faq: [
       { q: { en: "Do I have to use QuickBooks?", ko: "QuickBooks를 사용하지 않아도 되나요?" }, a: { en: "No. We support Excel, Wave, Xero and other platforms. We can help migrate to the optimal software.", ko: "네. Excel, Wave, Xero 등 다양한 플랫폼을 지원하며, 필요시 최적의 소프트웨어로 마이그레이션을 도와드립니다." } },
       { q: { en: "How long does catch-up bookkeeping take?", ko: "Catch-up Bookkeeping 기간은 얼마나 걸리나요?" }, a: { en: "Typically 1–4 weeks depending on transaction volume. We'll provide a timeline estimate at the initial consultation.", ko: "거래 규모에 따라 다르지만 일반적으로 1~4주 내 완료됩니다. 초기 상담 시 일정을 안내해드립니다." } },
@@ -315,7 +315,7 @@ const serviceDetails = [
       { en: "Tax Deposits", ko: "세금 납부 — 연방·주 Payroll Tax를 해당 기한 내 자동 납부." },
       { en: "Quarterly & Annual Filing", ko: "분기·연간 신고 — 941, 940, DE-9 분기 신고 및 W-2/1099 연간 발행." }
     ],
-    docs: ["EIN 서류", "직원 W-4 / DE-4", "은행 계좌 정보 (Direct Deposit)", "급여 이력", "이전 941/940 신고서", "CA EDD 계좌 정보"],
+    docs: ["EIN Documentation", "Employee W-4 / DE-4", "Bank Account Info (Direct Deposit)", "Payroll History", "Prior 941/940 Returns", "CA EDD Account Information"],
     faq: [
       { q: { en: "How many employees do you need to start?", ko: "몇 명부터 서비스가 가능한가요?" }, a: { en: "We serve businesses from 1-person owners to 50+ employees.", ko: "1인 기업(오너 급여)부터 50인 이상 규모까지 모두 지원합니다." } },
       { q: { en: "Can I switch from my current payroll system?", ko: "기존 급여 시스템에서 전환이 가능한가요?" }, a: { en: "Yes. We support data migration from Gusto, ADP, Paychex, and other platforms.", ko: "네. Gusto, ADP, Paychex 등 기존 플랫폼에서의 데이터 마이그레이션을 지원합니다." } },
@@ -343,7 +343,7 @@ const serviceDetails = [
       { en: "IRS/FTB Representation", ko: "IRS/FTB 대리 — CPA 자격으로 납세자 대리인 역할 수행. 고객이 직접 담당자를 만날 필요 없음." },
       { en: "Resolution & Follow-up", ko: "해결 및 사후 관리 — 문제 해결 후 미래 컴플라이언스 유지를 위한 세무 플래닝 지원." }
     ],
-    docs: ["IRS/FTB 통지서 원본", "CP2000 / CP3219A 등 레터", "미납 내역 확인서", "CDTFA 점검 통지서", "미신고 연도 자료", "재산 목록 (자산·부동산)"],
+    docs: ["Original IRS/FTB Notice", "CP2000 / CP3219A or Other Letters", "Tax Balance Verification", "CDTFA Audit Notice", "Prior Year Tax Records", "Asset / Property List"],
     faq: [
       { q: { en: "An IRS Revenue Officer visited — what should I do?", ko: "IRS 담당자(Revenue Officer)가 방문했는데 어떻게 해야 하나요?" }, a: { en: "Contact us immediately. Having a CPA as your representative provides significant advantages during Revenue Officer interactions.", ko: "즉시 연락주세요. Revenue Officer 접촉 시 CPA가 대리인으로 동석하면 서류 요청 및 입장에서 유리한 결과를 얻을 수 있습니다." } },
       { q: { en: "Does everyone qualify for Offer in Compromise?", ko: "Offer in Compromise는 누구나 되나요?" }, a: { en: "You must meet IRS criteria (ability to pay, income, assets). We'll evaluate your eligibility in the consultation.", ko: "IRS가 정한 자격 요건(지불 능력, 소득, 자산 등)을 충족해야 합니다. 상담을 통해 신청 가능성을 먼저 확인해 드립니다." } },
@@ -369,7 +369,7 @@ const serviceDetails = [
       { en: "EIN & Tax Account Setup", ko: "EIN 및 세무 계좌 개설 — EIN 신청, CA 보드 등록, 판매세 퍼밋 등." },
       { en: "System Integration", ko: "시스템 구축 연계 — 회계 시스템, 페이롤, 은행 계좌 설정 등 초기 지원." }
     ],
-    docs: ["대표자 신분증", "주 거주 증명", "사업체 이름 확정 안", "기존 비즈니스 플랜", "투자자/동업자 정보"],
+    docs: ["Owner ID / Identification", "Proof of State Residency", "Proposed Business Name", "Existing Business Plan", "Investor / Partner Information"],
     faq: [
       { q: { en: "Which entity should I choose?", ko: "어떤 Entity를 선택해야 하나요?" }, a: { en: "LLC offers flexibility and simplicity; S-Corp excels at reducing self-employment tax. The best structure depends on size, investor plans, and income level.", ko: "LLC는 유연성과 단순함, S-Corp은 Self-employment Tax를 줄이고 급여와 배당으로 소득을 분리하는 절세 전환이 가능합니다. 사업 규모, 투자자 유치 계획, 소득 수준에 따라 최적 구조가 달라집니다." } },
       { q: { en: "Do you help Korean businesses expanding to the US?", ko: "한국에서 미국으로 사업을 확장하는 경우도 지원하나요?" }, a: { en: "Yes. We provide bilingual support for Korean company US incorporation, tax structure, and operations.", ko: "네. 한국 기업의 미국 법인 설립, 세무 구조, 운영 자문까지 bilingual로 지원합니다." } }
@@ -394,7 +394,7 @@ const serviceDetails = [
       { en: "Execution Support", ko: "실행 지원 — 전략 실행 단계에서 재무 데이터 기반의 의사결정을 지원합니다." },
       { en: "Performance Monitoring", ko: "성과 모니터링 — KPI 설정 및 주기적 리뷰를 통해 목표 달성도를 추적합니다." }
     ],
-    docs: ["최근 3년 재무제표", "세금 신고서", "사업자 등록 서류", "기존 계약서·리스", "은행 명세서 3~6개월", "사업 계획 관련 자료"],
+    docs: ["Last 3 Years of Financial Statements", "Tax Returns", "Business Registration Documents", "Existing Contracts / Leases", "Bank Statements (3–6 months)", "Business Plan Materials"],
     faq: [
       { q: { en: "Do I need consulting in the early startup stage?", ko: "창업 초기 단계에서도 컨설팅이 필요한가요?" }, a: { en: "Especially yes — early entity selection and accounting system setup have a huge impact on future tax savings and legal protection.", ko: "특히 창업 초기 Entity 선택과 회계 시스템 구축이 향후 세금 절세와 법적 보호에 큰 영향을 미칩니다. 초기 설계가 가장 중요합니다." } },
       { q: { en: "Are there referral fees for SBA loans?", ko: "SBA 대출 소개 수수료가 있나요?" }, a: { en: "Consulting fees are charged as a fixed amount — never as a percentage of the loan.", ko: "컨설팅 수수료는 고정 금액으로 별도 청구되며, 대출 금액의 퍼센트 형태로는 받지 않습니다." } }
@@ -419,7 +419,7 @@ const serviceDetails = [
       { en: "Comprehensive Plan", ko: "종합 계획 수립 — 세금, 투자, 은퇴, 상속을 통합한 맞춤형 재무 계획서를 작성합니다." },
       { en: "Annual Review", ko: "정기 리뷰 — 연간 또는 생애 주요 이벤트 시 계획을 업데이트합니다." }
     ],
-    docs: ["최근 세금 신고서", "은행·투자 계좌 명세", "부동산 소유 현황", "생명보험 증권", "은퇴 계좌 잔액", "Trust/유언장 사본"],
+    docs: ["Recent Tax Returns", "Bank / Investment Account Statements", "Real Estate Holdings", "Life Insurance Policies", "Retirement Account Balances", "Trust / Will Copies"],
     faq: [
       { q: { en: "Does a CPA provide investment advice?", ko: "CPA가 투자 자문도 하나요?" }, a: { en: "We advise on tax-efficient asset structure and financial planning. Securities investment recommendations require a separate license, and we collaborate with qualified specialists.", ko: "CPA로서 세금 효율적 자산 구조와 재무 계획을 자문합니다. 증권 투자 추천은 별도 라이선스 영역이므로, 필요시 적합한 전문가와 협력합니다." } },
       { q: { en: "Can you advise on 1031 Exchange?", ko: "1031 Exchange 자문도 가능한가요?" }, a: { en: "Yes. We advise on tax deferral strategies through like-kind exchanges for investment real estate sales.", ko: "네. 투자 부동산 매각 후 Like-Kind 교환을 통한 양도세 이연 전략을 세무 관점에서 자문합니다." } }
@@ -444,7 +444,7 @@ const serviceDetails = [
       { en: "Trust & Document Coordination", ko: "신탁 및 문서 작성 연계 — 서류 작성은 Estate Attorney와 협력 진행 (Danny 네트워크 활용)." },
       { en: "Annual Review", ko: "연간 리뷰 — 세법 변경, 자산 변동, 가족 상황 변화에 따른 플랜 업데이트." }
     ],
-    docs: ["Trust 문서 사본", "유언장 사본", "부동산 타이틀 서류", "생명보험 증권", "수혜자 지정 서류", "최근 세금 신고서"],
+    docs: ["Trust Document Copies", "Will / Testament Copy", "Real Estate Title Documents", "Life Insurance Policies", "Beneficiary Designation Forms", "Recent Tax Returns"],
     faq: [
       { q: { en: "Does a trust avoid probate?", ko: "Trust를 설정하면 프로베이트(Probate)를 피할 수 있나요?" }, a: { en: "Generally yes — a properly funded trust avoids probate, making inheritance faster and less costly. Assets must actually be transferred into the trust.", ko: "일반적으로 매녀타입드 Trust는 프로베이트를 피할 수 있어 상속 과정을 빠르고 비용을 줄일 수 있습니다. 다만 Trust에 자산을 실제 이전해야 합니다." } },
       { q: { en: "What is the federal Estate Tax exemption?", ko: "연방 Estate Tax는 얼마부터 부과되나요?" }, a: { en: "As of 2024, the federal Estate Tax exemption is approximately $13.6M (individual) / $27.2M (couple). Sunset provisions may change this after 2025.", ko: "2024년 기준 연방 Estate Tax 면제 한도는 약 $13.6M(개인)/$27.2M(부부)입니다. 2025년 이후 일몰조항(Sunset Provision)에 따라 변경될 수 있어 지금 준비하는 게 중요합니다." } },
@@ -470,7 +470,7 @@ const serviceDetails = [
       { en: "Analysis & Report", ko: "분석 및 보고서 작성 — 재무 분석 결과를 법원 제출 가능한 Expert Report 형식으로 작성합니다." },
       { en: "Testimony & Support", ko: "증언 및 협의 지원 — 법정 증언, 중재, 협상 과정에서 전문가로서 지원합니다." }
     ],
-    docs: ["관련 계약서 전체", "재무제표 (분쟁 기간)", "은행·신용카드 명세", "세금 신고서", "급여 기록", "프로젝트별 비용 내역"],
+    docs: ["All Relevant Contracts", "Financial Statements (Dispute Period)", "Bank / Credit Card Statements", "Tax Returns", "Payroll Records", "Project-Level Cost Breakdown"],
     faq: [
       { q: { en: "Can I engage you directly without an attorney?", ko: "변호사를 통해서만 의뢰 가능한가요?" }, a: { en: "Attorney referrals are most common, but individuals and businesses may also engage us directly.", ko: "변호사를 통한 의뢰가 일반적이지만, 개인 또는 기업이 직접 의뢰도 가능합니다." } },
       { q: { en: "What format is the Expert Report?", ko: "Expert Report는 어떤 형식인가요?" }, a: { en: "Reports are prepared to meet federal and state court requirements, clearly stating methodology, data sources, and conclusions.", ko: "연방 및 주 법원 규정에 맞는 형식으로 작성되며, 분석 방법론, 데이터 출처, 결론이 명확히 기재됩니다." } },
@@ -496,7 +496,7 @@ const serviceDetails = [
       { en: "Return Preparation & Filing", ko: "신고서 작성·제출 — 기한 내 정확한 신고서를 작성하고 IRS에 제출합니다." },
       { en: "Ongoing Compliance", ko: "지속 컴플라이언스 — 매년 변경되는 국제 세법에 맞춰 지속적인 컴플라이언스를 유지합니다." }
     ],
-    docs: ["해외 계좌 명세 (기관명·잔액)", "외국 법인 재무제표", "한국 세금 신고서", "미국 세금 신고서", "해외 소득 관련 서류", "여권 및 비자 정보"],
+    docs: ["Foreign Account Details (Institution & Balance)", "Foreign Corporate Financial Statements", "Korean Tax Returns", "US Tax Returns", "Foreign Income Documentation", "Passport & Visa Information"],
     faq: [
       { q: { en: "I missed FBAR filings — what should I do?", ko: "FBAR를 모르고 신고를 못 했는데 어떻게 하나요?" }, a: { en: "The Streamlined Filing Compliance Procedure allows you to voluntarily correct past non-filings with potential penalty reduction. Contact us quickly.", ko: "Streamlined Filing Compliance Procedure를 통해 과거 미신고를 자발적으로 수정할 수 있습니다. 패널티 감면 가능성이 있으므로 빠른 상담을 권합니다." } },
       { q: { en: "Do I need to report just having a Korean bank account?", ko: "한국에 계좌만 있어도 신고해야 하나요?" }, a: { en: "US residents (citizens, green card holders, tax residents) must file FBAR if combined foreign account balances exceed $10,000 at any point.", ko: "미국 거주자(시민권자·영주권자·세법상 거주자)는 해외 금융계좌 합산 잔액이 $10,000을 초과하면 FBAR 신고 의무가 있습니다." } },
@@ -522,7 +522,7 @@ const serviceDetails = [
       { en: "Gain/Loss Calculation", ko: "손익 계산 — 선택된 회계 방법(FIFO/HIFO)으로 Capital Gain/Loss를 계산합니다." },
       { en: "Tax Return Integration", ko: "세금 신고 통합 — 결과를 개인 또는 사업체 세금 신고서에 정확히 반영합니다." }
     ],
-    docs: ["거래소 CSV 다운로드", "지갑 주소 목록", "Staking/Mining 보상 내역", "NFT 거래 내역", "전년도 세금 신고서", "해외 거래소 계좌 정보"],
+    docs: ["Exchange CSV Downloads", "Wallet Address List", "Staking / Mining Reward History", "NFT Transaction History", "Prior Year Tax Returns", "Foreign Exchange Account Information"],
     faq: [
       { q: { en: "Do I have to report just holding crypto?", ko: "암호화폐를 보유만 하고 팔지 않아도 신고해야 하나요?" }, a: { en: "Simply holding (HODLing) is not a taxable event. Taxable events include sales, exchanges, payments, and receiving staking rewards.", ko: "단순 보유(HODLing)는 과세 이벤트가 아닙니다. 매각, 교환, 결제 사용, 스테이킹 보상 수령 등이 과세 이벤트입니다." } },
       { q: { en: "How does IRS classify crypto?", ko: "IRS가 암호화폐를 어떻게 보나요?" }, a: { en: "The IRS classifies cryptocurrency as property. Held over 1 year: Long-term Capital Gains (max 20%). Under 1 year: ordinary income tax rates.", ko: "IRS는 암호화폐를 Property(재산)으로 분류합니다. 1년 이상 보유 시 Long-term Capital Gain(최대 20%), 1년 미만은 일반 소득세율이 적용됩니다." } }
@@ -547,7 +547,7 @@ const serviceDetails = [
       { en: "Monthly Processing", ko: "월별 정기 처리 — 거래 분류, 기금별 추적, 월별 재무제표 작성 및 이사회 보고." },
       { en: "Annual Filing", ko: "연간 신고 완료 — Form 990 시리즈 작성 및 마감일 전 제출. CA AG 신고(RRF-1) 포함." }
     ],
-    docs: ["IRS 결정 서한 (Determination Letter)", "회계연도 재무 내역", "기부금·그랜트 내역", "이사회 회의록", "이전 Form 990", "CA AG 등록 서류"],
+    docs: ["IRS Determination Letter", "Fiscal Year Financial Records", "Donation / Grant Records", "Board Meeting Minutes", "Prior Form 990", "CA AG Registration Documents"],
     faq: [
       { q: { en: "Can you help from the 501(c)(3) application stage?", ko: "501(c)(3) 신청부터 도와줄 수 있나요?" }, a: { en: "Yes. We support the entire process from Form 1023 preparation to IRS correspondence for obtaining tax-exempt status.", ko: "네. Form 1023 작성부터 IRS 서신 대응까지 면세 지위 취득 전 과정을 지원합니다." } },
       { q: { en: "What happens if Form 990 is not filed?", ko: "Form 990을 제출하지 않으면 어떻게 되나요?" }, a: { en: "Missing 3 consecutive years results in automatic IRS revocation of tax-exempt status. Reinstatement requires starting the application from scratch.", ko: "3년 연속 미제출 시 IRS가 면세 지위를 자동 취소합니다. 취소 후 재취득은 처음부터 신청해야 합니다." } },
@@ -573,7 +573,7 @@ const serviceDetails = [
       { en: "Tax Strategy", ko: "세무 전략 수립 — 업종별 세금 특성과 절세 포인트를 활용한 연간 신고 전략 수립." },
       { en: "Ongoing Support", ko: "지속적 지원 — 경영진단, 분기 검토, 규제 변경 사항 안내 등 연간 오너십으로 지원합니다." }
     ],
-    docs: ["사업자 등록 서류", "최근 2년 재무제표", "판매세 등록 증명", "업종별 라이선스 서류", "급여 내역", "세금 신고서 (최근 2년)"],
+    docs: ["Business Registration Documents", "Last 2 Years of Financial Statements", "Sales Tax Registration Certificate", "Industry-Specific License Documents", "Payroll Records", "Tax Returns (Last 2 Years)"],
     faq: [
       { q: { en: "Can you help with construction cost accounting?", ko: "건설업의 코스트 어카운팅이 너무 복잡한데 도와주시나요?" }, a: { en: "Yes. We have extensive experience with construction-specific accounting including Retainage, revenue recognition, and Quantum Meruit litigation.", ko: "네. 건설업의 특성상 필요한 Retainage 수익 인식, Quantum Meruit 소송 등 건설 분야 특수 실무 경험이 풍부합니다." } },
       { q: { en: "Do restaurants need to file CDTFA separately?", ko: "음식점도 CDTFA 신고를 별도로 해야 하나요?" }, a: { en: "Yes. Restaurants are subject to sales tax, and there are separate reporting obligations for tips paid to employees. Record keeping for CDTFA audit preparedness is critical.", ko: "네. 음식점은 판매세 대상이며, 직원에게 지급하는 팁도 별도 보고 의무가 있습니다. CDTFA 감사 대비를 위한 기록 관리가 중요합니다." } },
@@ -929,7 +929,7 @@ function ResourcesPage({ lang, colors, fonts }) {
       </div>
 
       <div style={S.section}>
-        {agencyBlock("IRS — Internal Revenue Service | 연방 국세청 (Federal Income Tax)", "#1B3A5C", irsOnline, irsCheckSteps, irsAddr)}
+        {agencyBlock("IRS — Internal Revenue Service (Federal Income Tax)", "#1B3A5C", irsOnline, irsCheckSteps, irsAddr)}
 
         <div style={{ background: "#FEF3C7", border: "1px solid #F59E0B", borderRadius: 8, padding: "14px 20px", marginBottom: 40, display: "flex", gap: 12, alignItems: "start" }}>
           <span style={{ fontSize: 20 }}>⚠</span>
@@ -938,7 +938,7 @@ function ResourcesPage({ lang, colors, fonts }) {
           </p>
         </div>
 
-        {agencyBlock("FTB — Franchise Tax Board | 캘리포니아 소득세청 (CA State Income Tax)", "#1E5C3A", ftbOnline, ftbCheckSteps, ftbAddr)}
+        {agencyBlock("FTB — Franchise Tax Board (CA State Income Tax)", "#1E5C3A", ftbOnline, ftbCheckSteps, ftbAddr)}
 
         <div style={{ background: "#FEF3C7", border: "1px solid #F59E0B", borderRadius: 8, padding: "14px 20px", marginBottom: 40, display: "flex", gap: 12, alignItems: "start" }}>
           <span style={{ fontSize: 20 }}>⚠</span>
@@ -947,7 +947,7 @@ function ResourcesPage({ lang, colors, fonts }) {
           </p>
         </div>
 
-        {agencyBlock("EDD — Employment Development Dept. | 캘리포니아 고용개발부 (CA Payroll Tax)", "#5B2D8E", eddOnline, eddCheckSteps, eddAddr)}
+        {agencyBlock("EDD — Employment Development Dept. (CA Payroll Tax)", "#5B2D8E", eddOnline, eddCheckSteps, eddAddr)}
 
         <div style={{ background: colors.cream, border: `1px solid ${colors.lightGray}`, borderRadius: 8, padding: "24px 32px", textAlign: "center" }}>
           <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.8, marginBottom: 8 }}>
