@@ -121,35 +121,58 @@ const ReviewCard = ({ review }) => {
 
 // ─── 메인 컴포넌트 ────────────────────────────────────────────────
 export default function ReviewsSection() {
-  const [reviews, setReviews]     = useState(FALLBACK_REVIEWS);
+  const [reviews, setReviews]       = useState(FALLBACK_REVIEWS);
   const [totalCount, setTotalCount] = useState(FALLBACK_REVIEWS.length);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isPaused, setIsPaused]   = useState(false);
+  const [activeIdx, setActiveIdx]   = useState(0);
+  const [isPaused, setIsPaused]     = useState(false);
+  const [perPage, setPerPage]       = useState(3);
+  const activeIdxRef = useRef(0);
   const timerRef = useRef(null);
 
   // 실시간 Google 리뷰 fetch
   useEffect(() => {
     fetch('/api/reviews')
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
       .then(data => {
-        if (data.reviews?.length > 0) setReviews(data.reviews);
+        if (Array.isArray(data.reviews) && data.reviews.length > 0) {
+          setReviews(data.reviews);
+          setActiveIdx(0);
+          activeIdxRef.current = 0;
+        }
         if (data.meta?.total) setTotalCount(data.meta.total);
       })
       .catch(() => {}); // 실패 시 fallback 유지
   }, []);
 
+  // 화면 크기에 따라 한 번에 보여줄 슬라이드 수 결정
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth <= 600) setPerPage(1);
+      else if (window.innerWidth <= 900) setPerPage(2);
+      else setPerPage(3);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
   const total = reviews.length;
+  const maxIdx = Math.max(0, total - perPage);
 
   const goTo = useCallback((i) => {
-    setActiveIdx(((i % total) + total) % total);
-  }, [total]);
+    const next = Math.min(Math.max(0, typeof i === 'function' ? i(activeIdxRef.current) : i), maxIdx);
+    activeIdxRef.current = next;
+    setActiveIdx(next);
+  }, [maxIdx]);
 
   // 5초마다 자동 슬라이드
   useEffect(() => {
     if (isPaused) return;
-    timerRef.current = setInterval(() => goTo(prev => prev + 1), 5000);
+    timerRef.current = setInterval(() => {
+      goTo(prev => prev >= maxIdx ? 0 : prev + 1);
+    }, 5000);
     return () => clearInterval(timerRef.current);
-  }, [isPaused, goTo]);
+  }, [isPaused, goTo, maxIdx]);
 
   const avgRating = reviews.length
     ? (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1)
@@ -197,30 +220,34 @@ export default function ReviewsSection() {
       >
         <div
           className="rv-track"
-          style={{ transform: `translateX(-${activeIdx * (100 / Math.min(total, 3))}%)` }}
+          style={{ transform: `translateX(-${activeIdx * (100 / perPage)}%)` }}
         >
           {reviews.map((review, i) => (
-            <div key={i} className="rv-slide">
+            <div key={i} className="rv-slide" style={{ flex: `0 0 ${100 / perPage}%` }}>
               <ReviewCard review={review} />
             </div>
           ))}
         </div>
 
-        <button className="rv-arrow rv-prev" onClick={() => goTo(activeIdx - 1)} aria-label="Previous">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
-        </button>
-        <button className="rv-arrow rv-next" onClick={() => goTo(activeIdx + 1)} aria-label="Next">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
-        </button>
+        {activeIdx > 0 && (
+          <button className="rv-arrow rv-prev" onClick={() => goTo(activeIdx - 1)} aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+        )}
+        {activeIdx < maxIdx && (
+          <button className="rv-arrow rv-next" onClick={() => goTo(activeIdx + 1)} aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* 점 인디케이터 */}
       <div className="rv-dots">
-        {reviews.map((_, i) => (
+        {Array.from({ length: maxIdx + 1 }).map((_, i) => (
           <button
             key={i}
             className={`rv-dot ${i === activeIdx ? 'active' : ''}`}

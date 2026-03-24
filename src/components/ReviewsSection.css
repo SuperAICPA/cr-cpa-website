@@ -50,7 +50,7 @@
   transition: transform .5s cubic-bezier(.4, 0, .2, 1);
   will-change: transform;
 }
-.rv-slide { flex: 0 0 calc(100% / 3); padding: 0 10px; box-sizing: border-box; }
+.rv-slide { flex-shrink: 0; padding: 0 10px; box-sizing: border-box; }
 
 /* ─── 카드 ─── */
 .rv-card {
@@ -130,12 +130,10 @@
 
 /* ─── 반응형 ─── */
 @media (max-width: 900px) {
-  .rv-slide { flex: 0 0 50%; }
   .rv-header { flex-direction: column; }
 }
 @media (max-width: 600px) {
   .rv-section { padding: 60px 16px; }
-  .rv-slide { flex: 0 0 100%; }
   .rv-prev { left: 4px; }
   .rv-next { right: 4px; }
 }
