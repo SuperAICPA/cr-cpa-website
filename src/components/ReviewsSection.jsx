@@ -159,7 +159,7 @@ export default function ReviewsSection() {
         <div className="rv-header-text">
           <p className="rv-label">Client Reviews</p>
           <h2 className="rv-title">What Our Clients Say</h2>
-          <p className="rv-subtitle">고객들의 솔직한 이야기</p>
+          <p className="rv-subtitle">Honest words from those we've served</p>
         </div>
 
         {/* 통계 */}
