@@ -1,1 +1,141 @@
+/* src/components/ReviewsSection.css — Google 전용 버전 */
 
+.rv-section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─── 헤더 ─── */
+.rv-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.rv-label {
+  font-size: 12px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: #1a73e8; margin-bottom: 8px;
+}
+.rv-title {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 700;
+  color: #1a1a2e; margin-bottom: 6px; line-height: 1.2;
+}
+.rv-subtitle { font-size: 16px; color: #6b7280; font-style: italic; }
+
+/* ─── 통계 ─── */
+.rv-stats {
+  display: flex; align-items: center; gap: 24px;
+  background: #f8faff; border: 1px solid #e8eef8;
+  border-radius: 16px; padding: 20px 28px; flex-shrink: 0;
+}
+.rv-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 80px; }
+.rv-stat-num { font-size: 28px; font-weight: 700; color: #1a1a2e; line-height: 1; }
+.rv-stat-label { font-size: 11px; color: #9ca3af; text-align: center; white-space: nowrap; }
+.rv-stat-divider { width: 1px; height: 40px; background: #e5e7eb; }
+.rv-stat-google { display: flex; align-items: center; gap: 6px; }
+.rv-stat-count { font-size: 24px; font-weight: 700; color: #1a1a2e; }
+
+/* ─── 별점 ─── */
+.rv-stars { display: flex; gap: 1px; }
+.rv-star { font-size: 14px; color: #d1d5db; line-height: 1; }
+.rv-star.filled { color: #f59e0b; }
+
+/* ─── 캐러셀 ─── */
+.rv-carousel { position: relative; overflow: hidden; border-radius: 20px; }
+.rv-track {
+  display: flex;
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+.rv-slide { flex: 0 0 calc(100% / 3); padding: 0 10px; box-sizing: border-box; }
+
+/* ─── 카드 ─── */
+.rv-card {
+  display: flex; flex-direction: column; gap: 12px;
+  background: #fff; border: 1px solid #e8eef8;
+  border-radius: 16px; padding: 24px; min-height: 220px;
+  transition: box-shadow .2s, transform .2s;
+  box-shadow: 0 2px 12px rgba(26, 115, 232, .06);
+}
+.rv-card:hover {
+  box-shadow: 0 8px 32px rgba(26, 115, 232, .14);
+  transform: translateY(-2px);
+}
+.rv-card-header { display: flex; align-items: center; gap: 12px; }
+
+/* 아바타 */
+.rv-avatar-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.rv-avatar-initials {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 600; flex-shrink: 0;
+}
+
+.rv-card-meta { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rv-author { font-size: 14px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rv-date { font-size: 12px; color: #9ca3af; }
+
+/* Google 배지 */
+.rv-source-badge {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 600; padding: 4px 10px;
+  border-radius: 20px; flex-shrink: 0;
+  background: #f0f6ff; color: #1a73e8; border: 1px solid #d0e4fc;
+}
+
+.rv-text { font-size: 14px; line-height: 1.65; color: #4b5563; flex: 1; }
+.rv-expand {
+  background: none; border: none; color: #1a73e8;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 0; align-self: flex-start;
+}
+.rv-expand:hover { text-decoration: underline; }
+
+/* ─── 화살표 ─── */
+.rv-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #fff; border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 12px rgba(0,0,0,.1);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #374151; transition: all .15s; z-index: 10;
+}
+.rv-arrow:hover { background: #1a73e8; color: #fff; border-color: #1a73e8; }
+.rv-prev { left: -12px; }
+.rv-next { right: -12px; }
+
+/* ─── 점 인디케이터 ─── */
+.rv-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.rv-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #d1d5db; border: none; cursor: pointer;
+  transition: all .2s; padding: 0;
+}
+.rv-dot.active { background: #1a73e8; width: 24px; border-radius: 4px; }
+
+/* ─── CTA ─── */
+.rv-cta-row { display: flex; justify-content: center; margin-top: 40px; }
+.rv-cta {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: 10px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  color: #1a73e8; border: 2px solid #1a73e8; background: #fff;
+  transition: all .2s;
+}
+.rv-cta:hover { background: #1a73e8; color: #fff; }
+
+/* ─── 반응형 ─── */
+@media (max-width: 900px) {
+  .rv-slide { flex: 0 0 50%; }
+  .rv-header { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .rv-section { padding: 60px 16px; }
+  .rv-slide { flex: 0 0 100%; }
+  .rv-prev { left: 4px; }
+  .rv-next { right: 4px; }
+}
