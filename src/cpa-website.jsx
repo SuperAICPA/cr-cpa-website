@@ -1331,13 +1331,13 @@ export default function CRAccountancy() {
                 }}>
                   {/* Category Header */}
                   <div style={{
-                    background: `linear-gradient(135deg, ${colors.navy} 0%, ${colors.blue} 100%)`,
-                    padding: "20px 28px"
+                    background: colors.darkNavy,
+                    padding: "28px 28px 24px"
                   }}>
-                    <div style={{ fontSize: 10, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 4 }}>
+                    <div style={{ fontFamily: fonts.display, fontSize: 52, fontWeight: 700, color: colors.gold, lineHeight: 1, marginBottom: 10, letterSpacing: -1 }}>
                       {ci === 0 ? "01" : ci === 1 ? "02" : "03"}
                     </div>
-                    <h3 style={{ fontFamily: fonts.display, fontSize: 17, fontWeight: 700, color: colors.white, lineHeight: 1.3 }}>
+                    <h3 style={{ fontFamily: fonts.display, fontSize: 22, fontWeight: 700, color: colors.white, lineHeight: 1.3 }}>
                       {lang === "ko" ? cat.labelKo : cat.label}
                     </h3>
                   </div>
