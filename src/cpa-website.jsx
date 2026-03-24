@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import ReviewsSection from "./components/ReviewsSection";
 
 const translations = {
   en: {
@@ -1427,6 +1428,10 @@ export default function CRAccountancy() {
         </div>
 
         <IndustrySpotlight />
+
+        {/* ── Google Reviews Section ── */}
+        <ReviewsSection />
+
       </div>
     );
   };
