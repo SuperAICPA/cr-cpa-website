@@ -581,10 +581,36 @@ const serviceDetails = [
       { q: { en: "Does an eCommerce business need to file multi-state taxes?", ko: "eCommerce 업체는 다주 세금 신고를 해야 하나요?" }, a: { en: "Filing obligations vary by the buyer's state. We conduct Nexus analysis to identify each state's obligations and help implement automation tools.", ko: "구매자가 있는 주에 따라 판매세(Sales Tax) 납부 의무가 다릅니다. Nexus 분석을 통해 각 주별 신고 의무를 파악하고 자동화 도구 연계를 도와드립니다." } }
     ]
   }
+  ,{
+    id: "svc_14", icon: "🌐", category: "SPECIALTY SERVICES",
+    title: { en: "Bilingual CPA Services", ko: "이중 언어 CPA 서비스" },
+    tagline: { en: "Bridging language and culture in financial management.", ko: "재무 관리에서 언어와 문화의 장벽을 해소합니다." },
+    intro: { en: "CR Accountancy provides fully bilingual (Korean & English) professional services designed for the Korean-American business community. We understand the unique challenges immigrants and Korean-speaking clients face — and we communicate in your language every step of the way.", ko: "CR Accountancy는 한인 비즈니스 커뮤니티를 위한 완전한 한영 이중 언어 전문 서비스를 제공합니다. 이민자와 한국어 사용 고객이 직면하는 고유한 어려움을 이해하고, 모든 과정에서 모국어로 소통합니다." },
+    items: [
+      { en: "Korean & English Tax Consultation", ko: "한영 세무 상담 — 세금 신고, 절세 전략, IRS/FTB 문제 등 모든 세무 사항을 한국어로 상담 및 처리." },
+      { en: "Immigrant Tax Planning (FBAR/FATCA)", ko: "이민자 세무 계획 — 영주권·시민권 취득 전후 세무 포지션 최적화. 해외 계좌 및 자산 신고(FBAR/FATCA) 전문 처리." },
+      { en: "Cross-Border Business Advisory", ko: "한미 비즈니스 자문 — 한국 기업의 미국 진출 또는 미국 사업체의 한국 연계 구조 설계 및 세무 전략." },
+      { en: "Korean Community Business Support", ko: "한인 커뮤니티 사업 지원 — 한인 소상공인의 법인 설립, 세무, 회계, 급여 처리를 한국어로 원스톱 지원." },
+      { en: "Bilingual Financial Reporting", ko: "이중 언어 재무 보고 — 재무제표 및 세무 보고서를 한국어와 영어로 동시 제공. 한국 본사·투자자 보고 지원." },
+      { en: "Korean Business Expansion to US", ko: "한국 기업 미국 진출 — 미국 법인 설립, EIN 등록, 은행 계좌 개설 자문, 초기 세무 구조 설계까지 한국어로 지원." }
+    ],
+    process: [
+      { en: "Initial Consultation in Korean", ko: "한국어 초기 상담 — 세무·회계 현황을 한국어로 파악하고 필요한 서비스를 정확히 진단합니다." },
+      { en: "Bilingual Document Preparation", ko: "이중 언어 서류 준비 — 미국 세무 서류를 한국어 설명과 함께 준비하여 내용을 완전히 이해할 수 있도록 합니다." },
+      { en: "Filing & Compliance", ko: "신고 및 컴플라이언스 — IRS, FTB, FinCEN 등 관련 기관에 정확하고 기한 내 신고를 완료합니다." },
+      { en: "Ongoing Korean-Language Support", ko: "지속적인 한국어 지원 — 연중 세무 이슈 발생 시 한국어로 신속히 대응하고 안내합니다." }
+    ],
+    docs: ["Passport or ID / 여권 또는 신분증", "Prior Year Tax Returns / 이전 세금 신고서", "Foreign Account Info (FBAR) / 해외 계좌 정보", "Business Registration / 사업자 등록 서류", "Korean Tax Records (if any) / 한국 세금 자료", "Income & Expense Documents / 소득·지출 서류"],
+    faq: [
+      { q: { en: "Can all consultations be conducted in Korean?", ko: "상담부터 신고까지 전부 한국어로 가능한가요?" }, a: { en: "Yes. From the initial consultation through filing and follow-up, everything can be handled in Korean. No English required.", ko: "네. 초기 상담부터 신고, 사후 관리까지 모든 과정을 한국어로 진행합니다. 영어를 못하셔도 전혀 불편함 없이 서비스를 받으실 수 있습니다." } },
+      { q: { en: "I recently immigrated — where do I start?", ko: "최근에 미국에 왔는데 세금 신고를 어떻게 시작해야 하나요?" }, a: { en: "Immigration status, income sources, and foreign assets all affect your US tax obligations. We'll map out your specific situation and filing requirements in a consultation.", ko: "이민 신분, 소득 출처, 해외 자산 여부에 따라 미국 세금 신고 의무가 달라집니다. 상담을 통해 본인의 상황에 맞는 신고 의무와 절차를 안내해 드립니다." } },
+      { q: { en: "Do you serve non-Korean clients as well?", ko: "한국어를 못하는 고객도 서비스를 받을 수 있나요?" }, a: { en: "Absolutely. All of our services are available in English as well. Bilingual capability is an added benefit, not a requirement.", ko: "물론입니다. 모든 서비스는 영어로도 동일하게 제공됩니다. 이중 언어는 추가적인 강점이지 필수 조건이 아닙니다." } }
+    ]
+  }
 ];
 
 // Home page service card → subpage mapping
-const homeServiceSubpages = ["svc_1", "svc_2", "svc_5", "svc_9", "svc_10"];
+const homeServiceSubpages = ["svc_1", "svc_2", "svc_5", "svc_9", "svc_14"];
 
 // Multilingual welcome messages for Contact section
 const multilingualWelcome = [
