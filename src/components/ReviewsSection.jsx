@@ -122,6 +122,7 @@ const ReviewCard = ({ review }) => {
 // ─── 메인 컴포넌트 ────────────────────────────────────────────────
 export default function ReviewsSection() {
   const [reviews, setReviews]     = useState(FALLBACK_REVIEWS);
+  const [totalCount, setTotalCount] = useState(FALLBACK_REVIEWS.length);
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused]   = useState(false);
   const timerRef = useRef(null);
@@ -130,7 +131,10 @@ export default function ReviewsSection() {
   useEffect(() => {
     fetch('/api/reviews')
       .then(r => r.json())
-      .then(data => { if (data.reviews?.length > 0) setReviews(data.reviews); })
+      .then(data => {
+        if (data.reviews?.length > 0) setReviews(data.reviews);
+        if (data.meta?.total) setTotalCount(data.meta.total);
+      })
       .catch(() => {}); // 실패 시 fallback 유지
   }, []);
 
@@ -173,7 +177,7 @@ export default function ReviewsSection() {
           <div className="rv-stat">
             <div className="rv-stat-google">
               <GoogleIcon size={20} />
-              <span className="rv-stat-count">{total}</span>
+              <span className="rv-stat-count">{totalCount}</span>
             </div>
             <span className="rv-stat-label">Google Reviews</span>
           </div>
