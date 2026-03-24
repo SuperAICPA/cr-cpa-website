@@ -1236,7 +1236,7 @@ export default function CRAccountancy() {
 
         <div style={{ textAlign: "center", maxWidth: 860, padding: "0 40px", position: "relative", zIndex: 1 }}>
           <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 24, fontFamily: fonts.sans, fontWeight: 700, lineHeight: 2.2, textAlign: "center" }}>
-            Danny Kim, CPA &nbsp;·&nbsp; CR Accountancy & Consulting &nbsp;·&nbsp; Los Angeles, CA
+            Danny Kim, CPA<br />CR Accountancy & Consulting<br />Los Angeles, CA
           </div>
           <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5.5vw, 64px)", fontWeight: 700, color: colors.navy, lineHeight: 1.12, marginBottom: 16, letterSpacing: -1 }}>
             {t.hero.tagline}
@@ -1289,20 +1289,6 @@ export default function CRAccountancy() {
             </button>
           </div>
 
-          {/* Calendly soft link */}
-          <a
-            href="https://calendly.com/info-dkcpa"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
-              fontSize: 13, color: colors.gold, fontWeight: 600,
-              textDecoration: "none", letterSpacing: 0.5,
-              borderBottom: `1px solid ${colors.gold}44`, paddingBottom: 2
-            }}
-          >
-            📅 {t.hero.ctaCalendly}
-          </a>
         </div>
       </div>
 
