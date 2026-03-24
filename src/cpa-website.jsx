@@ -1282,6 +1282,9 @@ export default function CRAccountancy() {
       {/* Industry Spotlight on Home */}
       <IndustrySpotlight />
 
+      {/* ── Google Reviews Section ── */}
+      <ReviewsSection />
+
       {/* CTA */}
       <div style={{ background: colors.cream, padding: "72px 40px", textAlign: "center" }}>
         <h2 style={{ fontFamily: fonts.display, fontSize: 32, color: colors.navy, marginBottom: 16 }}>
@@ -1428,9 +1431,6 @@ export default function CRAccountancy() {
         </div>
 
         <IndustrySpotlight />
-
-        {/* ── Google Reviews Section ── */}
-        <ReviewsSection />
 
       </div>
     );
