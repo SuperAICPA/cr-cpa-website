@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { hydrateRoot, createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const rootElement = document.getElementById('root');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+if (rootElement.hasChildNodes()) {
+  // react-snap이 프리렌더한 HTML이 있으면 hydrate
+  hydrateRoot(rootElement, <React.StrictMode><App /></React.StrictMode>);
+} else {
+  // 프리렌더 없으면 일반 render
+  createRoot(rootElement).render(<React.StrictMode><App /></React.StrictMode>);
+}
+
 reportWebVitals();
