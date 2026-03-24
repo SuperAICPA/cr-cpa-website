@@ -5,11 +5,12 @@ const translations = {
   en: {
     nav: { home: "Home", services: "Services", about: "About", resources: "Resources", contact: "Contact" },
     hero: {
-      tagline: "Precision. Integrity. Growth.",
-      subtitle: "Trusted CPA & Consulting Services for Discerning Clients",
-      cta: "Schedule a Consultation",
+      tagline: "LA's CPA for Korean-Owned Businesses",
+      subtitle: "Construction · Franchise · High Net Worth",
+      cta: "Book a Free 30-Min Consultation",
       ctaSecondary: "Our Services",
-      valueFocus: "We focus on professional excellence to maximize our clients' value"
+      ctaCalendly: "Schedule on Calendly →",
+      valueFocus: "Specialized tax & accounting for industries that demand precision — construction, BBQ franchise, and high-net-worth individuals."
     },
     stats: [
       { number: "25+", label: "Years of Experience" },
@@ -122,11 +123,12 @@ const translations = {
   ko: {
     nav: { home: "홈", services: "서비스", about: "소개", resources: "고객자료실", contact: "연락처" },
     hero: {
-      tagline: "정확함. 신뢰. 성장.",
-      subtitle: "신뢰할 수 있는 CPA & 컨설팅 서비스",
-      cta: "상담 예약하기",
+      tagline: "LA 한인 비즈니스 전문 CPA",
+      subtitle: "건설업 · 프랜차이즈 · 고자산 개인",
+      cta: "무료 30분 상담 예약",
       ctaSecondary: "서비스 보기",
-      valueFocus: "우리는 고객의 가치를 높이기 위한 전문성에 집중합니다"
+      ctaCalendly: "Calendly로 예약하기 →",
+      valueFocus: "건설업, BBQ 프랜차이즈, 고자산 고객을 위한 업종 특화 세무·회계 전략"
     },
     stats: [
       { number: "25+", label: "년 경력" },
@@ -1232,21 +1234,44 @@ export default function CRAccountancy() {
         <div style={{ position: "absolute", top: "20%", left: "5%", width: 1, height: "30%", background: `linear-gradient(to bottom, transparent, ${colors.blue}15, transparent)` }} />
         <div style={{ position: "absolute", top: "15%", right: "8%", width: 1, height: "25%", background: `linear-gradient(to bottom, transparent, ${colors.gold}15, transparent)` }} />
 
-        <div style={{ textAlign: "center", maxWidth: 800, padding: "0 40px", position: "relative", zIndex: 1 }}>
-          <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 32, fontFamily: fonts.sans, fontWeight: 700, lineHeight: 2.2, textAlign: "center" }}>
-            Danny Kim, CPA<br />CR Accountancy & Consulting
+        <div style={{ textAlign: "center", maxWidth: 860, padding: "0 40px", position: "relative", zIndex: 1 }}>
+          <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 24, fontFamily: fonts.sans, fontWeight: 700, lineHeight: 2.2, textAlign: "center" }}>
+            Danny Kim, CPA &nbsp;·&nbsp; CR Accountancy & Consulting &nbsp;·&nbsp; Los Angeles, CA
           </div>
-          <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 700, color: colors.navy, lineHeight: 1.1, marginBottom: 24, letterSpacing: -1 }}>
+          <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5.5vw, 64px)", fontWeight: 700, color: colors.navy, lineHeight: 1.12, marginBottom: 16, letterSpacing: -1 }}>
             {t.hero.tagline}
           </h1>
-          <div style={{ margin: "32px auto", maxWidth: 200 }}><GoldDivider /></div>
-          <p style={{ fontFamily: fonts.body, fontSize: "clamp(18px, 2.5vw, 24px)", color: colors.gray, lineHeight: 1.6, marginBottom: 20, fontWeight: 500 }}>
+          <p style={{ fontFamily: fonts.sans, fontSize: "clamp(16px, 2vw, 20px)", color: colors.blue, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", marginBottom: 24 }}>
             {t.hero.subtitle}
           </p>
-          <p style={{ fontFamily: fonts.sans, fontSize: 14, color: colors.gold, lineHeight: 1.6, marginBottom: 48, fontWeight: 600, maxWidth: 600, margin: "0 auto 48px", letterSpacing: 0.5 }}>
+          <div style={{ margin: "0 auto 24px", maxWidth: 200 }}><GoldDivider /></div>
+          <p style={{ fontFamily: fonts.body, fontSize: "clamp(15px, 1.8vw, 18px)", color: colors.gray, lineHeight: 1.7, marginBottom: 40, fontWeight: 400, maxWidth: 640, margin: "0 auto 40px" }}>
             {t.hero.valueFocus}
           </p>
-          <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+
+          {/* Industry badges */}
+          <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 44 }}>
+            {[
+              { icon: "🏗️", en: "Construction CPA", ko: "건설업 전문" },
+              { icon: "🍗", en: "BBQ Franchise", ko: "BBQ 프랜차이즈" },
+              { icon: "💼", en: "High Net Worth", ko: "고자산 고객" },
+              { icon: "🌐", en: "Korean-English", ko: "한영 이중 언어" },
+            ].map((b, i) => (
+              <div key={i} style={{
+                display: "flex", alignItems: "center", gap: 7,
+                background: `${colors.navy}08`, border: `1px solid ${colors.navy}18`,
+                borderRadius: 100, padding: "7px 16px"
+              }}>
+                <span style={{ fontSize: 14 }}>{b.icon}</span>
+                <span style={{ fontSize: 12, fontWeight: 600, color: colors.navy, letterSpacing: 0.5 }}>
+                  {lang === "ko" ? b.ko : b.en}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Buttons */}
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 20 }}>
             <button onClick={() => navigate("contact")} style={{
               background: colors.navy, border: "none", color: colors.white, fontFamily: fonts.sans,
               fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
@@ -1263,6 +1288,21 @@ export default function CRAccountancy() {
               {t.hero.ctaSecondary}
             </button>
           </div>
+
+          {/* Calendly soft link */}
+          <a
+            href="https://calendly.com/info-dkcpa"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              fontSize: 13, color: colors.gold, fontWeight: 600,
+              textDecoration: "none", letterSpacing: 0.5,
+              borderBottom: `1px solid ${colors.gold}44`, paddingBottom: 2
+            }}
+          >
+            📅 {t.hero.ctaCalendly}
+          </a>
         </div>
       </div>
 
@@ -1453,6 +1493,13 @@ export default function CRAccountancy() {
                     <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
                   </div>
                 ))}
+                <button onClick={() => navigate("contact")} style={{
+                  marginTop: 24, width: "100%", background: colors.navy, border: "none", color: colors.white,
+                  fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
+                  padding: "14px 24px", cursor: "pointer", borderRadius: 4
+                }}>
+                  {lang === "en" ? "Schedule a Construction CPA Consult →" : "건설업 전문 상담 예약하기 →"}
+                </button>
               </div>
             </div>
 
@@ -1477,6 +1524,13 @@ export default function CRAccountancy() {
                     <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
                   </div>
                 ))}
+                <button onClick={() => navigate("contact")} style={{
+                  marginTop: 24, width: "100%", background: "#7C2D12", border: "none", color: colors.white,
+                  fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
+                  padding: "14px 24px", cursor: "pointer", borderRadius: 4
+                }}>
+                  {lang === "en" ? "Schedule a Franchise CPA Consult →" : "프랜차이즈 전문 상담 예약하기 →"}
+                </button>
               </div>
             </div>
           </div>
