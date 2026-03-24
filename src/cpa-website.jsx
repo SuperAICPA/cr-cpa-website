@@ -1278,31 +1278,115 @@ export default function CRAccountancy() {
         </div>
       </div>
 
-      {/* Services Preview — 5 categories */}
+      {/* Services Preview — 3 categories with text links */}
       <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80 }}>
         <div style={{ textAlign: "center", marginBottom: 60 }}>
           <h2 style={{ fontFamily: fonts.display, fontSize: 36, fontWeight: 700, color: colors.navy, marginBottom: 16 }}>{t.services.title}</h2>
           <GoldDivider />
           <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>{t.services.subtitle}</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
-          {t.services.items.map((svc, i) => (
-            <div key={i} style={{
-              background: colors.white, padding: 36, borderRadius: 4, border: `1px solid ${colors.lightGray}`,
-              transition: "all 0.4s ease", cursor: "pointer", position: "relative", overflow: "hidden"
-            }}
-              onClick={() => navigate(homeServiceSubpages[i] || "services")}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.08)"; e.currentTarget.style.borderColor = colors.gold; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = colors.lightGray; }}
-            >
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(to right, ${colors.blue}, ${colors.gold})` }} />
-              <div style={{ fontSize: 32, marginBottom: 14 }}>{svc.icon}</div>
-              <h3 style={{ fontFamily: fonts.display, fontSize: 18, fontWeight: 700, color: colors.navy, marginBottom: 10 }}>{svc.title}</h3>
-              <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.7 }}>{svc.desc.substring(0, 90)}...</p>
-              <div style={{ marginTop: 16, fontSize: 12, fontWeight: 700, color: colors.gold, letterSpacing: 1 }}>{lang === "ko" ? "자세히 보기 →" : "Learn More →"}</div>
+
+        {(() => {
+          const categories = [
+            {
+              label: "Core Tax & Accounting",
+              labelKo: "세무 & 회계",
+              services: [
+                { id: "svc_1", en: "Tax Preparation", ko: "세금 신고" },
+                { id: "svc_2", en: "Bookkeeping & Accounting", ko: "장부 관리 & 회계" },
+                { id: "svc_3", en: "Payroll Management", ko: "급여 관리" },
+                { id: "svc_4", en: "Tax Resolution", ko: "세금 분쟁 해결" },
+                { id: "svc_5", en: "Business Formation", ko: "법인 설립" },
+              ]
+            },
+            {
+              label: "Business & Financial Advisory",
+              labelKo: "비즈니스 & 재무 자문",
+              services: [
+                { id: "svc_6", en: "Business Consulting", ko: "비즈니스 컨설팅" },
+                { id: "svc_7", en: "Financial Advisory & Wealth Planning", ko: "재무 자문 & 자산 플래닝" },
+                { id: "svc_8", en: "Family Legacy & Wealth Transfer", ko: "가족 자산 이전 & 상속 계획" },
+                { id: "svc_9", en: "Forensic Accounting & Litigation Support", ko: "포렌식 회계 & 소송 지원" },
+              ]
+            },
+            {
+              label: "Specialty Services",
+              labelKo: "전문 특화 서비스",
+              services: [
+                { id: "svc_10", en: "International Tax", ko: "국제 세무" },
+                { id: "svc_11", en: "Crypto Tax", ko: "암호화폐 세금" },
+                { id: "svc_12", en: "Nonprofit Accounting", ko: "비영리 회계" },
+                { id: "svc_13", en: "Industry-Specific CPA", ko: "업종별 전문 CPA" },
+                { id: "svc_14", en: "Bilingual CPA Services", ko: "이중 언어 CPA 서비스" },
+              ]
+            }
+          ];
+
+          return (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32 }}>
+              {categories.map((cat, ci) => (
+                <div key={ci} style={{
+                  background: colors.white, borderRadius: 4, border: `1px solid ${colors.lightGray}`,
+                  overflow: "hidden"
+                }}>
+                  {/* Category Header */}
+                  <div style={{
+                    background: `linear-gradient(135deg, ${colors.navy} 0%, ${colors.blue} 100%)`,
+                    padding: "20px 28px"
+                  }}>
+                    <div style={{ fontSize: 10, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 4 }}>
+                      {ci === 0 ? "01" : ci === 1 ? "02" : "03"}
+                    </div>
+                    <h3 style={{ fontFamily: fonts.display, fontSize: 17, fontWeight: 700, color: colors.white, lineHeight: 1.3 }}>
+                      {lang === "ko" ? cat.labelKo : cat.label}
+                    </h3>
+                  </div>
+
+                  {/* Service Links */}
+                  <div style={{ padding: "8px 0" }}>
+                    {cat.services.map((svc, si) => (
+                      <button
+                        key={si}
+                        onClick={() => navigate(svc.id)}
+                        style={{
+                          display: "flex", alignItems: "center", justifyContent: "space-between",
+                          width: "100%", background: "none", border: "none",
+                          padding: "11px 28px", cursor: "pointer", textAlign: "left",
+                          borderBottom: si < cat.services.length - 1 ? `1px solid ${colors.lightGray}` : "none",
+                          transition: "all 0.2s ease",
+                          fontFamily: fonts.sans,
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = `${colors.gold}08`;
+                          e.currentTarget.querySelector(".svc-arrow").style.color = colors.gold;
+                          e.currentTarget.querySelector(".svc-arrow").style.transform = "translateX(3px)";
+                          e.currentTarget.querySelector(".svc-name").style.color = colors.blue;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "none";
+                          e.currentTarget.querySelector(".svc-arrow").style.color = colors.lightGray;
+                          e.currentTarget.querySelector(".svc-arrow").style.transform = "translateX(0)";
+                          e.currentTarget.querySelector(".svc-name").style.color = colors.navy;
+                        }}
+                      >
+                        <span className="svc-name" style={{
+                          fontSize: 13, fontWeight: 500, color: colors.navy,
+                          transition: "color 0.2s ease", lineHeight: 1.4
+                        }}>
+                          {lang === "ko" ? svc.ko : svc.en}
+                        </span>
+                        <span className="svc-arrow" style={{
+                          fontSize: 14, color: colors.lightGray, flexShrink: 0, marginLeft: 8,
+                          transition: "all 0.2s ease"
+                        }}>→</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          );
+        })()}
       </div>
 
       {/* Industry Spotlight on Home */}
