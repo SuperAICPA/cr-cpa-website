@@ -1435,7 +1435,7 @@ export default function CRAccountancy() {
     const spotlight = t.industrySpotlight;
     return (
       <div style={{ background: `linear-gradient(180deg, ${colors.white} 0%, ${colors.cream} 100%)`, borderTop: `1px solid ${colors.lightGray}`, borderBottom: `1px solid ${colors.lightGray}` }}>
-        <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80 }}>
+        <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80, paddingLeft: 20, paddingRight: 20 }}>
           <div style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
               {lang === "en" ? "Specialized Expertise" : "산업별 전문성"}
@@ -1445,18 +1445,18 @@ export default function CRAccountancy() {
             <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>{spotlight.subtitle}</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32 }}>
             {/* Construction */}
             <div style={{
               background: colors.white, borderRadius: 8, border: `1px solid ${colors.lightGray}`,
               overflow: "hidden", transition: "all 0.3s ease",
               boxShadow: "0 4px 20px rgba(0,0,0,0.04)"
             }}>
-              <div style={{ background: `linear-gradient(135deg, ${colors.navy}, #1B3A5C)`, padding: "32px 36px", display: "flex", alignItems: "center", gap: 16 }}>
+              <div style={{ background: `linear-gradient(135deg, ${colors.navy}, #1B3A5C)`, padding: "24px 24px", display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ fontSize: 40 }}>🏗️</div>
-                <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.white, fontWeight: 700 }}>{spotlight.construction.title}</h3>
+                <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.white, fontWeight: 700 }}>{spotlight.construction.title}</h3>
               </div>
-              <div style={{ padding: "32px 36px" }}>
+              <div style={{ padding: "24px 24px" }}>
                 <p style={{ fontSize: 14, color: colors.gray, lineHeight: 1.8, marginBottom: 24 }}>{spotlight.construction.desc}</p>
                 <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
                   {lang === "en" ? "What We Deliver" : "제공 서비스"}
@@ -1483,11 +1483,11 @@ export default function CRAccountancy() {
               overflow: "hidden", transition: "all 0.3s ease",
               boxShadow: "0 4px 20px rgba(0,0,0,0.04)"
             }}>
-              <div style={{ background: `linear-gradient(135deg, #7C2D12, #B45309)`, padding: "32px 36px", display: "flex", alignItems: "center", gap: 16 }}>
+              <div style={{ background: `linear-gradient(135deg, #7C2D12, #B45309)`, padding: "24px 24px", display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ fontSize: 40 }}>🍗</div>
-                <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.white, fontWeight: 700 }}>{spotlight.bbq.title}</h3>
+                <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.white, fontWeight: 700 }}>{spotlight.bbq.title}</h3>
               </div>
-              <div style={{ padding: "32px 36px" }}>
+              <div style={{ padding: "24px 24px" }}>
                 <p style={{ fontSize: 14, color: colors.gray, lineHeight: 1.8, marginBottom: 24 }}>{spotlight.bbq.desc}</p>
                 <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
                   {lang === "en" ? "What We Deliver" : "제공 서비스"}
