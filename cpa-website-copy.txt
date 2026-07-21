@@ -5,7 +5,7 @@ const translations = {
   en: {
     nav: { home: "Home", services: "Services", about: "About", resources: "Resources", contact: "Contact" },
     hero: {
-      tagline: "Helping LA's Korean Businesses Keep More & Grow Faster",
+      tagline: "LA's CPA for Korean-Owned Businesses",
       subtitle: "Construction · Franchise · High Net Worth",
       cta: "Book a Free 30-Min Consultation",
       ctaSecondary: "Our Services",
@@ -123,7 +123,7 @@ const translations = {
   ko: {
     nav: { home: "홈", services: "서비스", about: "소개", resources: "고객자료실", contact: "연락처" },
     hero: {
-      tagline: "한인 비즈니스의 절세와 성장을 함께 만드는 CPA",
+      tagline: "LA 한인 비즈니스 전문 CPA",
       subtitle: "건설업 · 프랜차이즈 · 고자산 개인",
       cta: "무료 30분 상담 예약",
       ctaSecondary: "서비스 보기",
@@ -1185,7 +1185,7 @@ export default function CRAccountancy() {
 
           {/* Language Toggle: EN / KO only */}
           <div style={{ display: "flex", background: `${colors.gold}15`, borderRadius: 6, border: `1px solid ${colors.gold}33`, overflow: "hidden" }}>
-            {[{ code: "en", label: "EN" }, { code: "ko", label: "KO" }].map((l) => (
+            {[{ code: "en", label: "EN" }, { code: "ko", label: "한국어" }].map((l) => (
               <button key={l.code} onClick={() => setLang(l.code)} style={{
                 background: lang === l.code ? `${colors.gold}44` : "transparent", border: "none",
                 color: lang === l.code ? colors.white : `${colors.gold}aa`, fontSize: 12, fontWeight: 700,
@@ -1294,71 +1294,10 @@ export default function CRAccountancy() {
 
       {/* Services Preview — 3 categories with text links */}
       <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80 }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div style={{ textAlign: "center", marginBottom: 60 }}>
           <h2 style={{ fontFamily: fonts.display, fontSize: 36, fontWeight: 700, color: colors.navy, marginBottom: 16 }}>{t.services.title}</h2>
           <GoldDivider />
           <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>{t.services.subtitle}</p>
-        </div>
-
-        {/* Persona Entry Cards — Individual vs Business */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 56 }}>
-          {[
-            {
-              icon: "👤",
-              titleEn: "For Individuals", titleKo: "개인 고객",
-              descEn: "Personal tax filing, foreign accounts, crypto, wealth & legacy planning",
-              descKo: "개인 세금 신고 · 해외 계좌(FBAR) · 암호화폐 · 자산 및 상속 플래닝",
-              links: [
-                { id: "svc_1", en: "Tax Preparation", ko: "세금 신고" },
-                { id: "svc_10", en: "International Tax (FBAR)", ko: "국제 세무 (FBAR)" },
-                { id: "svc_11", en: "Crypto Tax", ko: "암호화폐 세금" },
-                { id: "svc_7", en: "Wealth Planning", ko: "자산 플래닝" },
-                { id: "svc_8", en: "Family Legacy", ko: "상속 계획" },
-              ]
-            },
-            {
-              icon: "🏢",
-              titleEn: "For Business Owners", titleKo: "사업체 고객",
-              descEn: "Bookkeeping, payroll, entity formation, consulting & industry expertise",
-              descKo: "장부 관리 · 급여 · 법인 설립 · 컨설팅 · 업종별 전문 서비스",
-              links: [
-                { id: "svc_2", en: "Bookkeeping", ko: "장부 관리" },
-                { id: "svc_3", en: "Payroll", ko: "급여 관리" },
-                { id: "svc_5", en: "Business Formation", ko: "법인 설립" },
-                { id: "svc_6", en: "Business Consulting", ko: "비즈니스 컨설팅" },
-                { id: "svc_13", en: "Industry-Specific CPA", ko: "업종별 전문 CPA" },
-              ]
-            }
-          ].map((p, pi) => (
-            <div key={pi} style={{
-              background: colors.white, border: `1px solid ${colors.lightGray}`, borderRadius: 8,
-              padding: "32px 32px 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
-              borderTop: `4px solid ${pi === 0 ? colors.gold : colors.blue}`
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
-                <span style={{ fontSize: 32 }}>{p.icon}</span>
-                <h3 style={{ fontFamily: fonts.display, fontSize: 24, fontWeight: 700, color: colors.navy }}>
-                  {lang === "ko" ? p.titleKo : p.titleEn}
-                </h3>
-              </div>
-              <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.7, marginBottom: 18 }}>
-                {lang === "ko" ? p.descKo : p.descEn}
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {p.links.map((l, li) => (
-                  <button key={li} onClick={() => navigate(l.id)} style={{
-                    background: `${pi === 0 ? colors.gold : colors.blue}0d`,
-                    border: `1px solid ${pi === 0 ? colors.gold : colors.blue}33`,
-                    color: pi === 0 ? colors.gold : colors.blue,
-                    fontFamily: fonts.sans, fontSize: 12, fontWeight: 600,
-                    padding: "8px 14px", borderRadius: 100, cursor: "pointer", transition: "all 0.2s"
-                  }}>
-                    {lang === "ko" ? l.ko : l.en} →
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
 
         {(() => {
@@ -1466,9 +1405,6 @@ export default function CRAccountancy() {
 
       {/* Industry Spotlight on Home */}
       <IndustrySpotlight />
-
-      {/* ── CR Consulting Division Spotlight ── */}
-      <ConsultingSpotlight />
 
       {/* ── Google Reviews Section ── */}
       <ReviewsSection />
@@ -1578,66 +1514,6 @@ export default function CRAccountancy() {
   };
 
   // ============================================================
-  // CR CONSULTING DIVISION SPOTLIGHT — links to consulting site
-  // ============================================================
-  const ConsultingSpotlight = () => (
-    <div style={{ background: colors.darkNavy, position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 80% 30%, ${colors.blue}22 0%, transparent 50%), radial-gradient(circle at 15% 80%, ${colors.gold}15 0%, transparent 45%)`, pointerEvents: "none" }} />
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px", position: "relative" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 48, alignItems: "center" }}>
-          {/* Left: Message */}
-          <div>
-            <div style={{ fontSize: 11, letterSpacing: 5, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 700 }}>
-              CR Consulting · {lang === "ko" ? "컨설팅 사업부" : "Consulting Division"}
-            </div>
-            <h2 style={{ fontFamily: fonts.display, fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, color: colors.white, lineHeight: 1.25, marginBottom: 20 }}>
-              {lang === "ko" ? "당신의 업종에 맞는 비즈니스 앱을 만들어주는 CPA" : "The CPA Who Builds Custom Apps for Your Industry"}
-            </h2>
-            <p style={{ fontFamily: fonts.body, fontSize: 16, color: `${colors.cream}bb`, lineHeight: 1.85, marginBottom: 28 }}>
-              {lang === "ko"
-                ? "건설업 Job Costing, 식당 재고·원가 관리, 급여 시스템까지 — 회계를 아는 CPA가 직접 설계하는 업종별 맞춤 앱 컨설팅. 스프레드시트를 벗어나 비즈니스 운영 시스템을 구축하세요."
-                : "Construction job costing, restaurant inventory & food cost, payroll systems — custom business apps designed by a CPA who understands your numbers. Move beyond spreadsheets to a complete financial operating system."}
-            </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-              <a href="https://consulting.dkcpala.com" target="_blank" rel="noopener noreferrer" style={{
-                display: "inline-block", background: colors.gold, color: colors.darkNavy, textDecoration: "none",
-                fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-                padding: "16px 36px", borderRadius: 4, boxShadow: `0 4px 24px ${colors.gold}44`
-              }}>
-                {lang === "ko" ? "컨설팅 사이트 방문 →" : "Visit Consulting Site →"}
-              </a>
-              <span style={{ fontSize: 12, color: `${colors.cream}66` }}>consulting.dkcpala.com</span>
-            </div>
-          </div>
-          {/* Right: Feature chips */}
-          <div style={{ display: "grid", gap: 14 }}>
-            {[
-              { icon: "🏗️", en: "Construction Job-Costing Apps", ko: "건설업 Job Costing 앱" },
-              { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
-              { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
-              { icon: "📊", en: "Owner Dashboards with CPA Oversight", ko: "CPA가 검증하는 오너 대시보드" },
-            ].map((f, i) => (
-              <div key={i} style={{
-                display: "flex", alignItems: "center", gap: 16,
-                background: `${colors.white}08`, border: `1px solid ${colors.white}12`,
-                borderRadius: 8, padding: "16px 22px"
-              }}>
-                <span style={{ fontSize: 26 }}>{f.icon}</span>
-                <span style={{ fontSize: 14, fontWeight: 600, color: colors.cream }}>{lang === "ko" ? f.ko : f.en}</span>
-              </div>
-            ))}
-            <p style={{ fontSize: 11, color: `${colors.cream}55`, lineHeight: 1.6, marginTop: 4 }}>
-              {lang === "ko"
-                ? "* 컨설팅 서비스는 CR Accountancy & Consulting의 별도 사업부(Consulting Division)에서 제공되며, 회계 감사·검토·인증 업무와 구분됩니다."
-                : "* Consulting services are provided by the Consulting Division of CR Accountancy & Consulting, separate from attest, audit, or review services."}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  // ============================================================
   // SERVICES PAGE — 13 service subpages
   // ============================================================
   const ServicesPage = () => {
@@ -1693,8 +1569,6 @@ export default function CRAccountancy() {
         </div>
 
         <IndustrySpotlight />
-
-        <ConsultingSpotlight />
 
       </div>
     );
