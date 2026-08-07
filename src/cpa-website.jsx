@@ -1616,8 +1616,11 @@ export default function CRAccountancy() {
               rel="noopener noreferrer"
               style={{
                 display: "block", marginTop: 26, textDecoration: "none",
-                background: `${colors.white}0A`, border: `1px solid ${colors.gold}55`,
-                borderRadius: 8, padding: "20px 24px"
+                background: `linear-gradient(135deg, ${colors.gold}26 0%, ${colors.blue}20 60%, ${colors.gold}14 100%)`,
+                border: `1px solid ${colors.gold}77`,
+                borderLeft: `4px solid ${colors.gold}`,
+                borderRadius: 8, padding: "22px 26px",
+                boxShadow: `0 6px 28px ${colors.gold}22`
               }}
             >
               <div style={{ fontSize: 10, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
@@ -1626,7 +1629,7 @@ export default function CRAccountancy() {
               <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
                 {lang === "ko" ? "회사는 성장했는데, 은행은 아직 모릅니다." : "Your company grew. Your bank hasn't noticed."}
               </div>
-              <div style={{ fontSize: 14, color: `${colors.cream}aa`, lineHeight: 1.7, marginBottom: 12 }}>
+              <div style={{ fontSize: 14, color: `${colors.cream}cc`, lineHeight: 1.7, marginBottom: 12 }}>
                 {lang === "ko"
                   ? "코퍼레이트 뱅킹 라인에 진입하면 카드 수수료·금리·여신 한도가 협상 대상이 됩니다. 9개월 재무 정비 프로그램 — 무료 2분 자가진단으로 현재 위치를 확인해 보세요."
                   : "Move up a banking tier and card fees, loan pricing, and credit limits become negotiable. A nine-month readiness program — start with the free 2-minute self-check."}
@@ -1643,7 +1646,6 @@ export default function CRAccountancy() {
               { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
               { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
               { icon: "📊", en: "Owner Dashboards with CPA Oversight", ko: "CPA가 검증하는 오너 대시보드" },
-              { icon: "🏦", en: "Corporate Banking Readiness Program", ko: "코퍼레이트 뱅킹 레디니스 프로그램" },
             ].map((f, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 16,
