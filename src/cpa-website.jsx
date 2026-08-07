@@ -1646,7 +1646,6 @@ export default function CRAccountancy() {
               { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
               { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
               { icon: "📊", en: "Owner Dashboards with CPA Oversight", ko: "CPA가 검증하는 오너 대시보드" },
-              { icon: "🏦", en: "Corporate Banking Readiness Program", ko: "코퍼레이트 뱅킹 레디니스 프로그램" },
             ].map((f, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 16,
@@ -1657,6 +1656,26 @@ export default function CRAccountancy() {
                 <span style={{ fontSize: 14, fontWeight: 600, color: colors.cream }}>{lang === "ko" ? f.ko : f.en}</span>
               </div>
             ))}
+            <a
+              href="https://consulting.dkcpala.com/banking"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex", alignItems: "center", gap: 16, textDecoration: "none",
+                background: "linear-gradient(135deg, #8B3414 0%, #7C2D12 55%, #5F220E 100%)",
+                border: "1px solid #A8481F",
+                borderLeft: `5px solid ${colors.gold}`,
+                borderRadius: 8, padding: "16px 22px",
+                boxShadow: "0 8px 32px rgba(124,45,18,.45)"
+              }}
+            >
+              <span style={{ fontSize: 26 }}>🏦</span>
+              <span style={{ flex: 1, fontSize: 14, fontWeight: 600, color: colors.cream, lineHeight: 1.45 }}>
+                {lang === "ko" ? "코퍼레이트 뱅킹 레디니스 프로그램" : "Corporate Banking Readiness Program"}
+              </span>
+              <span style={{ fontSize: 18, color: "#E8C15A", flexShrink: 0 }}>→</span>
+            </a>
+
             <p style={{ fontSize: 11, color: `${colors.cream}55`, lineHeight: 1.6, marginTop: 4 }}>
               {lang === "ko"
                 ? "* 컨설팅 서비스는 CR Consulting에서 제공되는 관리 자문 서비스이며, 회계 감사·검토·인증 업무와 구분됩니다."
