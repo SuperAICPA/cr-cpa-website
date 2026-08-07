@@ -1616,25 +1616,25 @@ export default function CRAccountancy() {
               rel="noopener noreferrer"
               style={{
                 display: "block", marginTop: 26, textDecoration: "none",
-                background: `linear-gradient(135deg, ${colors.gold}26 0%, ${colors.blue}20 60%, ${colors.gold}14 100%)`,
-                border: `1px solid ${colors.gold}77`,
-                borderLeft: `4px solid ${colors.gold}`,
+                background: "linear-gradient(135deg, #8B3414 0%, #7C2D12 55%, #5F220E 100%)",
+                border: "1px solid #A8481F",
+                borderLeft: `5px solid ${colors.gold}`,
                 borderRadius: 8, padding: "22px 26px",
-                boxShadow: `0 6px 28px ${colors.gold}22`
+                boxShadow: "0 8px 32px rgba(124,45,18,.45)"
               }}
             >
-              <div style={{ fontSize: 10, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
+              <div style={{ fontSize: 10, letterSpacing: 3, color: "#E8C15A", textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
                 {lang === "ko" ? "새 프로그램" : "New Program"}
               </div>
               <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
                 {lang === "ko" ? "회사는 성장했는데, 은행은 아직 모릅니다." : "Your company grew. Your bank hasn't noticed."}
               </div>
-              <div style={{ fontSize: 14, color: `${colors.cream}cc`, lineHeight: 1.7, marginBottom: 12 }}>
+              <div style={{ fontSize: 14, color: `${colors.cream}e6`, lineHeight: 1.7, marginBottom: 12 }}>
                 {lang === "ko"
                   ? "코퍼레이트 뱅킹 라인에 진입하면 카드 수수료·금리·여신 한도가 협상 대상이 됩니다. 9개월 재무 정비 프로그램 — 무료 2분 자가진단으로 현재 위치를 확인해 보세요."
                   : "Move up a banking tier and card fees, loan pricing, and credit limits become negotiable. A nine-month readiness program — start with the free 2-minute self-check."}
               </div>
-              <span style={{ fontSize: 13, fontWeight: 700, color: colors.gold, letterSpacing: 1 }}>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 1 }}>
                 {lang === "ko" ? "프로그램 보기 →" : "See the program →"}
               </span>
             </a>
@@ -1646,6 +1646,7 @@ export default function CRAccountancy() {
               { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
               { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
               { icon: "📊", en: "Owner Dashboards with CPA Oversight", ko: "CPA가 검증하는 오너 대시보드" },
+              { icon: "🏦", en: "Corporate Banking Readiness Program", ko: "코퍼레이트 뱅킹 레디니스 프로그램" },
             ].map((f, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 16,
