@@ -1608,6 +1608,33 @@ export default function CRAccountancy() {
               </a>
               <span style={{ fontSize: 12, color: `${colors.cream}66` }}>consulting.dkcpala.com</span>
             </div>
+
+            {/* Banking readiness program */}
+            <a
+              href="https://consulting.dkcpala.com/banking"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block", marginTop: 26, textDecoration: "none",
+                background: `${colors.white}0A`, border: `1px solid ${colors.gold}55`,
+                borderRadius: 8, padding: "20px 24px"
+              }}
+            >
+              <div style={{ fontSize: 10, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
+                {lang === "ko" ? "새 프로그램" : "New Program"}
+              </div>
+              <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
+                {lang === "ko" ? "회사는 성장했는데, 은행은 아직 모릅니다." : "Your company grew. Your bank hasn't noticed."}
+              </div>
+              <div style={{ fontSize: 14, color: `${colors.cream}aa`, lineHeight: 1.7, marginBottom: 12 }}>
+                {lang === "ko"
+                  ? "코퍼레이트 뱅킹 라인에 진입하면 카드 수수료·금리·여신 한도가 협상 대상이 됩니다. 9개월 재무 정비 프로그램 — 무료 2분 자가진단으로 현재 위치를 확인해 보세요."
+                  : "Move up a banking tier and card fees, loan pricing, and credit limits become negotiable. A nine-month readiness program — start with the free 2-minute self-check."}
+              </div>
+              <span style={{ fontSize: 13, fontWeight: 700, color: colors.gold, letterSpacing: 1 }}>
+                {lang === "ko" ? "프로그램 보기 →" : "See the program →"}
+              </span>
+            </a>
           </div>
           {/* Right: Feature chips */}
           <div style={{ display: "grid", gap: 14 }}>
@@ -1616,6 +1643,7 @@ export default function CRAccountancy() {
               { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
               { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
               { icon: "📊", en: "Owner Dashboards with CPA Oversight", ko: "CPA가 검증하는 오너 대시보드" },
+              { icon: "🏦", en: "Corporate Banking Readiness Program", ko: "코퍼레이트 뱅킹 레디니스 프로그램" },
             ].map((f, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 16,
@@ -1628,8 +1656,8 @@ export default function CRAccountancy() {
             ))}
             <p style={{ fontSize: 11, color: `${colors.cream}55`, lineHeight: 1.6, marginTop: 4 }}>
               {lang === "ko"
-                ? "* 컨설팅 서비스는 CR Accountancy & Consulting의 별도 사업부(Consulting Division)에서 제공되며, 회계 감사·검토·인증 업무와 구분됩니다."
-                : "* Consulting services are provided by the Consulting Division of CR Accountancy & Consulting, separate from attest, audit, or review services."}
+                ? "* 컨설팅 서비스는 CR Consulting에서 제공되는 관리 자문 서비스이며, 회계 감사·검토·인증 업무와 구분됩니다."
+                : "* Consulting services are provided by CR Consulting as management advisory services, separate from attest, audit, or review services."}
             </p>
           </div>
         </div>
