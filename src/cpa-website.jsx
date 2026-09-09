@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import ReviewsSection from "./components/ReviewsSection";
-import ConstructionPage from "./components/ConstructionPage";
+
 const translations = {
   en: {
     nav: { home: "Home", services: "Services", about: "About", resources: "Resources", contact: "Contact" },
@@ -1131,13 +1131,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
 // ============================================================
 export default function CRAccountancy() {
   const [lang, setLang] = useState("en");
-  const PAGES = ["home", "services", "about", "resources", "contact", "construction"];
-  const pathToPage = () => {
-    const p = window.location.pathname.replace(/^\/|\/$/g, "");
-    if (PAGES.includes(p) || /^svc_\d+$/.test(p)) return p;
-    return "home";
-  };
-  const [page, setPage] = useState(pathToPage);
+  const [page, setPage] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
@@ -1147,23 +1141,7 @@ export default function CRAccountancy() {
   useEffect(() => { setFadeIn(false); const timer = setTimeout(() => setFadeIn(true), 50); return () => clearTimeout(timer); }, [page]);
   useEffect(() => { const handleScroll = () => setScrolled(window.scrollY > 50); window.addEventListener("scroll", handleScroll); return () => window.removeEventListener("scroll", handleScroll); }, []);
 
-  const navigate = (p) => {
-    setPage(p);
-    setMenuOpen(false);
-    const url = p === "home" ? "/" : `/${p}`;
-    if (window.location.pathname !== url) window.history.pushState({ page: p }, "", url);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    const onPop = () => {
-      const p = window.location.pathname.replace(/^\/|\/$/g, "");
-      const ok = ["home", "services", "about", "resources", "contact", "construction"].includes(p) || /^svc_\d+$/.test(p);
-      setPage(ok ? p : "home");
-    };
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, []);
+  const navigate = (p) => { setPage(p); setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   const colors = {
     navy: "#1A2332", darkNavy: "#0F1720", blue: "#2563EB", lightBlue: "#3B82F6",
@@ -1274,21 +1252,19 @@ export default function CRAccountancy() {
           {/* Industry badges */}
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 44 }}>
             {[
-              { icon: "🏗️", en: "Construction CPA", ko: "건설업 전문", go: "construction" },
+              { icon: "🏗️", en: "Construction CPA", ko: "건설업 전문" },
               { icon: "🍗", en: "BBQ Franchise", ko: "BBQ 프랜차이즈" },
               { icon: "💼", en: "High Net Worth", ko: "고자산 고객" },
               { icon: "🌐", en: "Korean-English", ko: "한영 이중 언어" },
             ].map((b, i) => (
-              <div key={i} onClick={b.go ? () => navigate(b.go) : undefined} style={{
+              <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 7,
-                background: b.go ? `${colors.blue}12` : `${colors.navy}08`,
-                border: `1px solid ${b.go ? colors.blue + "44" : colors.navy + "18"}`,
-                borderRadius: 100, padding: "7px 16px",
-                cursor: b.go ? "pointer" : "default", transition: "all 0.25s ease"
+                background: `${colors.navy}08`, border: `1px solid ${colors.navy}18`,
+                borderRadius: 100, padding: "7px 16px"
               }}>
                 <span style={{ fontSize: 14 }}>{b.icon}</span>
-                <span style={{ fontSize: 12, fontWeight: 600, color: b.go ? colors.blue : colors.navy, letterSpacing: 0.5 }}>
-                  {lang === "ko" ? b.ko : b.en}{b.go ? " →" : ""}
+                <span style={{ fontSize: 12, fontWeight: 600, color: colors.navy, letterSpacing: 0.5 }}>
+                  {lang === "ko" ? b.ko : b.en}
                 </span>
               </div>
             ))}
@@ -1555,12 +1531,12 @@ export default function CRAccountancy() {
                     <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
                   </div>
                 ))}
-                <button onClick={() => navigate("construction")} style={{
+                <button onClick={() => navigate("contact")} style={{
                   marginTop: 24, width: "100%", background: colors.navy, border: "none", color: colors.white,
                   fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
                   padding: "14px 24px", cursor: "pointer", borderRadius: 4
                 }}>
-                  {lang === "en" ? "See Construction Services →" : "건설업 전문 서비스 보기 →"}
+                  {lang === "en" ? "Schedule a Construction CPA Consult →" : "건설업 전문 상담 예약하기 →"}
                 </button>
               </div>
             </div>
@@ -1651,15 +1627,15 @@ export default function CRAccountancy() {
                 {lang === "ko" ? "새 프로그램" : "New Program"}
               </div>
               <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
-                {lang === "ko" ? "회사는 성장했는데, 은행은 아직 모릅니다." : "Your company grew. Your bank hasn't noticed."}
+                {lang === "ko" ? "은행에는 한 번만 갈 수 있습니다." : "You get one clean shot at a bank."}
               </div>
               <div style={{ fontSize: 14, color: `${colors.cream}e6`, lineHeight: 1.7, marginBottom: 12 }}>
                 {lang === "ko"
-                  ? "코퍼레이트 뱅킹 라인에 진입하면 카드 수수료·금리·여신 한도가 협상 대상이 됩니다. 9개월 재무 정비 프로그램 — 무료 2분 자가진단으로 현재 위치를 확인해 보세요."
-                  : "Move up a banking tier and card fees, loan pricing, and credit limits become negotiable. A nine-month readiness program — start with the free 2-minute self-check."}
+                  ? "SBA 대출, 커뮤니티 은행 텀론, 기존 한도 증액 — 어느 쪽이든 거절은 기록으로 남고 다시 들어가기는 훨씬 어렵습니다. 신청 전에 재무구조와 장부를 정비하는 9개월 프로그램. 무료 2분 자가진단으로 지금 신청해도 되는지부터 확인해 보세요."
+                  : "An SBA loan, a community bank term loan, or an increase where you already bank — a decline is recorded either way, and going back is far harder. A nine-month program that gets the numbers ready first. Start with the free 2-minute check."}
               </div>
               <span style={{ fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 1 }}>
-                {lang === "ko" ? "프로그램 보기 →" : "See the program →"}
+                {lang === "ko" ? "지금 신청해도 되는지 확인 →" : "Should you apply yet? →"}
               </span>
             </a>
           </div>
@@ -1695,7 +1671,7 @@ export default function CRAccountancy() {
             >
               <span style={{ fontSize: 26 }}>🏦</span>
               <span style={{ flex: 1, fontSize: 14, fontWeight: 600, color: colors.cream, lineHeight: 1.45 }}>
-                {lang === "ko" ? "코퍼레이트 뱅킹 레디니스 프로그램" : "Corporate Banking Readiness Program"}
+                {lang === "ko" ? "SBA · 은행 대출 레디니스 프로그램" : "SBA & Bank Loan Readiness Program"}
               </span>
               <span style={{ fontSize: 18, color: "#E8C15A", flexShrink: 0 }}>→</span>
             </a>
@@ -1968,7 +1944,6 @@ export default function CRAccountancy() {
     ? <ServiceDetailPage service={svc} lang={lang} colors={colors} fonts={fonts} navigate={navigate} />
     : page === "resources"
     ? <ResourcesPage lang={lang} colors={colors} fonts={fonts} />
-    : page === "construction" ? <ConstructionPage lang={lang} onHome={() => navigate("home")} />
     : page === "home" ? <HomePage />
     : page === "services" ? <ServicesPage />
     : page === "about" ? <AboutPage />
