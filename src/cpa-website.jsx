@@ -747,7 +747,7 @@ function ContactForm({ lang, t, colors, fonts }) {
   };
 
   return (
-    <div style={{ background: colors.white, padding: 48, borderRadius: 4, border: `1px solid ${colors.lightGray}`, boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}>
+    <div className="contact-form-box" style={{ background: colors.white, padding: 48, borderRadius: 4, border: `1px solid ${colors.lightGray}`, boxShadow: "0 4px 24px rgba(0,0,0,0.04)" }}>
       <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.navy, marginBottom: 8 }}>
         {lang === "en" ? "Request a Consultation" : "상담 신청"}
       </h3>
@@ -814,7 +814,7 @@ const GoldDivider = () => (
 // ============================================================
 function ResourcesPage({ lang, colors, fonts }) {
   const isKo = lang === "ko";
-  const S = { section: { maxWidth: 1200, margin: "0 auto", padding: "100px 40px" } };
+  const S = { section: { maxWidth: 1200, margin: "0 auto", padding: "100px clamp(16px, 5vw, 40px)" } };
   const agencyBlock = (agency, color, onlineRows, checkSteps, checkAddr) => (
     <div key={agency} style={{ marginBottom: 56 }}>
       <div style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, padding: "20px 32px", borderRadius: "8px 8px 0 0" }}>
@@ -827,7 +827,7 @@ function ResourcesPage({ lang, colors, fonts }) {
           <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: colors.gold, textTransform: "uppercase" }}>{isKo ? "온라인 납부" : "Online Payment"}</span>
         </div>
         {onlineRows.map((row, j) => (
-          <div key={j} style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 16, padding: "16px 24px", borderBottom: `1px solid ${colors.lightGray}`, alignItems: "start" }}>
+          <div key={j} className="res-row" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 16, padding: "16px 24px", borderBottom: `1px solid ${colors.lightGray}`, alignItems: "start" }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 700, color: colors.navy, marginBottom: 4 }}>{row.name}</div>
               {row.url && <a href={row.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: colors.blue, textDecoration: "none", display: "block", marginBottom: 6 }}>→ {row.url.replace("https://", "")}</a>}
@@ -1007,7 +1007,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 32, fontWeight: 600, textAlign: "center" }}>
             {isKo ? "서비스 항목" : "What We Offer"}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
             {service.items.map((item, i) => {
               const parts = isKo ? item.ko.split(" — ") : item.en.split(" — ");
               const itemTitle = parts[0];
@@ -1031,7 +1031,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 36, fontWeight: 600, textAlign: "center" }}>
             {isKo ? "진행 절차" : "Our Process"}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 24 }}>
             {service.process.map((step, i) => {
               const parts = isKo ? step.ko.split(" — ") : step.en.split(" — ");
               const stepTitle = isKo ? step.en : parts[0];
@@ -1048,7 +1048,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         </div>
 
         {/* Documents + FAQ side by side */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 48, marginBottom: 64 }}>
+        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 48, marginBottom: 64 }}>
           {/* Required Documents */}
           <div>
             <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 24, fontWeight: 600 }}>
@@ -1137,7 +1137,7 @@ export default function CRAccountancy() {
     page: { minHeight: "100vh", background: colors.white, fontFamily: fonts.sans, color: colors.navy, overflowX: "hidden" },
     nav: { position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, padding: scrolled ? "12px 0" : "20px 0", background: scrolled ? "rgba(10, 22, 40, 0.97)" : "rgba(10, 22, 40, 0.9)", backdropFilter: "blur(20px)", transition: "all 0.4s ease", borderBottom: scrolled ? `1px solid ${colors.gold}33` : "none" },
     navInner: { maxWidth: 1200, margin: "0 auto", padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between" },
-    section: { maxWidth: 1200, margin: "0 auto", padding: "100px 40px" }
+    section: { maxWidth: 1200, margin: "0 auto", padding: "100px clamp(16px, 5vw, 40px)" }
   };
 
   // ============================================================
@@ -1161,19 +1161,21 @@ export default function CRAccountancy() {
                 {t.nav[p]}
               </button>
             ))}
-            <a href={ACCT_URL} target="_blank" rel="noopener noreferrer" style={{
-              position: "relative", display: "inline-flex", alignItems: "center", textDecoration: "none",
-              background: `linear-gradient(135deg, #1e3a8a, ${colors.blue})`, border: `1px solid ${colors.lightGold}`,
-              color: colors.white, fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 0.5,
-              padding: "9px 16px", borderRadius: 6, marginLeft: 8, whiteSpace: "nowrap"
-            }}>
-              {acctLabel}
-              <span style={{
-                position: "absolute", top: -9, right: -10, background: colors.gold, color: colors.darkNavy,
-                fontSize: 9, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 8
-              }}>NEW</span>
-            </a>
           </div>
+
+          {/* Accounting Systems & AI — stays in the top bar on tablets too (hidden on phones; phones get it in the menu) */}
+          <a href={ACCT_URL} target="_blank" rel="noopener noreferrer" className="acct-nav-btn" style={{
+            position: "relative", display: "inline-flex", alignItems: "center", textDecoration: "none",
+            background: `linear-gradient(135deg, #1e3a8a, ${colors.blue})`, border: `1px solid ${colors.lightGold}`,
+            color: colors.white, fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 0.5,
+            padding: "9px 16px", borderRadius: 6, marginRight: 8, whiteSpace: "nowrap"
+          }}>
+            {acctLabel}
+            <span style={{
+              position: "absolute", top: -9, right: -10, background: colors.gold, color: colors.darkNavy,
+              fontSize: 9, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 8
+            }}>NEW</span>
+          </a>
 
           {/* Language Toggle: EN / KO only */}
           <div style={{ display: "flex", background: `${colors.gold}15`, borderRadius: 6, border: `1px solid ${colors.gold}33`, overflow: "hidden" }}>
@@ -1330,7 +1332,7 @@ export default function CRAccountancy() {
         </div>
 
         {/* Persona Entry Cards — Individual vs Business */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 56 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: 24, marginBottom: 56 }}>
           {[
             {
               icon: "👤",
@@ -1426,7 +1428,7 @@ export default function CRAccountancy() {
           ];
 
           return (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 32 }}>
               {categories.map((cat, ci) => (
                 <div key={ci} style={{
                   background: colors.white, borderRadius: 4, border: `1px solid ${colors.lightGray}`,
@@ -1537,7 +1539,7 @@ export default function CRAccountancy() {
             <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>{spotlight.subtitle}</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: 32 }}>
             {/* Construction */}
             <div style={{
               background: colors.white, borderRadius: 8, border: `1px solid ${colors.lightGray}`,
@@ -1656,7 +1658,7 @@ export default function CRAccountancy() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
             {cards.map((c, i) => (
               <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className="cs-card" style={{
                 position: "relative", display: "flex", flexDirection: "column", textDecoration: "none",
@@ -1728,7 +1730,7 @@ export default function CRAccountancy() {
                     <h2 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.navy, fontWeight: 700 }}>{lang === "ko" ? label.ko : label.en}</h2>
                   </div>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 20 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(260px, 100%), 1fr))", gap: 20 }}>
                   {catSvcs.map((svc) => (
                     <div key={svc.id}
                       onClick={() => navigate(svc.id)}
@@ -1773,8 +1775,8 @@ export default function CRAccountancy() {
         <GoldDivider />
       </div>
       <div style={baseStyles.section}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, marginBottom: 80, alignItems: "start" }}>
-          <div style={{ background: colors.cream, padding: 48, borderRadius: 4, textAlign: "center", position: "sticky", top: 120 }}>
+        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, marginBottom: 80, alignItems: "start" }}>
+          <div className="about-card" style={{ background: colors.cream, padding: 48, borderRadius: 4, textAlign: "center", position: "sticky", top: 120 }}>
             <div style={{ width: 120, height: 120, borderRadius: "50%", background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`, margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 40, fontFamily: fonts.display, color: colors.darkNavy, fontWeight: 700 }}>DK</div>
             <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.navy, marginBottom: 8 }}>Danny Kim</h3>
             <div style={{ fontSize: 13, color: colors.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>CPA</div>
@@ -1785,7 +1787,7 @@ export default function CRAccountancy() {
             <h2 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.navy, marginBottom: 24 }}>{t.about.subtitle}</h2>
             <p style={{ fontSize: 16, color: colors.gray, lineHeight: 1.9, marginBottom: 24, fontFamily: fonts.body }}>{t.about.bio}</p>
             <p style={{ fontSize: 16, color: colors.gray, lineHeight: 1.9, marginBottom: 40, fontFamily: fonts.body }}>{t.about.bio2}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+            <div className="two-col-sm" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
               {t.about.values.map((v, i) => (
                 <div key={i} style={{ background: colors.white, padding: 28, borderRadius: 4, border: `1px solid ${colors.lightGray}`, borderTop: `3px solid ${colors.gold}` }}>
                   <h4 style={{ fontFamily: fonts.display, fontSize: 18, color: colors.navy, marginBottom: 8 }}>{v.title}</h4>
@@ -1795,7 +1797,7 @@ export default function CRAccountancy() {
             </div>
             <div style={{ marginTop: 40 }}>
               <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.navy, marginBottom: 20 }}>{t.about.industriesTitle}</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div className="two-col-sm" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 {t.about.industries.map((ind, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 16px", borderRadius: 4, background: i % 2 === 0 ? colors.cream : colors.white, border: `1px solid ${colors.lightGray}` }}>
                     <span style={{ fontSize: 22 }}>{ind.icon}</span>
@@ -1828,7 +1830,7 @@ export default function CRAccountancy() {
       </div>
 
       <div style={{ ...baseStyles.section, paddingTop: 80 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, alignItems: "start" }}>
+        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, alignItems: "start" }}>
           {/* Contact Info */}
           <div>
             <div style={{ marginBottom: 36 }}>
@@ -1908,9 +1910,9 @@ export default function CRAccountancy() {
   // FOOTER
   // ============================================================
   const Footer = () => (
-    <footer style={{ background: colors.darkNavy, borderTop: `1px solid ${colors.gold}22`, padding: "60px 40px 40px" }}>
+    <footer style={{ background: colors.darkNavy, borderTop: `1px solid ${colors.gold}22`, padding: "60px clamp(16px, 5vw, 40px) 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
+        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: fonts.display, fontSize: 20, color: colors.white, marginBottom: 8 }}>Danny Kim, CPA</div>
             <div style={{ fontSize: 11, color: colors.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>CR Accountancy & Consulting</div>
@@ -1964,20 +1966,34 @@ export default function CRAccountancy() {
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::selection { background: ${colors.gold}44; color: ${colors.navy}; }
+        .res-row > div:first-child { min-width: 0; }
+        .res-row a { overflow-wrap: anywhere; }
         .cs-card { transition: transform .2s ease, box-shadow .2s ease; }
         .cs-card:hover { transform: translateY(-4px); }
-        @media (max-width: 768px) {
+        /* Full menu needs about 1,180px; below that use the ☰ menu so nothing is pushed off screen */
+        @media (max-width: 1180px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
+        }
+        @media (max-width: 768px) {
+          .stack-mobile { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .stack-mobile > * { min-width: 0; }
+          .about-card { overflow-wrap: anywhere; }
+          .about-card { position: static !important; padding: 28px 20px !important; }
+          .contact-form-box { padding: 28px 20px !important; }
+          .acct-nav-btn { display: none !important; }
           .acct-strip { flex-wrap: wrap; }
           .acct-strip-cta { width: 100%; text-align: center; }
           .nav-inner { padding: 0 16px !important; }
           .nav-logo { height: 38px !important; }
         }
+        @media (max-width: 400px) {
+          .two-col-sm { grid-template-columns: 1fr !important; }
+        }
         @media (max-width: 380px) {
           .nav-logo { height: 32px !important; }
         }
-        @media (min-width: 769px) {
+        @media (min-width: 1181px) {
           .mobile-menu-btn { display: none !important; }
         }
       `}</style>
