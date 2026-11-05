@@ -110,7 +110,7 @@ const translations = {
     },
     footer: {
       tagline: "Your Trusted Financial Partner",
-      rights: "© 2025 CR Accountancy and Consulting. All rights reserved.",
+      rights: `© ${new Date().getFullYear()} CR Accountancy and Consulting. All rights reserved.`,
       disclaimer: "Danny Kim, CPA · Licensed in the State of California"
     }
   },
@@ -222,7 +222,7 @@ const translations = {
     },
     footer: {
       tagline: "신뢰할 수 있는 재무 파트너",
-      rights: "© 2025 CR Accountancy and Consulting. All rights reserved.",
+      rights: `© ${new Date().getFullYear()} CR Accountancy and Consulting. All rights reserved.`,
       disclaimer: "Danny Kim, CPA · 캘리포니아 공인회계사"
     }
   }
@@ -733,6 +733,13 @@ function ContactForm({ lang, t, colors, fonts }) {
       method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(fd),
     }).then((res) => {
       if (!res.ok) throw new Error("send failed");
+      // Google Ads conversion (IDs live in public/index.html → window.DK_ADS; blank = off)
+      try {
+        const ads = window.DK_ADS;
+        if (ads && ads.id && ads.label && typeof window.gtag === "function") {
+          window.gtag("event", "conversion", { send_to: ads.id + "/" + ads.label });
+        }
+      } catch (e) { /* tracking must never block the form */ }
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 4000);
       contactDraft = { ...EMPTY_CONTACT };
@@ -796,6 +803,14 @@ function ContactForm({ lang, t, colors, fonts }) {
         }}>
           {t.contact.form.submit}
         </button>
+        <p style={{ fontSize: 12, color: colors.gray, lineHeight: 1.6, margin: 0 }}>
+          {lang === "en"
+            ? "Please don't include Social Security numbers or tax documents in this form. "
+            : "이 양식에는 소셜 번호나 세금 서류를 넣지 마세요. "}
+          <a href={lang === "en" ? "/privacy.html" : "/privacy.html#ko"} style={{ color: colors.gray, textDecoration: "underline" }}>
+            {lang === "en" ? "Privacy Policy" : "개인정보처리방침"}
+          </a>
+        </p>
       </div>
     </div>
   );
@@ -1942,6 +1957,9 @@ export default function CRAccountancy() {
         </div>
         <div style={{ borderTop: `1px solid ${colors.gold}15`, paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <p style={{ fontSize: 11, color: `${colors.cream}44` }}>{t.footer.rights}</p>
+          <a href={lang === "en" ? "/privacy.html" : "/privacy.html#ko"} style={{ fontSize: 11, color: `${colors.cream}88`, textDecoration: "underline" }}>
+            {lang === "en" ? "Privacy Policy" : "개인정보처리방침"}
+          </a>
           <p style={{ fontSize: 11, color: `${colors.cream}44` }}>{t.footer.disclaimer}</p>
         </div>
       </div>

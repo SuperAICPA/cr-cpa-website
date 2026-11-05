@@ -18,7 +18,9 @@
     <meta property="og:url" content="https://dkcpala.com" />
     <meta property="og:title" content="Danny Kim, CPA | LA Korean CPA — Construction & Franchise Accounting" />
     <meta property="og:description" content="LA 한인 비즈니스 전문 CPA. 건설업 Job Costing, BBQ 프랜차이즈 다점포 회계, 고자산 개인 세무 특화. 무료 30분 상담 — 213-325-9800" />
-    <meta property="og:image" content="https://dkcpala.com/Logo_Dark_Final.png" />
+    <meta property="og:image" content="https://dkcpala.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="CR Accountancy & Consulting" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ko_KR" />
@@ -27,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Danny Kim, CPA | LA Korean CPA" />
     <meta name="twitter:description" content="LA 한인 비즈니스 전문 CPA — 건설업·프랜차이즈·고자산 특화. CR Accountancy & Consulting." />
-    <meta name="twitter:image" content="https://dkcpala.com/Logo_Dark_Final.png" />
+    <meta name="twitter:image" content="https://dkcpala.com/og-image.png" />
 
     <!-- ═══ Local Business Schema (Google 지도·지역 검색 최적화) ══ -->
     <script type="application/ld+json">
@@ -67,6 +69,33 @@
     <!-- ═══ Assets ════════════════════════════════════════════════ -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ═══ Visitor counts: Vercel Web Analytics (turn on in Vercel > Analytics) ═══ -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- ═══ Google Ads conversion tracking ═══════════════════════════
+         Paste the two values from Google Ads (Goals > Conversions > tag setup):
+           id    = the Google tag ID, e.g. "AW-123456789"
+           label = the part after the slash in send_to, e.g. "AbCdEfGhIj"
+         While id is blank, nothing loads and nothing is tracked. -->
+    <script>
+      window.DK_ADS = { id: "", label: "" };
+      (function () {
+        var a = window.DK_ADS;
+        if (!a.id) return;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + a.id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        window.gtag("config", a.id);
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
