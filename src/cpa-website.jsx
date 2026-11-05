@@ -710,21 +710,34 @@ function AIChatbot({ lang }) {
 // ============================================================
 // CONTACT FORM
 // ============================================================
-function ContactForm({ lang, t, colors, fonts }) {
-  const [fd, setFd] = useState({ name: "", email: "", phone: "", service: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+// Draft kept outside the component: the page re-mounts when the nav bar changes on scroll,
+// and without this the visitor's typing was wiped before they could press Submit.
+const EMPTY_CONTACT = { name: "", email: "", phone: "", service: "", message: "" };
+let contactDraft = { ...EMPTY_CONTACT };
 
-  const handleChange = (field, value) => { setFd(prev => ({ ...prev, [field]: value })); };
+function ContactForm({ lang, t, colors, fonts }) {
+  const [fd, setFd] = useState(() => ({ ...contactDraft }));
+  const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  const handleChange = (field, value) => {
+    setFormError("");
+    setFd(prev => { const next = { ...prev, [field]: value }; contactDraft = next; return next; });
+  };
   const handleSubmit = () => {
-    if (fd.name && fd.email) {
-      fetch("https://formspree.io/f/meerdzov", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(fd),
-      }).then(() => {
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 4000);
-        setFd({ name: "", email: "", phone: "", service: "", message: "" });
-      }).catch(() => { alert("Failed to send. Please call 213-325-9800."); });
+    if (!fd.name || !fd.email) {
+      setFormError(lang === "en" ? "Please enter your name and email." : "성함과 이메일을 입력해 주세요.");
+      return;
     }
+    fetch("https://formspree.io/f/meerdzov", {
+      method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(fd),
+    }).then((res) => {
+      if (!res.ok) throw new Error("send failed");
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 4000);
+      contactDraft = { ...EMPTY_CONTACT };
+      setFd({ ...EMPTY_CONTACT });
+    }).catch(() => { alert("Failed to send. Please call 213-325-9800."); });
   };
 
   const inputStyle = {
@@ -772,6 +785,9 @@ function ContactForm({ lang, t, colors, fonts }) {
           <textarea value={fd.message} onChange={(e) => handleChange("message", e.target.value)} rows={5} style={{ ...inputStyle, resize: "vertical" }}
             onFocus={(e) => e.target.style.borderColor = colors.gold} onBlur={(e) => e.target.style.borderColor = colors.lightGray} />
         </div>
+        {formError && (
+          <div style={{ color: "#B91C1C", fontSize: 14, fontWeight: 600 }}>{formError}</div>
+        )}
         <button onClick={handleSubmit} style={{
           background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`, border: "none", color: colors.darkNavy,
           fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
