@@ -1608,159 +1608,91 @@ export default function CRAccountancy() {
   // ============================================================
   // CR CONSULTING DIVISION SPOTLIGHT — links to consulting site
   // ============================================================
-  const ConsultingSpotlight = () => (
-    <div style={{ background: colors.darkNavy, position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 80% 30%, ${colors.blue}22 0%, transparent 50%), radial-gradient(circle at 15% 80%, ${colors.gold}15 0%, transparent 45%)`, pointerEvents: "none" }} />
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px", position: "relative" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 48, alignItems: "center" }}>
-          {/* Left: Message */}
-          <div>
+  const ConsultingSpotlight = () => {
+    const ko = lang === "ko";
+    // Three consulting offerings, one card each (each card = one link)
+    const cards = [
+      {
+        href: `${ACCT_URL}#check`, isNew: true, icon: "🔍",
+        bg: "linear-gradient(150deg, #1e3a8a 0%, #1d4ed8 100%)", border: "#3b82f6",
+        kicker: ko ? "회계 시스템 · AI" : "Accounting Systems & AI",
+        title: ko ? "회계 시스템·AI 진단" : "Accounting System & AI Assessment",
+        desc: ko ? "QuickBooks부터 AI 도구까지, 지금 쓰는 시스템을 진단하고 맞는 방향을 제안합니다."
+                 : "From QuickBooks to AI tools, we review the system you run today and recommend what fits.",
+        cta: ko ? "무료 2분 자가 점검 →" : "Free 2-minute self-check →"
+      },
+      {
+        href: "https://consulting.dkcpala.com/banking", icon: "🏦",
+        bg: "linear-gradient(150deg, #8B3414 0%, #5F220E 100%)", border: "#A8481F",
+        kicker: ko ? "SBA · 은행 대출" : "SBA & Bank Loans",
+        title: ko ? "은행 대출 준비 프로그램" : "Bank Loan Readiness Program",
+        desc: ko ? "신청 전에 숫자부터 준비합니다. 지금 신청해도 되는지 2분이면 확인할 수 있습니다."
+                 : "Get the numbers ready before you apply. Find out in 2 minutes whether to apply now or wait.",
+        cta: ko ? "지금 신청해도 될까요? →" : "Should you apply yet? →"
+      },
+      {
+        href: "https://consulting.dkcpala.com", icon: "🛠️",
+        bg: `${colors.white}0d`, border: `${colors.white}26`,
+        kicker: ko ? "맞춤형 앱" : "Custom Apps",
+        title: ko ? "업무에 맞춘 앱 제작" : "Apps Built Around Your Business",
+        tags: ko ? ["건설 Job Costing", "식당 재고·원가", "급여·현금 관리", "오너 대시보드"]
+                 : ["Job Costing", "Restaurant Inventory & Food Cost", "Payroll & Cash", "Owner Dashboards"],
+        cta: ko ? "컨설팅 사이트 보기 →" : "Visit consulting site →"
+      }
+    ];
+    return (
+      <div style={{ background: colors.darkNavy, position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 80% 30%, ${colors.blue}22 0%, transparent 50%), radial-gradient(circle at 15% 80%, ${colors.gold}15 0%, transparent 45%)`, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px", position: "relative" }}>
+          <div style={{ maxWidth: 760, marginBottom: 40 }}>
             <div style={{ fontSize: 11, letterSpacing: 5, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 700 }}>
-              CR Consulting · {lang === "ko" ? "컨설팅 사업부" : "Consulting Division"}
+              CR Consulting · {ko ? "컨설팅 사업부" : "Consulting Division"}
             </div>
-            <h2 style={{ fontFamily: fonts.display, fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, color: colors.white, lineHeight: 1.25, marginBottom: 20 }}>
-              {lang === "ko" ? "회계 시스템을 진단하고, 회사에 맞는 시스템과 앱을 만듭니다" : "We assess your accounting system and build what fits"}
+            <h2 style={{ fontFamily: fonts.display, fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, color: colors.white, lineHeight: 1.25, marginBottom: 14, wordBreak: "keep-all" }}>
+              {ko ? "회계 시스템을 진단하고, 회사에 맞는 시스템과 앱을 만듭니다" : "We assess your accounting system and build what fits"}
             </h2>
-            <p style={{ fontFamily: fonts.body, fontSize: 16, color: `${colors.cream}bb`, lineHeight: 1.85, marginBottom: 28 }}>
-              {lang === "ko"
-                ? "QuickBooks 정리부터 AI 회계 도구 점검, 업무에 맞춘 앱까지. 건설업 Job Costing, 식당 재고·원가 관리, 급여 시스템. 회계를 아는 사람이 직접 설계합니다."
-                : "From QuickBooks cleanup to checking AI accounting tools to apps built around your workflow — construction job costing, restaurant inventory & food cost, payroll systems, designed by someone who understands your numbers."}
+            <p style={{ fontFamily: fonts.body, fontSize: 16, color: `${colors.cream}bb`, lineHeight: 1.7 }}>
+              {ko ? "업종에 관계없이, 회계를 아는 사람이 직접 설계합니다." : "Any industry. Designed by someone who understands your numbers."}
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-              <a href="https://consulting.dkcpala.com" target="_blank" rel="noopener noreferrer" style={{
-                display: "inline-block", background: colors.gold, color: colors.darkNavy, textDecoration: "none",
-                fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-                padding: "16px 36px", borderRadius: 4, boxShadow: `0 4px 24px ${colors.gold}44`
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+            {cards.map((c, i) => (
+              <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className="cs-card" style={{
+                position: "relative", display: "flex", flexDirection: "column", textDecoration: "none",
+                background: c.bg, border: `1px solid ${c.border}`, borderRadius: 10, padding: "26px 24px",
+                boxShadow: c.isNew ? "0 10px 36px rgba(37,99,235,.35)" : "none", wordBreak: "keep-all"
               }}>
-                {lang === "ko" ? "컨설팅 사이트 방문 →" : "Visit Consulting Site →"}
+                {c.isNew && (
+                  <span style={{ position: "absolute", top: 18, right: 18, fontSize: 10, fontWeight: 800, letterSpacing: 1, background: colors.gold, color: colors.darkNavy, padding: "3px 8px", borderRadius: 8 }}>NEW</span>
+                )}
+                <span style={{ fontSize: 30, marginBottom: 14 }}>{c.icon}</span>
+                <span style={{ fontSize: 10, letterSpacing: 3, color: "#E8C15A", textTransform: "uppercase", fontWeight: 700, marginBottom: 8 }}>{c.kicker}</span>
+                <span style={{ fontFamily: fonts.display, fontSize: 21, fontWeight: 700, color: colors.white, lineHeight: 1.3, marginBottom: 10 }}>{c.title}</span>
+                {c.desc && (
+                  <span style={{ fontSize: 14, color: `${colors.cream}e0`, lineHeight: 1.7, marginBottom: 18 }}>{c.desc}</span>
+                )}
+                {c.tags && (
+                  <span style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18 }}>
+                    {c.tags.map((tg) => (
+                      <span key={tg} style={{ fontSize: 12, color: colors.cream, background: `${colors.white}12`, border: `1px solid ${colors.white}1f`, borderRadius: 100, padding: "5px 11px" }}>{tg}</span>
+                    ))}
+                  </span>
+                )}
+                <span style={{ marginTop: "auto", fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 0.5 }}>{c.cta}</span>
               </a>
-              <span style={{ fontSize: 12, color: `${colors.cream}66` }}>consulting.dkcpala.com</span>
-            </div>
-
-            {/* Accounting Systems & AI advisory — featured above the banking card */}
-            <a
-              href={`${ACCT_URL}#check`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "block", marginTop: 26, textDecoration: "none",
-                background: "linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #1e40af 100%)",
-                border: "1px solid #3b82f6",
-                borderLeft: `5px solid ${colors.gold}`,
-                borderRadius: 8, padding: "22px 26px",
-                boxShadow: "0 8px 32px rgba(37,99,235,.35)"
-              }}
-            >
-              <div style={{ fontSize: 10, letterSpacing: 3, color: "#E8C15A", textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
-                {lang === "ko" ? "새 서비스" : "New Service"}
-              </div>
-              <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
-                {lang === "ko" ? "지금 쓰는 회계 시스템, 제대로 돌아가고 있나요?" : "Is the accounting system you run today working right?"}
-              </div>
-              <div style={{ fontSize: 14, color: `${colors.cream}e6`, lineHeight: 1.7, marginBottom: 12 }}>
-                {lang === "ko"
-                  ? "QuickBooks부터 AI 회계 도구까지 업종과 관계없이 진단하고, 맞는 시스템을 제안하고, 필요한 만큼만 구축합니다. 진단은 2~3주, 가격은 시작 전에 정해 드립니다."
-                  : "From QuickBooks to AI accounting tools, in any industry: we assess it, recommend what fits, and build only what you need. The assessment takes 2–3 weeks at a fee fixed before we start."}
-              </div>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 1 }}>
-                {lang === "ko" ? "무료 2분 자가 점검 →" : "Free 2-minute self-check →"}
-              </span>
-            </a>
-
-            {/* Banking readiness program */}
-            <a
-              href="https://consulting.dkcpala.com/banking"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "block", marginTop: 26, textDecoration: "none",
-                background: "linear-gradient(135deg, #8B3414 0%, #7C2D12 55%, #5F220E 100%)",
-                border: "1px solid #A8481F",
-                borderLeft: `5px solid ${colors.gold}`,
-                borderRadius: 8, padding: "22px 26px",
-                boxShadow: "0 8px 32px rgba(124,45,18,.45)"
-              }}
-            >
-              <div style={{ fontSize: 10, letterSpacing: 3, color: "#E8C15A", textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
-                {lang === "ko" ? "새 프로그램" : "New Program"}
-              </div>
-              <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
-                {lang === "ko" ? "은행에는 한 번만 갈 수 있습니다." : "You get one clean shot at a bank."}
-              </div>
-              <div style={{ fontSize: 14, color: `${colors.cream}e6`, lineHeight: 1.7, marginBottom: 12 }}>
-                {lang === "ko"
-                  ? "SBA 대출, 커뮤니티 은행 텀론, 기존 한도 증액 — 어느 쪽이든 거절은 기록으로 남고 다시 들어가기는 훨씬 어렵습니다. 신청 전에 재무구조와 장부를 정비하는 9개월 프로그램. 무료 2분 자가진단으로 지금 신청해도 되는지부터 확인해 보세요."
-                  : "An SBA loan, a community bank term loan, or an increase where you already bank — a decline is recorded either way, and going back is far harder. A nine-month program that gets the numbers ready first. Start with the free 2-minute check."}
-              </div>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 1 }}>
-                {lang === "ko" ? "지금 신청해도 되는지 확인 →" : "Should you apply yet? →"}
-              </span>
-            </a>
-          </div>
-          {/* Right: Feature chips */}
-          <div style={{ display: "grid", gap: 14 }}>
-            <a
-              href={ACCT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex", alignItems: "center", gap: 16, textDecoration: "none",
-                background: "linear-gradient(135deg, #1e3a8a, #1d4ed8)",
-                border: `1px solid ${colors.lightGold}`,
-                borderRadius: 8, padding: "16px 22px"
-              }}
-            >
-              <span style={{ fontSize: 26 }}>🔍</span>
-              <span style={{ flex: 1, fontSize: 14, fontWeight: 600, color: colors.cream, lineHeight: 1.45 }}>
-                {lang === "ko" ? "회계 시스템·AI 진단과 제안" : "Accounting System & AI Assessment"}
-              </span>
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1, background: colors.gold, color: colors.darkNavy, padding: "2px 7px", borderRadius: 8 }}>NEW</span>
-            </a>
-            {[
-              { icon: "🏗️", en: "Construction Job-Costing Apps", ko: "건설업 Job Costing 앱" },
-              { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
-              { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
-              { icon: "📊", en: "Owner Dashboards", ko: "오너 대시보드" },
-            ].map((f, i) => (
-              <div key={i} style={{
-                display: "flex", alignItems: "center", gap: 16,
-                background: `${colors.white}08`, border: `1px solid ${colors.white}12`,
-                borderRadius: 8, padding: "16px 22px"
-              }}>
-                <span style={{ fontSize: 26 }}>{f.icon}</span>
-                <span style={{ fontSize: 14, fontWeight: 600, color: colors.cream }}>{lang === "ko" ? f.ko : f.en}</span>
-              </div>
             ))}
-            <a
-              href="https://consulting.dkcpala.com/banking"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex", alignItems: "center", gap: 16, textDecoration: "none",
-                background: "linear-gradient(135deg, #8B3414 0%, #7C2D12 55%, #5F220E 100%)",
-                border: "1px solid #A8481F",
-                borderLeft: `5px solid ${colors.gold}`,
-                borderRadius: 8, padding: "16px 22px",
-                boxShadow: "0 8px 32px rgba(124,45,18,.45)"
-              }}
-            >
-              <span style={{ fontSize: 26 }}>🏦</span>
-              <span style={{ flex: 1, fontSize: 14, fontWeight: 600, color: colors.cream, lineHeight: 1.45 }}>
-                {lang === "ko" ? "SBA · 은행 대출 레디니스 프로그램" : "SBA & Bank Loan Readiness Program"}
-              </span>
-              <span style={{ fontSize: 18, color: "#E8C15A", flexShrink: 0 }}>→</span>
-            </a>
-
-            <p style={{ fontSize: 11, color: `${colors.cream}55`, lineHeight: 1.6, marginTop: 4 }}>
-              {lang === "ko"
-                ? "* 컨설팅 서비스는 CR Consulting에서 제공되는 관리 자문 서비스이며, 회계 감사·검토·인증 업무와 구분됩니다."
-                : "* Consulting services are provided by CR Consulting as management advisory services, separate from attest, audit, or review services."}
-            </p>
           </div>
+
+          <p style={{ fontSize: 11, color: `${colors.cream}55`, lineHeight: 1.6, marginTop: 22 }}>
+            {ko
+              ? "* 컨설팅 서비스는 CR Consulting에서 제공되는 관리 자문 서비스이며, 회계 감사·검토·인증 업무와 구분됩니다."
+              : "* Consulting services are provided by CR Consulting as management advisory services, separate from attest, audit, or review services."}
+          </p>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // ============================================================
   // SERVICES PAGE — 13 service subpages
@@ -2032,6 +1964,8 @@ export default function CRAccountancy() {
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::selection { background: ${colors.gold}44; color: ${colors.navy}; }
+        .cs-card { transition: transform .2s ease, box-shadow .2s ease; }
+        .cs-card:hover { transform: translateY(-4px); }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
