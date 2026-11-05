@@ -41,12 +41,6 @@ const translations = {
           features: ["Entity Selection & Formation (LLC, S-Corp, C-Corp)", "Business Valuations", "Growth Strategy & Advisory", "SBA & Commercial Loan Support", "Mergers & Acquisitions Support"]
         },
         {
-          title: "Forensic Accounting & Litigation Support",
-          desc: "Expert financial analysis for legal proceedings. We provide detailed, court-ready reports and serve as expert witnesses when your case demands precision.",
-          icon: "🔍",
-          features: ["Damages Calculation & Analysis", "Expert Witness Testimony", "Construction Dispute Accounting", "Partnership & Shareholder Disputes", "Fraud Investigation & Detection"]
-        },
-        {
           title: "Bilingual CPA Services",
           desc: "Fully bilingual (Korean & English) professional services designed for the Korean-American business community. We bridge language and cultural gaps in financial management.",
           icon: "🌐",
@@ -106,7 +100,7 @@ const translations = {
         email: "Email Address",
         phone: "Phone Number",
         service: "Service Interested In",
-        serviceOptions: ["Tax Services", "Bookkeeping & Payroll", "Business Formation & Consulting", "Forensic Accounting", "Bilingual CPA Services", "Other"],
+        serviceOptions: ["Tax Services", "Bookkeeping & Payroll", "Business Formation & Consulting", "Bilingual CPA Services", "Other"],
         message: "Tell us about your needs",
         submit: "Request Consultation",
         success: "Thank you! We'll be in touch within 24 hours."
@@ -157,12 +151,6 @@ const translations = {
           desc: "법인 형태 선택과 설립부터 지속적인 전략 자문까지 — 탄탄한 기반 위에 사업을 성장시킵니다.",
           icon: "💼",
           features: ["법인 설립 및 구조화 (LLC, S-Corp, C-Corp)", "기업 가치 평가", "성장 전략 및 자문", "SBA 및 상업 대출 지원", "M&A 지원"]
-        },
-        {
-          title: "포렌식 회계 & 소송 지원",
-          desc: "법적 절차를 위한 전문 재무 분석. 법원에 제출 가능한 상세 보고서를 작성하고, 필요 시 전문가 증인으로 활동합니다.",
-          icon: "🔍",
-          features: ["손해액 산정 및 분석", "전문가 증인 활동", "건설 분쟁 회계", "파트너십 및 주주 분쟁", "부정행위 조사 및 탐지"]
         },
         {
           title: "이중 언어 CPA 서비스",
@@ -224,7 +212,7 @@ const translations = {
         email: "이메일 주소",
         phone: "전화번호",
         service: "관심 서비스",
-        serviceOptions: ["세무 서비스", "장부 관리 & 급여", "법인 설립 & 경영 컨설팅", "포렌식 회계", "이중 언어 CPA 서비스", "기타"],
+        serviceOptions: ["세무 서비스", "장부 관리 & 급여", "법인 설립 & 경영 컨설팅", "이중 언어 CPA 서비스", "기타"],
         message: "문의 내용을 입력해 주세요",
         submit: "상담 신청하기",
         success: "감사합니다! 24시간 이내에 연락드리겠습니다."
@@ -455,32 +443,6 @@ const serviceDetails = [
     ]
   },
   {
-    id: "svc_9", icon: "🔍", category: "BUSINESS & FINANCIAL ADVISORY",
-    title: { en: "Forensic Accounting & Litigation Support", ko: "포렌식 회계 & 소송 지원" },
-    tagline: { en: "CPA expertise becomes a tool in disputes.", ko: "분쟁 현장에서 CPA의 전문성이 도구가 됩니다." },
-    intro: { en: "We establish facts based on financial data in disputes, litigation, and audit situations. We provide court-ready damage calculations, fraud investigations, and Expert Witness services.", ko: "분쟁, 소송, 감사 상황에서 재무 데이터를 기반으로 사실을 규명합니다. 법원 제출용 손해배상 산정, 부정 행위 조사, Expert Witness 서비스를 제공합니다." },
-    items: [
-      { en: "Damages Calculation", ko: "손해배상 산정 — 계약 분쟁, 사업 중단, 부상 등으로 인한 경제적 손실 계량화. Lost Profit 분석." },
-      { en: "Fraud Investigation", ko: "부정 행위 조사 — 횡령, 회계 조작, 자금 유용 등 내부 부정(Fraud) 탐지 및 증거 문서화." },
-      { en: "Expert Witness", ko: "Expert Witness — 법원 및 중재에서의 전문가 증언. 복잡한 재무 사안을 명확하게 설명하는 Expert Report 작성." },
-      { en: "Quantum Meruit Support", ko: "Quantum Meruit 지원 — 서면 계약 없는 용역 제공의 합리적 가치(Reasonable Value) 산정 지원." },
-      { en: "Divorce Asset Division", ko: "이혼 재산 분할 — 혼인 재산 파악, 숨겨진 자산 추적, 사업체 가치 평가 및 분할 자문." },
-      { en: "Tax Audit Representation", ko: "세무 조사 대응 — IRS/FTB 감사(Audit) 대응, 서류 준비 및 CPA 대리 응대." }
-    ],
-    process: [
-      { en: "Case Overview", ko: "사건 개요 파악 — 변호사 또는 의뢰인으로부터 사건의 쟁점과 필요 분석 범위를 확인합니다." },
-      { en: "Document Collection", ko: "자료 수집·검토 — 관련 재무 서류, 계약서, 은행 거래 내역 등을 수집하고 분석합니다." },
-      { en: "Analysis & Report", ko: "분석 및 보고서 작성 — 재무 분석 결과를 법원 제출 가능한 Expert Report 형식으로 작성합니다." },
-      { en: "Testimony & Support", ko: "증언 및 협의 지원 — 법정 증언, 중재, 협상 과정에서 전문가로서 지원합니다." }
-    ],
-    docs: ["All Relevant Contracts", "Financial Statements (Dispute Period)", "Bank / Credit Card Statements", "Tax Returns", "Payroll Records", "Project-Level Cost Breakdown"],
-    faq: [
-      { q: { en: "Can I engage you directly without an attorney?", ko: "변호사를 통해서만 의뢰 가능한가요?" }, a: { en: "Attorney referrals are most common, but individuals and businesses may also engage us directly.", ko: "변호사를 통한 의뢰가 일반적이지만, 개인 또는 기업이 직접 의뢰도 가능합니다." } },
-      { q: { en: "What format is the Expert Report?", ko: "Expert Report는 어떤 형식인가요?" }, a: { en: "Reports are prepared to meet federal and state court requirements, clearly stating methodology, data sources, and conclusions.", ko: "연방 및 주 법원 규정에 맞는 형식으로 작성되며, 분석 방법론, 데이터 출처, 결론이 명확히 기재됩니다." } },
-      { q: { en: "I received an IRS audit notice — can you help?", ko: "IRS 감사 통지를 받았는데 도움받을 수 있나요?" }, a: { en: "Yes. We handle IRS and CA FTB audit response, document preparation, and CPA representation.", ko: "네. IRS 및 CA FTB 감사 대응, 서류 준비 및 CPA 자격으로 납세자 대리를 제공합니다." } }
-    ]
-  },
-  {
     id: "svc_10", icon: "🌏", category: "SPECIALTY SERVICES",
     title: { en: "International Tax", ko: "국제 세무" },
     tagline: { en: "A CPA who understands taxes in both the US and Korea.", ko: "미국과 한국, 두 나라의 세금을 이해하는 CPA." },
@@ -578,7 +540,7 @@ const serviceDetails = [
     ],
     docs: ["Business Registration Documents", "Last 2 Years of Financial Statements", "Sales Tax Registration Certificate", "Industry-Specific License Documents", "Payroll Records", "Tax Returns (Last 2 Years)"],
     faq: [
-      { q: { en: "Can you help with construction cost accounting?", ko: "건설업의 코스트 어카운팅이 너무 복잡한데 도와주시나요?" }, a: { en: "Yes. We have extensive experience with construction-specific accounting including Retainage, revenue recognition, and Quantum Meruit litigation.", ko: "네. 건설업의 특성상 필요한 Retainage 수익 인식, Quantum Meruit 소송 등 건설 분야 특수 실무 경험이 풍부합니다." } },
+      { q: { en: "Can you help with construction cost accounting?", ko: "건설업의 코스트 어카운팅이 너무 복잡한데 도와주시나요?" }, a: { en: "Yes. We have extensive experience with construction-specific accounting including job costing, Retainage, and percentage-of-completion revenue recognition.", ko: "네. 공사별 원가 관리(Job Costing), Retainage, 진행기준 수익 인식 등 건설업 특유의 회계를 다룹니다." } },
       { q: { en: "Do restaurants need to file CDTFA separately?", ko: "음식점도 CDTFA 신고를 별도로 해야 하나요?" }, a: { en: "Yes. Restaurants are subject to sales tax, and there are separate reporting obligations for tips paid to employees. Record keeping for CDTFA audit preparedness is critical.", ko: "네. 음식점은 판매세 대상이며, 직원에게 지급하는 팁도 별도 보고 의무가 있습니다. CDTFA 감사 대비를 위한 기록 관리가 중요합니다." } },
       { q: { en: "Does an eCommerce business need to file multi-state taxes?", ko: "eCommerce 업체는 다주 세금 신고를 해야 하나요?" }, a: { en: "Filing obligations vary by the buyer's state. We conduct Nexus analysis to identify each state's obligations and help implement automation tools.", ko: "구매자가 있는 주에 따라 판매세(Sales Tax) 납부 의무가 다릅니다. Nexus 분석을 통해 각 주별 신고 의무를 파악하고 자동화 도구 연계를 도와드립니다." } }
     ]
@@ -612,7 +574,7 @@ const serviceDetails = [
 ];
 
 // Home page service card → subpage mapping
-const homeServiceSubpages = ["svc_1", "svc_2", "svc_5", "svc_9", "svc_14"];
+const homeServiceSubpages = ["svc_1", "svc_2", "svc_5", "svc_14"];
 
 // Multilingual welcome messages for Contact section
 const multilingualWelcome = [
@@ -639,7 +601,7 @@ RULES:
 
 FIRM INFO:
 - Danny Kim, CPA - Licensed in California, 25+ years experience
-- Services: Tax Services, Bookkeeping & Payroll, Business Formation & Consulting, Forensic Accounting & Litigation Support, Bilingual CPA Services
+- Services: Tax Services, Bookkeeping & Payroll, Business Formation & Consulting, Bilingual CPA Services
 - Industry Specialties: Construction companies (job costing, subcontractor compliance), BBQ franchise & multi-location restaurants (food cost analysis, multi-location accounting)
 - Specialties: Korean-speaking clients, immigrant tax (FBAR/FATCA), multi-state, LLC/S-Corp setup
 - Location: 611 S Catalina St #216, Los Angeles, CA 90005 (Koreatown)
@@ -653,7 +615,6 @@ SERVICE PRICING:
 - Payroll: from $199/mo
 - FBAR/FATCA: from $199
 - Tax Planning Session: $299
-- Forensic Accounting: Custom
 
 GOALS: Greet warmly, identify needs, ask relevant questions, provide general info, recommend services, offer to schedule consultation.
 DISCLAIMER (in user's language): "This is general guidance only, not professional tax advice. Personalized advice requires CPA review."
@@ -1148,6 +1109,9 @@ export default function CRAccountancy() {
     gold: "#A0845C", lightGold: "#C4A87A", cream: "#FAFAFA", white: "#FFFFFF",
     gray: "#6B7280", lightGray: "#E5E7EB"
   };
+  // Accounting Systems & AI advisory page on the consulting site
+  const ACCT_URL = "https://consulting.dkcpala.com/accounting";
+  const acctLabel = lang === "ko" ? "회계 시스템·AI 자문" : "Accounting Systems & AI";
   const fonts = {
     display: "'DM Serif Display', Georgia, serif",
     body: "'Source Serif 4', Georgia, serif",
@@ -1165,9 +1129,9 @@ export default function CRAccountancy() {
   // ============================================================
   const NavBar = () => (
     <nav style={baseStyles.nav}>
-      <div style={baseStyles.navInner}>
+      <div className="nav-inner" style={baseStyles.navInner}>
         <div style={{ cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/Logo_White_Final.png" alt="Danny Kim CPA - CR Accountancy & Consulting" onError={(e) => { e.target.onerror = null; e.target.src = "/Logo_Dark_Final.png"; }} style={{ height: 48 }} />
+          <img src="/Logo_White_Final.png" alt="Danny Kim CPA - CR Accountancy & Consulting" onError={(e) => { e.target.onerror = null; e.target.src = "/Logo_Dark_Final.png"; }} className="nav-logo" style={{ height: 48 }} />
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <div className="desktop-nav" style={{ display: "flex", gap: 4, marginRight: 16 }}>
@@ -1181,6 +1145,18 @@ export default function CRAccountancy() {
                 {t.nav[p]}
               </button>
             ))}
+            <a href={ACCT_URL} target="_blank" rel="noopener noreferrer" style={{
+              position: "relative", display: "inline-flex", alignItems: "center", textDecoration: "none",
+              background: `linear-gradient(135deg, #1e3a8a, ${colors.blue})`, border: `1px solid ${colors.lightGold}`,
+              color: colors.white, fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 0.5,
+              padding: "9px 16px", borderRadius: 6, marginLeft: 8, whiteSpace: "nowrap"
+            }}>
+              {acctLabel}
+              <span style={{
+                position: "absolute", top: -9, right: -10, background: colors.gold, color: colors.darkNavy,
+                fontSize: 9, fontWeight: 800, letterSpacing: 1, padding: "2px 6px", borderRadius: 8
+              }}>NEW</span>
+            </a>
           </div>
 
           {/* Language Toggle: EN / KO only */}
@@ -1215,6 +1191,13 @@ export default function CRAccountancy() {
               {t.nav[p]}
             </button>
           ))}
+          <a href={ACCT_URL} target="_blank" rel="noopener noreferrer" style={{
+            display: "block", width: "100%", textAlign: "left", textDecoration: "none",
+            color: colors.lightGold, fontFamily: fonts.sans, fontSize: 15, fontWeight: 700,
+            padding: "14px 0", letterSpacing: 1, borderBottom: `1px solid ${colors.gold}11`
+          }}>
+            {acctLabel} ↗
+          </a>
         </div>
       )}
     </nav>
@@ -1228,7 +1211,8 @@ export default function CRAccountancy() {
       {/* Hero */}
       <div style={{
         minHeight: "100vh", background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 50%, #EEF2FF 100%)`,
-        display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden"
+        display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden",
+        padding: "112px 0 56px" /* keep hero text clear of the fixed nav bar */
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 20% 50%, ${colors.blue}08 0%, transparent 50%), radial-gradient(circle at 80% 20%, ${colors.gold}10 0%, transparent 40%)`, pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "20%", left: "5%", width: 1, height: "30%", background: `linear-gradient(to bottom, transparent, ${colors.blue}15, transparent)` }} />
@@ -1288,6 +1272,35 @@ export default function CRAccountancy() {
               {t.hero.ctaSecondary}
             </button>
           </div>
+
+          {/* Entry strip — Accounting Systems & AI advisory (consulting site) */}
+          <a href={`${ACCT_URL}#check`} target="_blank" rel="noopener noreferrer" className="acct-strip" style={{
+            display: "flex", alignItems: "center", gap: 18, textDecoration: "none", textAlign: "left",
+            margin: "28px auto 0", maxWidth: 760, background: colors.white,
+            border: "1px solid #E3D6C2", borderLeft: `6px solid ${colors.gold}`, borderRadius: 10,
+            boxShadow: `0 12px 40px ${colors.navy}1f`, padding: "18px 22px"
+          }}>
+            <span style={{ fontSize: 26, flexShrink: 0 }}>🔍</span>
+            <span style={{ flex: 1, wordBreak: "keep-all" }}>
+              <span style={{ display: "block", fontSize: 11, letterSpacing: 2, color: colors.gold, fontWeight: 700, marginBottom: 4 }}>
+                {lang === "ko" ? "새 서비스 · 회계 시스템·AI 자문" : "NEW · ACCOUNTING SYSTEMS & AI"}
+              </span>
+              <span style={{ display: "block", fontSize: 18, fontWeight: 700, color: colors.navy, marginBottom: 2 }}>
+                {lang === "ko" ? "QuickBooks 장부, 믿고 결정해도 될까요?" : "Can you make decisions on your QuickBooks numbers?"}
+              </span>
+              <span style={{ display: "block", fontSize: 14, color: colors.gray, lineHeight: 1.6 }}>
+                {lang === "ko"
+                  ? "지금 쓰는 회계 시스템을 진단하고, 회사에 맞는 시스템을 제안합니다. 업종 제한 없음."
+                  : "We assess the accounting system you run today and recommend what fits. Any industry."}
+              </span>
+            </span>
+            <span className="acct-strip-cta" style={{
+              background: colors.navy, color: colors.white, fontSize: 13, fontWeight: 700,
+              padding: "13px 18px", borderRadius: 6, whiteSpace: "nowrap", flexShrink: 0
+            }}>
+              {lang === "ko" ? "2분 자가 점검 →" : "2-min self-check →"}
+            </span>
+          </a>
 
         </div>
       </div>
@@ -1381,7 +1394,6 @@ export default function CRAccountancy() {
                 { id: "svc_6", en: "Business Consulting", ko: "비즈니스 컨설팅" },
                 { id: "svc_7", en: "Financial Advisory & Wealth Planning", ko: "재무 자문 & 자산 플래닝" },
                 { id: "svc_8", en: "Family Legacy & Wealth Transfer", ko: "가족 자산 이전 & 상속 계획" },
-                { id: "svc_9", en: "Forensic Accounting & Litigation Support", ko: "포렌식 회계 & 소송 지원" },
               ]
             },
             {
@@ -1591,12 +1603,12 @@ export default function CRAccountancy() {
               CR Consulting · {lang === "ko" ? "컨설팅 사업부" : "Consulting Division"}
             </div>
             <h2 style={{ fontFamily: fonts.display, fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, color: colors.white, lineHeight: 1.25, marginBottom: 20 }}>
-              {lang === "ko" ? "당신의 업종에 맞는 비즈니스 앱을 만들어주는 CPA" : "The CPA Who Builds Custom Apps for Your Industry"}
+              {lang === "ko" ? "회계 시스템을 진단하고, 회사에 맞는 시스템과 앱을 만듭니다" : "We assess your accounting system and build what fits"}
             </h2>
             <p style={{ fontFamily: fonts.body, fontSize: 16, color: `${colors.cream}bb`, lineHeight: 1.85, marginBottom: 28 }}>
               {lang === "ko"
-                ? "건설업 Job Costing, 식당 재고·원가 관리, 급여 시스템까지 — 회계를 아는 CPA가 직접 설계하는 업종별 맞춤 앱 컨설팅. 스프레드시트를 벗어나 비즈니스 운영 시스템을 구축하세요."
-                : "Construction job costing, restaurant inventory & food cost, payroll systems — custom business apps designed by a CPA who understands your numbers. Move beyond spreadsheets to a complete financial operating system."}
+                ? "QuickBooks 정리부터 AI 회계 도구 점검, 업무에 맞춘 앱까지. 건설업 Job Costing, 식당 재고·원가 관리, 급여 시스템. 회계를 아는 사람이 직접 설계합니다."
+                : "From QuickBooks cleanup to checking AI accounting tools to apps built around your workflow — construction job costing, restaurant inventory & food cost, payroll systems, designed by someone who understands your numbers."}
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
               <a href="https://consulting.dkcpala.com" target="_blank" rel="noopener noreferrer" style={{
@@ -1608,6 +1620,36 @@ export default function CRAccountancy() {
               </a>
               <span style={{ fontSize: 12, color: `${colors.cream}66` }}>consulting.dkcpala.com</span>
             </div>
+
+            {/* Accounting Systems & AI advisory — featured above the banking card */}
+            <a
+              href={`${ACCT_URL}#check`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block", marginTop: 26, textDecoration: "none",
+                background: "linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #1e40af 100%)",
+                border: "1px solid #3b82f6",
+                borderLeft: `5px solid ${colors.gold}`,
+                borderRadius: 8, padding: "22px 26px",
+                boxShadow: "0 8px 32px rgba(37,99,235,.35)"
+              }}
+            >
+              <div style={{ fontSize: 10, letterSpacing: 3, color: "#E8C15A", textTransform: "uppercase", fontWeight: 700, marginBottom: 9 }}>
+                {lang === "ko" ? "새 서비스" : "New Service"}
+              </div>
+              <div style={{ fontFamily: fonts.display, fontSize: 20, fontWeight: 700, color: colors.white, lineHeight: 1.35, marginBottom: 8 }}>
+                {lang === "ko" ? "지금 쓰는 회계 시스템, 제대로 돌아가고 있나요?" : "Is the accounting system you run today working right?"}
+              </div>
+              <div style={{ fontSize: 14, color: `${colors.cream}e6`, lineHeight: 1.7, marginBottom: 12 }}>
+                {lang === "ko"
+                  ? "QuickBooks부터 AI 회계 도구까지 업종과 관계없이 진단하고, 맞는 시스템을 제안하고, 필요한 만큼만 구축합니다. 진단은 2~3주, 가격은 시작 전에 정해 드립니다."
+                  : "From QuickBooks to AI accounting tools, in any industry: we assess it, recommend what fits, and build only what you need. The assessment takes 2–3 weeks at a fee fixed before we start."}
+              </div>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 1 }}>
+                {lang === "ko" ? "무료 2분 자가 점검 →" : "Free 2-minute self-check →"}
+              </span>
+            </a>
 
             {/* Banking readiness program */}
             <a
@@ -1641,11 +1683,28 @@ export default function CRAccountancy() {
           </div>
           {/* Right: Feature chips */}
           <div style={{ display: "grid", gap: 14 }}>
+            <a
+              href={ACCT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex", alignItems: "center", gap: 16, textDecoration: "none",
+                background: "linear-gradient(135deg, #1e3a8a, #1d4ed8)",
+                border: `1px solid ${colors.lightGold}`,
+                borderRadius: 8, padding: "16px 22px"
+              }}
+            >
+              <span style={{ fontSize: 26 }}>🔍</span>
+              <span style={{ flex: 1, fontSize: 14, fontWeight: 600, color: colors.cream, lineHeight: 1.45 }}>
+                {lang === "ko" ? "회계 시스템·AI 진단과 제안" : "Accounting System & AI Assessment"}
+              </span>
+              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: 1, background: colors.gold, color: colors.darkNavy, padding: "2px 7px", borderRadius: 8 }}>NEW</span>
+            </a>
             {[
               { icon: "🏗️", en: "Construction Job-Costing Apps", ko: "건설업 Job Costing 앱" },
               { icon: "🍽️", en: "Restaurant Inventory & Food Cost Systems", ko: "식당 재고·원가 관리 시스템" },
               { icon: "💵", en: "Payroll & Cash Tracking Tools", ko: "급여·현금 관리 도구" },
-              { icon: "📊", en: "Owner Dashboards with CPA Oversight", ko: "CPA가 검증하는 오너 대시보드" },
+              { icon: "📊", en: "Owner Dashboards", ko: "오너 대시보드" },
             ].map((f, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 16,
@@ -1960,6 +2019,13 @@ export default function CRAccountancy() {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
+          .acct-strip { flex-wrap: wrap; }
+          .acct-strip-cta { width: 100%; text-align: center; }
+          .nav-inner { padding: 0 16px !important; }
+          .nav-logo { height: 38px !important; }
+        }
+        @media (max-width: 380px) {
+          .nav-logo { height: 32px !important; }
         }
         @media (min-width: 769px) {
           .mobile-menu-btn { display: none !important; }

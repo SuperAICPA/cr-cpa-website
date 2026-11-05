@@ -136,4 +136,7 @@
   .rv-section { padding: 60px 16px; }
   .rv-prev { left: 4px; }
   .rv-next { right: 4px; }
+  /* keep the rating box inside a phone-width screen */
+  .rv-stats { width: 100%; gap: 12px; padding: 16px; justify-content: space-between; }
+  .rv-stat { min-width: 0; }
 }
