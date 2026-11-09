@@ -88,7 +88,7 @@ const T = {
       { t: "매월 관리", d: "현장별 손익 · WIP · 유보금 · 은행/보증사 제출 서류" },
       { t: "세무", d: "법인 · 개인 · 급여세 · IRS/FTB" },
     ],
-    afterNote: "현장 수와 법인 수에 따라 범위를 정하고 요율을 말씀드립니다. 착수는 계약 이후입니다.",
+    afterNote: "현장 수와 법인 수에 따라 범위를 정하고 요율을 말씀드립니다. 착수는 계약 이후입니다. 은행이나 보증사가 리뷰·감사를 받은 재무제표를 요구하는 경우, 그 작업은 하지 않으며 외부 회계법인을 안내해 드립니다.",
     whoTitle: "담당",
     whoBullets: [
       "토목·구조 엔지니어링 배경 — 현장 얘기가 통합니다",
@@ -157,7 +157,7 @@ const T = {
       { t: "Monthly", d: "Job-level P&L · WIP · retainage · bank and surety packages" },
       { t: "Tax", d: "Business · individual · payroll · IRS/FTB" },
     ],
-    afterNote: "We set scope by job count and entity count, then quote. Work begins once we're engaged.",
+    afterNote: "We set scope by job count and entity count, then quote. Work begins once we're engaged. If a bank or surety requires reviewed or audited financial statements, we don't prepare those and will refer you to an outside firm.",
     whoTitle: "Who you'll work with",
     whoBullets: [
       "Civil and structural engineering background — we speak field",

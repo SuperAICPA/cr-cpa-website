@@ -1,4 +1,3 @@
- 
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -7,13 +6,33 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dkcpala.com/services</loc>
+    <loc>https://dkcpala.com/bookkeeping-payroll</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dkcpala.com/about</loc>
+    <loc>https://dkcpala.com/restaurant-tax</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dkcpala.com/irs-ftb-letter</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dkcpala.com/construction</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dkcpala.com/services</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dkcpala.com/about</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -23,7 +42,12 @@
   </url>
   <url>
     <loc>https://dkcpala.com/resources</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dkcpala.com/privacy.html</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
   </url>
 </urlset>
