@@ -1,14 +1,10 @@
 import React from 'react';
 import CPAWebsite from './cpa-website';
-import ReviewsSection from './components/ReviewsSection';
 
+// Google reviews are rendered inside the pages themselves (home page and landing pages),
+// so they no longer appear a second time below the footer.
 function App() {
-  return (
-    <>
-      <CPAWebsite />
-      <ReviewsSection />
-    </>
-  );
+  return <CPAWebsite />;
 }
 
 export default App;

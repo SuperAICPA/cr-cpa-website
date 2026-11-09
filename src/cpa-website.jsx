@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import ReviewsSection from "./components/ReviewsSection";
+import ConstructionPage from "./components/ConstructionPage";
+import LandingPage, { LANDINGS } from "./components/LandingPage";
 
 const translations = {
   en: {
@@ -730,7 +732,7 @@ function ContactForm({ lang, t, colors, fonts }) {
       return;
     }
     fetch("https://formspree.io/f/meerdzov", {
-      method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(fd),
+      method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ ...fd, page: window.location.pathname }),
     }).then((res) => {
       if (!res.ok) throw new Error("send failed");
       // Google Ads conversion (IDs live in public/index.html → window.DK_ADS; blank = off)
@@ -1121,9 +1123,27 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
 // ============================================================
 // MAIN COMPONENT
 // ============================================================
+// ============================================================
+// URL routing: /services, /contact, /construction, /svc_1, landing pages …
+// ============================================================
+const ROUTES = ["home", "services", "about", "resources", "contact", "construction", ...Object.keys(LANDINGS)];
+function pathToPage() {
+  const p = window.location.pathname.replace(/^\/|\/$/g, "");
+  if (ROUTES.includes(p) || /^svc_\d+$/.test(p)) return p;
+  return "home";
+}
+// The home page keeps the title and description written in public/index.html
+const DEFAULT_HEAD = {
+  title: typeof document !== "undefined" ? document.title : "",
+  desc: typeof document !== "undefined" ? (document.querySelector('meta[name="description"]') || {}).content || "" : "",
+};
+
 export default function CRAccountancy() {
-  const [lang, setLang] = useState("en");
-  const [page, setPage] = useState("home");
+  // ?lang=ko opens the Korean version (used for Korean-language ads and KakaoTalk links)
+  const [lang, setLang] = useState(() => {
+    try { return new URLSearchParams(window.location.search).get("lang") === "ko" ? "ko" : "en"; } catch (e) { return "en"; }
+  });
+  const [page, setPage] = useState(pathToPage);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
@@ -1133,7 +1153,48 @@ export default function CRAccountancy() {
   useEffect(() => { setFadeIn(false); const timer = setTimeout(() => setFadeIn(true), 50); return () => clearTimeout(timer); }, [page]);
   useEffect(() => { const handleScroll = () => setScrolled(window.scrollY > 50); window.addEventListener("scroll", handleScroll); return () => window.removeEventListener("scroll", handleScroll); }, []);
 
-  const navigate = (p) => { setPage(p); setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const navigate = (p) => {
+    setPage(p);
+    setMenuOpen(false);
+    const url = p === "home" ? "/" : `/${p}`;
+    if (window.location.pathname !== url) window.history.pushState({ page: p }, "", url);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Back / forward buttons
+  useEffect(() => {
+    const onPop = () => setPage(pathToPage());
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  // Per-page title, description and canonical address for search engines
+  useEffect(() => {
+    const ko = lang === "ko";
+    const brand = "Danny Kim, CPA";
+    const svcItem = serviceDetails.find(s => s.id === page);
+    const landing = LANDINGS[page];
+    const titles = {
+      services: ko ? "서비스 안내" : "Services",
+      about: ko ? "사무실 소개" : "About",
+      contact: ko ? "문의하기" : "Contact",
+      resources: ko ? "자료실" : "Resources",
+      construction: ko ? "건설업 회계·현장별 원가 관리" : "Construction Accounting & Job Costing in LA",
+    };
+    let title = DEFAULT_HEAD.title;
+    let desc = DEFAULT_HEAD.desc;
+    if (landing) { title = ko ? landing.seo.title.ko : landing.seo.title.en; desc = ko ? landing.seo.desc.ko : landing.seo.desc.en; }
+    else if (svcItem) title = `${ko ? svcItem.title.ko : svcItem.title.en} | ${brand}`;
+    else if (titles[page]) title = `${titles[page]} | ${brand}`;
+    document.title = title;
+    const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute(attr, val); };
+    set('meta[name="description"]', "content", desc);
+    const url = "https://dkcpala.com" + (page === "home" ? "" : `/${page}`);
+    set('link[rel="canonical"]', "href", url);
+    set('meta[property="og:url"]', "content", url);
+    set('meta[property="og:title"]', "content", title);
+    set('meta[property="og:description"]', "content", desc);
+  }, [page, lang]);
 
   const colors = {
     navy: "#1A2332", darkNavy: "#0F1720", blue: "#2563EB", lightBlue: "#3B82F6",
@@ -1269,19 +1330,21 @@ export default function CRAccountancy() {
           {/* Industry badges */}
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 44 }}>
             {[
-              { icon: "🏗️", en: "Construction CPA", ko: "건설업 전문" },
-              { icon: "🍗", en: "BBQ Franchise", ko: "BBQ 프랜차이즈" },
+              { icon: "🏗️", en: "Construction CPA", ko: "건설업 전문", go: "construction" },
+              { icon: "🍗", en: "BBQ Franchise", ko: "BBQ 프랜차이즈", go: "restaurant-tax" },
               { icon: "💼", en: "High Net Worth", ko: "고자산 고객" },
               { icon: "🌐", en: "Korean-English", ko: "한영 이중 언어" },
             ].map((b, i) => (
-              <div key={i} style={{
+              <div key={i} onClick={b.go ? () => navigate(b.go) : undefined} role={b.go ? "link" : undefined} style={{
                 display: "flex", alignItems: "center", gap: 7,
-                background: `${colors.navy}08`, border: `1px solid ${colors.navy}18`,
-                borderRadius: 100, padding: "7px 16px"
+                background: b.go ? `${colors.blue}12` : `${colors.navy}08`,
+                border: `1px solid ${b.go ? colors.blue + "44" : colors.navy + "18"}`,
+                borderRadius: 100, padding: "7px 16px",
+                cursor: b.go ? "pointer" : "default", transition: "all 0.25s ease"
               }}>
                 <span style={{ fontSize: 14 }}>{b.icon}</span>
-                <span style={{ fontSize: 12, fontWeight: 600, color: colors.navy, letterSpacing: 0.5 }}>
-                  {lang === "ko" ? b.ko : b.en}
+                <span style={{ fontSize: 12, fontWeight: 600, color: b.go ? colors.blue : colors.navy, letterSpacing: 0.5 }}>
+                  {lang === "ko" ? b.ko : b.en}{b.go ? " →" : ""}
                 </span>
               </div>
             ))}
@@ -1338,7 +1401,7 @@ export default function CRAccountancy() {
         </div>
       </div>
 
-      {/* Services Preview — 3 categories with text links */}
+      {/* Services Preview — individual vs business entry cards (full list on /services) */}
       <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80 }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontFamily: fonts.display, fontSize: 36, fontWeight: 700, color: colors.navy, marginBottom: 16 }}>{t.services.title}</h2>
@@ -1347,15 +1410,16 @@ export default function CRAccountancy() {
         </div>
 
         {/* Persona Entry Cards — Individual vs Business */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: 24, marginBottom: 56 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: 24, marginBottom: 36 }}>
           {[
             {
               icon: "👤",
               titleEn: "For Individuals", titleKo: "개인 고객",
-              descEn: "Personal tax filing, foreign accounts, crypto, wealth & legacy planning",
-              descKo: "개인 세금 신고 · 해외 계좌(FBAR) · 암호화폐 · 자산 및 상속 플래닝",
+              descEn: "Personal tax filing, IRS and FTB letters, foreign accounts, crypto, wealth & legacy planning",
+              descKo: "개인 세금 신고 · IRS/FTB 통지서 · 해외 계좌(FBAR) · 암호화폐 · 자산 및 상속 플래닝",
               links: [
                 { id: "svc_1", en: "Tax Preparation", ko: "세금 신고" },
+                { id: "irs-ftb-letter", en: "IRS · FTB Letters", ko: "IRS·FTB 통지서" },
                 { id: "svc_10", en: "International Tax (FBAR)", ko: "국제 세무 (FBAR)" },
                 { id: "svc_11", en: "Crypto Tax", ko: "암호화폐 세금" },
                 { id: "svc_7", en: "Wealth Planning", ko: "자산 플래닝" },
@@ -1365,13 +1429,15 @@ export default function CRAccountancy() {
             {
               icon: "🏢",
               titleEn: "For Business Owners", titleKo: "사업체 고객",
-              descEn: "Bookkeeping, payroll, entity formation, consulting & industry expertise",
-              descKo: "장부 관리 · 급여 · 법인 설립 · 컨설팅 · 업종별 전문 서비스",
+              descEn: "Bookkeeping, payroll, entity formation, tax resolution, nonprofits & industry expertise",
+              descKo: "장부 관리 · 급여 · 법인 설립 · 세금 분쟁 해결 · 비영리 · 업종별 전문 서비스",
               links: [
                 { id: "svc_2", en: "Bookkeeping", ko: "장부 관리" },
                 { id: "svc_3", en: "Payroll", ko: "급여 관리" },
                 { id: "svc_5", en: "Business Formation", ko: "법인 설립" },
+                { id: "svc_4", en: "Tax Resolution", ko: "세금 분쟁 해결" },
                 { id: "svc_6", en: "Business Consulting", ko: "비즈니스 컨설팅" },
+                { id: "svc_12", en: "Nonprofit & Church", ko: "비영리·교회" },
                 { id: "svc_13", en: "Industry-Specific CPA", ko: "업종별 전문 CPA" },
               ]
             }
@@ -1407,106 +1473,15 @@ export default function CRAccountancy() {
           ))}
         </div>
 
-        {(() => {
-          const categories = [
-            {
-              label: "Core Tax & Accounting",
-              labelKo: "세무 & 회계",
-              services: [
-                { id: "svc_1", en: "Tax Preparation", ko: "세금 신고" },
-                { id: "svc_2", en: "Bookkeeping & Accounting", ko: "장부 관리 & 회계" },
-                { id: "svc_3", en: "Payroll Management", ko: "급여 관리" },
-                { id: "svc_4", en: "Tax Resolution", ko: "세금 분쟁 해결" },
-                { id: "svc_5", en: "Business Formation", ko: "법인 설립" },
-              ]
-            },
-            {
-              label: "Business & Financial Advisory",
-              labelKo: "비즈니스 & 재무 자문",
-              services: [
-                { id: "svc_6", en: "Business Consulting", ko: "비즈니스 컨설팅" },
-                { id: "svc_7", en: "Financial Advisory & Wealth Planning", ko: "재무 자문 & 자산 플래닝" },
-                { id: "svc_8", en: "Family Legacy & Wealth Transfer", ko: "가족 자산 이전 & 상속 계획" },
-              ]
-            },
-            {
-              label: "Specialty Services",
-              labelKo: "전문 특화 서비스",
-              services: [
-                { id: "svc_10", en: "International Tax", ko: "국제 세무" },
-                { id: "svc_11", en: "Crypto Tax", ko: "암호화폐 세금" },
-                { id: "svc_12", en: "Nonprofit Accounting", ko: "비영리 회계" },
-                { id: "svc_13", en: "Industry-Specific CPA", ko: "업종별 전문 CPA" },
-                { id: "svc_14", en: "Bilingual CPA Services", ko: "이중 언어 CPA 서비스" },
-              ]
-            }
-          ];
-
-          return (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 32 }}>
-              {categories.map((cat, ci) => (
-                <div key={ci} style={{
-                  background: colors.white, borderRadius: 4, border: `1px solid ${colors.lightGray}`,
-                  overflow: "hidden"
-                }}>
-                  {/* Category Header */}
-                  <div style={{
-                    background: colors.darkNavy,
-                    padding: "28px 28px 24px"
-                  }}>
-                    <div style={{ fontFamily: fonts.display, fontSize: 52, fontWeight: 700, color: colors.gold, lineHeight: 1, marginBottom: 10, letterSpacing: -1 }}>
-                      {ci === 0 ? "01" : ci === 1 ? "02" : "03"}
-                    </div>
-                    <h3 style={{ fontFamily: fonts.display, fontSize: 22, fontWeight: 700, color: colors.white, lineHeight: 1.3 }}>
-                      {lang === "ko" ? cat.labelKo : cat.label}
-                    </h3>
-                  </div>
-
-                  {/* Service Links */}
-                  <div style={{ padding: "8px 0" }}>
-                    {cat.services.map((svc, si) => (
-                      <button
-                        key={si}
-                        onClick={() => navigate(svc.id)}
-                        style={{
-                          display: "flex", alignItems: "center", justifyContent: "space-between",
-                          width: "100%", background: "none", border: "none",
-                          padding: "11px 28px", cursor: "pointer", textAlign: "left",
-                          borderBottom: si < cat.services.length - 1 ? `1px solid ${colors.lightGray}` : "none",
-                          transition: "all 0.2s ease",
-                          fontFamily: fonts.sans,
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = `${colors.gold}08`;
-                          e.currentTarget.querySelector(".svc-arrow").style.color = colors.gold;
-                          e.currentTarget.querySelector(".svc-arrow").style.transform = "translateX(3px)";
-                          e.currentTarget.querySelector(".svc-name").style.color = colors.blue;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "none";
-                          e.currentTarget.querySelector(".svc-arrow").style.color = colors.lightGray;
-                          e.currentTarget.querySelector(".svc-arrow").style.transform = "translateX(0)";
-                          e.currentTarget.querySelector(".svc-name").style.color = colors.navy;
-                        }}
-                      >
-                        <span className="svc-name" style={{
-                          fontSize: 13, fontWeight: 500, color: colors.navy,
-                          transition: "color 0.2s ease", lineHeight: 1.4
-                        }}>
-                          {lang === "ko" ? svc.ko : svc.en}
-                        </span>
-                        <span className="svc-arrow" style={{
-                          fontSize: 14, color: colors.lightGray, flexShrink: 0, marginLeft: 8,
-                          transition: "all 0.2s ease"
-                        }}>→</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          );
-        })()}
+        <div style={{ textAlign: "center" }}>
+          <button onClick={() => navigate("services")} style={{
+            background: "none", border: `1px solid ${colors.navy}33`, color: colors.navy,
+            fontFamily: fonts.sans, fontSize: 13, fontWeight: 600, letterSpacing: 0.5,
+            padding: "12px 26px", borderRadius: 100, cursor: "pointer"
+          }}>
+            {lang === "ko" ? "전체 서비스 보기 →" : "View All Services →"}
+          </button>
+        </div>
       </div>
 
       {/* Industry Spotlight on Home */}
@@ -1576,12 +1551,12 @@ export default function CRAccountancy() {
                     <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
                   </div>
                 ))}
-                <button onClick={() => navigate("contact")} style={{
+                <button onClick={() => navigate("construction")} style={{
                   marginTop: 24, width: "100%", background: colors.navy, border: "none", color: colors.white,
                   fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
                   padding: "14px 24px", cursor: "pointer", borderRadius: 4
                 }}>
-                  {lang === "en" ? "Schedule a Construction CPA Consult →" : "건설업 전문 상담 예약하기 →"}
+                  {lang === "en" ? "See Construction Services →" : "건설업 전문 서비스 보기 →"}
                 </button>
               </div>
             </div>
@@ -1607,12 +1582,12 @@ export default function CRAccountancy() {
                     <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
                   </div>
                 ))}
-                <button onClick={() => navigate("contact")} style={{
+                <button onClick={() => navigate("restaurant-tax")} style={{
                   marginTop: 24, width: "100%", background: "#7C2D12", border: "none", color: colors.white,
                   fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
                   padding: "14px 24px", cursor: "pointer", borderRadius: 4
                 }}>
-                  {lang === "en" ? "Schedule a Franchise CPA Consult →" : "프랜차이즈 전문 상담 예약하기 →"}
+                  {lang === "en" ? "See Restaurant Tax Services →" : "식당 세무 서비스 보기 →"}
                 </button>
               </div>
             </div>
@@ -1927,7 +1902,7 @@ export default function CRAccountancy() {
   const Footer = () => (
     <footer style={{ background: colors.darkNavy, borderTop: `1px solid ${colors.gold}22`, padding: "60px clamp(16px, 5vw, 40px) 40px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
+        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           <div>
             <div style={{ fontFamily: fonts.display, fontSize: 20, color: colors.white, marginBottom: 8 }}>Danny Kim, CPA</div>
             <div style={{ fontSize: 11, color: colors.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>CR Accountancy & Consulting</div>
@@ -1944,6 +1919,23 @@ export default function CRAccountancy() {
               }}>
                 {t.nav[p]}
               </button>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 600 }}>
+              {lang === "en" ? "For Businesses" : "사업체"}
+            </div>
+            {[
+              { p: "bookkeeping-payroll", en: "Monthly Books & Payroll", ko: "장부·급여 월 관리" },
+              { p: "restaurant-tax", en: "Restaurants", ko: "식당 세무" },
+              { p: "construction", en: "Construction", ko: "건설업" },
+              { p: "irs-ftb-letter", en: "IRS · FTB Letters", ko: "IRS·FTB 통지서" },
+            ].map((l) => (
+              <a key={l.p} href={`/${l.p}`} onClick={(e) => { e.preventDefault(); navigate(l.p); }} style={{
+                display: "block", color: colors.gray, fontSize: 13, padding: "6px 0", textDecoration: "none", fontFamily: fonts.sans
+              }}>
+                {lang === "en" ? l.en : l.ko}
+              </a>
             ))}
           </div>
           <div>
@@ -1971,6 +1963,9 @@ export default function CRAccountancy() {
     ? <ServiceDetailPage service={svc} lang={lang} colors={colors} fonts={fonts} navigate={navigate} />
     : page === "resources"
     ? <ResourcesPage lang={lang} colors={colors} fonts={fonts} />
+    : page === "construction" ? <ConstructionPage lang={lang} />
+    : LANDINGS[page] ? <LandingPage id={page} lang={lang} colors={colors} fonts={fonts}
+        form={<ContactForm lang={lang} t={t} colors={colors} fonts={fonts} />} />
     : page === "home" ? <HomePage />
     : page === "services" ? <ServicesPage />
     : page === "about" ? <AboutPage />
