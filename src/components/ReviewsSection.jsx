@@ -36,6 +36,17 @@ const REVIEWS_URL = process.env.NODE_ENV === 'development'
   ? 'https://dkcpala.com/api/reviews'
   : '/api/reviews';
 
+// One request per page load, shared by the first screen (rating line) and this section.
+let reviewsPromise = null;
+export function loadReviews() {
+  if (!reviewsPromise) {
+    reviewsPromise = fetch(REVIEWS_URL)
+      .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
+      .catch(err => { reviewsPromise = null; throw err; });
+  }
+  return reviewsPromise;
+}
+
 // ─── 문구 ─────────────────────────────────────────────────────────
 const TEXT = {
   en: {
@@ -110,8 +121,7 @@ export default function ReviewsSection({ lang = 'en' }) {
 
   // Google 최신 리뷰 5개 + 전체 평점·리뷰 수 (예시 리뷰는 쓰지 않음)
   useEffect(() => {
-    fetch(REVIEWS_URL)
-      .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
+    loadReviews()
       .then(data => {
         if (Array.isArray(data.reviews)) {
           setReviews(data.reviews.slice(0, 5));

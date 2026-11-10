@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import ReviewsSection from "./components/ReviewsSection";
+import ReviewsSection, { loadReviews } from "./components/ReviewsSection";
+import LineIcon from "./components/LineIcon";
 import ConstructionPage from "./components/ConstructionPage";
 import LandingPage, { LANDINGS } from "./components/LandingPage";
 import ClientStories from "./components/ClientStories";
@@ -114,7 +115,7 @@ const translations = {
       multilingualSubtitle: "We respond to written inquiries in the following languages"
     },
     footer: {
-      tagline: "Your Trusted Financial Partner",
+      tagline: "Tax · Accounting · Accounting systems",
       rights: `© ${new Date().getFullYear()} CR Accountancy and Consulting. All rights reserved.`,
       disclaimer: "Danny Kim, CPA · Licensed in the State of California"
     }
@@ -226,7 +227,7 @@ const translations = {
       multilingualSubtitle: "아래 언어로 서면 문의에 응대합니다"
     },
     footer: {
-      tagline: "신뢰할 수 있는 재무 파트너",
+      tagline: "세무 · 회계 · 회계 시스템",
       rights: `© ${new Date().getFullYear()} CR Accountancy and Consulting. All rights reserved.`,
       disclaimer: "Danny Kim, CPA · 캘리포니아 공인회계사"
     }
@@ -843,7 +844,7 @@ function ResourcesPage({ lang, colors, fonts }) {
       <div style={{ border: `1px solid ${colors.lightGray}`, borderTop: "none", borderRadius: "0 0 8px 8px", overflow: "hidden" }}>
         {/* Online section */}
         <div style={{ background: colors.cream, padding: "12px 24px", borderBottom: `1px solid ${colors.lightGray}`, display: "flex", alignItems: "center", gap: 8 }}>
-          <span>🌐</span>
+          <LineIcon name="globe" size={16} color={colors.gold} />
           <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: colors.gold, textTransform: "uppercase" }}>{isKo ? "온라인 납부" : "Online Payment"}</span>
         </div>
         {onlineRows.map((row, j) => (
@@ -858,7 +859,7 @@ function ResourcesPage({ lang, colors, fonts }) {
         ))}
         {/* Check/Mail section */}
         <div style={{ background: colors.cream, padding: "12px 24px", borderBottom: `1px solid ${colors.lightGray}`, display: "flex", alignItems: "center", gap: 8 }}>
-          <span>✉</span>
+          <LineIcon name="mail" size={16} color={colors.gold} />
           <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: colors.gold, textTransform: "uppercase" }}>{isKo ? "체크 / 우편 납부" : "Check / Mail Payment"}</span>
         </div>
         <div style={{ padding: "20px 24px" }}>
@@ -949,8 +950,9 @@ function ResourcesPage({ lang, colors, fonts }) {
       </div>
 
       <div style={{ background: "#FFF8F3", borderBottom: `1px solid ${colors.lightGray}`, padding: "20px 40px", textAlign: "center" }}>
-        <p style={{ fontSize: 13, color: colors.navy, maxWidth: 800, margin: "0 auto", lineHeight: 1.7 }}>
-          {isKo ? "💡 온라인 납부(은행 계좌 ACH)를 권장드립니다 — 무료이며, 빠르고, 즉시 확인 가능합니다." : "💡 Online payment (ACH/bank account) is always recommended — it's free, fast, and provides instant confirmation."}
+        <p style={{ fontSize: 13, color: colors.navy, maxWidth: 800, margin: "0 auto", lineHeight: 1.7, display: "flex", gap: 8, justifyContent: "center", alignItems: "flex-start" }}>
+          <LineIcon name="bulb" size={18} color={colors.gold} style={{ marginTop: 2 }} />
+          <span>{isKo ? "온라인 납부(은행 계좌 ACH)를 권장드립니다 — 무료이며, 빠르고, 즉시 확인 가능합니다." : "Online payment (ACH/bank account) is always recommended — it's free, fast, and provides instant confirmation."}</span>
         </p>
       </div>
 
@@ -958,7 +960,7 @@ function ResourcesPage({ lang, colors, fonts }) {
         {agencyBlock("IRS — Internal Revenue Service (Federal Income Tax)", "#1B3A5C", irsOnline, irsCheckSteps, irsAddr)}
 
         <div style={{ background: "#FEF3C7", border: "1px solid #F59E0B", borderRadius: 8, padding: "14px 20px", marginBottom: 40, display: "flex", gap: 12, alignItems: "start" }}>
-          <span style={{ fontSize: 20 }}>⚠</span>
+          <LineIcon name="alert" size={20} color="#B45309" style={{ marginTop: 1 }} />
           <p style={{ fontSize: 13, color: "#92400E", lineHeight: 1.7 }}>
             {isKo ? "EFTPS.gov는 2026년 개인 납부에서 단계적으로 폐지됩니다. IRS Direct Pay 또는 IRS Online Account로 전환하세요." : "EFTPS.gov is being phased out for individuals in 2026. Switch to IRS Direct Pay or create an IRS Online Account."}
           </p>
@@ -967,7 +969,7 @@ function ResourcesPage({ lang, colors, fonts }) {
         {agencyBlock("FTB — Franchise Tax Board (CA State Income Tax)", "#1E5C3A", ftbOnline, ftbCheckSteps, ftbAddr)}
 
         <div style={{ background: "#FEF3C7", border: "1px solid #F59E0B", borderRadius: 8, padding: "14px 20px", marginBottom: 40, display: "flex", gap: 12, alignItems: "start" }}>
-          <span style={{ fontSize: 20 }}>⚠</span>
+          <LineIcon name="alert" size={20} color="#B45309" style={{ marginTop: 1 }} />
           <p style={{ fontSize: 13, color: "#92400E", lineHeight: 1.7 }}>
             {isKo ? "일부 납세자는 전자 납부 의무 (Mandatory e-Pay). 전자 납부 의무자가 체크 납부 시 벌금 부과." : "Some taxpayers are required to pay electronically (Mandatory e-Pay). Penalty applies if you mail a check when e-pay is required."}
           </p>
@@ -995,8 +997,8 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
 
   const categoryColors = {
     "CORE TAX & ACCOUNTING": colors.navy,
-    "BUSINESS & FINANCIAL ADVISORY": "#1E5C3A",
-    "SPECIALTY SERVICES": "#5B2D8E"
+    "BUSINESS & FINANCIAL ADVISORY": colors.navy,
+    "SPECIALTY SERVICES": colors.navy
   };
   const catColor = categoryColors[service.category] || colors.navy;
 
@@ -1007,7 +1009,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
           {service.category}
         </div>
-        <div style={{ fontSize: 56, marginBottom: 16 }}>{service.icon}</div>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}><LineIcon name={service.icon} size={46} color={colors.lightGold} stroke={1.4} /></div>
         <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(32px, 5vw, 52px)", color: "#fff", fontWeight: 700, marginBottom: 16 }}>{t(service.title)}</h1>
         <GoldDivider />
         <p style={{ fontFamily: fonts.body, fontSize: 18, color: "#ffffffbb", marginTop: 20, maxWidth: 640, margin: "20px auto 0", fontStyle: "italic" }}>{t(service.tagline)}</p>
@@ -1116,7 +1118,11 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
               {isKo ? "전체 서비스 보기" : "All Services"}
             </button>
           </div>
-          <p style={{ fontSize: 13, color: "#ffffffaa" }}>📞 213-325-9800 &nbsp;·&nbsp; ✉ info.dkcpa@gmail.com &nbsp;·&nbsp; 🌐 dkcpala.com</p>
+          <p style={{ fontSize: 13, color: "#ffffffaa", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "6px 16px" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><LineIcon name="phone" size={14} />213-325-9800</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><LineIcon name="mail" size={14} />info.dkcpa@gmail.com</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><LineIcon name="globe" size={14} />dkcpala.com</span>
+          </p>
         </div>
       </div>
     </div>
@@ -1147,6 +1153,12 @@ export default function CRAccountancy() {
     try { return new URLSearchParams(window.location.search).get("lang") === "ko" ? "ko" : "en"; } catch (e) { return "en"; }
   });
   const [page, setPage] = useState(pathToPage);
+  const [gStats, setGStats] = useState(null); // Google rating + review count for the first screen
+  useEffect(() => {
+    loadReviews().then((d) => {
+      if (typeof d.rating === "number" && typeof d.total === "number" && d.total > 0) setGStats({ rating: d.rating, total: d.total });
+    }).catch(() => {});
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
@@ -1257,7 +1269,7 @@ export default function CRAccountancy() {
           {/* Accounting Systems & AI — stays in the top bar on tablets too (hidden on phones; phones get it in the menu) */}
           <a href={ACCT_URL} target="_blank" rel="noopener noreferrer" className="acct-nav-btn" style={{
             position: "relative", display: "inline-flex", alignItems: "center", textDecoration: "none",
-            background: `linear-gradient(135deg, #1e3a8a, ${colors.blue})`, border: `1px solid ${colors.lightGold}`,
+            background: "transparent", border: `1px solid ${colors.lightGold}99`,
             color: colors.white, fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 0.5,
             padding: "9px 16px", borderRadius: 6, marginRight: 8, whiteSpace: "nowrap"
           }}>
@@ -1325,22 +1337,32 @@ export default function CRAccountancy() {
           <div className="hero2-who">{lang === "ko" ? "Danny Kim, CPA · LA 코리아타운" : "Danny Kim, CPA · Koreatown, Los Angeles"}</div>
           <h1 className="hero2-h1">
             {lang === "ko"
-              ? (<><span>세금은 줄이고,</span><span className="hero2-accent">걱정은 덜고.</span></>)
-              : (<><span>Pay less tax.</span><span className="hero2-accent">Worry less about it.</span></>)}
+              ? (<><span>숫자가 정확하면,</span><span className="hero2-accent">결정이 빨라집니다.</span></>)
+              : (<><span>Clean numbers.</span><span className="hero2-accent">Faster decisions.</span></>)}
           </h1>
           <p className="hero2-sub">
             {lang === "ko"
-              ? "개인과 사업체의 세금·장부·급여를 한국어와 영어로 맡습니다."
-              : "Tax, bookkeeping and payroll for individuals and businesses, in Korean and English."}
+              ? "세무와 회계, 회계 시스템까지. LA의 사업체와 재무팀을 한국어와 영어로 돕습니다."
+              : "Tax, accounting and accounting systems for LA businesses and finance teams, in Korean and English."}
           </p>
           <div className="hero2-cta">
             <button type="button" className="hero2-btn" onClick={() => navigate("contact")}>
-              {t.hero.cta} <span aria-hidden="true">→</span>
+              {lang === "ko" ? "상담 예약하기" : "Book a consultation"} <span aria-hidden="true">→</span>
             </button>
-            <a className="hero2-call" href="tel:+12133259800">{lang === "ko" ? "또는 전화 213-325-9800" : "or call 213-325-9800"}</a>
+            <a className="hero2-call" href="tel:+12133259800">{lang === "ko" ? "첫 상담 30분 무료 · 213-325-9800" : "First 30 minutes free · 213-325-9800"}</a>
           </div>
           <button type="button" className="hero2-proof" onClick={() => { const el = document.getElementById("reviews"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>
-            <span className="hero2-star">★</span>{lang === "ko" ? "Google 리뷰 읽어 보기" : "Read Google reviews"}
+            {gStats ? (
+              <>
+                <span className="hero2-stars" aria-hidden="true">★★★★★</span>
+                <span>{lang === "ko"
+                  ? <>Google 평점 <b>{gStats.rating.toFixed(1)}</b> · 리뷰 {gStats.total}개</>
+                  : <><b>{gStats.rating.toFixed(1)}</b> on Google · {gStats.total} reviews</>}</span>
+                <span aria-hidden="true">→</span>
+              </>
+            ) : (
+              <><span className="hero2-star">★</span>{lang === "ko" ? "Google 리뷰 읽어 보기" : "Read Google reviews"}</>
+            )}
           </button>
         </div>
       </section>
@@ -1351,7 +1373,7 @@ export default function CRAccountancy() {
           <div className="svc2-head">
             <div>
               <div className="svc2-eyebrow">{lang === "ko" ? "서비스" : "Services"}</div>
-              <h2 className="svc2-h2">{lang === "ko" ? "무엇을 도와드릴까요?" : "What do you need help with?"}</h2>
+              <h2 className="svc2-h2">{lang === "ko" ? "맡기실 수 있는 일" : "What you can hand off"}</h2>
             </div>
             <button type="button" className="svc2-all" onClick={() => navigate("services")}>
               {lang === "ko" ? "전체 서비스 보기 →" : "All services →"}
@@ -1427,21 +1449,19 @@ export default function CRAccountancy() {
       <ReviewsSection lang={lang} />
 
       {/* CTA */}
-      <div className="cta-final" style={{ background: colors.cream, padding: "72px 40px", textAlign: "center" }}>
-        <h2 style={{ fontFamily: fonts.display, fontSize: 32, color: colors.navy, marginBottom: 16, wordBreak: "keep-all" }}>
-          {lang === "en" ? "Ready to Get Started?" : "시작할 준비가 되셨나요?"}
-        </h2>
-        <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginBottom: 32, fontWeight: 500 }}>
-          {lang === "en" ? "Schedule a free consultation today" : "지금 무료 상담을 예약하세요"}
-        </p>
-        <button onClick={() => navigate("contact")} style={{
-          background: colors.navy, border: "none", color: colors.white, fontFamily: fonts.sans,
-          fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-          padding: "18px 48px", cursor: "pointer", borderRadius: 4, boxShadow: `0 4px 24px ${colors.navy}22`
-        }}>
-          {t.hero.cta}
-        </button>
-      </div>
+      <section className="cta-final" data-ko={lang === "ko" ? "1" : "0"}>
+        <div className="hero2-glow" aria-hidden="true" />
+        <div className="cta-final-in">
+          <h2 className="cta-final-h">{lang === "en" ? "Let's start with your numbers." : "숫자부터 같이 보시죠."}</h2>
+          <p className="cta-final-sub">{lang === "en" ? "Tell me where things stand. I'll lay out what it takes, and what it doesn't." : "지금 상황을 말씀해 주시면, 무엇이 필요하고 무엇은 필요 없는지 정리해 드립니다."}</p>
+          <div className="hero2-cta cta-final-row">
+            <button type="button" className="hero2-btn" onClick={() => navigate("contact")}>
+              {lang === "ko" ? "상담 예약하기" : "Book a consultation"} <span aria-hidden="true">→</span>
+            </button>
+            <a className="hero2-call" href="tel:+12133259800">{lang === "ko" ? "첫 상담 30분 무료 · 213-325-9800" : "First 30 minutes free · 213-325-9800"}</a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 
@@ -1450,83 +1470,36 @@ export default function CRAccountancy() {
   // ============================================================
   const IndustrySpotlight = () => {
     const spotlight = t.industrySpotlight;
+    const ko = lang === "ko";
+    const cols = [
+      { key: "construction", icon: "hardhat", go: "construction", link: ko ? "건설업 전문 서비스 보기 →" : "Construction services →" },
+      { key: "bbq", icon: "utensils", go: "restaurant-tax", link: ko ? "식당 세무 서비스 보기 →" : "Restaurant services →" },
+    ];
     return (
-      <div style={{ background: `linear-gradient(180deg, ${colors.white} 0%, ${colors.cream} 100%)`, borderTop: `1px solid ${colors.lightGray}`, borderBottom: `1px solid ${colors.lightGray}` }}>
-        <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80, paddingLeft: 20, paddingRight: 20 }}>
-          <div style={{ textAlign: "center", marginBottom: 60 }}>
-            <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
-              {lang === "en" ? "Specialized Expertise" : "산업별 전문성"}
-            </div>
-            <h2 style={{ fontFamily: fonts.display, fontSize: 36, fontWeight: 700, color: colors.navy, marginBottom: 16 }}>{spotlight.title}</h2>
-            <GoldDivider />
-            <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>{spotlight.subtitle}</p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: 32 }}>
-            {/* Construction */}
-            <div style={{
-              background: colors.white, borderRadius: 8, border: `1px solid ${colors.lightGray}`,
-              overflow: "hidden", transition: "all 0.3s ease",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.04)"
-            }}>
-              <div style={{ background: `linear-gradient(135deg, ${colors.navy}, #1B3A5C)`, padding: "24px 24px", display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ fontSize: 40 }}>🏗️</div>
-                <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.white, fontWeight: 700 }}>{spotlight.construction.title}</h3>
-              </div>
-              <div style={{ padding: "24px 24px" }}>
-                <p style={{ fontSize: 14, color: colors.gray, lineHeight: 1.8, marginBottom: 24 }}>{spotlight.construction.desc}</p>
-                <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
-                  {lang === "en" ? "What We Deliver" : "제공 서비스"}
-                </div>
-                {spotlight.construction.features.map((f, j) => (
-                  <div key={j} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: j < 4 ? `1px solid ${colors.lightGray}` : "none" }}>
-                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: `linear-gradient(135deg, ${colors.blue}, ${colors.gold})`, flexShrink: 0 }} />
-                    <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
+      <section className="ind2" data-ko={ko ? "1" : "0"}>
+        <div className="ind2-in">
+          <div className="svc2-eyebrow">{ko ? "업종별 전문" : "Industries"}</div>
+          <h2 className="svc2-h2 ind2-h2">{ko ? "업종마다 숫자를 보는 법이 다릅니다" : "Every industry reads its numbers differently"}</h2>
+          <div className="ind2-cols">
+            {cols.map((c) => {
+              const d = spotlight[c.key];
+              return (
+                <div key={c.key} className="ind2-col">
+                  <div className="ind2-top">
+                    <LineIcon name={c.icon} size={30} color={colors.gold} stroke={1.5} />
+                    <h3 className="ind2-title">{d.title}</h3>
                   </div>
-                ))}
-                <button onClick={() => navigate("construction")} style={{
-                  marginTop: 24, width: "100%", background: colors.navy, border: "none", color: colors.white,
-                  fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-                  padding: "14px 24px", cursor: "pointer", borderRadius: 4
-                }}>
-                  {lang === "en" ? "See Construction Services →" : "건설업 전문 서비스 보기 →"}
-                </button>
-              </div>
-            </div>
-
-            {/* BBQ Franchise */}
-            <div style={{
-              background: colors.white, borderRadius: 8, border: `1px solid ${colors.lightGray}`,
-              overflow: "hidden", transition: "all 0.3s ease",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.04)"
-            }}>
-              <div style={{ background: `linear-gradient(135deg, #7C2D12, #B45309)`, padding: "24px 24px", display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ fontSize: 40 }}>🍗</div>
-                <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.white, fontWeight: 700 }}>{spotlight.bbq.title}</h3>
-              </div>
-              <div style={{ padding: "24px 24px" }}>
-                <p style={{ fontSize: 14, color: colors.gray, lineHeight: 1.8, marginBottom: 24 }}>{spotlight.bbq.desc}</p>
-                <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
-                  {lang === "en" ? "What We Deliver" : "제공 서비스"}
+                  <p className="ind2-desc">{d.desc}</p>
+                  <ul className="ind2-list">
+                    {d.features.map((f) => <li key={f}>{f}</li>)}
+                  </ul>
+                  <button type="button" className="svc2-all ind2-link" onClick={() => navigate(c.go)}>{c.link}</button>
                 </div>
-                {spotlight.bbq.features.map((f, j) => (
-                  <div key={j} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: j < 4 ? `1px solid ${colors.lightGray}` : "none" }}>
-                    <div style={{ width: 7, height: 7, borderRadius: "50%", background: `linear-gradient(135deg, #B45309, ${colors.gold})`, flexShrink: 0 }} />
-                    <span style={{ fontSize: 13, color: colors.navy, fontWeight: 500 }}>{f}</span>
-                  </div>
-                ))}
-                <button onClick={() => navigate("restaurant-tax")} style={{
-                  marginTop: 24, width: "100%", background: "#7C2D12", border: "none", color: colors.white,
-                  fontFamily: fonts.sans, fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-                  padding: "14px 24px", cursor: "pointer", borderRadius: 4
-                }}>
-                  {lang === "en" ? "See Restaurant Tax Services →" : "식당 세무 서비스 보기 →"}
-                </button>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
     );
   };
 
@@ -1538,8 +1511,7 @@ export default function CRAccountancy() {
     // Three consulting offerings, one card each (each card = one link)
     const cards = [
       {
-        href: `${ACCT_URL}#check`, isNew: true, icon: "🔍",
-        bg: "linear-gradient(150deg, #1e3a8a 0%, #1d4ed8 100%)", border: "#3b82f6",
+        href: `${ACCT_URL}#check`, isNew: true, icon: "search",
         kicker: ko ? "회계 시스템 · AI" : "Accounting Systems & AI",
         title: ko ? "회계 시스템·AI 진단" : "Accounting System & AI Assessment",
         desc: ko ? "QuickBooks부터 AI 도구까지, 지금 쓰는 시스템을 진단하고 맞는 방향을 제안합니다."
@@ -1547,8 +1519,7 @@ export default function CRAccountancy() {
         cta: ko ? "무료 2분 자가 점검 →" : "Free 2-minute self-check →"
       },
       {
-        href: "https://consulting.dkcpala.com/banking", icon: "🏦",
-        bg: "linear-gradient(150deg, #8B3414 0%, #5F220E 100%)", border: "#A8481F",
+        href: "https://consulting.dkcpala.com/banking", icon: "landmark",
         kicker: ko ? "SBA · 은행 대출" : "SBA & Bank Loans",
         title: ko ? "은행 대출 준비 프로그램" : "Bank Loan Readiness Program",
         desc: ko ? "신청 전에 숫자부터 준비합니다. 지금 신청해도 되는지 2분이면 확인할 수 있습니다."
@@ -1556,8 +1527,7 @@ export default function CRAccountancy() {
         cta: ko ? "지금 신청해도 될까요? →" : "Should you apply yet? →"
       },
       {
-        href: "https://consulting.dkcpala.com", icon: "🛠️",
-        bg: `${colors.white}0d`, border: `${colors.white}26`,
+        href: "https://consulting.dkcpala.com", icon: "wrench",
         kicker: ko ? "맞춤형 앱" : "Custom Apps",
         title: ko ? "업무에 맞춘 앱 제작" : "Apps Built Around Your Business",
         tags: ko ? ["건설 Job Costing", "식당 재고·원가", "급여·현금 관리", "오너 대시보드"]
@@ -1567,7 +1537,7 @@ export default function CRAccountancy() {
     ];
     return (
       <div style={{ background: colors.darkNavy, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 80% 30%, ${colors.blue}22 0%, transparent 50%), radial-gradient(circle at 15% 80%, ${colors.gold}15 0%, transparent 45%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 85% 20%, ${colors.gold}1c 0%, transparent 45%), radial-gradient(circle at 10% 90%, ${colors.gold}10 0%, transparent 40%)`, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px", position: "relative" }}>
           <div style={{ maxWidth: 760, marginBottom: 40 }}>
             <div style={{ fontSize: 11, letterSpacing: 5, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 700 }}>
@@ -1585,14 +1555,14 @@ export default function CRAccountancy() {
             {cards.map((c, i) => (
               <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className="cs-card" style={{
                 position: "relative", display: "flex", flexDirection: "column", textDecoration: "none",
-                background: c.bg, border: `1px solid ${c.border}`, borderRadius: 10, padding: "26px 24px",
-                boxShadow: c.isNew ? "0 10px 36px rgba(37,99,235,.35)" : "none", wordBreak: "keep-all"
+                background: `${colors.white}08`, border: `1px solid ${c.isNew ? colors.lightGold + "88" : colors.white + "1f"}`, borderRadius: 10, padding: "26px 24px",
+                wordBreak: "keep-all"
               }}>
                 {c.isNew && (
                   <span style={{ position: "absolute", top: 18, right: 18, fontSize: 10, fontWeight: 800, letterSpacing: 1, background: colors.gold, color: colors.darkNavy, padding: "3px 8px", borderRadius: 8 }}>NEW</span>
                 )}
-                <span style={{ fontSize: 30, marginBottom: 14 }}>{c.icon}</span>
-                <span style={{ fontSize: 10, letterSpacing: 3, color: "#E8C15A", textTransform: "uppercase", fontWeight: 700, marginBottom: 8 }}>{c.kicker}</span>
+                <span style={{ marginBottom: 16 }}><LineIcon name={c.icon} size={28} color={colors.lightGold} stroke={1.5} /></span>
+                <span style={{ fontSize: 10, letterSpacing: 3, color: colors.lightGold, textTransform: "uppercase", fontWeight: 700, marginBottom: 8 }}>{c.kicker}</span>
                 <span style={{ fontFamily: fonts.display, fontSize: 21, fontWeight: 700, color: colors.white, lineHeight: 1.3, marginBottom: 10 }}>{c.title}</span>
                 {c.desc && (
                   <span style={{ fontSize: 14, color: `${colors.cream}e0`, lineHeight: 1.7, marginBottom: 18 }}>{c.desc}</span>
@@ -1604,7 +1574,7 @@ export default function CRAccountancy() {
                     ))}
                   </span>
                 )}
-                <span style={{ marginTop: "auto", fontSize: 13, fontWeight: 700, color: "#E8C15A", letterSpacing: 0.5 }}>{c.cta}</span>
+                <span style={{ marginTop: "auto", fontSize: 13, fontWeight: 700, color: colors.lightGold, letterSpacing: 0.5 }}>{c.cta}</span>
               </a>
             ))}
           </div>
@@ -1626,12 +1596,12 @@ export default function CRAccountancy() {
     const categories = ["CORE TAX & ACCOUNTING", "BUSINESS & FINANCIAL ADVISORY", "SPECIALTY SERVICES"];
     const catLabels = {
       "CORE TAX & ACCOUNTING": { en: "Core Tax & Accounting", ko: "세금 & 회계 서비스", color: colors.navy },
-      "BUSINESS & FINANCIAL ADVISORY": { en: "Business & Financial Advisory", ko: "사업 & 재무 자문", color: "#1E5C3A" },
-      "SPECIALTY SERVICES": { en: "Specialty Services", ko: "전문 특화 서비스", color: "#5B2D8E" }
+      "BUSINESS & FINANCIAL ADVISORY": { en: "Business & Financial Advisory", ko: "사업 & 재무 자문", color: colors.navy },
+      "SPECIALTY SERVICES": { en: "Specialty Services", ko: "전문 특화 서비스", color: colors.navy }
     };
     return (
       <div>
-        <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 60%, #EEF2FF 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
+        <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
           <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
             {lang === "en" ? "What We Do" : "서비스 안내"}
           </div>
@@ -1658,11 +1628,11 @@ export default function CRAccountancy() {
                     <div key={svc.id}
                       onClick={() => navigate(svc.id)}
                       style={{ background: colors.white, border: `1px solid ${colors.lightGray}`, borderRadius: 6, padding: "28px 28px 24px", cursor: "pointer", transition: "all 0.3s ease", position: "relative", overflow: "hidden" }}
-                      onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.09)"; e.currentTarget.style.borderColor = label.color; }}
+                      onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.09)"; e.currentTarget.style.borderColor = colors.lightGold; }}
                       onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = colors.lightGray; }}
                     >
-                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: label.color }} />
-                      <div style={{ fontSize: 36, marginBottom: 12 }}>{svc.icon}</div>
+                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: colors.gold }} />
+                      <div style={{ marginBottom: 14 }}><LineIcon name={svc.icon} size={30} color={colors.gold} stroke={1.5} /></div>
                       <h3 style={{ fontFamily: fonts.display, fontSize: 17, fontWeight: 700, color: colors.navy, marginBottom: 8 }}>{lang === "ko" ? svc.title.ko : svc.title.en}</h3>
                       <p style={{ fontSize: 12, color: colors.gray, lineHeight: 1.6, marginBottom: 16 }}>{lang === "ko" ? svc.tagline.ko : svc.tagline.en}</p>
                       <div style={{ fontSize: 12, fontWeight: 700, color: label.color, letterSpacing: 1 }}>{lang === "ko" ? "자세히 보기 →" : "Learn More →"}</div>
@@ -1688,7 +1658,7 @@ export default function CRAccountancy() {
   const AboutPage = () => (
     <div>
       <div style={{
-        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 60%, #EEF2FF 100%)`,
+        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`,
         padding: "160px 40px 80px", textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
@@ -1723,7 +1693,7 @@ export default function CRAccountancy() {
               <div className="two-col-sm" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 {t.about.industries.map((ind, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 16px", borderRadius: 4, background: i % 2 === 0 ? colors.cream : colors.white, border: `1px solid ${colors.lightGray}` }}>
-                    <span style={{ fontSize: 22 }}>{ind.icon}</span>
+                    <LineIcon name={ind.icon} size={22} color={colors.gold} stroke={1.5} />
                     <span style={{ fontSize: 14, color: colors.navy, fontWeight: 500 }}>{ind.name}</span>
                   </div>
                 ))}
@@ -1741,7 +1711,7 @@ export default function CRAccountancy() {
   const ContactPage = () => (
     <div>
       <div style={{
-        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 60%, #EEF2FF 100%)`,
+        background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`,
         padding: "160px 40px 80px", textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
@@ -1766,13 +1736,13 @@ export default function CRAccountancy() {
               <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
                 {lang === "en" ? "Phone" : "전화"}
               </div>
-              <a href="tel:2133259800" style={{ fontSize: 15, color: colors.blue, textDecoration: "none", fontWeight: 600 }}>{t.contact.info.phone}</a>
+              <a href="tel:2133259800" style={{ fontSize: 15, color: colors.navy, textDecoration: "none", fontWeight: 600 }}>{t.contact.info.phone}</a>
             </div>
             <div style={{ marginBottom: 36 }}>
               <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
                 {lang === "en" ? "Email" : "이메일"}
               </div>
-              <a href="mailto:info.dkcpa@gmail.com" style={{ fontSize: 15, color: colors.blue, textDecoration: "none", fontWeight: 600 }}>{t.contact.info.email}</a>
+              <a href="mailto:info.dkcpa@gmail.com" style={{ fontSize: 15, color: colors.navy, textDecoration: "none", fontWeight: 600 }}>{t.contact.info.email}</a>
             </div>
             <div style={{ marginBottom: 36 }}>
               <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
@@ -1814,7 +1784,7 @@ export default function CRAccountancy() {
 
             {/* Map placeholder */}
             <div style={{ background: colors.cream, padding: 32, borderRadius: 4, textAlign: "center", marginTop: 24 }}>
-              <div style={{ fontSize: 36, marginBottom: 12 }}>📍</div>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}><LineIcon name="pin" size={32} color={colors.gold} stroke={1.5} /></div>
               <p style={{ fontSize: 13, color: colors.navy, lineHeight: 1.6 }}>Koreatown, Los Angeles</p>
               <p style={{ fontSize: 11, color: colors.gray, marginTop: 8 }}>
                 {lang === "en" ? "Conveniently located in the heart of Koreatown" : "코리아타운 중심부에 위치"}
@@ -1911,7 +1881,7 @@ export default function CRAccountancy() {
 
   return (
     <div style={baseStyles.page}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Source+Serif+4:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Source+Serif+4:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@500;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::selection { background: ${colors.gold}44; color: ${colors.navy}; }
@@ -1969,12 +1939,12 @@ export default function CRAccountancy() {
         .hero2-who { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
           color: ${colors.lightGold}; margin-bottom: 28px; }
         .hero2-who::before { content: ""; width: 32px; height: 1px; background: ${colors.lightGold}; }
-        .hero2-h1 { font-family: ${fonts.display}; font-weight: 400; font-size: clamp(44px, 7.4vw, 96px); line-height: 1.04;
-          letter-spacing: -1.5px; margin: 0 0 28px; }
+        .hero2-h1 { font-family: ${fonts.sans}; font-weight: 800; font-size: clamp(44px, 7vw, 92px); line-height: 1.02;
+          letter-spacing: -0.045em; margin: 0 0 28px; }
         .hero2-h1 span { display: block; }
         .hero2-accent { color: ${colors.lightGold}; }
-        .hero2[data-ko="1"] .hero2-h1 { font-family: 'Noto Serif KR', ${fonts.display}; font-weight: 700; letter-spacing: -2px;
-          line-height: 1.12; font-size: clamp(42px, 7.6vw, 92px); max-width: none; word-break: keep-all; }
+        .hero2[data-ko="1"] .hero2-h1 { font-family: 'Noto Sans KR', ${fonts.sans}; font-weight: 800; letter-spacing: -0.05em;
+          line-height: 1.14; font-size: clamp(40px, 6.6vw, 84px); max-width: none; word-break: keep-all; }
         .hero2-sub { font-size: clamp(16px, 1.9vw, 20px); line-height: 1.65; color: #FFFFFFB3; max-width: 34em; margin: 0 0 40px; }
         .hero2[data-ko="1"] .hero2-sub { word-break: keep-all; }
         .hero2-cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
@@ -1989,6 +1959,34 @@ export default function CRAccountancy() {
           color: #FFFFFF99; font-family: ${fonts.sans}; font-size: 14px; font-weight: 500; }
         .hero2-proof:hover { color: #fff; }
         .hero2-star { color: ${colors.lightGold}; font-size: 16px; }
+        .hero2-stars { color: ${colors.lightGold}; font-size: 14px; letter-spacing: 2px; }
+        .hero2-proof b { color: #fff; font-weight: 700; }
+
+        /* ── Home: industries (same language as the services list) ── */
+        .ind2 { background: #F6F4F0; padding: clamp(64px, 9vw, 112px) clamp(16px, 5vw, 40px); }
+        .ind2[data-ko="1"] { word-break: keep-all; }
+        .ind2-in { max-width: 1200px; margin: 0 auto; }
+        .ind2-h2 { margin-bottom: 44px; }
+        .ind2[data-ko="1"] .svc2-h2 { font-family: ${fonts.sans}; font-weight: 700; letter-spacing: -0.5px; }
+        .ind2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(32px, 6vw, 88px); }
+        .ind2-col { border-top: 1.5px solid ${colors.navy}; padding-top: 26px; display: flex; flex-direction: column; }
+        .ind2-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+        .ind2-title { font-family: ${fonts.sans}; font-size: 22px; font-weight: 700; color: ${colors.navy}; letter-spacing: -0.3px; line-height: 1.3; margin: 0; }
+        .ind2-desc { font-size: 15.5px; color: #4B5563; line-height: 1.75; margin: 0 0 20px; }
+        .ind2-list { list-style: none; margin: 0 0 26px; padding: 0; }
+        .ind2-list li { position: relative; padding: 12px 0 12px 22px; border-bottom: 1px solid ${colors.lightGray}; font-size: 15px; color: ${colors.navy}; }
+        .ind2-list li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 8px; height: 1.5px; background: ${colors.gold}; }
+        .ind2-link { align-self: flex-start; margin-top: auto; }
+
+        /* ── Home: closing band (matches the first screen) ── */
+        .cta-final { position: relative; overflow: hidden; color: #fff; text-align: center;
+          background: linear-gradient(155deg, #0B131C 0%, ${colors.navy} 58%, #24324A 100%);
+          padding: clamp(72px, 10vw, 120px) clamp(16px, 5vw, 40px); border-bottom: 1px solid #FFFFFF14; }
+        .cta-final-in { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+        .cta-final-h { font-family: ${fonts.sans}; font-weight: 800; font-size: clamp(34px, 5vw, 58px); line-height: 1.1; letter-spacing: -0.04em; margin: 0 0 18px; color: #fff; }
+        .cta-final[data-ko="1"] .cta-final-h { font-family: 'Noto Sans KR', ${fonts.sans}; letter-spacing: -0.05em; word-break: keep-all; }
+        .cta-final-sub { font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; color: #FFFFFFB3; margin: 0 auto 36px; max-width: 34em; word-break: keep-all; }
+        .cta-final-row { justify-content: center; }
 
         /* ── Home: S corp calculator entry ── */
         .calc-band { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -2015,7 +2013,9 @@ export default function CRAccountancy() {
           .acct-strip-cta { width: 100%; text-align: center; }
           .nav-inner { padding: 0 16px !important; }
           .brand { --s: 0.8; margin-right: 12px; }
-          .cta-final { padding: 64px 16px !important; }
+          .ind2-cols { grid-template-columns: 1fr; gap: 44px; }
+          .ind2-title { font-size: 20px; }
+          .cta-final-row { align-items: stretch; }
           .svc2-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
           .svc2-cols { grid-template-columns: 1fr; gap: 40px; }
           .svc2-row { font-size: 16px; padding: 16px 2px; }

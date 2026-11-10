@@ -87,7 +87,7 @@ export default function ClientStories({ ids = ORDER, lang, colors, fonts, backgr
             {ko ? "처리 사례" : "Client stories"}
           </div>
           <h2 style={{ fontFamily: ko ? fonts.sans : fonts.display, fontWeight: ko ? 700 : 400, fontSize: "clamp(28px, 3.6vw, 40px)", lineHeight: 1.2, color: colors.navy, margin: 0 }}>
-            {ko ? "이런 일을 해결해 왔습니다" : "Problems I've worked through"}
+            {ko ? "최근에 맡았던 일" : "Recent work"}
           </h2>
         </div>
         <div className={list.length === 1 ? "st-grid one" : "st-grid"}>

@@ -83,7 +83,7 @@ export default function ClientInfoPage({ lang, colors, fonts, navigate }) {
         .ci-box h3 { margin: 0 0 10px; font-size: 17px; color: ${colors.navy}; }
         .ci-box p, .ci-box li { font-size: 15px; line-height: 1.7; color: #374151; margin: 0 0 8px; }
         .ci-box ul { padding-left: 18px; margin: 0; }
-        .ci-link { background: none; border: 0; padding: 0; color: ${colors.blue}; font-weight: 700; cursor: pointer; font-size: 15px; font-family: ${fonts.sans}; }
+        .ci-link { background: none; border: 0; padding: 0; color: ${colors.navy}; font-weight: 700; cursor: pointer; font-size: 15px; font-family: ${fonts.sans}; text-decoration: underline; text-decoration-color: ${colors.gold}; text-underline-offset: 3px; }
         .ci-dl { border: 1px solid ${colors.lightGray}; border-radius: 12px; overflow: hidden; background: #fff; }
         .ci-dl div { display: grid; grid-template-columns: 170px 1fr; gap: 16px; padding: 14px 18px; border-bottom: 1px solid ${colors.lightGray}; }
         .ci-dl div:last-child { border-bottom: 0; }
