@@ -70,7 +70,9 @@ export default function ClientInfoPage({ lang, colors, fonts, navigate }) {
         .ci-sec { padding: clamp(44px, 6vw, 72px) clamp(16px, 5vw, 40px); }
         .ci-sec.alt { background: #F6F4F0; }
         .ci-h2 { font-family: ${fonts.display}; font-weight: 400; font-size: clamp(24px, 3vw, 32px); color: ${colors.navy}; margin: 0 0 22px; }
-        .ci-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 14px; counter-reset: s; }
+        .ci-steps { display: grid; grid-template-columns: 1fr; gap: 14px; counter-reset: s; }
+        @media (min-width: 560px) { .ci-steps { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1000px) { .ci-steps { grid-template-columns: repeat(4, 1fr); } }
         .ci-step { background: #fff; border: 1px solid ${colors.lightGray}; border-radius: 12px; padding: 20px; }
         .ci-step b { display: flex; align-items: center; gap: 10px; color: ${colors.navy}; font-size: 16px; margin-bottom: 8px; }
         .ci-step b::before { counter-increment: s; content: counter(s); width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;

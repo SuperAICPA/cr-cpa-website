@@ -1427,8 +1427,8 @@ export default function CRAccountancy() {
       <ReviewsSection lang={lang} />
 
       {/* CTA */}
-      <div style={{ background: colors.cream, padding: "72px 40px", textAlign: "center" }}>
-        <h2 style={{ fontFamily: fonts.display, fontSize: 32, color: colors.navy, marginBottom: 16 }}>
+      <div className="cta-final" style={{ background: colors.cream, padding: "72px 40px", textAlign: "center" }}>
+        <h2 style={{ fontFamily: fonts.display, fontSize: 32, color: colors.navy, marginBottom: 16, wordBreak: "keep-all" }}>
           {lang === "en" ? "Ready to Get Started?" : "시작할 준비가 되셨나요?"}
         </h2>
         <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginBottom: 32, fontWeight: 500 }}>
@@ -1581,7 +1581,7 @@ export default function CRAccountancy() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
+          <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
             {cards.map((c, i) => (
               <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className="cs-card" style={{
                 position: "relative", display: "flex", flexDirection: "column", textDecoration: "none",
@@ -1919,6 +1919,8 @@ export default function CRAccountancy() {
         .res-row a { overflow-wrap: anywhere; }
         .cs-card { transition: transform .2s ease, box-shadow .2s ease; }
         .cs-card:hover { transform: translateY(-4px); }
+        /* tablets: the grid has two columns, so let a lone last card use the full row */
+        @media (min-width: 660px) and (max-width: 959px) { .cs-grid > .cs-card:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 
         /* ── Logo lockup (mark | name over firm name) ── */
         .brand { --s: 0.9; display: flex; flex-shrink: 0; margin-right: 20px; align-items: center; gap: calc(13px * var(--s)); text-decoration: none; cursor: pointer; }
@@ -2013,6 +2015,7 @@ export default function CRAccountancy() {
           .acct-strip-cta { width: 100%; text-align: center; }
           .nav-inner { padding: 0 16px !important; }
           .brand { --s: 0.8; margin-right: 12px; }
+          .cta-final { padding: 64px 16px !important; }
           .svc2-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
           .svc2-cols { grid-template-columns: 1fr; gap: 40px; }
           .svc2-row { font-size: 16px; padding: 16px 2px; }
