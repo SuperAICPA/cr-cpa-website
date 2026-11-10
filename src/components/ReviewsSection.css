@@ -23,7 +23,7 @@
   font-size: clamp(26px, 4vw, 36px); font-weight: 700;
   color: #1a1a2e; margin-bottom: 6px; line-height: 1.2;
 }
-.rv-subtitle { font-size: 16px; color: #6b7280; font-style: italic; }
+.rv-subtitle { font-size: 16px; color: #6b7280; word-break: keep-all; }
 
 /* ─── 통계 ─── */
 .rv-stats {
@@ -77,6 +77,8 @@
 
 .rv-card-meta { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .rv-author { font-size: 14px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+a.rv-author { text-decoration: none; }
+a.rv-author:hover { text-decoration: underline; }
 .rv-date { font-size: 12px; color: #9ca3af; }
 
 /* Google 배지 */
@@ -134,8 +136,11 @@
 }
 @media (max-width: 600px) {
   .rv-section { padding: 60px 16px; }
-  .rv-prev { left: 4px; }
-  .rv-next { right: 4px; }
+  /* on phones the arrows covered the review text: swipe or tap the dots instead */
+  .rv-arrow { display: none; }
+  .rv-dots { gap: 12px; }
+  .rv-dot { width: 10px; height: 10px; }
+  .rv-dot.active { width: 26px; border-radius: 5px; }
   /* keep the rating box inside a phone-width screen */
   .rv-stats { width: 100%; gap: 12px; padding: 16px; justify-content: space-between; }
   .rv-stat { min-width: 0; }

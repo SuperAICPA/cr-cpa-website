@@ -30,57 +30,30 @@ const Avatar = ({ author, avatar }) => {
   return <div className="rv-avatar-initials">{initials}</div>;
 };
 
-// ─── 정적 fallback 리뷰 (API 연결 전 또는 실패 시 표시) ─────────────
-const FALLBACK_REVIEWS = [
-  {
-    source: 'google',
-    author: 'James P.',
-    avatar: null,
-    rating: 5,
-    text: 'Danny is the best CPA in the town. He is honest, trustworthy, knowledgeable, and extremely personable. He has been taking care of my taxes and all of my family.',
-    date: '2026-01-15T00:00:00Z',
-    url: 'https://g.page/r/CbBcrZOvjfxzEBM/review',
+// 리뷰는 Vercel 서버 함수(/api/reviews)에서 옵니다. npm start 로컬 미리보기에서는
+// 그 함수가 돌지 않으므로 실제 사이트의 주소에서 받아 옵니다.
+const REVIEWS_URL = process.env.NODE_ENV === 'development'
+  ? 'https://dkcpala.com/api/reviews'
+  : '/api/reviews';
+
+// ─── 문구 ─────────────────────────────────────────────────────────
+const TEXT = {
+  en: {
+    label: 'Client reviews', title: 'What clients say',
+    subtitle: 'The five most recent reviews on Google, shown as posted.',
+    rating: 'Google rating', count: 'Google reviews',
+    more: 'Read more', less: 'Show less', write: 'Leave a Google review', locale: 'en-US',
   },
-  {
-    source: 'google',
-    author: 'Sarah K.',
-    avatar: null,
-    rating: 5,
-    text: 'Extremely professional and thorough. Danny helped me navigate a complicated business tax situation and saved me significantly. Highly recommend for any Korean-speaking clients.',
-    date: '2025-11-10T00:00:00Z',
-    url: 'https://g.page/r/CbBcrZOvjfxzEBM/review',
+  ko: {
+    label: 'Google 리뷰', title: '고객분들이 남긴 리뷰',
+    subtitle: 'Google에 올라온 최근 리뷰 5개를 그대로 보여 드립니다.',
+    rating: 'Google 평점', count: 'Google 리뷰',
+    more: '더 보기', less: '접기', write: 'Google 리뷰 남기기', locale: 'ko-KR',
   },
-  {
-    source: 'google',
-    author: 'Michael L.',
-    avatar: null,
-    rating: 5,
-    text: 'CR Accountancy handled our construction company payroll and job costing seamlessly. Finally found a CPA who truly understands the construction industry.',
-    date: '2025-09-22T00:00:00Z',
-    url: 'https://g.page/r/CbBcrZOvjfxzEBM/review',
-  },
-  {
-    source: 'google',
-    author: 'Linda H.',
-    avatar: null,
-    rating: 5,
-    text: 'Danny has been our family CPA for over 5 years. Always responsive, accurate, and genuinely cares about his clients. 한국어로 소통할 수 있어서 특히 좋습니다.',
-    date: '2025-07-08T00:00:00Z',
-    url: 'https://g.page/r/CbBcrZOvjfxzEBM/review',
-  },
-  {
-    source: 'google',
-    author: 'Kevin C.',
-    avatar: null,
-    rating: 5,
-    text: 'Switched to CR Accountancy after years of frustration with other CPAs. The difference is night and day — proactive, detail-oriented, and explains everything clearly.',
-    date: '2025-05-30T00:00:00Z',
-    url: 'https://g.page/r/CbBcrZOvjfxzEBM/review',
-  },
-];
+};
 
 // ─── 리뷰 카드 ────────────────────────────────────────────────────
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, t }) => {
   const [expanded, setExpanded] = useState(false);
   const TRUNCATE = 160;
   const needsTruncate = review.text.length > TRUNCATE;
@@ -88,7 +61,7 @@ const ReviewCard = ({ review }) => {
     ? review.text.slice(0, TRUNCATE).trimEnd() + '…'
     : review.text;
 
-  const dateStr = new Date(review.date).toLocaleDateString('en-US', {
+  const dateStr = new Date(review.date).toLocaleDateString(t.locale, {
     month: 'short', year: 'numeric'
   });
 
@@ -97,7 +70,9 @@ const ReviewCard = ({ review }) => {
       <div className="rv-card-header">
         <Avatar author={review.author} avatar={review.avatar} />
         <div className="rv-card-meta">
-          <span className="rv-author">{review.author}</span>
+          {review.url
+            ? <a className="rv-author" href={review.url} target="_blank" rel="noopener noreferrer">{review.author}</a>
+            : <span className="rv-author">{review.author}</span>}
           <span className="rv-date">{dateStr}</span>
         </div>
         <span className="rv-source-badge">
@@ -112,7 +87,7 @@ const ReviewCard = ({ review }) => {
 
       {needsTruncate && (
         <button className="rv-expand" onClick={() => setExpanded(!expanded)}>
-          {expanded ? 'Show less' : 'Read more'}
+          {expanded ? t.less : t.more}
         </button>
       )}
     </div>
@@ -120,28 +95,33 @@ const ReviewCard = ({ review }) => {
 };
 
 // ─── 메인 컴포넌트 ────────────────────────────────────────────────
-export default function ReviewsSection() {
-  const [reviews, setReviews]       = useState(FALLBACK_REVIEWS);
-  const [totalCount, setTotalCount] = useState(FALLBACK_REVIEWS.length);
+export default function ReviewsSection({ lang = 'en' }) {
+  const t = TEXT[lang === 'ko' ? 'ko' : 'en'];
+  const [reviews, setReviews]       = useState([]);
+  const [rating, setRating]         = useState(null);
+  const [totalCount, setTotalCount] = useState(null);
   const [activeIdx, setActiveIdx]   = useState(0);
   const [isPaused, setIsPaused]     = useState(false);
   const [perPage, setPerPage]       = useState(3);
   const activeIdxRef = useRef(0);
   const timerRef = useRef(null);
+  const touchX = useRef(0);
+  const [loadFailed, setLoadFailed] = useState(false);
 
-  // 실시간 Google 리뷰 fetch
+  // Google 최신 리뷰 5개 + 전체 평점·리뷰 수 (예시 리뷰는 쓰지 않음)
   useEffect(() => {
-    fetch('/api/reviews')
+    fetch(REVIEWS_URL)
       .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
       .then(data => {
-        if (Array.isArray(data.reviews) && data.reviews.length > 0) {
-          setReviews(data.reviews);
+        if (Array.isArray(data.reviews)) {
+          setReviews(data.reviews.slice(0, 5));
           setActiveIdx(0);
           activeIdxRef.current = 0;
         }
-        if (data.meta?.total) setTotalCount(data.meta.total);
+        if (typeof data.rating === 'number') setRating(data.rating);
+        if (typeof data.total === 'number') setTotalCount(data.total);
       })
-      .catch(() => {}); // 실패 시 fallback 유지
+      .catch(() => setLoadFailed(true));
   }, []);
 
   // 화면 크기에 따라 한 번에 보여줄 슬라이드 수 결정
@@ -174,9 +154,6 @@ export default function ReviewsSection() {
     return () => clearInterval(timerRef.current);
   }, [isPaused, goTo, maxIdx]);
 
-  const avgRating = reviews.length
-    ? (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1)
-    : '5.0';
 
   return (
     <section className="rv-section" id="reviews">
@@ -184,39 +161,43 @@ export default function ReviewsSection() {
       {/* 헤더 */}
       <div className="rv-header">
         <div className="rv-header-text">
-          <p className="rv-label">Client Reviews</p>
-          <h2 className="rv-title">What Our Clients Say</h2>
-          <p className="rv-subtitle">Honest words from those we've served</p>
+          <p className="rv-label">{t.label}</p>
+          <h2 className="rv-title">{t.title}</h2>
+          <p className="rv-subtitle">{t.subtitle}</p>
         </div>
 
-        {/* 통계 */}
-        <div className="rv-stats">
-          <div className="rv-stat">
-            <span className="rv-stat-num">{avgRating}</span>
-            <Stars rating={5} />
-            <span className="rv-stat-label">Average Rating</span>
-          </div>
-          <div className="rv-stat-divider" />
-          <div className="rv-stat">
-            <div className="rv-stat-google">
-              <GoogleIcon size={20} />
-              <span className="rv-stat-count">{totalCount}</span>
+        {/* 통계 — Google에서 받은 실제 평점과 리뷰 수만 표시 */}
+        {rating !== null && totalCount !== null && (
+          <div className="rv-stats">
+            <div className="rv-stat">
+              <span className="rv-stat-num">{rating.toFixed(1)}</span>
+              <Stars rating={Math.round(rating)} />
+              <span className="rv-stat-label">{t.rating}</span>
             </div>
-            <span className="rv-stat-label">Google Reviews</span>
+            <div className="rv-stat-divider" />
+            <div className="rv-stat">
+              <div className="rv-stat-google">
+                <GoogleIcon size={20} />
+                <span className="rv-stat-count">{totalCount}</span>
+              </div>
+              <span className="rv-stat-label">{t.count}</span>
+            </div>
           </div>
-          <div className="rv-stat-divider" />
-          <div className="rv-stat">
-            <span className="rv-stat-num">100%</span>
-            <span className="rv-stat-label">Recommend Us</span>
-          </div>
-        </div>
+        )}
       </div>
 
+      {total > 0 && (<>
       {/* 캐러셀 */}
       <div
         className="rv-carousel"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={(e) => { touchX.current = e.touches[0].clientX; setIsPaused(true); }}
+        onTouchEnd={(e) => {
+          const dx = e.changedTouches[0].clientX - touchX.current;
+          if (Math.abs(dx) > 40) goTo(activeIdxRef.current + (dx < 0 ? 1 : -1));
+          setIsPaused(false);
+        }}
       >
         <div
           className="rv-track"
@@ -224,7 +205,7 @@ export default function ReviewsSection() {
         >
           {reviews.map((review, i) => (
             <div key={i} className="rv-slide" style={{ flex: `0 0 ${100 / perPage}%` }}>
-              <ReviewCard review={review} />
+              <ReviewCard review={review} t={t} />
             </div>
           ))}
         </div>
@@ -257,6 +238,14 @@ export default function ReviewsSection() {
         ))}
       </div>
 
+      </>)}
+
+      {process.env.NODE_ENV === 'development' && loadFailed && total === 0 && (
+        <p style={{ textAlign: 'center', fontSize: 13, color: '#9ca3af', margin: '8px 0 0' }}>
+          (로컬 미리보기 안내) 실제 사이트에서 리뷰를 받아 오지 못했습니다. 배포된 사이트에서는 정상적으로 표시됩니다.
+        </p>
+      )}
+
       {/* Google 리뷰 남기기 버튼 */}
       <div className="rv-cta-row">
         <a
@@ -266,7 +255,7 @@ export default function ReviewsSection() {
           className="rv-cta"
         >
           <GoogleIcon size={16} />
-          Google 리뷰 남기기
+          {t.write}
         </a>
       </div>
 
