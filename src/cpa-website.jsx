@@ -2,10 +2,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import ReviewsSection from "./components/ReviewsSection";
 import ConstructionPage from "./components/ConstructionPage";
 import LandingPage, { LANDINGS } from "./components/LandingPage";
+import ClientStories from "./components/ClientStories";
+import SCorpCalculator from "./components/SCorpCalculator";
+import ClientInfoPage from "./components/ClientInfoPage";
 
 const translations = {
   en: {
-    nav: { home: "Home", services: "Services", about: "About", resources: "Resources", contact: "Contact" },
+    nav: { home: "Home", services: "Services", about: "About", resources: "Resources", "client-info": "Client Info", contact: "Contact" },
     hero: {
       tagline: "Helping LA's Korean Businesses Keep More & Grow Faster",
       subtitle: "Construction · Franchise · High Net Worth",
@@ -117,7 +120,7 @@ const translations = {
     }
   },
   ko: {
-    nav: { home: "홈", services: "서비스", about: "소개", resources: "고객자료실", contact: "연락처" },
+    nav: { home: "홈", services: "서비스", about: "소개", resources: "자료실", "client-info": "고객 안내", contact: "연락처" },
     hero: {
       tagline: "한인 비즈니스의 절세와 성장을 함께 만드는 CPA",
       subtitle: "건설업 · 프랜차이즈 · 고자산 개인",
@@ -1126,7 +1129,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
 // ============================================================
 // URL routing: /services, /contact, /construction, /svc_1, landing pages …
 // ============================================================
-const ROUTES = ["home", "services", "about", "resources", "contact", "construction", ...Object.keys(LANDINGS)];
+const ROUTES = ["home", "services", "about", "resources", "contact", "construction", "client-info", "s-corp-calculator", ...Object.keys(LANDINGS)];
 function pathToPage() {
   const p = window.location.pathname.replace(/^\/|\/$/g, "");
   if (ROUTES.includes(p) || /^svc_\d+$/.test(p)) return p;
@@ -1180,12 +1183,18 @@ export default function CRAccountancy() {
       contact: ko ? "문의하기" : "Contact",
       resources: ko ? "자료실" : "Resources",
       construction: ko ? "건설업 회계·현장별 원가 관리" : "Construction Accounting & Job Costing in LA",
+      "client-info": ko ? "고객 안내" : "Client Info",
+      "s-corp-calculator": ko ? "S corp 계산기 (캘리포니아)" : "S Corp Tax Calculator for California",
+    };
+    const descs = {
+      "client-info": ko ? "처음 맡기실 때의 순서, 서류와 결제 안내, 2027년 세금 마감일, 자주 묻는 질문." : "How to get started, sending documents, paying your fee, 2027 tax deadlines and common questions.",
+      "s-corp-calculator": ko ? "개인 사업자·1인 LLC의 자영업세와 S corp 급여세·캘리포니아 세금을 비교하는 계산기." : "Compare self-employment tax with S corp payroll and California taxes. A quick estimate for California business owners.",
     };
     let title = DEFAULT_HEAD.title;
     let desc = DEFAULT_HEAD.desc;
     if (landing) { title = ko ? landing.seo.title.ko : landing.seo.title.en; desc = ko ? landing.seo.desc.ko : landing.seo.desc.en; }
     else if (svcItem) title = `${ko ? svcItem.title.ko : svcItem.title.en} | ${brand}`;
-    else if (titles[page]) title = `${titles[page]} | ${brand}`;
+    else if (titles[page]) { title = `${titles[page]} | ${brand}`; if (descs[page]) desc = descs[page]; }
     document.title = title;
     const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute(attr, val); };
     set('meta[name="description"]', "content", desc);
@@ -1222,17 +1231,23 @@ export default function CRAccountancy() {
   const NavBar = () => (
     <nav style={baseStyles.nav}>
       <div className="nav-inner" style={baseStyles.navInner}>
-        <div style={{ cursor: "pointer" }} onClick={() => navigate("home")}>
-          <img src="/Logo_White_Final.png" alt="Danny Kim CPA - CR Accountancy & Consulting" onError={(e) => { e.target.onerror = null; e.target.src = "/Logo_Dark_Final.png"; }} className="nav-logo" style={{ height: 48 }} />
-        </div>
+        <a href="/" className="brand" aria-label="Danny Kim, CPA — CR Accountancy & Consulting, home"
+          onClick={(e) => { e.preventDefault(); navigate("home"); }}>
+          <img src="/cr-mark.png" alt="" className="brand-mark" width="184" height="92" />
+          <span className="brand-rule" aria-hidden="true" />
+          <span className="brand-text" aria-hidden="true">
+            <span className="brand-name">DANNY KIM, CPA</span>
+            <span className="brand-sub">CR ACCOUNTANCY &amp; CONSULTING</span>
+          </span>
+        </a>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <div className="desktop-nav" style={{ display: "flex", gap: 4, marginRight: 16 }}>
-            {["home", "services", "about", "resources", "contact"].map((p) => (
+            {["services", "about", "resources", "client-info", "contact"].map((p) => (
               <button key={p} onClick={() => navigate(p)} style={{
                 background: page === p ? `${colors.gold}22` : "transparent", border: "none",
                 color: page === p ? colors.gold : colors.white, fontFamily: fonts.sans, fontSize: 13,
-                fontWeight: 500, letterSpacing: 1.5, textTransform: "uppercase", padding: "10px 20px",
-                cursor: "pointer", borderRadius: 4, transition: "all 0.3s ease"
+                fontWeight: 500, letterSpacing: 1.5, textTransform: "uppercase", padding: "10px 14px",
+                cursor: "pointer", borderRadius: 4, transition: "all 0.3s ease", whiteSpace: "nowrap"
               }}>
                 {t.nav[p]}
               </button>
@@ -1256,7 +1271,7 @@ export default function CRAccountancy() {
           {/* Language Toggle: EN / KO only */}
           <div style={{ display: "flex", background: `${colors.gold}15`, borderRadius: 6, border: `1px solid ${colors.gold}33`, overflow: "hidden" }}>
             {[{ code: "en", label: "EN" }, { code: "ko", label: "KO" }].map((l) => (
-              <button key={l.code} onClick={() => setLang(l.code)} style={{
+              <button key={l.code} className="lang-btn" onClick={() => setLang(l.code)} style={{
                 background: lang === l.code ? `${colors.gold}44` : "transparent", border: "none",
                 color: lang === l.code ? colors.white : `${colors.gold}aa`, fontSize: 12, fontWeight: 700,
                 padding: "8px 14px", cursor: "pointer", letterSpacing: 1, fontFamily: fonts.sans, transition: "all 0.3s"
@@ -1275,7 +1290,7 @@ export default function CRAccountancy() {
       </div>
       {menuOpen && (
         <div style={{ background: colors.darkNavy, borderTop: `1px solid ${colors.gold}33`, padding: "20px 40px" }}>
-          {["home", "services", "about", "resources", "contact"].map((p) => (
+          {["home", "services", "about", "resources", "client-info", "contact"].map((p) => (
             <button key={p} onClick={() => navigate(p)} style={{
               display: "block", width: "100%", textAlign: "left", background: "none", border: "none",
               color: page === p ? colors.gold : colors.white, fontFamily: fonts.sans, fontSize: 15,
@@ -1302,196 +1317,114 @@ export default function CRAccountancy() {
   // ============================================================
   const HomePage = () => (
     <div>
-      {/* Hero */}
-      <div style={{
-        minHeight: "100vh", background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 50%, #EEF2FF 100%)`,
-        display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden",
-        padding: "112px 0 56px" /* keep hero text clear of the fixed nav bar */
-      }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 20% 50%, ${colors.blue}08 0%, transparent 50%), radial-gradient(circle at 80% 20%, ${colors.gold}10 0%, transparent 40%)`, pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "20%", left: "5%", width: 1, height: "30%", background: `linear-gradient(to bottom, transparent, ${colors.blue}15, transparent)` }} />
-        <div style={{ position: "absolute", top: "15%", right: "8%", width: 1, height: "25%", background: `linear-gradient(to bottom, transparent, ${colors.gold}15, transparent)` }} />
-
-        <div style={{ textAlign: "center", maxWidth: 860, padding: "0 40px", position: "relative", zIndex: 1 }}>
-          <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 24, fontFamily: fonts.sans, fontWeight: 700, lineHeight: 2.2, textAlign: "center" }}>
-            Danny Kim, CPA<br />CR Accountancy & Consulting<br />Los Angeles, CA
-          </div>
-          <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5.5vw, 64px)", fontWeight: 700, color: colors.navy, lineHeight: 1.12, marginBottom: 16, letterSpacing: -1 }}>
-            {t.hero.tagline}
+      {/* Hero — one message, one button */}
+      <section className="hero2" data-ko={lang === "ko" ? "1" : "0"}>
+        <div className="hero2-glow" aria-hidden="true" />
+        <div className="hero2-rings" aria-hidden="true"><span /><span /><span /></div>
+        <div className="hero2-in">
+          <div className="hero2-who">{lang === "ko" ? "Danny Kim, CPA · LA 코리아타운" : "Danny Kim, CPA · Koreatown, Los Angeles"}</div>
+          <h1 className="hero2-h1">
+            {lang === "ko"
+              ? (<><span>세금은 줄이고,</span><span className="hero2-accent">걱정은 덜고.</span></>)
+              : (<><span>Pay less tax.</span><span className="hero2-accent">Worry less about it.</span></>)}
           </h1>
-          <p style={{ fontFamily: fonts.sans, fontSize: "clamp(16px, 2vw, 20px)", color: colors.blue, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", marginBottom: 24 }}>
-            {t.hero.subtitle}
+          <p className="hero2-sub">
+            {lang === "ko"
+              ? "개인과 사업체의 세금·장부·급여를 한국어와 영어로 맡습니다."
+              : "Tax, bookkeeping and payroll for individuals and businesses, in Korean and English."}
           </p>
-          <div style={{ margin: "0 auto 24px", maxWidth: 200 }}><GoldDivider /></div>
-          <p style={{ fontFamily: fonts.body, fontSize: "clamp(15px, 1.8vw, 18px)", color: colors.gray, lineHeight: 1.7, marginBottom: 40, fontWeight: 400, maxWidth: 640, margin: "0 auto 40px" }}>
-            {t.hero.valueFocus}
-          </p>
+          <div className="hero2-cta">
+            <button type="button" className="hero2-btn" onClick={() => navigate("contact")}>
+              {t.hero.cta} <span aria-hidden="true">→</span>
+            </button>
+            <a className="hero2-call" href="tel:+12133259800">{lang === "ko" ? "또는 전화 213-325-9800" : "or call 213-325-9800"}</a>
+          </div>
+          <button type="button" className="hero2-proof" onClick={() => { const el = document.getElementById("reviews"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>
+            <span className="hero2-star">★</span>{lang === "ko" ? "Google 리뷰 읽어 보기" : "Read Google reviews"}
+          </button>
+        </div>
+      </section>
 
-          {/* Industry badges */}
-          <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 44 }}>
+      {/* Services — two quiet lists; the full list lives on /services */}
+      <section className="svc2" data-ko={lang === "ko" ? "1" : "0"}>
+        <div className="svc2-in">
+          <div className="svc2-head">
+            <div>
+              <div className="svc2-eyebrow">{lang === "ko" ? "서비스" : "Services"}</div>
+              <h2 className="svc2-h2">{lang === "ko" ? "무엇을 도와드릴까요?" : "What do you need help with?"}</h2>
+            </div>
+            <button type="button" className="svc2-all" onClick={() => navigate("services")}>
+              {lang === "ko" ? "전체 서비스 보기 →" : "All services →"}
+            </button>
+          </div>
+          <div className="svc2-cols">
             {[
-              { icon: "🏗️", en: "Construction CPA", ko: "건설업 전문", go: "construction" },
-              { icon: "🍗", en: "BBQ Franchise", ko: "BBQ 프랜차이즈", go: "restaurant-tax" },
-              { icon: "💼", en: "High Net Worth", ko: "고자산 고객" },
-              { icon: "🌐", en: "Korean-English", ko: "한영 이중 언어" },
-            ].map((b, i) => (
-              <div key={i} onClick={b.go ? () => navigate(b.go) : undefined} role={b.go ? "link" : undefined} style={{
-                display: "flex", alignItems: "center", gap: 7,
-                background: b.go ? `${colors.blue}12` : `${colors.navy}08`,
-                border: `1px solid ${b.go ? colors.blue + "44" : colors.navy + "18"}`,
-                borderRadius: 100, padding: "7px 16px",
-                cursor: b.go ? "pointer" : "default", transition: "all 0.25s ease"
-              }}>
-                <span style={{ fontSize: 14 }}>{b.icon}</span>
-                <span style={{ fontSize: 12, fontWeight: 600, color: b.go ? colors.blue : colors.navy, letterSpacing: 0.5 }}>
-                  {lang === "ko" ? b.ko : b.en}{b.go ? " →" : ""}
-                </span>
+              {
+                en: "For individuals", ko: "개인",
+                links: [
+                  { id: "svc_1", en: "Tax preparation", ko: "세금 신고" },
+                  { id: "irs-ftb-letter", en: "IRS and FTB letters", ko: "IRS·FTB 통지서" },
+                  { id: "svc_10", en: "Foreign accounts (FBAR)", ko: "해외 계좌 신고 (FBAR)" },
+                  { id: "svc_11", en: "Crypto tax", ko: "암호화폐 세금" },
+                  { id: "svc_7", en: "Wealth planning", ko: "자산 플래닝" },
+                  { id: "svc_8", en: "Estate and legacy planning", ko: "상속 계획" },
+                ]
+              },
+              {
+                en: "For businesses", ko: "사업체",
+                links: [
+                  { id: "svc_2", en: "Bookkeeping", ko: "장부 관리" },
+                  { id: "svc_3", en: "Payroll", ko: "급여 관리" },
+                  { id: "svc_5", en: "Business formation", ko: "법인 설립" },
+                  { id: "svc_4", en: "Tax resolution", ko: "세금 분쟁 해결" },
+                  { id: "svc_12", en: "Nonprofits and churches", ko: "비영리·교회" },
+                  { id: "svc_13", en: "Services by industry", ko: "업종별 서비스" },
+                ]
+              }
+            ].map((g) => (
+              <div key={g.en} className="svc2-col">
+                <h3 className="svc2-label">{lang === "ko" ? g.ko : g.en}</h3>
+                <ul className="svc2-list">
+                  {g.links.map((l) => (
+                    <li key={l.id}>
+                      <button type="button" className="svc2-row" onClick={() => navigate(l.id)}>
+                        <span>{lang === "ko" ? l.ko : l.en}</span>
+                        <span className="svc2-arrow" aria-hidden="true">→</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
-
-          {/* CTA Buttons */}
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 20 }}>
-            <button onClick={() => navigate("contact")} style={{
-              background: colors.navy, border: "none", color: colors.white, fontFamily: fonts.sans,
-              fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-              padding: "18px 44px", cursor: "pointer", borderRadius: 4, transition: "all 0.3s ease",
-              boxShadow: `0 4px 24px ${colors.navy}22`
-            }}>
-              {t.hero.cta}
-            </button>
-            <button onClick={() => navigate("services")} style={{
-              background: "transparent", border: `2px solid ${colors.navy}`, color: colors.navy,
-              fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-              padding: "16px 44px", cursor: "pointer", borderRadius: 4, transition: "all 0.3s ease"
-            }}>
-              {t.hero.ctaSecondary}
-            </button>
-          </div>
-
-          {/* Entry strip — Accounting Systems & AI advisory (consulting site) */}
-          <a href={`${ACCT_URL}#check`} target="_blank" rel="noopener noreferrer" className="acct-strip" style={{
-            display: "flex", alignItems: "center", gap: 18, textDecoration: "none", textAlign: "left",
-            margin: "28px auto 0", maxWidth: 760, background: colors.white,
-            border: "1px solid #E3D6C2", borderLeft: `6px solid ${colors.gold}`, borderRadius: 10,
-            boxShadow: `0 12px 40px ${colors.navy}1f`, padding: "18px 22px"
-          }}>
-            <span style={{ fontSize: 26, flexShrink: 0 }}>🔍</span>
-            <span style={{ flex: 1, wordBreak: "keep-all" }}>
-              <span style={{ display: "block", fontSize: 11, letterSpacing: 2, color: colors.gold, fontWeight: 700, marginBottom: 4 }}>
-                {lang === "ko" ? "새 서비스 · 회계 시스템·AI 자문" : "NEW · ACCOUNTING SYSTEMS & AI"}
-              </span>
-              <span style={{ display: "block", fontSize: 18, fontWeight: 700, color: colors.navy, marginBottom: 2 }}>
-                {lang === "ko" ? "QuickBooks 장부, 믿고 결정해도 될까요?" : "Can you make decisions on your QuickBooks numbers?"}
-              </span>
-              <span style={{ display: "block", fontSize: 14, color: colors.gray, lineHeight: 1.6 }}>
-                {lang === "ko"
-                  ? "지금 쓰는 회계 시스템을 진단하고, 회사에 맞는 시스템을 제안합니다. 업종 제한 없음."
-                  : "We assess the accounting system you run today and recommend what fits. Any industry."}
-              </span>
-            </span>
-            <span className="acct-strip-cta" style={{
-              background: colors.navy, color: colors.white, fontSize: 13, fontWeight: 700,
-              padding: "13px 18px", borderRadius: 6, whiteSpace: "nowrap", flexShrink: 0
-            }}>
-              {lang === "ko" ? "2분 자가 점검 →" : "2-min self-check →"}
-            </span>
-          </a>
-
         </div>
-      </div>
-
-      {/* Services Preview — individual vs business entry cards (full list on /services) */}
-      <div style={{ ...baseStyles.section, paddingTop: 80, paddingBottom: 80 }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <h2 style={{ fontFamily: fonts.display, fontSize: 36, fontWeight: 700, color: colors.navy, marginBottom: 16 }}>{t.services.title}</h2>
-          <GoldDivider />
-          <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>{t.services.subtitle}</p>
-        </div>
-
-        {/* Persona Entry Cards — Individual vs Business */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(300px, 100%), 1fr))", gap: 24, marginBottom: 36 }}>
-          {[
-            {
-              icon: "👤",
-              titleEn: "For Individuals", titleKo: "개인 고객",
-              descEn: "Personal tax filing, IRS and FTB letters, foreign accounts, crypto, wealth & legacy planning",
-              descKo: "개인 세금 신고 · IRS/FTB 통지서 · 해외 계좌(FBAR) · 암호화폐 · 자산 및 상속 플래닝",
-              links: [
-                { id: "svc_1", en: "Tax Preparation", ko: "세금 신고" },
-                { id: "irs-ftb-letter", en: "IRS · FTB Letters", ko: "IRS·FTB 통지서" },
-                { id: "svc_10", en: "International Tax (FBAR)", ko: "국제 세무 (FBAR)" },
-                { id: "svc_11", en: "Crypto Tax", ko: "암호화폐 세금" },
-                { id: "svc_7", en: "Wealth Planning", ko: "자산 플래닝" },
-                { id: "svc_8", en: "Family Legacy", ko: "상속 계획" },
-              ]
-            },
-            {
-              icon: "🏢",
-              titleEn: "For Business Owners", titleKo: "사업체 고객",
-              descEn: "Bookkeeping, payroll, entity formation, tax resolution, nonprofits & industry expertise",
-              descKo: "장부 관리 · 급여 · 법인 설립 · 세금 분쟁 해결 · 비영리 · 업종별 전문 서비스",
-              links: [
-                { id: "svc_2", en: "Bookkeeping", ko: "장부 관리" },
-                { id: "svc_3", en: "Payroll", ko: "급여 관리" },
-                { id: "svc_5", en: "Business Formation", ko: "법인 설립" },
-                { id: "svc_4", en: "Tax Resolution", ko: "세금 분쟁 해결" },
-                { id: "svc_6", en: "Business Consulting", ko: "비즈니스 컨설팅" },
-                { id: "svc_12", en: "Nonprofit & Church", ko: "비영리·교회" },
-                { id: "svc_13", en: "Industry-Specific CPA", ko: "업종별 전문 CPA" },
-              ]
-            }
-          ].map((p, pi) => (
-            <div key={pi} style={{
-              background: colors.white, border: `1px solid ${colors.lightGray}`, borderRadius: 8,
-              padding: "32px 32px 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
-              borderTop: `4px solid ${pi === 0 ? colors.gold : colors.blue}`
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
-                <span style={{ fontSize: 32 }}>{p.icon}</span>
-                <h3 style={{ fontFamily: fonts.display, fontSize: 24, fontWeight: 700, color: colors.navy }}>
-                  {lang === "ko" ? p.titleKo : p.titleEn}
-                </h3>
-              </div>
-              <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.7, marginBottom: 18 }}>
-                {lang === "ko" ? p.descKo : p.descEn}
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {p.links.map((l, li) => (
-                  <button key={li} onClick={() => navigate(l.id)} style={{
-                    background: `${pi === 0 ? colors.gold : colors.blue}0d`,
-                    border: `1px solid ${pi === 0 ? colors.gold : colors.blue}33`,
-                    color: pi === 0 ? colors.gold : colors.blue,
-                    fontFamily: fonts.sans, fontSize: 12, fontWeight: 600,
-                    padding: "8px 14px", borderRadius: 100, cursor: "pointer", transition: "all 0.2s"
-                  }}>
-                    {lang === "ko" ? l.ko : l.en} →
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ textAlign: "center" }}>
-          <button onClick={() => navigate("services")} style={{
-            background: "none", border: `1px solid ${colors.navy}33`, color: colors.navy,
-            fontFamily: fonts.sans, fontSize: 13, fontWeight: 600, letterSpacing: 0.5,
-            padding: "12px 26px", borderRadius: 100, cursor: "pointer"
-          }}>
-            {lang === "ko" ? "전체 서비스 보기 →" : "View All Services →"}
-          </button>
-        </div>
-      </div>
+      </section>
 
       {/* Industry Spotlight on Home */}
       <IndustrySpotlight />
 
+      {/* S corp calculator entry */}
+      <div style={{ padding: "64px clamp(16px, 5vw, 40px)", background: "#fff" }}>
+        <div className="calc-band">
+          <div>
+            <div className="calc-band-eyebrow">{lang === "ko" ? "S corp 계산기" : "S corp calculator"}</div>
+            <div className="calc-band-title">{lang === "ko" ? "S corp로 바꾸면 세금이 얼마나 달라질까?" : "Would an S corp lower your taxes?"}</div>
+            <div className="calc-band-text">{lang === "ko" ? "순이익과 급여만 넣으면 바로 비교해 드립니다." : "Enter your profit and a salary, and see the difference right away."}</div>
+          </div>
+          <button type="button" className="calc-band-btn" onClick={() => navigate("s-corp-calculator")}>
+            {lang === "ko" ? "계산해 보기 →" : "Try the calculator →"}
+          </button>
+        </div>
+      </div>
+
       {/* ── CR Consulting Division Spotlight ── */}
       <ConsultingSpotlight />
 
+      {/* ── Client stories ── */}
+      <ClientStories lang={lang} colors={colors} fonts={fonts} background="#F6F4F0" />
+
       {/* ── Google Reviews Section ── */}
-      <ReviewsSection />
+      <ReviewsSection lang={lang} />
 
       {/* CTA */}
       <div style={{ background: colors.cream, padding: "72px 40px", textAlign: "center" }}>
@@ -1912,7 +1845,7 @@ export default function CRAccountancy() {
             <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 600 }}>
               {lang === "en" ? "Quick Links" : "바로가기"}
             </div>
-            {["home", "services", "about", "resources", "contact"].map((p) => (
+            {["home", "services", "about", "resources", "client-info", "contact"].map((p) => (
               <button key={p} onClick={() => navigate(p)} style={{
                 display: "block", background: "none", border: "none", color: colors.gray,
                 fontSize: 13, padding: "6px 0", cursor: "pointer", fontFamily: fonts.sans, textAlign: "left"
@@ -1930,6 +1863,7 @@ export default function CRAccountancy() {
               { p: "restaurant-tax", en: "Restaurants", ko: "식당 세무" },
               { p: "construction", en: "Construction", ko: "건설업" },
               { p: "irs-ftb-letter", en: "IRS · FTB Letters", ko: "IRS·FTB 통지서" },
+              { p: "s-corp-calculator", en: "S Corp Calculator", ko: "S corp 계산기" },
             ].map((l) => (
               <a key={l.p} href={`/${l.p}`} onClick={(e) => { e.preventDefault(); navigate(l.p); }} style={{
                 display: "block", color: colors.gray, fontSize: 13, padding: "6px 0", textDecoration: "none", fontFamily: fonts.sans
@@ -1964,6 +1898,8 @@ export default function CRAccountancy() {
     : page === "resources"
     ? <ResourcesPage lang={lang} colors={colors} fonts={fonts} />
     : page === "construction" ? <ConstructionPage lang={lang} />
+    : page === "client-info" ? <ClientInfoPage lang={lang} colors={colors} fonts={fonts} navigate={navigate} />
+    : page === "s-corp-calculator" ? <SCorpCalculator lang={lang} colors={colors} fonts={fonts} navigate={navigate} />
     : LANDINGS[page] ? <LandingPage id={page} lang={lang} colors={colors} fonts={fonts}
         form={<ContactForm lang={lang} t={t} colors={colors} fonts={fonts} />} />
     : page === "home" ? <HomePage />
@@ -1975,7 +1911,7 @@ export default function CRAccountancy() {
 
   return (
     <div style={baseStyles.page}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Source+Serif+4:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Source+Serif+4:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::selection { background: ${colors.gold}44; color: ${colors.navy}; }
@@ -1983,6 +1919,84 @@ export default function CRAccountancy() {
         .res-row a { overflow-wrap: anywhere; }
         .cs-card { transition: transform .2s ease, box-shadow .2s ease; }
         .cs-card:hover { transform: translateY(-4px); }
+
+        /* ── Logo lockup (mark | name over firm name) ── */
+        .brand { --s: 0.9; display: flex; flex-shrink: 0; margin-right: 20px; align-items: center; gap: calc(13px * var(--s)); text-decoration: none; cursor: pointer; }
+        .brand-mark { height: calc(30px * var(--s)); width: auto; display: block; }
+        .brand-rule { width: 1px; height: calc(34px * var(--s)); background: ${colors.lightGold}99; }
+        .brand-text { display: flex; flex-direction: column; gap: calc(5px * var(--s)); line-height: 1; font-family: 'Poppins', ${fonts.sans}; white-space: nowrap; }
+        .brand-name { font-size: calc(19px * var(--s)); font-weight: 700; letter-spacing: 0.02em; color: #fff; }
+        .brand-sub { font-size: calc(8.2px * var(--s)); font-weight: 500; letter-spacing: 0.114em; margin-right: -0.114em; color: ${colors.lightGold}; }
+
+        /* ── Home: services lists ── */
+        .svc2 { background: #fff; padding: clamp(64px, 9vw, 112px) clamp(16px, 5vw, 40px); }
+        .svc2[data-ko="1"] { word-break: keep-all; }
+        .svc2-in { max-width: 1200px; margin: 0 auto; }
+        .svc2-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; }
+        .svc2-eyebrow { font-size: 12px; letter-spacing: 3px; color: ${colors.gold}; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+        .svc2-h2 { font-family: ${fonts.display}; font-weight: 400; font-size: clamp(30px, 3.8vw, 44px); line-height: 1.15; color: ${colors.navy}; margin: 0; }
+        .svc2[data-ko="1"] .svc2-h2 { font-family: ${fonts.sans}; font-weight: 700; letter-spacing: -0.5px; }
+        .svc2-all { flex-shrink: 0; background: none; border: 0; border-bottom: 1px solid ${colors.navy}40; padding: 0 0 3px; cursor: pointer;
+          color: ${colors.navy}; font-family: ${fonts.sans}; font-size: 14px; font-weight: 600; white-space: nowrap; }
+        .svc2-all:hover { border-color: ${colors.navy}; }
+        .svc2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(32px, 6vw, 88px); }
+        .svc2-label { font-family: ${fonts.sans}; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: ${colors.gold};
+          margin: 0; padding-bottom: 14px; border-bottom: 1.5px solid ${colors.navy}; }
+        .svc2-list { list-style: none; margin: 0; padding: 0; }
+        .svc2-row { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; text-align: left; cursor: pointer;
+          background: none; border: 0; border-bottom: 1px solid ${colors.lightGray}; padding: 19px 4px;
+          font-family: ${fonts.sans}; font-size: 17px; font-weight: 500; color: ${colors.navy}; transition: background .2s, padding .2s; }
+        .svc2-arrow { color: #B8BDC6; transition: transform .2s, color .2s; }
+        .svc2-row:hover { background: #F6F4F0; padding-left: 14px; padding-right: 14px; }
+        .svc2-row:hover .svc2-arrow { color: ${colors.gold}; transform: translateX(3px); }
+        .svc2-row:focus-visible { outline: 2px solid ${colors.gold}; outline-offset: -2px; }
+
+        /* ── Home: first screen ── */
+        .hero2 { position: relative; overflow: hidden; color: #fff;
+          background: linear-gradient(155deg, #0B131C 0%, ${colors.navy} 58%, #24324A 100%);
+          min-height: clamp(600px, 94vh, 900px); display: flex; align-items: center;
+          padding: 132px clamp(16px, 5vw, 40px) 72px; }
+        .hero2-glow { position: absolute; inset: 0; pointer-events: none;
+          background: radial-gradient(900px 520px at 88% 12%, ${colors.gold}26, transparent 60%),
+                      radial-gradient(700px 500px at 0% 100%, ${colors.blue}1f, transparent 60%); }
+        .hero2-rings { position: absolute; right: -140px; top: 50%; transform: translateY(-50%); width: 640px; height: 640px; pointer-events: none; }
+        .hero2-rings span { position: absolute; inset: 0; border: 1px solid ${colors.gold}30; border-radius: 50%; }
+        .hero2-rings span:nth-child(2) { inset: 90px; border-color: ${colors.gold}22; }
+        .hero2-rings span:nth-child(3) { inset: 180px; border-color: ${colors.gold}18; }
+        .hero2-in { position: relative; z-index: 1; width: 100%; max-width: 1200px; margin: 0 auto; }
+        .hero2-who { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+          color: ${colors.lightGold}; margin-bottom: 28px; }
+        .hero2-who::before { content: ""; width: 32px; height: 1px; background: ${colors.lightGold}; }
+        .hero2-h1 { font-family: ${fonts.display}; font-weight: 400; font-size: clamp(44px, 7.4vw, 96px); line-height: 1.04;
+          letter-spacing: -1.5px; margin: 0 0 28px; }
+        .hero2-h1 span { display: block; }
+        .hero2-accent { color: ${colors.lightGold}; }
+        .hero2[data-ko="1"] .hero2-h1 { font-family: 'Noto Serif KR', ${fonts.display}; font-weight: 700; letter-spacing: -2px;
+          line-height: 1.12; font-size: clamp(42px, 7.6vw, 92px); max-width: none; word-break: keep-all; }
+        .hero2-sub { font-size: clamp(16px, 1.9vw, 20px); line-height: 1.65; color: #FFFFFFB3; max-width: 34em; margin: 0 0 40px; }
+        .hero2[data-ko="1"] .hero2-sub { word-break: keep-all; }
+        .hero2-cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+        .hero2-btn { display: inline-flex; align-items: center; gap: 10px; border: 0; cursor: pointer; border-radius: 10px;
+          background: linear-gradient(135deg, ${colors.lightGold}, ${colors.gold}); color: ${colors.darkNavy};
+          font-family: ${fonts.sans}; font-size: 16px; font-weight: 800; padding: 19px 30px;
+          box-shadow: 0 14px 40px ${colors.gold}40; transition: transform .2s ease, box-shadow .2s ease; }
+        .hero2-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 48px ${colors.gold}55; }
+        .hero2-call { color: #FFFFFFCC; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #FFFFFF40; padding-bottom: 2px; }
+        .hero2-call:hover { color: #fff; border-color: #fff; }
+        .hero2-proof { display: inline-flex; align-items: center; gap: 8px; margin-top: 44px; background: none; border: 0; cursor: pointer; padding: 0;
+          color: #FFFFFF99; font-family: ${fonts.sans}; font-size: 14px; font-weight: 500; }
+        .hero2-proof:hover { color: #fff; }
+        .hero2-star { color: ${colors.lightGold}; font-size: 16px; }
+
+        /* ── Home: S corp calculator entry ── */
+        .calc-band { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+          background: ${colors.navy}; color: #fff; border-radius: 16px; padding: clamp(24px, 4vw, 36px) clamp(22px, 4vw, 44px);
+          background-image: radial-gradient(500px 220px at 100% 0%, ${colors.gold}30, transparent 70%); }
+        .calc-band-eyebrow { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: ${colors.lightGold}; font-weight: 700; margin-bottom: 8px; }
+        .calc-band-title { font-size: clamp(20px, 2.6vw, 26px); font-weight: 700; line-height: 1.3; margin-bottom: 6px; word-break: keep-all; }
+        .calc-band-text { font-size: 15px; color: #FFFFFFB3; line-height: 1.6; word-break: keep-all; }
+        .calc-band-btn { flex-shrink: 0; border: 0; cursor: pointer; border-radius: 10px; background: #fff; color: ${colors.navy};
+          font-family: ${fonts.sans}; font-size: 15px; font-weight: 800; padding: 16px 24px; white-space: nowrap; }
         /* Full menu needs about 1,180px; below that use the ☰ menu so nothing is pushed off screen */
         @media (max-width: 1180px) {
           .desktop-nav { display: none !important; }
@@ -1998,13 +2012,32 @@ export default function CRAccountancy() {
           .acct-strip { flex-wrap: wrap; }
           .acct-strip-cta { width: 100%; text-align: center; }
           .nav-inner { padding: 0 16px !important; }
-          .nav-logo { height: 38px !important; }
+          .brand { --s: 0.8; margin-right: 12px; }
+          .svc2-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
+          .svc2-cols { grid-template-columns: 1fr; gap: 40px; }
+          .svc2-row { font-size: 16px; padding: 16px 2px; }
+          .hero2 { min-height: auto; padding: 120px 16px 64px; }
+          .hero2-rings { width: 420px; height: 420px; right: -220px; top: 30%; opacity: .6; }
+          .hero2-who { font-size: 12px; margin-bottom: 22px; }
+          .hero2-sub { margin-bottom: 32px; }
+          .hero2-cta { flex-direction: column; align-items: stretch; gap: 16px; }
+          .hero2-btn { justify-content: center; }
+          .hero2-call { align-self: center; }
+          .hero2-proof { margin-top: 32px; display: flex; width: 100%; justify-content: center; }
+          .calc-band { flex-direction: column; align-items: stretch; }
+          .calc-band-btn { width: 100%; }
         }
         @media (max-width: 400px) {
           .two-col-sm { grid-template-columns: 1fr !important; }
         }
+        @media (max-width: 480px) {
+          .lang-btn { padding: 7px 11px !important; }
+        }
+        @media (max-width: 340px) {
+          .brand-mark, .brand-rule { display: none; }
+        }
         @media (max-width: 380px) {
-          .nav-logo { height: 32px !important; }
+          .brand { --s: 0.72; }
         }
         @media (min-width: 1181px) {
           .mobile-menu-btn { display: none !important; }

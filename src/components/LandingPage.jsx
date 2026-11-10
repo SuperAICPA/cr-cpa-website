@@ -8,12 +8,14 @@
    ============================================================ */
 
 import ReviewsSection from "./ReviewsSection";
+import ClientStories from "./ClientStories";
 
 const PHONE = "213-325-9800";
 const TEL = "tel:+12133259800";
 
 export const LANDINGS = {
   "bookkeeping-payroll": {
+    stories: ["ccorp"],
     price: null, // e.g. { en: "From $___ a month", ko: "월 $___부터" }
     seo: {
       title: {
@@ -191,6 +193,7 @@ export const LANDINGS = {
   },
 
   "irs-ftb-letter": {
+    stories: ["levy", "parents"],
     price: null,
     seo: {
       title: {
@@ -418,7 +421,9 @@ export default function LandingPage({ id, lang, colors, fonts, form }) {
           </div>
         </section>
 
-        <ReviewsSection />
+        {L.stories && <ClientStories ids={L.stories} lang={lang} colors={colors} fonts={fonts} background="#F6F4F0" />}
+
+        <ReviewsSection lang={lang} />
 
         <section className="lp-sec alt" id="lp-form">
           <div className="lp-in lp-contact">
