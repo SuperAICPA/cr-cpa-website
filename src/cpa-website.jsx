@@ -937,8 +937,8 @@ function ResourcesPage({ lang, colors, fonts }) {
 
   return (
     <div>
-      <div style={{ background: `linear-gradient(165deg, #0A1628 0%, #1B4F8A 100%)`, padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center" }}>
-        <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
+      <div style={{ background: `linear-gradient(165deg, #0A1628 0%, #1B4F8A 100%)`, padding: "clamp(100px, 9vw, 116px) clamp(16px, 5vw, 40px) clamp(32px, 4vw, 44px)", textAlign: "center" }}>
+        <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 12, fontWeight: 500 }}>
           {isKo ? "고객 자료실" : "Client Resources"}
         </div>
         <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: "#fff", fontWeight: 700, marginBottom: 20 }}>
@@ -1083,7 +1083,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
   return (
     <div>
       {/* Hero */}
-      <div style={{ background: `linear-gradient(165deg, ${catColor} 0%, ${catColor}cc 100%)`, padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center" }}>
+      <div style={{ background: `linear-gradient(165deg, ${catColor} 0%, ${catColor}cc 100%)`, padding: "clamp(100px, 9vw, 116px) clamp(16px, 5vw, 40px) clamp(32px, 4vw, 44px)", textAlign: "center" }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
           {isKo ? ({ "CORE TAX & ACCOUNTING": "세금 · 회계", "BUSINESS & FINANCIAL ADVISORY": "사업 · 재무 자문", "SPECIALTY SERVICES": "전문 분야" }[service.category] || service.category) : service.category}
         </div>
@@ -1093,7 +1093,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         <p style={{ fontFamily: fonts.body, fontSize: 18, color: "#ffffffbb", marginTop: 20, maxWidth: 640, margin: "20px auto 0", fontStyle: "italic" }}>{t(service.tagline)}</p>
       </div>
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px clamp(16px, 5vw, 40px) 88px" }}>
         {/* Intro */}
         <div style={{ maxWidth: 800, margin: "0 auto 64px", textAlign: "center" }}>
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
@@ -1755,16 +1755,16 @@ export default function CRAccountancy() {
     };
     return (
       <div>
-        <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`, padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center" }}>
-          <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
-            {lang === "en" ? "Services" : "서비스 안내"}
+        <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`, padding: "clamp(100px, 9vw, 116px) clamp(16px, 5vw, 40px) clamp(32px, 4vw, 44px)", textAlign: "center" }}>
+          <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 12, fontWeight: 500 }}>
+            {lang === "en" ? "Tax · Accounting · Advisory" : "세금 · 회계 · 자문"}
           </div>
-          <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.services.title}</h1>
+          <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(32px, 4.2vw, 48px)", color: colors.navy, fontWeight: 700, marginBottom: 14 }}>{t.services.title}</h1>
           <GoldDivider />
-          <p style={{ fontFamily: fonts.body, fontSize: 20, color: colors.gray, marginTop: 24, maxWidth: 600, margin: "24px auto 0" }}>{t.services.subtitle}</p>
+          <p style={{ fontFamily: fonts.body, fontSize: 18, color: colors.gray, maxWidth: 600, margin: "16px auto 0" }}>{t.services.subtitle}</p>
         </div>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px clamp(16px, 5vw, 40px) 88px" }}>
           {categories.map((cat, ci) => {
             const catSvcs = serviceDetails.filter(s => s.category === cat);
             const label = catLabels[cat];
@@ -1824,15 +1824,15 @@ export default function CRAccountancy() {
     <div>
       <div style={{
         background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`,
-        padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center"
+        padding: "clamp(100px, 9vw, 116px) clamp(16px, 5vw, 40px) clamp(32px, 4vw, 44px)", textAlign: "center"
       }}>
-        <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
+        <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 12, fontWeight: 500 }}>
           {"Danny Kim, CPA"}
         </div>
-        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.about.title}</h1>
+        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(32px, 4.2vw, 48px)", color: colors.navy, fontWeight: 700, marginBottom: 14 }}>{t.about.title}</h1>
         <GoldDivider />
       </div>
-      <div style={{ ...baseStyles.section, padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
+      <div style={{ ...baseStyles.section, padding: "48px clamp(16px, 5vw, 40px) 88px" }}>
         <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, alignItems: "start" }}>
           <div className="about-card" style={{ background: colors.cream, padding: "40px 36px 36px", borderRadius: 4, textAlign: "center", position: "sticky", top: 108 }}>
             <div style={{ width: 120, height: 120, borderRadius: "50%", background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`, margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 40, fontFamily: fonts.display, color: colors.darkNavy, fontWeight: 700 }}>DK</div>
@@ -1876,17 +1876,17 @@ export default function CRAccountancy() {
     <div>
       <div style={{
         background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`,
-        padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center"
+        padding: "clamp(100px, 9vw, 116px) clamp(16px, 5vw, 40px) clamp(32px, 4vw, 44px)", textAlign: "center"
       }}>
-        <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
+        <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 12, fontWeight: 500 }}>
           {lang === "en" ? "Koreatown · Los Angeles" : "LA 코리아타운 사무실"}
         </div>
-        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.contact.title}</h1>
+        <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(32px, 4.2vw, 48px)", color: colors.navy, fontWeight: 700, marginBottom: 14 }}>{t.contact.title}</h1>
         <GoldDivider />
         <p style={{ fontFamily: fonts.body, fontSize: 20, color: colors.gray, marginTop: 24 }}>{t.contact.subtitle}</p>
       </div>
 
-      <div style={{ ...baseStyles.section, padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
+      <div style={{ ...baseStyles.section, padding: "48px clamp(16px, 5vw, 40px) 88px" }}>
         <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, alignItems: "start" }}>
           {/* Contact Info */}
           <div>
