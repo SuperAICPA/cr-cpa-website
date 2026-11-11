@@ -26,7 +26,7 @@ const translations = {
     ],
     services: {
       title: "Our Services",
-      subtitle: "Comprehensive financial solutions tailored to your success",
+      subtitle: "Everything I take on, from tax returns to books, payroll and agency letters.",
       items: [
         {
           title: "Tax Services",
@@ -55,32 +55,32 @@ const translations = {
       ]
     },
     industrySpotlight: {
-      title: "Industry Spotlight",
-      subtitle: "Deep expertise where it matters most",
+      title: "Industries",
+      subtitle: "Every industry reads its numbers differently",
       construction: {
         title: "Construction Companies",
-        desc: "We understand the unique financial complexities of construction — from job costing to subcontractor compliance. Our dedicated construction accounting practice helps contractors stay profitable and compliant.",
-        features: ["Job Costing & Project-Based Accounting", "Subcontractor 1099 Compliance", "Progress Billing & WIP Reporting", "Cost Accounting Procedures", "Construction-Specific Tax Strategy"]
+        desc: "A contractor's numbers only make sense when job costs, progress billing and subcontractor paperwork line up. I set up the books so each job shows its real margin, and keep 1099s and WIP schedules current during the year, not in March.",
+        features: ["Job costing by project", "Subcontractor 1099s and W-9s", "Progress billing and WIP schedules", "Cost codes set up in your books", "Tax planning for contractors"]
       },
       bbq: {
         title: "BBQ Franchise & Multi-Location Restaurants",
-        desc: "Managing finances across multiple restaurant locations requires specialized expertise. We help franchise operators and multi-unit owners gain clarity on per-location profitability and streamline operations.",
-        features: ["Multi-Location Financial Consolidation", "Food Cost Analysis & Optimization", "Franchise Royalty & Fee Management", "Per-Location P&L Reporting", "Restaurant-Specific Tax Planning"]
+        desc: "With several locations, a combined P&L hides which store is carrying the others. I split the numbers by location, track food cost and royalties separately, and roll it all into one report for the owner.",
+        features: ["Combined reporting across locations", "Food cost tracking", "Franchise royalties and fees", "P&L by location", "Restaurant tax planning"]
       }
     },
     about: {
-      title: "About Our Firm",
-      subtitle: "A Modern CPA Practice Built on Trust and Innovation",
-      bio: "Danny Kim, CPA brings over 25 years of experience serving individuals and businesses across diverse industries. Our firm combines deep expertise in tax, accounting, and business advisory with cutting-edge technology to deliver exceptional results.",
-      bio2: "We specialize in serving small to mid-sized businesses and high-net-worth individuals, providing personalized attention that larger firms simply cannot match. Our AI-enhanced workflows ensure accuracy and efficiency while our hands-on approach guarantees the personal touch you deserve.",
+      title: "About",
+      subtitle: "An engineer turned CPA, who looks at the numbers and the system behind them",
+      bio: "Danny Kim, CPA brings over 25 years of experience serving individuals and businesses across diverse industries. Tax and bookkeeping aren't treated as separate jobs here: I follow the numbers from the way the books are kept to the return that gets filed.",
+      bio2: "I mainly work with small and mid-sized LA businesses and their owners. It's a one-CPA office, so the person you meet at the first consultation is the person who reviews your books and signs your return. Repetitive work runs on automated tools, and the time saved goes into review.",
       values: [
-        { title: "Precision", desc: "Every number tells a story. We ensure yours is accurate." },
-        { title: "Integrity", desc: "Your trust is our most valuable asset." },
-        { title: "Innovation", desc: "Leveraging technology for superior results." },
-        { title: "Growth", desc: "Your success is our measure of achievement." }
+        { title: "I do the work myself", desc: "The CPA you talk to is the one who reviews your books and signs your return." },
+        { title: "Deadlines first", desc: "Filing and payment dates come from me before they become a problem." },
+        { title: "Plain explanations", desc: "Numbers and agency letters explained in plain Korean or English." },
+        { title: "The system, too", desc: "If the same error keeps coming back, I fix how the books are kept." }
       ],
       credentials: "Licensed CPA · Los Angeles, California",
-      industriesTitle: "Industries We Serve",
+      industriesTitle: "Industries I work with",
       industries: [
         { icon: "🏗️", name: "Construction & Contractors" },
         { icon: "🍽️", name: "Restaurants & Food Service" },
@@ -94,7 +94,7 @@ const translations = {
     },
     contact: {
       title: "Get In Touch",
-      subtitle: "Ready to take control of your financial future?",
+      subtitle: "Call, or use the form below. The first 30 minutes are free.",
       info: {
         address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005",
         phone: "213-325-9800",
@@ -107,12 +107,12 @@ const translations = {
         phone: "Phone Number",
         service: "Service Interested In",
         serviceOptions: ["Tax Services", "Bookkeeping & Payroll", "Business Formation & Consulting", "Bilingual CPA Services", "Other"],
-        message: "Tell us about your needs",
+        message: "How can I help?",
         submit: "Request Consultation",
-        success: "Thank you! We'll be in touch within 24 hours."
+        success: "Thank you. I'll be in touch within 24 hours."
       },
-      multilingualTitle: "We Welcome Your Inquiry in Any Language",
-      multilingualSubtitle: "We respond to written inquiries in the following languages"
+      multilingualTitle: "Write in your language",
+      multilingualSubtitle: "Written inquiries are answered in these languages"
     },
     footer: {
       tagline: "Tax · Accounting · Accounting systems",
@@ -138,7 +138,7 @@ const translations = {
     ],
     services: {
       title: "서비스 안내",
-      subtitle: "고객의 성공을 위한 종합 재무 솔루션",
+      subtitle: "세금 신고부터 장부, 급여, 기관 통지서까지 맡는 일을 모두 적었습니다.",
       items: [
         {
           title: "세무 서비스",
@@ -167,29 +167,29 @@ const translations = {
       ]
     },
     industrySpotlight: {
-      title: "산업별 전문 서비스",
-      subtitle: "가장 중요한 분야에서의 깊은 전문성",
+      title: "업종별 전문",
+      subtitle: "업종마다 숫자를 보는 법이 다릅니다",
       construction: {
         title: "건설 회사",
-        desc: "건설업 특유의 복잡한 재무 구조를 이해합니다. 프로젝트별 원가 관리부터 하청업체 컴플라이언스까지, 시공사의 수익성과 규정 준수를 돕습니다.",
-        features: ["프로젝트별 원가 회계 (Job Costing)", "하청업체 1099 컴플라이언스", "기성 청구 및 WIP 보고", "원가 회계 절차 수립", "건설업 특화 세무 전략"]
+        desc: "건설업은 현장별 원가, 기성 청구, 하청업체 서류가 맞아야 숫자가 보입니다. 현장마다 실제 마진이 보이도록 장부를 잡고, 1099와 WIP 자료는 3월이 아니라 연중에 맞춰 둡니다.",
+        features: ["현장별 원가 회계(Job Costing)", "하청업체 1099·W-9 관리", "기성 청구와 WIP 보고", "장부 안의 원가 코드 정리", "건설업 세무 계획"]
       },
       bbq: {
         title: "BBQ 프랜차이즈 & 다점포 식당",
-        desc: "다수 매장의 재무를 관리하려면 전문적인 경험이 필요합니다. 프랜차이즈 운영자와 다점포 오너가 매장별 수익성을 명확히 파악하고 운영을 효율화할 수 있도록 돕습니다.",
-        features: ["다점포 재무 통합 보고", "식재료 원가 분석 및 최적화", "프랜차이즈 로열티 및 수수료 관리", "매장별 손익 보고", "외식업 특화 세무 계획"]
+        desc: "매장이 여러 곳이면 합쳐진 손익만으로는 어느 매장이 다른 매장을 받쳐 주고 있는지 보이지 않습니다. 매장별로 숫자를 나누고, 식재료 원가와 로열티를 따로 본 뒤, 오너가 한 번에 볼 수 있는 보고서로 묶습니다.",
+        features: ["여러 매장 통합 보고", "식재료 원가 관리", "프랜차이즈 로열티·수수료 정리", "매장별 손익", "외식업 세무 계획"]
       }
     },
     about: {
       title: "사무실 소개",
-      subtitle: "신뢰와 혁신을 기반으로 한 현대적 CPA 사무실",
-      bio: "Danny Kim, CPA는 25년 이상의 경력으로 다양한 산업의 개인 및 기업 고객에게 서비스를 제공하고 있습니다. 세무, 회계, 경영 자문 분야의 깊은 전문성에 최첨단 기술을 결합하여 탁월한 결과를 제공합니다.",
-      bio2: "중소기업 및 고소득 개인 고객을 전문적으로 서비스하며, 대형 회계법인이 제공할 수 없는 맞춤형 관심을 드립니다. AI 기반 워크플로우로 정확성과 효율성을 보장하면서도 고객 한 분 한 분을 직접 케어합니다.",
+      subtitle: "엔지니어로 시작해, 숫자와 그 숫자가 만들어지는 과정을 함께 보는 CPA",
+      bio: "Danny Kim, CPA는 25년 이상의 경력으로 다양한 산업의 개인 및 기업 고객에게 서비스를 제공하고 있습니다. 세무와 회계를 따로 보지 않고, 장부가 만들어지는 과정부터 신고서까지 한 사람이 끝까지 봅니다.",
+      bio2: "주로 LA의 중소기업과 사업주 개인을 맡습니다. 1인 사무소라서 처음 상담한 사람이 장부를 검토하고 신고서에 서명합니다. 반복 작업은 자동화 도구로 처리하고, 그렇게 아낀 시간을 검토에 씁니다.",
       values: [
-        { title: "정확함", desc: "모든 숫자에는 이야기가 있습니다. 정확하게 전달합니다." },
-        { title: "신뢰", desc: "고객의 신뢰가 가장 소중한 자산입니다." },
-        { title: "혁신", desc: "기술을 활용하여 더 나은 결과를 만듭니다." },
-        { title: "성장", desc: "고객의 성공이 저희의 성과입니다." }
+        { title: "직접 합니다", desc: "상담한 사람이 장부를 검토하고, 신고서에 서명합니다." },
+        { title: "기한을 먼저 챙깁니다", desc: "신고·납부 일정은 문제가 되기 전에 제가 먼저 알려 드립니다." },
+        { title: "쉽게 설명합니다", desc: "숫자와 기관 통지서를 한국어와 영어로 풀어서 설명합니다." },
+        { title: "시스템까지 봅니다", desc: "같은 실수가 반복되면 장부가 만들어지는 방식부터 고칩니다." }
       ],
       credentials: "공인회계사(CPA) · 캘리포니아 로스앤젤레스",
       industriesTitle: "서비스 업종",
@@ -206,7 +206,7 @@ const translations = {
     },
     contact: {
       title: "문의하기",
-      subtitle: "재무 관리의 새로운 시작을 준비하세요",
+      subtitle: "전화나 아래 양식으로 연락 주세요. 첫 상담 30분은 무료입니다.",
       info: {
         address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005",
         phone: "213-325-9800",
@@ -241,22 +241,22 @@ const serviceDetails = [
   {
     id: "svc_1", icon: "📊", category: "CORE TAX & ACCOUNTING",
     title: { en: "Tax Preparation", ko: "세금 신고" },
-    tagline: { en: "Accurate filing, maximum savings.", ko: "정확한 신고, 최대 절세 — 모든 유형의 세금 신고를 한 곳에서." },
-    intro: { en: "From individuals to complex multi-entity structures, CR Accountancy handles federal, state, and California tax returns accurately and strategically.", ko: "개인부터 복잡한 다중 법인 구조까지, CR Accountancy는 연방·주·캘리포니아 세금 신고를 정확하고 전략적으로 처리합니다. 단순 신고에 그치지 않고 매년 절세 기회를 발굴하고 다음 해를 위한 플랜을 함께 수립합니다." },
+    tagline: { en: "Every return reviewed line by line, with next year planned before this one is filed.", ko: "한 줄씩 검토한 신고서, 그리고 내년 계획까지." },
+    intro: { en: "I prepare individual, business, trust and multi-state returns, and go through each one line by line before you sign. Once it is filed, we go over what will change for next year.", ko: "개인, 법인, 신탁, 여러 주에 걸친 신고까지 맡습니다. 서명하시기 전에 신고서를 한 줄씩 검토하고, 신고가 끝나면 내년에 달라질 부분을 같이 짚어 드립니다." },
     items: [
-      { en: "Individual Tax Return", ko: "Individual Tax Return — Form 1040 및 각종 Schedule 신고. W-2, 1099, 부동산·투자 소득 등 다양한 소득 유형 처리." },
-      { en: "Business Tax Return", ko: "Business Tax Return — S-Corp (1120-S), Partnership (1065), C-Corp (1120), LLC, Schedule C 신고. 사업체 구조에 맞는 절세 전략 적용." },
-      { en: "Nonprofit Tax Return", ko: "Nonprofit Tax Return — Form 990 / 990-EZ / 990-N 신고. 면세 지위(Tax-Exempt Status) 유지를 위한 컴플라이언스 관리." },
-      { en: "Trust Tax Return", ko: "Trust Tax Return — Form 1041 신고. 신탁 소득의 수익자(Beneficiary) 배분 처리 및 Schedule K-1 발행." },
-      { en: "State & Multi-State Tax", ko: "State & Local Tax — California FTB 신고 포함 멀티 주 세금 신고. 거주지 변경 및 비거주자 소득 처리." },
-      { en: "Tax Planning", ko: "Tax Planning — 연간 세금 최소화 전략, 분기별 예납세(Estimated Tax) 계산 및 개인·사업체 통합 플래닝." },
-      { en: "Amended Returns", ko: "Amended Returns — 과거 신고 오류 수정 (Form 1040-X). 누락된 공제 항목 추가로 환급 극대화." },
-      { en: "Foreign Income & FBAR", ko: "Foreign Income & FBAR — 해외 금융계좌 신고 (FBAR, FATCA), 해외 소득 및 외국세액공제 처리." }
+      { en: "Individual Tax Return", ko: "개인 세금 신고 — Form 1040 및 각종 Schedule 신고. W-2, 1099, 부동산·투자 소득 등 다양한 소득 유형 처리." },
+      { en: "Business Tax Return", ko: "사업체 세금 신고 — S-Corp (1120-S), Partnership (1065), C-Corp (1120), LLC, Schedule C 신고. 사업체 구조에 맞는 절세 전략 적용." },
+      { en: "Nonprofit Tax Return", ko: "비영리단체 신고 — Form 990 / 990-EZ / 990-N 신고. 면세 지위(Tax-Exempt Status) 유지를 위한 컴플라이언스 관리." },
+      { en: "Trust Tax Return", ko: "신탁(Trust) 신고 — Form 1041 신고. 신탁 소득의 수익자(Beneficiary) 배분 처리 및 Schedule K-1 발행." },
+      { en: "State & Multi-State Tax", ko: "주·지방세 신고 — California FTB 신고 포함 멀티 주 세금 신고. 거주지 변경 및 비거주자 소득 처리." },
+      { en: "Tax Planning", ko: "세금 계획 — 연간 세금 최소화 전략, 분기별 예납세(Estimated Tax) 계산 및 개인·사업체 통합 플래닝." },
+      { en: "Amended Returns", ko: "수정 신고 — 과거 신고 오류 수정 (Form 1040-X). 빠진 공제 항목을 반영해 차액을 돌려받습니다." },
+      { en: "Foreign Income & FBAR", ko: "해외 소득·해외 계좌(FBAR) — 해외 금융계좌 신고 (FBAR, FATCA), 해외 소득 및 외국세액공제 처리." }
     ],
     process: [
       { en: "Initial Consultation", ko: "초기 상담 — 고객의 소득 유형, 사업 구조, 특이 사항을 파악하여 맞춤 견적을 제공합니다." },
       { en: "Document Collection", ko: "서류 수집 — 필요 서류 체크리스트를 제공하고 안전한 포털을 통해 서류를 수신합니다." },
-      { en: "Return Preparation", ko: "세금 신고서 작성 — 검토 후 세금 신고서를 작성하고 공제 항목을 최대한 적용합니다." },
+      { en: "Return Preparation", ko: "세금 신고서 작성 — 받을 수 있는 공제를 빠짐없이 반영해 신고서를 작성합니다." },
       { en: "Client Review & Signature", ko: "고객 검토 및 서명 — 작성된 신고서를 고객에게 설명하고 전자 서명 후 최종 제출합니다." },
       { en: "Filing & Follow-up", ko: "제출 및 사후 관리 — IRS/FTB에 전자 신고 후 접수 확인서를 제공하며, 이후 문의도 지속 지원합니다." }
     ],
@@ -270,13 +270,13 @@ const serviceDetails = [
   {
     id: "svc_2", icon: "📒", category: "CORE TAX & ACCOUNTING",
     title: { en: "Bookkeeping & Accounting", ko: "장부 관리 & 회계" },
-    tagline: { en: "Clean books, clear insights — so you can focus on your business.", ko: "정확한 장부, 명확한 숫자 — 사업주가 숫자가 아닌 사업에 집중할 수 있도록." },
-    intro: { en: "Accurate bookkeeping is the foundation of a healthy business. We handle everything from monthly financial statements to cloud-based real-time bookkeeping.", ko: "정확한 장부 관리는 건강한 사업의 기본입니다. 월별 재무제표 작성부터 클라우드 기반 실시간 장부 관리까지, 사업주가 숫자가 아닌 사업에 집중할 수 있도록 지원합니다." },
+    tagline: { en: "Books closed every month, so the numbers are ready when you need them.", ko: "매달 마감하는 장부. 필요할 때 숫자가 준비돼 있습니다." },
+    intro: { en: "I close your books every month. Transactions are categorized, bank and card accounts are reconciled, and you get monthly financial statements. If the books are behind, I start by catching them up.", ko: "매달 장부를 마감합니다. 거래를 분류하고 은행·카드 계좌를 맞춘 뒤 월별 재무제표를 보내 드립니다. 장부가 밀려 있다면 밀린 기간부터 정리합니다." },
     items: [
       { en: "Monthly Bookkeeping", ko: "월별 장부 관리 — 수입·지출 분류, 은행 계좌 조정(Bank Reconciliation), 월별 결산 처리." },
       { en: "Financial Statements", ko: "재무제표 작성 — 손익계산서, 대차대조표, 현금흐름표 월별·분기별·연간 작성." },
-      { en: "QuickBooks Setup & Management", ko: "QuickBooks — 클라우드 회계 소프트웨어 설정, 정리, 마이그레이션 및 교육." },
-      { en: "Catch-up Bookkeeping", ko: "Catch-up Bookkeeping — 수개월 또는 수년치 누락된 장부를 정리하는 서비스." },
+      { en: "QuickBooks Setup & Management", ko: "QuickBooks 설정·정리 — 클라우드 회계 소프트웨어 설정, 정리, 마이그레이션 및 교육." },
+      { en: "Catch-up Bookkeeping", ko: "밀린 장부 정리 — 수개월 또는 수년치 누락된 장부를 정리하는 서비스." },
       { en: "AR / AP Management", ko: "매출채권·매입채무 (AR/AP) — 인보이스 발행 및 결제 추적." },
       { en: "Tax Preparation Link", ko: "세금 준비 연계 — 연간 세금 신고를 위한 장부 데이터 정리 및 CPA 연계 처리." }
     ],
@@ -288,16 +288,16 @@ const serviceDetails = [
     ],
     docs: ["Bank Statements", "Credit Card Statements", "Invoices / Receipts", "Payroll Records", "Prior Year Tax Returns", "Existing QuickBooks File"],
     faq: [
-      { q: { en: "Do I have to use QuickBooks?", ko: "QuickBooks를 사용하지 않아도 되나요?" }, a: { en: "No. We support Excel, Wave, Xero and other platforms. We can help migrate to the optimal software.", ko: "네. Excel, Wave, Xero 등 다양한 플랫폼을 지원하며, 필요시 최적의 소프트웨어로 마이그레이션을 도와드립니다." } },
+      { q: { en: "Do I have to use QuickBooks?", ko: "QuickBooks를 사용하지 않아도 되나요?" }, a: { en: "No. I also work with Excel, Wave, Xero and others. If another program fits your business better, I can move you over.", ko: "네. Excel, Wave, Xero 등으로도 작업합니다. 사업에 더 맞는 프로그램이 있다면 옮기는 작업도 맡습니다." } },
       { q: { en: "How long does catch-up bookkeeping take?", ko: "Catch-up Bookkeeping 기간은 얼마나 걸리나요?" }, a: { en: "Typically 1–4 weeks depending on transaction volume. We'll provide a timeline estimate at the initial consultation.", ko: "거래 규모에 따라 다르지만 일반적으로 1~4주 내 완료됩니다. 초기 상담 시 일정을 안내해드립니다." } },
-      { q: { en: "How is the monthly fee determined?", ko: "월 비용은 어떻게 되나요?" }, a: { en: "Fees are based on the number of monthly transactions and complexity. We provide a custom quote after the initial consultation.", ko: "월 거래 건수 및 복잡도에 따라 책정됩니다. 초기 상담 후 맞춤 견적을 제공합니다." } }
+      { q: { en: "How is the monthly fee determined?", ko: "월 비용은 어떻게 되나요?" }, a: { en: "It depends on monthly transaction volume and how complex the books are. I quote a fixed monthly fee after the first consultation.", ko: "월 거래 건수와 장부의 복잡도에 따라 정해집니다. 첫 상담 후 월 고정 금액으로 견적을 드립니다." } }
     ]
   },
   {
     id: "svc_3", icon: "💰", category: "CORE TAX & ACCOUNTING",
     title: { en: "Payroll Management", ko: "급여 관리" },
-    tagline: { en: "Complex payroll compliance, handled by experts.", ko: "복잡한 급여 컴플라이언스, 전문가에게 맡기세요." },
-    intro: { en: "We professionally manage payroll tax filings, compliance, and all federal and state reporting obligations — from hiring to termination.", ko: "급여 처리의 복잡한 세금 신고, 컴플라이언스, 연방 및 주 보고 의무를 전문적으로 대행합니다. 직원 채용부터 퇴직까지 전 과정을 지원합니다." },
+    tagline: { en: "Payroll, payroll taxes and quarterly filings, on schedule.", ko: "급여와 급여세, 분기 신고를 기한 안에." },
+    intro: { en: "I run payroll and file the federal and California payroll returns that come with it (941, 940, DE 9 and DE 9C), plus W-2s and 1099s at year end. New hires, terminations and wage garnishments are handled in the same place.", ko: "급여 계산과 지급, 그에 따르는 연방·캘리포니아 급여세 신고(941, 940, DE 9, DE 9C), 연말 W-2·1099 발행까지 맡습니다. 신규 채용, 퇴사, 임금 압류 처리도 같은 곳에서 봅니다." },
     items: [
       { en: "Payroll Processing", ko: "급여 처리 — 주급·격주급·월급 처리. 직접 입금(Direct Deposit) 설정 및 실행." },
       { en: "Payroll Tax Filing", ko: "Payroll Tax 신고 — 941(분기), 940(연간 FUTA), W-2 및 1099 발행." },
@@ -314,29 +314,29 @@ const serviceDetails = [
     ],
     docs: ["EIN Documentation", "Employee W-4 / DE-4", "Bank Account Info (Direct Deposit)", "Payroll History", "Prior 941/940 Returns", "CA EDD Account Information"],
     faq: [
-      { q: { en: "How many employees do you need to start?", ko: "몇 명부터 서비스가 가능한가요?" }, a: { en: "We serve businesses from 1-person owners to 50+ employees.", ko: "1인 기업(오너 급여)부터 50인 이상 규모까지 모두 지원합니다." } },
-      { q: { en: "Can I switch from my current payroll system?", ko: "기존 급여 시스템에서 전환이 가능한가요?" }, a: { en: "Yes. We support data migration from Gusto, ADP, Paychex, and other platforms.", ko: "네. Gusto, ADP, Paychex 등 기존 플랫폼에서의 데이터 마이그레이션을 지원합니다." } },
-      { q: { en: "Can you handle California's complex payroll laws?", ko: "California 급여 법규가 복잡한데 처리 가능한가요?" }, a: { en: "Yes. We specialize in CA labor law compliance including minimum wage, overtime, SDI, and SUI requirements.", ko: "California 노동법 및 EDD 규정에 따른 컴플라이언스를 전문적으로 처리합니다. 최저임금, 오버타임, SDI, SUI 등 CA 특수 사항 포함." } }
+      { q: { en: "How many employees do you need to start?", ko: "몇 명부터 서비스가 가능한가요?" }, a: { en: "Anyone from a one-person company paying only the owner to businesses with 50+ employees.", ko: "1인 기업(오너 급여)부터 50인 이상 규모까지 모두 지원합니다." } },
+      { q: { en: "Can I switch from my current payroll system?", ko: "기존 급여 시스템에서 전환이 가능한가요?" }, a: { en: "Yes. I can move your data over from Gusto, ADP, Paychex and other providers.", ko: "네. Gusto, ADP, Paychex 등 기존 플랫폼에서의 데이터 마이그레이션을 지원합니다." } },
+      { q: { en: "Can you handle California's complex payroll laws?", ko: "California 급여 법규가 복잡한데 처리 가능한가요?" }, a: { en: "Yes. Payroll is run under California rules, including minimum wage, overtime, SDI and SUI, and EDD filings are part of the service.", ko: "네. 최저임금, 오버타임, SDI, SUI 같은 캘리포니아 규정에 맞춰 급여를 처리하고, EDD 신고도 함께 맡습니다." } }
     ]
   },
   {
     id: "svc_4", icon: "⚖️", category: "CORE TAX & ACCOUNTING",
     title: { en: "Tax Resolution", ko: "세금 분쟁 해결" },
-    tagline: { en: "Before meeting an IRS officer — contact CR Accountancy first.", ko: "IRS 담당자를 만나기 전에, 먼저 CR Accountancy에 연락하세요." },
-    intro: { en: "We professionally resolve IRS, FTB, and CDTFA tax issues. If you received an audit notice, had wages garnished, or have a tax lien — you need immediate consultation.", ko: "IRS·FTB·CDTFA 세금 문제를 전문적으로 해결합니다. 감사 통지를 받았다면, 임금이 동결되었다면, 세금 체권이 설정되었다면 즉시 상담이 필요합니다. 감사 대응부터 체권 해제까지 원스톱으로 처리합니다." },
+    tagline: { en: "When the IRS, FTB, EDD or CDTFA writes, I respond as your representative.", ko: "IRS·FTB·EDD·CDTFA에서 연락이 오면, 대리인으로 대응합니다." },
+    intro: { en: "I handle IRS, FTB, EDD and CDTFA problems. If you've received an audit notice, had wages or a bank account levied, or have a tax lien, call before the next deadline.", ko: "IRS·FTB·EDD·CDTFA와 얽힌 세금 문제를 맡습니다. 세무조사 통지를 받았거나, 임금이나 은행 계좌가 압류됐거나, 세금 담보(Lien)가 설정됐다면 다음 기한 전에 연락 주세요. 조사 대응부터 담보 해제까지 맡습니다." },
     items: [
-      { en: "IRS / FTB Audit Representation", ko: "IRS / FTB 감사 대응 — IRS 및 CA FTB 세무조사에 CPA 자격으로 대리인 역할 수행. 서류 준비부터 조사관 연락 창구까지." },
-      { en: "CDTFA Sales Tax Audit", ko: "CDTFA 판매세 감사 — California 판매세·사용세 감사 대응. 소매업·음식점·제조업체 전문." },
-      { en: "Offer in Compromise", ko: "Offer in Compromise — IRS 채무 조정 협상. 납부 의무 금액을 실질적으로 줄일 수 있는 조건을 분석하고 신청 대행." },
-      { en: "Installment Agreement", ko: "Installment Agreement — 세금 분할 납부 협의. IRS/FTB와 월납 계획을 협상." },
-      { en: "Wage Garnishment Release", ko: "Wage Garnishment Release — 임금 압류 해제. 고용주 연락 창구 차단 및 해제 절차 진행." },
-      { en: "Bank Levy Release", ko: "Bank Levy Release — 은행 계좌 동결 해제. 신속한 대응으로 자금 접근성 복구." },
-      { en: "Tax Lien Response", ko: "Tax Lien 대응 — IRS/FTB 세금 담보(Federal/State Tax Lien) 해제 전략 수립 및 대응." },
-      { en: "Delinquent Returns", ko: "Delinquent Returns — 연체된 세금 신고서 작성 및 제출. IRS Voluntary Disclosure 프로그램 연계." }
+      { en: "IRS / FTB Audit Representation", ko: "IRS·FTB 세무조사 대응 — IRS와 California FTB 세무조사에 대리인으로 나섭니다. 서류 준비부터 조사관과의 연락까지 맡습니다." },
+      { en: "CDTFA Sales Tax Audit", ko: "CDTFA 판매세 조사 — California 판매세·사용세 조사 대응. 신고한 매출과 장부가 맞지 않는 부분을 소명합니다." },
+      { en: "Offer in Compromise", ko: "체납액 감면 협상(OIC) — IRS 채무 조정 협상. 납부 의무 금액을 실질적으로 줄일 수 있는 조건을 분석하고 신청 대행." },
+      { en: "Installment Agreement", ko: "분할 납부 협의 — 세금 분할 납부 협의. IRS/FTB와 월납 계획을 협상." },
+      { en: "Wage Garnishment Release", ko: "임금 압류 해제 — 임금 압류 해제. 고용주 연락 창구 차단 및 해제 절차 진행." },
+      { en: "Bank Levy Release", ko: "은행 계좌 압류 해제 — 압류된 은행 계좌의 해제 절차 진행. 신속한 대응으로 자금 접근성 복구." },
+      { en: "Tax Lien Response", ko: "세금 담보(Lien) 해제 — IRS·FTB 세금 담보(Federal/State Tax Lien) 해제 신청과 대응." },
+      { en: "Delinquent Returns", ko: "미신고 연도 정리 — 연체된 세금 신고서 작성 및 제출. IRS Voluntary Disclosure 프로그램 연계." }
     ],
     process: [
       { en: "Problem Assessment", ko: "문제 파악 — IRS/FTB 통지서, 체납 내역 등을 확인하고 상황을 정확히 파악합니다." },
-      { en: "Strategy Development", ko: "대응 전략 수립 — Offer in Compromise, 분할 납부, 콜렉션 유예(CNC) 등 최적 대안을 선정합니다." },
+      { en: "Strategy Development", ko: "대응 전략 수립 — Offer in Compromise, 분할 납부, 징수 유예(CNC) 중 실제로 가능한 방법을 따져 봅니다." },
       { en: "IRS/FTB Representation", ko: "IRS/FTB 대리 — CPA 자격으로 납세자 대리인 역할 수행. 고객이 직접 담당자를 만날 필요 없음." },
       { en: "Resolution & Follow-up", ko: "해결 및 사후 관리 — 문제 해결 후 미래 컴플라이언스 유지를 위한 세무 플래닝 지원." }
     ],
@@ -344,41 +344,41 @@ const serviceDetails = [
     faq: [
       { q: { en: "An IRS Revenue Officer visited — what should I do?", ko: "IRS 담당자(Revenue Officer)가 방문했는데 어떻게 해야 하나요?" }, a: { en: "Contact us immediately. Having a CPA as your representative provides significant advantages during Revenue Officer interactions.", ko: "즉시 연락주세요. Revenue Officer 접촉 시 CPA가 대리인으로 동석하면 서류 요청 및 입장에서 유리한 결과를 얻을 수 있습니다." } },
       { q: { en: "Does everyone qualify for Offer in Compromise?", ko: "Offer in Compromise는 누구나 되나요?" }, a: { en: "You must meet IRS criteria (ability to pay, income, assets). We'll evaluate your eligibility in the consultation.", ko: "IRS가 정한 자격 요건(지불 능력, 소득, 자산 등)을 충족해야 합니다. 상담을 통해 신청 가능성을 먼저 확인해 드립니다." } },
-      { q: { en: "My business is at risk due to unpaid sales tax — what can I do?", ko: "판매세 미납으로 사업이 위기라면?" }, a: { en: "Contact us quickly. We can pursue Installment Agreements or Currently Not Collectible status to protect your business.", ko: "신속하게 연락 주세요. Installment Agreement 또는 Currently Not Collectible 신청이 가능합니다." } }
+      { q: { en: "My business is at risk due to unpaid sales tax — what can I do?", ko: "판매세 미납으로 사업이 위기라면?" }, a: { en: "Call before the next notice deadline. An installment agreement or Currently Not Collectible status may be possible.", ko: "다음 통지서 기한 전에 연락 주세요. 분할 납부(Installment Agreement)나 징수 유예(Currently Not Collectible)를 신청할 수 있는지 검토합니다." } }
     ]
   },
   {
     id: "svc_5", icon: "🏢", category: "CORE TAX & ACCOUNTING",
     title: { en: "Business Formation", ko: "법인 설립" },
-    tagline: { en: "Starting with the right structure is your best tax strategy.", ko: "올바른 구조로 시작하는 것이 가장 큰 절세입니다." },
-    intro: { en: "We guide you from entity selection and registration to tax account setup. Choosing the right entity type directly impacts your future taxes and legal protection.", ko: "사업 유형 결정부터 설립 등록, 세무 계좌 개설까지 전 과정을 지원합니다. Entity 선택은 향후 세금과 법적 보호에 직결되므로, 창업 초기에 올바른 설계가 가장 중요합니다." },
+    tagline: { en: "Choose the entity with your own pay and taxes in mind.", ko: "본인 급여와 세금까지 생각해서 사업체 형태를 정합니다." },
+    intro: { en: "LLC, S corp or C corp: the choice shapes your taxes for years. I compare them using your expected revenue and the salary you plan to take, then handle the registration, EIN and state tax accounts.", ko: "LLC, S corp, C corp 중 무엇을 고르느냐에 따라 앞으로 몇 년의 세금이 달라집니다. 예상 매출과 본인 급여를 넣어 비교해 본 뒤, 등록과 EIN, 주 세금 계좌 개설까지 진행합니다." },
     items: [
       { en: "LLC Formation", ko: "LLC 설립 — 단일·다수 회원 LLC 구성. Operating Agreement 작성 및 캘리포니아 SOS 등록." },
       { en: "S-Corp & C-Corp", ko: "S-Corp 및 C-Corp — 주주 구성, 바이론, 급여 설정. S-Corp 선출 (Form 2553) 지원." },
-      { en: "Partnership", ko: "Partnership — General / Limited Partnership 설립. 동업자간 Partnership Agreement 작성 지원." },
-      { en: "Nonprofit (501c3)", ko: "Nonprofit (501c3) — Form 1023 작성 및 IRS 면세 지위 신청 대행. CA AG 등록 포함." },
+      { en: "Partnership", ko: "파트너십 — General / Limited Partnership 설립. 동업자간 Partnership Agreement 작성 지원." },
+      { en: "Nonprofit (501c3)", ko: "비영리법인(501(c)(3)) — Form 1023 작성 및 IRS 면세 지위 신청 대행. CA AG 등록 포함." },
       { en: "EIN Registration", ko: "EIN 등록 — 연방 고용주 식별번호(EIN) IRS 신청 및 안내." },
       { en: "CA Business License & Registration", ko: "CA Business License 및 등록 — City/County Business License 및 CA Secretary of State 등록 지원." }
     ],
     process: [
-      { en: "Entity Type Decision", ko: "Entity 타입 결정 — 세금 효율, 법적 보호, 투자자 유치 등 목표에 따라 최적 구조를 추천합니다." },
+      { en: "Entity Type Decision", ko: "Entity 타입 결정 — 세금, 법적 보호, 투자 유치 계획을 놓고 맞는 형태를 정합니다." },
       { en: "Document Preparation", ko: "구성 서류 작성 — Articles of Organization/Incorporation, Operating Agreement, Bylaws 등 작성 지원." },
       { en: "EIN & Tax Account Setup", ko: "EIN 및 세무 계좌 개설 — EIN 신청, CA 보드 등록, 판매세 퍼밋 등." },
       { en: "System Integration", ko: "시스템 구축 연계 — 회계 시스템, 페이롤, 은행 계좌 설정 등 초기 지원." }
     ],
     docs: ["Owner ID / Identification", "Proof of State Residency", "Proposed Business Name", "Existing Business Plan", "Investor / Partner Information"],
     faq: [
-      { q: { en: "Which entity should I choose?", ko: "어떤 Entity를 선택해야 하나요?" }, a: { en: "LLC offers flexibility and simplicity; S-Corp excels at reducing self-employment tax. The best structure depends on size, investor plans, and income level.", ko: "LLC는 유연성과 단순함, S-Corp은 Self-employment Tax를 줄이고 급여와 배당으로 소득을 분리하는 절세 전환이 가능합니다. 사업 규모, 투자자 유치 계획, 소득 수준에 따라 최적 구조가 달라집니다." } },
-      { q: { en: "Do you help Korean businesses expanding to the US?", ko: "한국에서 미국으로 사업을 확장하는 경우도 지원하나요?" }, a: { en: "Yes. We provide bilingual support for Korean company US incorporation, tax structure, and operations.", ko: "네. 한국 기업의 미국 법인 설립, 세무 구조, 운영 자문까지 bilingual로 지원합니다." } }
+      { q: { en: "Which entity should I choose?", ko: "어떤 Entity를 선택해야 하나요?" }, a: { en: "LLC offers flexibility and simplicity; S-Corp excels at reducing self-employment tax. The best structure depends on size, investor plans, and income level.", ko: "LLC는 유연성과 단순함, S-Corp은 Self-employment Tax를 줄이고 급여와 배당으로 소득을 분리하는 절세 전환이 가능합니다. 사업 규모, 투자 유치 계획, 소득 수준에 따라 맞는 형태가 달라집니다." } },
+      { q: { en: "Do you help Korean businesses expanding to the US?", ko: "한국에서 미국으로 사업을 확장하는 경우도 지원하나요?" }, a: { en: "Yes. I help Korean companies set up a US entity, decide the tax structure and handle ongoing filings, in Korean or English.", ko: "네. 한국 기업의 미국 법인 설립, 세무 구조, 운영 자문까지 bilingual로 지원합니다." } }
     ]
   },
   {
     id: "svc_6", icon: "💼", category: "BUSINESS & FINANCIAL ADVISORY",
     title: { en: "Business Consulting", ko: "비즈니스 컨설팅" },
-    tagline: { en: "A practical business partner grounded in numbers.", ko: "숫자에 기반한 실질적인 비즈니스 파트너." },
-    intro: { en: "From startup structure design to growth strategy and M&A support — we provide actionable business advisory beyond accounting.", ko: "창업 구조 설계부터 사업 확장 전략, M&A 지원까지 — 숫자에 기반한 실질적인 비즈니스 자문을 제공합니다. 단순한 회계사를 넘어 사업 파트너로서 성장을 함께합니다." },
+    tagline: { en: "Structure, pricing and growth decisions, checked against the numbers first.", ko: "구조·가격·확장 결정을 숫자로 먼저 따져 봅니다." },
+    intro: { en: "For decisions that move your numbers: opening another location, buying out a partner, changing prices, selling the business. We talk it through with your books open, not from general rules.", ko: "매장 추가, 동업자 지분 정리, 가격 조정, 사업 매각처럼 숫자가 크게 바뀌는 결정을 앞두고 상의하는 자리입니다. 일반론이 아니라 회사 장부를 펴 놓고 이야기합니다." },
     items: [
-      { en: "Entity Structure Design", ko: "Entity 구조 설계 — LLC, S-Corp, C-Corp, Partnership — 세금 효율과 법적 보호를 고려한 최적 구조 선택." },
+      { en: "Entity Structure Design", ko: "Entity 구조 설계 — LLC, S-Corp, C-Corp, Partnership — 세금과 법적 보호를 함께 따져 형태를 정합니다." },
       { en: "Business Plan Preparation", ko: "사업 계획서 작성 — 투자자·은행 제출용 사업 계획서 및 재무 프로젝션 작성." },
       { en: "Cash Flow Management", ko: "Cash Flow 관리 — 현금흐름 분석, 예측 모델 수립 및 단기·장기 자금 계획." },
       { en: "Cost & Profitability Analysis", ko: "원가 분석·수익성 — 제품·서비스별 원가 구조 분석 및 가격 전략 수립." },
@@ -400,44 +400,44 @@ const serviceDetails = [
   {
     id: "svc_7", icon: "📈", category: "BUSINESS & FINANCIAL ADVISORY",
     title: { en: "Financial Advisory & Wealth Planning", ko: "재무 자문 & 자산 플래닝" },
-    tagline: { en: "Comprehensive financial advisory from a CPA who understands taxes.", ko: "세금을 이해하는 CPA의 종합 재무 자문." },
-    intro: { en: "Comprehensive financial advisory for individuals and families — from retirement planning and investment structure to tax-efficient asset allocation.", ko: "개인과 가족의 재무 목표 달성을 위한 종합 재무 자문 서비스. 은퇴 계획, 투자 구조, 세금 효율적인 자산 배분까지 — 장기적 재정 건전성을 위한 파트너가 됩니다." },
+    tagline: { en: "Retirement savings and investment income, planned around tax.", ko: "은퇴 자금과 투자 소득을 세금과 함께 계획합니다." },
+    intro: { en: "Retirement accounts, investment income and asset allocation, looked at from the tax side. The aim is one plan in which your tax, retirement and estate decisions do not work against each other.", ko: "은퇴 계좌, 투자 소득, 자산 배분을 세금 쪽에서 함께 봅니다. 세금, 은퇴, 상속에 관한 결정이 서로 어긋나지 않도록 하나의 계획으로 묶는 것이 목표입니다." },
     items: [
-      { en: "Retirement Planning", ko: "은퇴 계획 — 401(k), IRA, Roth IRA, SEP-IRA 등 은퇴 계좌 전략 수립 및 절세 최적화." },
-      { en: "Family Legacy Planning", ko: "Family Legacy Planning — Trust, 유언장, 생전 증여 전략을 통한 차세대 자산 이전 계획." },
-      { en: "Tax-Efficient Investing", ko: "세금 효율적 투자 — 자산 배분 구조를 세금 관점에서 최적화. Capital Gain 관리 전략." },
+      { en: "Retirement Planning", ko: "은퇴 계획 — 401(k), IRA, Roth IRA, SEP-IRA 등 어느 계좌에 얼마를 넣을지 세금 쪽에서 정합니다." },
+      { en: "Family Legacy Planning", ko: "가족 자산 계획 — Trust, 유언장, 생전 증여 전략을 통한 차세대 자산 이전 계획." },
+      { en: "Tax-Efficient Investing", ko: "세금 효율적 투자 — 자산 배분을 세금 관점에서 점검하고 Capital Gain 실현 시점을 계획합니다." },
       { en: "Real Estate Financial Advisory", ko: "부동산 재무 자문 — 투자 부동산 취득·처분·교환(1031 Exchange) 전략 및 세무 처리." },
       { en: "Insurance & Risk Management", ko: "보험·리스크 관리 — 생명보험, 장애보험을 활용한 재무 리스크 대비 전략." },
-      { en: "Wealth Transfer", ko: "Wealth Transfer — Estate Tax 최소화를 위한 증여 전략, GRAT, IDGT, FLP 구조 자문." }
+      { en: "Wealth Transfer", ko: "자산 이전 — Estate Tax 최소화를 위한 증여 전략, GRAT, IDGT, FLP 구조 자문." }
     ],
     process: [
       { en: "Financial Assessment", ko: "재무 현황 분석 — 자산, 부채, 현금흐름, 보험, 은퇴 계좌 등 전반적인 재무 현황을 파악합니다." },
       { en: "Goal Setting", ko: "목표 설정 — 단기·중기·장기 재무 목표를 구체화하고 우선순위를 설정합니다." },
-      { en: "Comprehensive Plan", ko: "종합 계획 수립 — 세금, 투자, 은퇴, 상속을 통합한 맞춤형 재무 계획서를 작성합니다." },
+      { en: "Comprehensive Plan", ko: "종합 계획 수립 — 세금, 투자, 은퇴, 상속을 한 문서에 정리한 재무 계획서를 작성합니다." },
       { en: "Annual Review", ko: "정기 리뷰 — 연간 또는 생애 주요 이벤트 시 계획을 업데이트합니다." }
     ],
     docs: ["Recent Tax Returns", "Bank / Investment Account Statements", "Real Estate Holdings", "Life Insurance Policies", "Retirement Account Balances", "Trust / Will Copies"],
     faq: [
-      { q: { en: "Does a CPA provide investment advice?", ko: "CPA가 투자 자문도 하나요?" }, a: { en: "We advise on tax-efficient asset structure and financial planning. Securities investment recommendations require a separate license, and we collaborate with qualified specialists.", ko: "CPA로서 세금 효율적 자산 구조와 재무 계획을 자문합니다. 증권 투자 추천은 별도 라이선스 영역이므로, 필요시 적합한 전문가와 협력합니다." } },
-      { q: { en: "Can you advise on 1031 Exchange?", ko: "1031 Exchange 자문도 가능한가요?" }, a: { en: "Yes. We advise on tax deferral strategies through like-kind exchanges for investment real estate sales.", ko: "네. 투자 부동산 매각 후 Like-Kind 교환을 통한 양도세 이연 전략을 세무 관점에서 자문합니다." } }
+      { q: { en: "Does a CPA provide investment advice?", ko: "CPA가 투자 자문도 하나요?" }, a: { en: "I advise on asset structure and planning from the tax side. Recommending specific securities requires a separate license, so for that I work with licensed advisors.", ko: "CPA로서 세금 효율적 자산 구조와 재무 계획을 자문합니다. 증권 투자 추천은 별도 라이선스 영역이므로, 필요시 적합한 전문가와 협력합니다." } },
+      { q: { en: "Can you advise on 1031 Exchange?", ko: "1031 Exchange 자문도 가능한가요?" }, a: { en: "Yes. When you sell investment real estate, I review whether a like-kind exchange can defer the tax and what it takes to qualify.", ko: "네. 투자 부동산 매각 후 Like-Kind 교환을 통한 양도세 이연 전략을 세무 관점에서 자문합니다." } }
     ]
   },
   {
     id: "svc_8", icon: "👨‍👩‍👧", category: "BUSINESS & FINANCIAL ADVISORY",
     title: { en: "Family Legacy & Wealth Transfer", ko: "가족 자산 이전 & 상속 계획" },
-    tagline: { en: "Designing the transfer of wealth across generations.", ko: "세대를 넘어 이어지는 부의 설계." },
-    intro: { en: "We design the most efficient way to transfer assets to your children. From trust structure design to estate tax savings — including practical advisory for Korean-American families.", ko: "의도한 대로 자녀에게 유산을 이전하는 가장 효율적인 방법을 설계합니다. Trust 구조 설계부터 Estate Tax 절세까지, 그리고 한인 가정의 특수한 자산 구조를 연계한 실질적 자문을 제공합니다." },
+    tagline: { en: "Passing assets to the next generation, with the tax worked out first.", ko: "다음 세대로 자산을 넘기기 전에, 세금부터 정리합니다." },
+    intro: { en: "Planning how your assets pass to your children: trust structure, lifetime gifts and estate tax. For families with property in both Korea and the US, I look at both countries together. Trust documents are drafted by your attorney; I work alongside them on the tax side.", ko: "자녀에게 자산을 어떻게 넘길지 계획합니다. 신탁 구조, 생전 증여, 상속세를 함께 보고, 한국과 미국 양쪽에 자산이 있는 가정은 두 나라를 같이 놓고 검토합니다. 신탁 문서는 변호사가 작성하고, 저는 세금 쪽을 맡아 함께 진행합니다." },
     items: [
-      { en: "Trust Design & Accounting", ko: "Trust 설계 및 회계 — Revocable/Irrevocable Trust 구조 설계 자문 및 Trust 회계(수익자 기록, K-1 발행)." },
-      { en: "Estate Tax Planning", ko: "Estate Tax Planning — 연방 및 CA 상속세 최소화 전략. Unified Credit 활용 및 증여 제외 적용." },
-      { en: "Lifetime Gift Strategy", ko: "생전 증여 전략 — 연간 증여 세액 공제(연 $18,000/인) 활용. 연령대별 최적 증여 시점 설계." },
+      { en: "Trust Structure & Accounting", ko: "신탁 구조와 회계 — Revocable/Irrevocable Trust 구조 자문과 신탁 회계(수익자 기록, K-1 발행)." },
+      { en: "Estate Tax Planning", ko: "상속세 계획 — 연방 및 CA 상속세 최소화 전략. Unified Credit 활용 및 증여 제외 적용." },
+      { en: "Lifetime Gift Strategy", ko: "생전 증여 전략 — 연간 증여 면제 한도(2026년 받는 사람 1인당 $19,000)를 활용해 언제, 얼마씩 증여할지 계획합니다." },
       { en: "GRAT / IDGT Structures", ko: "GRAT / IDGT 구조 — 고자산가 대상 절세 자산 이전 기법. Grantor Retained Annuity Trust 및 Intentionally Defective Grantor Trust." },
       { en: "FLP / LLC Structures", ko: "FLP / LLC 구조 — Family Limited Partnership 및 LLC를 활용한 사업체 자산 이전 및 평가 할인 절세." },
-      { en: "Will & Beneficiary Strategy", ko: "유언장 및 수혜자 전략 — 유언장 검토, 수혜자 최적화, 사이클 플랜 업데이트 지원." }
+      { en: "Will & Beneficiary Strategy", ko: "유언장 및 수혜자 전략 — 유언장을 검토하고, 은퇴 계좌·보험의 수혜자 지정이 계획과 맞는지 점검합니다." }
     ],
     process: [
       { en: "Asset Overview", ko: "자산 현황 파악 — Trust, 부동산, 사업체, 승계 예정 자산 등 전체 현황 점검." },
-      { en: "Tax-Saving Structure", ko: "절세 구조 설계 — Estate Tax 노출 분석 후 연방·주 수준에서 최적 절세 구조 설계." },
+      { en: "Tax-Saving Structure", ko: "절세 구조 설계 — Estate Tax가 얼마나 나올지 먼저 계산하고, 줄일 수 있는 구조를 설계합니다." },
       { en: "Trust & Document Coordination", ko: "신탁 및 문서 작성 연계 — 서류 작성은 Estate Attorney와 협력 진행 (Danny 네트워크 활용)." },
       { en: "Annual Review", ko: "연간 리뷰 — 세법 변경, 자산 변동, 가족 상황 변화에 따른 플랜 업데이트." }
     ],
@@ -445,21 +445,21 @@ const serviceDetails = [
     faq: [
       { q: { en: "Does a trust avoid probate?", ko: "Trust를 설정하면 프로베이트(Probate)를 피할 수 있나요?" }, a: { en: "Generally yes — a properly funded trust avoids probate, making inheritance faster and less costly. Assets must actually be transferred into the trust.", ko: "일반적으로 매녀타입드 Trust는 프로베이트를 피할 수 있어 상속 과정을 빠르고 비용을 줄일 수 있습니다. 다만 Trust에 자산을 실제 이전해야 합니다." } },
       { q: { en: "What is the federal Estate Tax exemption?", ko: "연방 Estate Tax는 얼마부터 부과되나요?" }, a: { en: "As of 2024, the federal Estate Tax exemption is approximately $13.6M (individual) / $27.2M (couple). Sunset provisions may change this after 2025.", ko: "2024년 기준 연방 Estate Tax 면제 한도는 약 $13.6M(개인)/$27.2M(부부)입니다. 2025년 이후 일몰조항(Sunset Provision)에 따라 변경될 수 있어 지금 준비하는 게 중요합니다." } },
-      { q: { en: "Do you help with 2nd-generation Korean-American inheritance?", ko: "한인 2세대 상속 문제도 도와주시나요?" }, a: { en: "Yes. We support US tax filings for citizen/PR children, phased asset transfers, and tax treatment of Korean real estate sale proceeds.", ko: "네. 미국 시민권자 또는 영주권자인 자녀의 미국 세부 정리, 자산의 단계적 이전, 한국 부동산 판매이익 입금에 대한 세무 처리도 지원합니다." } }
+      { q: { en: "Do you help with 2nd-generation Korean-American inheritance?", ko: "한인 2세대 상속 문제도 도와주시나요?" }, a: { en: "Yes. That includes US filings for children who are citizens or green card holders, transferring assets in stages, and the tax side of bringing home proceeds from selling Korean real estate.", ko: "네. 미국 시민권자 또는 영주권자인 자녀의 미국 세금 신고, 자산의 단계적 이전, 한국 부동산 판매이익 입금에 대한 세무 처리도 지원합니다." } }
     ]
   },
   {
     id: "svc_10", icon: "🌏", category: "SPECIALTY SERVICES",
     title: { en: "International Tax", ko: "국제 세무" },
-    tagline: { en: "A CPA who understands taxes in both the US and Korea.", ko: "미국과 한국, 두 나라의 세금을 이해하는 CPA." },
-    intro: { en: "We professionally handle complex international tax issues — from US-Korea tax treaties and FBAR/FATCA to foreign corporate filings.", ko: "글로벌 사업 환경에서 발생하는 복잡한 국제 세무 이슈를 전문적으로 처리합니다. 미국-한국 조세 조약부터 FBAR, FATCA, 외국 법인 신고까지 포괄적으로 지원합니다." },
+    tagline: { en: "Foreign accounts, foreign income and filings on both sides of the Pacific.", ko: "해외 계좌, 해외 소득, 한국과 미국 양쪽의 신고까지." },
+    intro: { en: "For people and companies with income, accounts or businesses in both Korea and the US. I handle FBAR and FATCA reporting, foreign tax credits, the US-Korea tax treaty, and the filings that come with owning a foreign company.", ko: "한국과 미국 양쪽에 소득이나 계좌, 회사가 있는 분들의 신고를 맡습니다. FBAR와 FATCA 신고, 외국납부세액공제, 한미 조세조약 적용, 외국 법인을 가진 경우의 신고까지 봅니다." },
     items: [
       { en: "FBAR / FATCA Filing", ko: "FBAR / FATCA 신고 — 해외 금융계좌 신고(FinCEN 114) 및 Form 8938. 미신고 시 고액 패널티 방지." },
-      { en: "US-Korea Tax Treaty", ko: "미-한 조세 조약 — 미국-한국 조세 조약을 활용한 이중과세 방지 및 원천세 최적화." },
+      { en: "US-Korea Tax Treaty", ko: "미-한 조세 조약 — 한미 조세조약을 적용해 같은 소득에 두 번 세금을 내지 않도록 하고 원천징수율을 맞춥니다." },
       { en: "Foreign Corporate Filing", ko: "외국 법인 신고 — Form 5471 (외국 법인), Form 8865 (외국 파트너십), Form 8858 (외국 지점)." },
       { en: "Non-Resident Tax", ko: "비거주자 세무 — NRA(Non-Resident Alien) 세금 신고, Form 1040-NR 처리." },
       { en: "Foreign Gifts & Inheritances", ko: "해외 증여·상속 — 해외로부터 받은 증여(Form 3520) 및 상속 신고. 해외 재산 관련 컴플라이언스." },
-      { en: "US Entity Setup for Korean Businesses", ko: "미국 법인 설립 자문 — 한국 기업의 미국 진출 시 최적 법인 구조 설계 및 세무 전략 수립." }
+      { en: "US Entity Setup for Korean Businesses", ko: "미국 법인 설립 자문 — 한국 기업이 미국에 진출할 때 법인 형태와 세무 구조를 정합니다." }
     ],
     process: [
       { en: "International Tax Assessment", ko: "국제 세무 현황 파악 — 해외 계좌, 외국 법인 소유 여부, 해외 소득 유형 등을 종합 파악합니다." },
@@ -477,15 +477,15 @@ const serviceDetails = [
   {
     id: "svc_11", icon: "₿", category: "SPECIALTY SERVICES",
     title: { en: "Crypto Tax", ko: "암호화폐 세금" },
-    tagline: { en: "More intuitive than algorithms — accurate IRS crypto reporting.", ko: "알고리즘보다 더 직관적으로 — 정확한 IRS 코인 신고." },
-    intro: { en: "We provide specialized support for complex cryptocurrency tax treatment — from exchange data analysis to DeFi, NFT, and staking income.", ko: "암호화폐 거래의 복잡한 세무 처리를 전문적으로 지원합니다. 거래소 데이터 분석부터 DeFi, NFT, 스테이킹 소득까지 — IRS 가이드라인에 맞는 정확한 신고를 제공합니다." },
+    tagline: { en: "Every trade matched to its cost basis and reported the way the IRS expects.", ko: "거래마다 취득가를 맞춰 IRS 기준대로 신고합니다." },
+    intro: { en: "I pull exchange and wallet records together and work out the gains, losses and income you need to report, DeFi, staking and NFTs included. If earlier years were missed or reported wrong, they can be amended.", ko: "거래소와 지갑 기록을 모아 신고해야 할 손익과 소득을 계산합니다. DeFi, 스테이킹, NFT도 포함됩니다. 지난 연도에 빠졌거나 잘못 신고된 부분은 수정 신고로 바로잡습니다." },
     items: [
       { en: "Trade Gain/Loss Calculation", ko: "거래 손익 계산 — FIFO/LIFO/HIFO 방법 적용. 거래소별 데이터 통합 및 Capital Gain/Loss 산정." },
       { en: "Mining / Staking Income", ko: "Mining / Staking 소득 — 채굴·스테이킹 보상의 소득 인식 시점 및 금액 산정. 사업 소득 vs 투자 소득 구분." },
       { en: "DeFi / NFT Processing", ko: "DeFi / NFT 처리 — DeFi 유동성 제공, NFT 민팅·매각 관련 세무 처리 및 소득 분류." },
       { en: "Exchange Data Consolidation", ko: "거래소 데이터 정리 — Coinbase, Binance, Kraken 등 다수 거래소 데이터 통합 및 누락 거래 복원." },
       { en: "Amended Returns", ko: "과거 신고 수정 — 암호화폐 신고 누락 또는 오류 수정을 위한 Amended Return 처리." },
-      { en: "Tax Loss Harvesting", ko: "Tax Loss Harvesting — 손실 거래를 활용한 세금 절감 전략 수립 및 연말 포트폴리오 최적화." }
+      { en: "Tax Loss Harvesting", ko: "손실 실현 절세 — 연말 전에 손실 난 포지션을 정리해 이익과 상계할지 검토합니다." }
     ],
     process: [
       { en: "Transaction Data Collection", ko: "거래 내역 수집 — 모든 거래소, 지갑, DeFi 프로토콜의 거래 내역을 취합합니다." },
@@ -502,8 +502,8 @@ const serviceDetails = [
   {
     id: "svc_12", icon: "🤝", category: "SPECIALTY SERVICES",
     title: { en: "Nonprofit Accounting", ko: "비영리 회계" },
-    tagline: { en: "Focus on your mission — leave the finances to us.", ko: "선한 일에 전념하도록, 재무는 맡겨주세요." },
-    intro: { en: "We support financial management and IRS compliance tailored to nonprofit organizations' special accounting standards (GAAP for Nonprofits).", ko: "비영리 단체의 특수한 회계 기준(GAAP for Nonprofits)에 맞는 재무 관리와 IRS 컴플라이언스를 지원합니다. 면세 지위 유지부터 투명한 재무 보고까지 전문적으로 처리합니다." },
+    tagline: { en: "Form 990, restricted funds and board reports for churches and nonprofits.", ko: "교회와 비영리단체의 990 신고, 지정 기금, 이사회 재무 보고." },
+    intro: { en: "I keep nonprofit books under nonprofit accounting rules and file the Form 990 every year, watching the deadlines and reporting requirements that keep tax-exempt status in good standing.", ko: "비영리 회계 기준에 맞춰 장부를 관리하고 매년 Form 990을 신고합니다. 면세 지위가 흔들리지 않도록 신고 기한과 보고 의무를 챙깁니다." },
     items: [
       { en: "Form 990 Filing", ko: "Form 990 신고 — 990, 990-EZ, 990-N, 990-PF 작성 및 제출. 면세 지위 유지를 위한 컴플라이언스 관리." },
       { en: "Nonprofit Bookkeeping", ko: "비영리 장부 관리 — Fund Accounting 기반 월별 장부 관리. 제한·비제한 기금(Restricted/Unrestricted) 분리 회계." },
@@ -520,23 +520,23 @@ const serviceDetails = [
     ],
     docs: ["IRS Determination Letter", "Fiscal Year Financial Records", "Donation / Grant Records", "Board Meeting Minutes", "Prior Form 990", "CA AG Registration Documents"],
     faq: [
-      { q: { en: "Can you help from the 501(c)(3) application stage?", ko: "501(c)(3) 신청부터 도와줄 수 있나요?" }, a: { en: "Yes. We support the entire process from Form 1023 preparation to IRS correspondence for obtaining tax-exempt status.", ko: "네. Form 1023 작성부터 IRS 서신 대응까지 면세 지위 취득 전 과정을 지원합니다." } },
+      { q: { en: "Can you help from the 501(c)(3) application stage?", ko: "501(c)(3) 신청부터 도와줄 수 있나요?" }, a: { en: "Yes. I prepare Form 1023 and handle IRS correspondence until the exemption is approved.", ko: "네. Form 1023 작성부터 IRS 서신 대응까지 면세 지위 취득 전 과정을 지원합니다." } },
       { q: { en: "What happens if Form 990 is not filed?", ko: "Form 990을 제출하지 않으면 어떻게 되나요?" }, a: { en: "Missing 3 consecutive years results in automatic IRS revocation of tax-exempt status. Reinstatement requires starting the application from scratch.", ko: "3년 연속 미제출 시 IRS가 면세 지위를 자동 취소합니다. 취소 후 재취득은 처음부터 신청해야 합니다." } },
-      { q: { en: "Do you serve small churches and community organizations?", ko: "소규모 교회나 커뮤니티 단체도 서비스가 가능한가요?" }, a: { en: "Yes. We serve organizations of all sizes from those filing only 990-N (e-Postcard) to large nonprofits.", ko: "네. 990-N(e-Postcard)만 제출하는 소규모 단체부터 대형 비영리까지 규모에 맞는 서비스를 제공합니다." } }
+      { q: { en: "Do you serve small churches and community organizations?", ko: "소규모 교회나 커뮤니티 단체도 서비스가 가능한가요?" }, a: { en: "Yes. Small organizations that only file the 990-N (e-Postcard) are welcome, as are larger ones.", ko: "네. 990-N(e-Postcard)만 제출하는 소규모 단체부터 대형 비영리까지 규모에 맞는 서비스를 제공합니다." } }
     ]
   },
   {
     id: "svc_13", icon: "🏗️", category: "SPECIALTY SERVICES",
     title: { en: "Industry-Specific CPA", ko: "업종별 전문 CPA" },
-    tagline: { en: "Your industry's growth needs a CPA who knows your industry.", ko: "당신 업종의 성장에는 당신 업종을 아는 CPA가 필요합니다." },
-    intro: { en: "Industry-specific tax and accounting services. We provide customized solutions tailored to each industry's regulatory environment and tax structure.", ko: "업종별 세무·회계 서비스. 각 산업의 규제 환경과 세무 구조에 맞춰 맞춤형 솔루션을 제공합니다. 한인 집중 업종인 건설업, 부동산, 의료, 음식점, eCommerce 등에 풍부한 실무 경험을 보유하고 있습니다." },
+    tagline: { en: "Accounting set up the way your industry actually runs.", ko: "업종이 실제로 돌아가는 방식에 맞춘 회계." },
+    intro: { en: "Construction, real estate, medical practices, restaurants and online sellers each have their own rules, and their numbers go wrong in different places. I set up the books and the tax work around how your industry actually runs.", ko: "건설, 부동산, 병원, 식당, 온라인 판매는 업종마다 규정도 다르고 숫자가 틀어지는 지점도 다릅니다. 업종이 실제로 돌아가는 방식에 맞춰 장부와 세무를 잡습니다." },
     items: [
-      { en: "Construction & Real Estate", ko: "Construction & Real Estate — 공사별 원가 관리, 완공기준 수익인식(PCM), Retainage 회계, 1031 Exchange 자문." },
-      { en: "Healthcare / Medical", ko: "Healthcare / Medical — 병의원·치과·의료 법인 세무 구조 설계. HIPAA 컴플라이언스, MSO 구조 자문." },
-      { en: "Restaurant & Retail", ko: "Restaurant & Retail — CDTFA 판매세 컴플라이언스, 현금 매출 관리, 팁 소득 보고, POS 데이터 연계." },
-      { en: "eCommerce / Creators", ko: "eCommerce / Creators — 아마존 셀러, 이커머스 사업자, 유튜버·틱톡커·크리에이터들의 주 세금 컴플라이언스 및 수익 구조 최적화." },
-      { en: "Professional Services", ko: "Professional Services — 변호사·회계사·컨설턴트 등 전문직의 로열티 수입, S-Corp 전환, 구이 관리." },
-      { en: "Gas Station / Hotel", ko: "Gas Station / Hotel — 주유소 판매세 신고, 호텔 점유율(Occupancy Tax), 가맹점 임대료 수입 회계 전문." }
+      { en: "Construction & Real Estate", ko: "건설·부동산 — 공사별 원가 관리, 완공기준 수익인식(PCM), Retainage 회계, 1031 Exchange 자문." },
+      { en: "Healthcare / Medical", ko: "병원·의료 — 병의원·치과·의료 법인 세무 구조 설계. HIPAA 컴플라이언스, MSO 구조 자문." },
+      { en: "Restaurant & Retail", ko: "식당·소매 — CDTFA 판매세 컴플라이언스, 현금 매출 관리, 팁 소득 보고, POS 데이터 연계." },
+      { en: "eCommerce / Creators", ko: "온라인 판매·크리에이터 — 아마존 셀러, 이커머스 사업자, 유튜버·틱톡커·크리에이터들의 여러 주에 걸친 판매세·소득세 신고와 수익 구조 정리." },
+      { en: "Professional Services", ko: "전문 서비스업 — 변호사·회계사·컨설턴트 등 전문직의 로열티 수입, S-Corp 전환, 구이 관리." },
+      { en: "Gas Station / Hotel", ko: "주유소·호텔 — 주유소 판매세 신고, 호텔 점유율(Occupancy Tax), 가맹점 임대료 수입 회계 전문." }
     ],
     process: [
       { en: "Industry Compliance Review", ko: "업종 컴플라이언스 점검 — 해당 업종의 특수 세무 의무와 리스크 요소를 상담에서 직접 파악합니다." },
@@ -546,21 +546,21 @@ const serviceDetails = [
     ],
     docs: ["Business Registration Documents", "Last 2 Years of Financial Statements", "Sales Tax Registration Certificate", "Industry-Specific License Documents", "Payroll Records", "Tax Returns (Last 2 Years)"],
     faq: [
-      { q: { en: "Can you help with construction cost accounting?", ko: "건설업의 코스트 어카운팅이 너무 복잡한데 도와주시나요?" }, a: { en: "Yes. We have extensive experience with construction-specific accounting including job costing, Retainage, and percentage-of-completion revenue recognition.", ko: "네. 공사별 원가 관리(Job Costing), Retainage, 진행기준 수익 인식 등 건설업 특유의 회계를 다룹니다." } },
+      { q: { en: "Can you help with construction cost accounting?", ko: "건설업의 코스트 어카운팅이 너무 복잡한데 도와주시나요?" }, a: { en: "Yes. Job costing, retainage and percentage-of-completion revenue are the core of construction books, and I set them up for contractors.", ko: "네. 공사별 원가 관리(Job Costing), Retainage, 진행기준 수익 인식 등 건설업 특유의 회계를 다룹니다." } },
       { q: { en: "Do restaurants need to file CDTFA separately?", ko: "음식점도 CDTFA 신고를 별도로 해야 하나요?" }, a: { en: "Yes. Restaurants are subject to sales tax, and there are separate reporting obligations for tips paid to employees. Record keeping for CDTFA audit preparedness is critical.", ko: "네. 음식점은 판매세 대상이며, 직원에게 지급하는 팁도 별도 보고 의무가 있습니다. CDTFA 감사 대비를 위한 기록 관리가 중요합니다." } },
-      { q: { en: "Does an eCommerce business need to file multi-state taxes?", ko: "eCommerce 업체는 다주 세금 신고를 해야 하나요?" }, a: { en: "Filing obligations vary by the buyer's state. We conduct Nexus analysis to identify each state's obligations and help implement automation tools.", ko: "구매자가 있는 주에 따라 판매세(Sales Tax) 납부 의무가 다릅니다. Nexus 분석을 통해 각 주별 신고 의무를 파악하고 자동화 도구 연계를 도와드립니다." } }
+      { q: { en: "Does an eCommerce business need to file multi-state taxes?", ko: "eCommerce 업체는 다주 세금 신고를 해야 하나요?" }, a: { en: "It depends on where your buyers are. I review nexus state by state to see where you must register and file, and help set up tools that collect and report the tax.", ko: "구매자가 있는 주에 따라 판매세(Sales Tax) 납부 의무가 다릅니다. Nexus 분석을 통해 각 주별 신고 의무를 파악하고 자동화 도구 연계를 도와드립니다." } }
     ]
   }
   ,{
     id: "svc_14", icon: "🌐", category: "SPECIALTY SERVICES",
     title: { en: "Bilingual CPA Services", ko: "이중 언어 CPA 서비스" },
-    tagline: { en: "Bridging language and culture in financial management.", ko: "재무 관리에서 언어와 문화의 장벽을 해소합니다." },
-    intro: { en: "CR Accountancy provides fully bilingual (Korean & English) professional services designed for the Korean-American business community. We understand the unique challenges immigrants and Korean-speaking clients face — and we communicate in your language every step of the way.", ko: "CR Accountancy는 한인 비즈니스 커뮤니티를 위한 완전한 한영 이중 언어 전문 서비스를 제공합니다. 이민자와 한국어 사용 고객이 직면하는 고유한 어려움을 이해하고, 모든 과정에서 모국어로 소통합니다." },
+    tagline: { en: "Tax and accounting explained in Korean, filed in English.", ko: "설명은 한국어로, 신고는 영어로." },
+    intro: { en: "Meetings, emails and explanations can all be in Korean or English, whichever is easier for you. Returns and agency letters are in English, so I go through what they say in Korean.", ko: "상담과 이메일은 한국어나 영어 중 편한 쪽으로 진행합니다. 신고서와 기관 서류는 영어로 되어 있으니, 무엇이 적혀 있는지 한국어로 풀어서 설명해 드립니다." },
     items: [
       { en: "Korean & English Tax Consultation", ko: "한영 세무 상담 — 세금 신고, 절세 전략, IRS/FTB 문제 등 모든 세무 사항을 한국어로 상담 및 처리." },
-      { en: "Immigrant Tax Planning (FBAR/FATCA)", ko: "이민자 세무 계획 — 영주권·시민권 취득 전후 세무 포지션 최적화. 해외 계좌 및 자산 신고(FBAR/FATCA) 전문 처리." },
+      { en: "Immigrant Tax Planning (FBAR/FATCA)", ko: "이민자 세무 계획 — 영주권·시민권 취득 전후로 달라지는 세금 문제를 미리 정리하고, 해외 계좌·자산 신고(FBAR/FATCA)를 맡습니다." },
       { en: "Cross-Border Business Advisory", ko: "한미 비즈니스 자문 — 한국 기업의 미국 진출 또는 미국 사업체의 한국 연계 구조 설계 및 세무 전략." },
-      { en: "Korean Community Business Support", ko: "한인 커뮤니티 사업 지원 — 한인 소상공인의 법인 설립, 세무, 회계, 급여 처리를 한국어로 원스톱 지원." },
+      { en: "Korean Community Business Support", ko: "한인 커뮤니티 사업 지원 — 한인 소상공인의 법인 설립, 세무, 회계, 급여를 한국어로 한 번에 맡습니다." },
       { en: "Bilingual Financial Reporting", ko: "이중 언어 재무 보고 — 재무제표 및 세무 보고서를 한국어와 영어로 동시 제공. 한국 본사·투자자 보고 지원." },
       { en: "Korean Business Expansion to US", ko: "한국 기업 미국 진출 — 미국 법인 설립, EIN 등록, 은행 계좌 개설 자문, 초기 세무 구조 설계까지 한국어로 지원." }
     ],
@@ -574,7 +574,7 @@ const serviceDetails = [
     faq: [
       { q: { en: "Can all consultations be conducted in Korean?", ko: "상담부터 신고까지 전부 한국어로 가능한가요?" }, a: { en: "Yes. From the initial consultation through filing and follow-up, everything can be handled in Korean. No English required.", ko: "네. 초기 상담부터 신고, 사후 관리까지 모든 과정을 한국어로 진행합니다. 영어를 못하셔도 전혀 불편함 없이 서비스를 받으실 수 있습니다." } },
       { q: { en: "I recently immigrated — where do I start?", ko: "최근에 미국에 왔는데 세금 신고를 어떻게 시작해야 하나요?" }, a: { en: "Immigration status, income sources, and foreign assets all affect your US tax obligations. We'll map out your specific situation and filing requirements in a consultation.", ko: "이민 신분, 소득 출처, 해외 자산 여부에 따라 미국 세금 신고 의무가 달라집니다. 상담을 통해 본인의 상황에 맞는 신고 의무와 절차를 안내해 드립니다." } },
-      { q: { en: "Do you serve non-Korean clients as well?", ko: "한국어를 못하는 고객도 서비스를 받을 수 있나요?" }, a: { en: "Absolutely. All of our services are available in English as well. Bilingual capability is an added benefit, not a requirement.", ko: "물론입니다. 모든 서비스는 영어로도 동일하게 제공됩니다. 이중 언어는 추가적인 강점이지 필수 조건이 아닙니다." } }
+      { q: { en: "Do you serve non-Korean clients as well?", ko: "한국어를 못하는 고객도 서비스를 받을 수 있나요?" }, a: { en: "Yes. Every service is available in English. Korean is there for clients who want it, not a requirement.", ko: "네. 모든 서비스를 영어로도 똑같이 진행합니다. 한국어는 원하시는 분께 드리는 선택지일 뿐 조건이 아닙니다." } }
     ]
   }
 ];
@@ -584,14 +584,14 @@ const homeServiceSubpages = ["svc_1", "svc_2", "svc_5", "svc_14"];
 
 // Multilingual welcome messages for Contact section
 const multilingualWelcome = [
-  { flag: "🇺🇸", lang: "English", message: "Feel free to contact us in English." },
-  { flag: "🇰🇷", lang: "한국어", message: "한국어로 편하게 문의하세요." },
-  { flag: "🇲🇽", lang: "Español", message: "Puede contactarnos en español. Respondemos por correo electrónico." },
-  { flag: "🇨🇳", lang: "中文", message: "欢迎用中文联系我们，我们将通过邮件回复。" },
-  { flag: "🇻🇳", lang: "Tiếng Việt", message: "Vui lòng liên hệ bằng tiếng Việt. Chúng tôi sẽ phản hồi qua email." },
-  { flag: "🇯🇵", lang: "日本語", message: "日本語でのお問い合わせも承ります。メールにて対応いたします。" },
-  { flag: "🇵🇭", lang: "Tagalog", message: "Maaari kayong makipag-ugnayan sa Tagalog. Sasagutin namin sa email." },
-  { flag: "🇲🇳", lang: "Монгол", message: "Монгол хэлээр холбогдож болно. Имэйлээр хариулна." }
+  { flag: "EN", lang: "English", message: "Write to me in English." },
+  { flag: "KO", lang: "한국어", message: "한국어로 편하게 문의하세요." },
+  { flag: "ES", lang: "Español", message: "Puede contactarnos en español. Respondemos por correo electrónico." },
+  { flag: "ZH", lang: "中文", message: "欢迎用中文联系我们，我们将通过邮件回复。" },
+  { flag: "VI", lang: "Tiếng Việt", message: "Vui lòng liên hệ bằng tiếng Việt. Chúng tôi sẽ phản hồi qua email." },
+  { flag: "JA", lang: "日本語", message: "日本語でのお問い合わせも承ります。メールにて対応いたします。" },
+  { flag: "TL", lang: "Tagalog", message: "Maaari kayong makipag-ugnayan sa Tagalog. Sasagutin namin sa email." },
+  { flag: "MN", lang: "Монгол", message: "Монгол хэлээр холбогдож болно. Имэйлээр хариулна." }
 ];
 
 // ============================================================
@@ -765,7 +765,7 @@ function ContactForm({ lang, t, colors, fonts }) {
         {lang === "en" ? "Request a Consultation" : "상담 신청"}
       </h3>
       <p style={{ fontSize: 14, color: colors.gray, marginBottom: 32 }}>
-        {lang === "en" ? "Fill out the form below and we'll get back to you within 24 hours." : "아래 양식을 작성하시면 24시간 이내에 연락드리겠습니다."}
+        {lang === "en" ? "Fill out the form and I'll get back to you within 24 hours." : "아래 양식을 작성하시면 24시간 이내에 연락드리겠습니다."}
       </p>
       {submitted && (
         <div style={{ background: "#E8F5E9", border: "1px solid #66BB6A", color: "#2E7D32", padding: "16px 20px", borderRadius: 4, marginBottom: 24, fontSize: 14, fontWeight: 500 }}>
@@ -1007,7 +1007,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
       {/* Hero */}
       <div style={{ background: `linear-gradient(165deg, ${catColor} 0%, ${catColor}cc 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
-          {service.category}
+          {isKo ? ({ "CORE TAX & ACCOUNTING": "세금 · 회계", "BUSINESS & FINANCIAL ADVISORY": "사업 · 재무 자문", "SPECIALTY SERVICES": "전문 분야" }[service.category] || service.category) : service.category}
         </div>
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}><LineIcon name={service.icon} size={46} color={colors.lightGold} stroke={1.4} /></div>
         <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(32px, 5vw, 52px)", color: "#fff", fontWeight: 700, marginBottom: 16 }}>{t(service.title)}</h1>
@@ -1027,7 +1027,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         {/* Service Items Grid */}
         <div style={{ marginBottom: 72 }}>
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 32, fontWeight: 600, textAlign: "center" }}>
-            {isKo ? "서비스 항목" : "What We Offer"}
+            {isKo ? "서비스 항목" : "What this covers"}
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
             {service.items.map((item, i) => {
@@ -1038,7 +1038,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
                 <div key={i} style={{ background: colors.white, padding: "24px 28px", borderRadius: 6, border: `1px solid ${colors.lightGray}`, borderTop: `3px solid ${catColor}`, transition: "box-shadow 0.3s" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
                     <div style={{ width: 8, height: 8, borderRadius: "50%", background: catColor, flexShrink: 0 }} />
-                    <span style={{ fontSize: 14, fontWeight: 700, color: colors.navy }}>{isKo ? item.en : itemTitle}</span>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: colors.navy }}>{itemTitle}</span>
                   </div>
                   {itemDesc && <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.7 }}>{itemDesc}</p>}
                   {!itemDesc && isKo && <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.7 }}>{item.ko}</p>}
@@ -1051,12 +1051,12 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         {/* Process */}
         <div style={{ marginBottom: 72, background: colors.cream, borderRadius: 8, padding: "48px" }}>
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 36, fontWeight: 600, textAlign: "center" }}>
-            {isKo ? "진행 절차" : "Our Process"}
+            {isKo ? "진행 절차" : "How it works"}
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 24 }}>
             {service.process.map((step, i) => {
               const parts = isKo ? step.ko.split(" — ") : step.en.split(" — ");
-              const stepTitle = isKo ? step.en : parts[0];
+              const stepTitle = parts[0];
               const stepDesc = isKo ? parts[1] || step.ko : parts[1] || "";
               return (
                 <div key={i} style={{ textAlign: "center" }}>
@@ -1422,22 +1422,79 @@ export default function CRAccountancy() {
         </div>
       </section>
 
+      {/* For finance teams (controllers, accounting staff) */}
+      <section className="fin2" data-ko={lang === "ko" ? "1" : "0"}>
+        <div className="fin2-in">
+          <div className="fin2-head">
+            <div className="fin2-eyebrow">{lang === "ko" ? "재무팀 · 회계팀과 함께" : "For finance teams"}</div>
+            <h2 className="fin2-h2">{lang === "ko" ? "회사 안의 재무팀과 같이 일합니다" : "I work alongside your finance team"}</h2>
+            <p className="fin2-lede">{lang === "ko"
+              ? "직원을 대신하는 것이 아니라, 마감과 신고에서 손이 모자라거나 판단이 필요한 부분을 맡습니다."
+              : "Not a replacement for your staff. I take the parts of close and compliance where you're short on hands or need a second opinion."}</p>
+            <button type="button" className="fin2-link" onClick={() => navigate("contact")}>{lang === "ko" ? "업무 범위 상의하기 →" : "Talk through the scope →"}</button>
+          </div>
+          <ol className="fin2-list">
+            {(lang === "ko" ? [
+              ["월 마감 검토", "은행 대사, 계정 분류, 월별 재무제표를 재무팀과 같이 점검합니다."],
+              ["여러 법인 정리", "법인 사이에 대신 낸 비용과 거래를 가려, 회사마다 장부가 맞게 정리합니다."],
+              ["신고 일정 관리", "판매세(CDTFA), 급여세(941 · DE 9), 1099, 법인세 신고를 기한 안에 냅니다."],
+              ["기관 통지서 대응", "IRS · FTB · EDD · CDTFA 통지서가 오면 대리인으로 답변합니다."],
+              ["연말 결산과 법인 신고", "결산 조정과 법인 신고서(1120 · 1120-S · 1065)를 일정에 맞춰 준비합니다."],
+            ] : [
+              ["Month-end close review", "Bank reconciliations, account coding and monthly statements, reviewed with your team."],
+              ["Multi-entity cleanup", "Payments one company made for another sorted out, so each company's books stand on their own."],
+              ["Compliance calendar", "Sales tax (CDTFA), payroll tax (941, DE 9), 1099s and corporate returns, filed on time."],
+              ["Agency notices", "When the IRS, FTB, EDD or CDTFA writes, I respond as your representative."],
+              ["Year-end close and returns", "Year-end adjustments and corporate returns (1120, 1120-S, 1065), prepared on schedule."],
+            ]).map(([title, desc], i) => (
+              <li key={title} className="fin2-row">
+                <span className="fin2-n">{String(i + 1).padStart(2, "0")}</span>
+                <span className="fin2-t">{title}</span>
+                <span className="fin2-d">{desc}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* Industry Spotlight on Home */}
       <IndustrySpotlight />
 
-      {/* S corp calculator entry */}
-      <div style={{ padding: "64px clamp(16px, 5vw, 40px)", background: "#fff" }}>
-        <div className="calc-band">
-          <div>
-            <div className="calc-band-eyebrow">{lang === "ko" ? "S corp 계산기" : "S corp calculator"}</div>
-            <div className="calc-band-title">{lang === "ko" ? "S corp로 바꾸면 세금이 얼마나 달라질까?" : "Would an S corp lower your taxes?"}</div>
-            <div className="calc-band-text">{lang === "ko" ? "순이익과 급여만 넣으면 바로 비교해 드립니다." : "Enter your profit and a salary, and see the difference right away."}</div>
+      {/* First year in business (replaces the calculator band; keeps the calculator entry) */}
+      <section className="fy2" data-ko={lang === "ko" ? "1" : "0"}>
+        <div className="fy2-in">
+          <div className="fy2-head">
+            <div>
+              <div className="svc2-eyebrow">{lang === "ko" ? "창업 첫해" : "Your first year in business"}</div>
+              <h2 className="fy2-h2">{lang === "ko" ? "사업을 막 시작하셨다면, 이 네 가지부터" : "Just started? Start with these four"}</h2>
+            </div>
+            <div className="fy2-actions">
+              <button type="button" className="fy2-btn" onClick={() => navigate("s-corp-calculator")}>{lang === "ko" ? "S corp 계산기 →" : "S corp calculator →"}</button>
+              <button type="button" className="svc2-all" onClick={() => navigate("contact")}>{lang === "ko" ? "창업 상담 예약 →" : "Book a startup consultation →"}</button>
+            </div>
           </div>
-          <button type="button" className="calc-band-btn" onClick={() => navigate("s-corp-calculator")}>
-            {lang === "ko" ? "계산해 보기 →" : "Try the calculator →"}
-          </button>
+          <div className="fy2-grid">
+            {(lang === "ko" ? [
+              ["사업체 형태 정하기", "개인 사업자, LLC, S corp 중 무엇이 맞는지 본인 급여와 세금까지 따져 봅니다."],
+              ["등록과 허가", "EIN, 주 등록, 시 사업자 등록, 물건을 팔면 판매세 허가(seller's permit)까지."],
+              ["계좌와 장부 분리", "사업 계좌를 따로 열고, 첫 달부터 장부를 맞춰 둡니다."],
+              ["급여와 예정세", "직원을 쓰면 EDD 등록과 급여세, 본인은 분기별 예정세 납부를 챙깁니다."],
+            ] : [
+              ["Choose the entity", "Sole proprietor, LLC or S corp, decided with your own pay and taxes in mind."],
+              ["Registrations", "EIN, state filing, city business license, and a seller's permit if you sell goods."],
+              ["Separate account and books", "A separate business account, with books kept from the first month."],
+              ["Payroll and estimated tax", "EDD registration and payroll tax once you hire, and quarterly estimated tax for you."],
+            ]).map(([title, desc], i) => (
+              <div key={title} className="fy2-card">
+                <span className="fy2-n">{i + 1}</span>
+                <h3 className="fy2-t">{title}</h3>
+                <p className="fy2-d">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <button type="button" className="fy2-fee" onClick={() => navigate("client-info")}>{lang === "ko" ? "수수료는 어떻게 정해지나요? →" : "How are fees set? →"}</button>
         </div>
-      </div>
+      </section>
 
       {/* ── CR Consulting Division Spotlight ── */}
       <ConsultingSpotlight />
@@ -1515,7 +1572,7 @@ export default function CRAccountancy() {
         kicker: ko ? "회계 시스템 · AI" : "Accounting Systems & AI",
         title: ko ? "회계 시스템·AI 진단" : "Accounting System & AI Assessment",
         desc: ko ? "QuickBooks부터 AI 도구까지, 지금 쓰는 시스템을 진단하고 맞는 방향을 제안합니다."
-                 : "From QuickBooks to AI tools, we review the system you run today and recommend what fits.",
+                 : "From QuickBooks to AI tools, I review the system you run today and recommend what fits.",
         cta: ko ? "무료 2분 자가 점검 →" : "Free 2-minute self-check →"
       },
       {
@@ -1544,7 +1601,7 @@ export default function CRAccountancy() {
               CR Consulting · {ko ? "컨설팅 사업부" : "Consulting Division"}
             </div>
             <h2 style={{ fontFamily: fonts.display, fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, color: colors.white, lineHeight: 1.25, marginBottom: 14, wordBreak: "keep-all" }}>
-              {ko ? "회계 시스템을 진단하고, 회사에 맞는 시스템과 앱을 만듭니다" : "We assess your accounting system and build what fits"}
+              {ko ? "회계 시스템을 진단하고, 회사에 맞는 시스템과 앱을 만듭니다" : "I assess your accounting system and build what fits"}
             </h2>
             <p style={{ fontFamily: fonts.body, fontSize: 16, color: `${colors.cream}bb`, lineHeight: 1.7 }}>
               {ko ? "업종에 관계없이, 회계를 아는 사람이 직접 설계합니다." : "Any industry. Designed by someone who understands your numbers."}
@@ -1603,7 +1660,7 @@ export default function CRAccountancy() {
       <div>
         <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
           <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
-            {lang === "en" ? "What We Do" : "서비스 안내"}
+            {lang === "en" ? "Services" : "서비스 안내"}
           </div>
           <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.services.title}</h1>
           <GoldDivider />
@@ -1619,7 +1676,7 @@ export default function CRAccountancy() {
                 <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 36 }}>
                   <div style={{ width: 4, height: 40, background: label.color, borderRadius: 2 }} />
                   <div>
-                    <div style={{ fontSize: 10, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 4 }}>{cat}</div>
+                    {lang !== "ko" && <div style={{ fontSize: 10, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", fontWeight: 700, marginBottom: 4 }}>{cat}</div>}
                     <h2 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.navy, fontWeight: 700 }}>{lang === "ko" ? label.ko : label.en}</h2>
                   </div>
                 </div>
@@ -1662,7 +1719,7 @@ export default function CRAccountancy() {
         padding: "160px 40px 80px", textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
-          {lang === "en" ? "Our Story" : "사무실 소개"}
+          {"Danny Kim, CPA"}
         </div>
         <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.about.title}</h1>
         <GoldDivider />
@@ -1715,7 +1772,7 @@ export default function CRAccountancy() {
         padding: "160px 40px 80px", textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
-          {lang === "en" ? "Connect With Us" : "문의하기"}
+          {lang === "en" ? "Koreatown · Los Angeles" : "LA 코리아타운 사무실"}
         </div>
         <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.contact.title}</h1>
         <GoldDivider />
@@ -1772,7 +1829,7 @@ export default function CRAccountancy() {
                     border: (i === 0 || i === 1) ? `1px solid ${colors.gold}30` : `1px solid ${colors.lightGray}`,
                     transition: "all 0.2s"
                   }}>
-                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.flag}</span>
+                    <span style={{ flexShrink: 0, width: 34, height: 34, borderRadius: 6, border: `1px solid ${colors.gold}55`, color: colors.gold, fontSize: 11, fontWeight: 700, letterSpacing: 0.5, display: "flex", alignItems: "center", justifyContent: "center" }}>{item.flag}</span>
                     <div>
                       <span style={{ fontSize: 11, fontWeight: 700, color: colors.navy, letterSpacing: 1 }}>{item.lang}</span>
                       <p style={{ fontSize: 12, color: colors.gray, marginTop: 2, lineHeight: 1.4 }}>{item.message}</p>
@@ -1978,6 +2035,50 @@ export default function CRAccountancy() {
         .ind2-list li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 8px; height: 1.5px; background: ${colors.gold}; }
         .ind2-link { align-self: flex-start; margin-top: auto; }
 
+        /* ── Home: finance teams ── */
+        .fin2 { background: ${colors.darkNavy}; color: #fff; padding: clamp(64px, 9vw, 112px) clamp(16px, 5vw, 40px); }
+        .fin2[data-ko="1"] { word-break: keep-all; }
+        .fin2-in { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px clamp(40px, 6vw, 88px); align-items: start; }
+        .fin2-eyebrow { font-size: 12px; letter-spacing: 3px; color: ${colors.lightGold}; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+        .fin2-h2 { font-family: ${fonts.sans}; font-weight: 800; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.2; letter-spacing: -0.03em; margin: 0 0 18px; color: #fff; }
+        .fin2[data-ko="1"] .fin2-h2 { font-family: 'Noto Sans KR', ${fonts.sans}; letter-spacing: -0.04em; }
+        .fin2-lede { font-size: 16.5px; line-height: 1.75; color: #FFFFFFB3; margin: 0 0 26px; }
+        .fin2-link { background: none; border: 0; border-bottom: 1px solid ${colors.lightGold}88; padding: 0 0 3px; color: ${colors.lightGold}; font-family: ${fonts.sans}; font-size: 15px; font-weight: 700; cursor: pointer; }
+        .fin2-link:hover { border-color: ${colors.lightGold}; }
+        .fin2-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid #FFFFFF26; }
+        .fin2-row { display: grid; grid-template-columns: 44px 210px 1fr; gap: 6px 20px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid #FFFFFF1F; }
+        .fin2-n { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: ${colors.lightGold}; }
+        .fin2-t { font-size: 17px; font-weight: 700; color: #fff; }
+        .fin2-d { font-size: 15px; line-height: 1.65; color: #FFFFFFB3; }
+
+        /* ── Home: first year in business ── */
+        .fy2 { background: #fff; padding: clamp(64px, 9vw, 112px) clamp(16px, 5vw, 40px); }
+        .fy2[data-ko="1"] { word-break: keep-all; }
+        .fy2-in { max-width: 1200px; margin: 0 auto; }
+        .fy2-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; }
+        .fy2-h2 { font-family: ${fonts.sans}; font-weight: 700; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.2; letter-spacing: -0.5px; color: ${colors.navy}; margin: 0; }
+        .fy2[data-ko="1"] .fy2-h2 { font-family: 'Noto Sans KR', ${fonts.sans}; letter-spacing: -0.04em; }
+        .fy2-actions { display: flex; align-items: center; gap: 22px; flex-shrink: 0; }
+        .fy2-btn { border: 0; cursor: pointer; border-radius: 10px; background: ${colors.navy}; color: #fff; font-family: ${fonts.sans}; font-size: 15px; font-weight: 700; padding: 14px 22px; white-space: nowrap; }
+        .fy2-btn:hover { background: #24324A; }
+        .fy2-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1.5px solid ${colors.navy}; }
+        .fy2-card { padding: 24px 22px 26px 0; border-right: 1px solid ${colors.lightGray}; }
+        .fy2-card + .fy2-card { padding-left: 22px; }
+        .fy2-card:last-child { border-right: 0; }
+        .fy2-n { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid ${colors.gold}; color: ${colors.gold}; font-size: 13px; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 14px; }
+        .fy2-t { font-family: ${fonts.sans}; font-size: 18px; font-weight: 700; color: ${colors.navy}; margin: 0 0 8px; }
+        .fy2-d { font-size: 15px; line-height: 1.7; color: #4B5563; margin: 0; }
+        .fy2-fee { margin-top: 28px; background: none; border: 0; padding: 0 0 3px; border-bottom: 1px solid ${colors.navy}40; color: ${colors.navy}; font-family: ${fonts.sans}; font-size: 14.5px; font-weight: 600; cursor: pointer; }
+        .fy2-fee:hover { border-color: ${colors.navy}; }
+        @media (max-width: 1024px) {
+          .fy2-grid { grid-template-columns: 1fr 1fr; }
+          .fy2-card { padding: 22px 18px 24px 0; }
+          .fy2-card:nth-child(2n) { border-right: 0; padding-left: 18px; }
+          .fy2-card:nth-child(2n+1) { padding-left: 0; }
+          .fy2-card:nth-child(n+3) { border-top: 1px solid ${colors.lightGray}; }
+          .fin2-in { grid-template-columns: 1fr; }
+        }
+
         /* ── Home: closing band (matches the first screen) ── */
         .cta-final { position: relative; overflow: hidden; color: #fff; text-align: center;
           background: linear-gradient(155deg, #0B131C 0%, ${colors.navy} 58%, #24324A 100%);
@@ -2014,6 +2115,13 @@ export default function CRAccountancy() {
           .nav-inner { padding: 0 16px !important; }
           .brand { --s: 0.8; margin-right: 12px; }
           .ind2-cols { grid-template-columns: 1fr; gap: 44px; }
+          .fin2-row { grid-template-columns: 34px 1fr; }
+          .fin2-d { grid-column: 2; }
+          .fy2-head { flex-direction: column; align-items: flex-start; }
+          .fy2-actions { flex-direction: column; align-items: flex-start; gap: 14px; }
+          .fy2-grid { grid-template-columns: 1fr; }
+          .fy2-card, .fy2-card + .fy2-card, .fy2-card:nth-child(2n), .fy2-card:nth-child(2n+1) { padding: 20px 0; border-right: 0; }
+          .fy2-card + .fy2-card { border-top: 1px solid ${colors.lightGray}; }
           .ind2-title { font-size: 20px; }
           .cta-final-row { align-items: stretch; }
           .svc2-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }

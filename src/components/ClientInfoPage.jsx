@@ -18,6 +18,9 @@ const DEADLINES = [
 ];
 
 const FAQ = [
+  { q: { en: "How are fees set?", ko: "수수료는 어떻게 정해지나요?" },
+    a: { en: "After the consultation, I write the fee into the engagement letter based on the work we agreed on. Nothing starts before you sign it, and if the scope changes I'll tell you first. Monthly work such as bookkeeping and payroll is usually a flat monthly fee; tax returns are usually priced per return.",
+         ko: "상담에서 맡길 일의 범위를 확인한 뒤, 금액을 업무 계약서(engagement letter)에 적어 드립니다. 서명하시기 전에는 일을 시작하지 않고, 범위가 바뀌면 먼저 말씀드립니다. 장부·급여처럼 매달 하는 일은 보통 월정액, 세금 신고는 보통 신고서별 금액입니다." } },
   { q: { en: "What should I bring for my individual return?", ko: "개인 세금 신고에 무엇을 준비하면 되나요?" },
     a: { en: "W-2s, every 1099 you received (interest, dividends, brokerage, 1099-NEC, 1099-K), mortgage interest statements (1098), childcare and tuition records, last year's return, and the highest balance of any account outside the U.S.",
          ko: "W-2, 받으신 1099 전부(이자·배당·증권·1099-NEC·1099-K), 모기지 이자 명세(1098), 보육비와 학비 영수증, 작년 신고서, 그리고 해외 계좌가 있으면 연중 최고 잔액을 준비해 주세요." } },
