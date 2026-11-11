@@ -354,6 +354,11 @@ export default function ConstructionPage({ lang: langProp }) {
   color:#fff;text-decoration:none;display:inline-block;border-bottom:2px solid #46586A;padding-bottom:3px;}
 .cn-num:hover{border-bottom-color:#fff;}
 .cn-alt{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;}
+@media (min-width:820px){
+  .cn-endg{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;}
+  .cn-endg .cn-eb{margin-bottom:0;}
+  .cn-endr{border-left:1px solid #33424F;padding-left:40px;}
+}
 .cn-alt a{color:#C3CFD9;text-decoration:none;font-size:14px;border:1px solid #3A4A58;padding:9px 16px;}
 .cn-alt a:hover{border-color:#8FA3B4;color:#fff;}
 
@@ -363,7 +368,7 @@ export default function ConstructionPage({ lang: langProp }) {
 .cn-sb{background:#fff;color:var(--ink);text-decoration:none;font-weight:700;padding:12px 20px;font-size:16px;white-space:nowrap;}
 .cn-sb:focus-visible{outline:3px solid #fff;outline-offset:2px;}
 
-.cn-f{padding:24px 0 34px;font-size:11.5px;color:#7F8C98;line-height:1.7;}
+.cn-f{padding:24px 22px 34px;font-size:11.5px;color:#7F8C98;line-height:1.7;}
 .cn-f p{margin:0 0 7px;max-width:80ch;}
 
 @media (min-width:720px){
@@ -601,16 +606,20 @@ export default function ConstructionPage({ lang: langProp }) {
       </div>
 
       <section className="cn-end">
-        <div className="cn-w">
-          <h2 className="cn-et">{t.lastTitle}</h2>
-          <p className="cn-eb">{t.lastBody}</p>
-          <a className="cn-num" href={TEL}>{CONFIG.phone}</a>
-          <p style={{ color: "#8FA0AE", fontSize: 14, margin: "16px 0 0", maxWidth: "46ch" }}>
-            {t.emailFirst}
-          </p>
-          <div className="cn-alt">
-            {CONFIG.kakaoUrl ? <a href={CONFIG.kakaoUrl}>{t.kakao}</a> : null}
-            <a href={`mailto:${CONFIG.email}`}>{CONFIG.email}</a>
+        <div className="cn-w cn-endg">
+          <div>
+            <h2 className="cn-et">{t.lastTitle}</h2>
+            <p className="cn-eb">{t.lastBody}</p>
+          </div>
+          <div className="cn-endr">
+            <a className="cn-num" href={TEL}>{CONFIG.phone}</a>
+            <p style={{ color: "#8FA0AE", fontSize: 14, margin: "16px 0 0", maxWidth: "46ch" }}>
+              {t.emailFirst}
+            </p>
+            <div className="cn-alt">
+              {CONFIG.kakaoUrl ? <a href={CONFIG.kakaoUrl}>{t.kakao}</a> : null}
+              <a href={`mailto:${CONFIG.email}`}>{CONFIG.email}</a>
+            </div>
           </div>
         </div>
       </section>

@@ -532,12 +532,12 @@ const serviceDetails = [
     tagline: { en: "Accounting set up the way your industry actually runs.", ko: "업종이 실제로 돌아가는 방식에 맞춘 회계." },
     intro: { en: "Construction, real estate, medical practices, restaurants and online sellers each have their own rules, and their numbers go wrong in different places. I set up the books and the tax work around how your industry actually runs.", ko: "건설, 부동산, 병원, 식당, 온라인 판매는 업종마다 규정도 다르고 숫자가 틀어지는 지점도 다릅니다. 업종이 실제로 돌아가는 방식에 맞춰 장부와 세무를 잡습니다." },
     items: [
-      { en: "Construction & Real Estate", ko: "건설·부동산 — 공사별 원가 관리, 완공기준 수익인식(PCM), Retainage 회계, 1031 Exchange 자문." },
-      { en: "Healthcare / Medical", ko: "병원·의료 — 병의원·치과·의료 법인 세무 구조 설계. HIPAA 컴플라이언스, MSO 구조 자문." },
+      { en: "Construction & Real Estate", ko: "건설·부동산 — 공사별 원가 관리, 진행기준 수익인식(Percentage of Completion), 유보금(Retainage) 회계, 1031 교환 검토." },
+      { en: "Healthcare / Medical", ko: "병원·의료 — 병의원·치과 전문직 법인(Professional Corporation) 세무, 보험 청구 입금과 장부 대사, 원장님 급여와 은퇴 플랜 검토." },
       { en: "Restaurant & Retail", ko: "식당·소매 — CDTFA 판매세 컴플라이언스, 현금 매출 관리, 팁 소득 보고, POS 데이터 연계." },
       { en: "eCommerce / Creators", ko: "온라인 판매·크리에이터 — 아마존 셀러, 이커머스 사업자, 유튜버·틱톡커·크리에이터들의 여러 주에 걸친 판매세·소득세 신고와 수익 구조 정리." },
-      { en: "Professional Services", ko: "전문 서비스업 — 변호사·회계사·컨설턴트 등 전문직의 로열티 수입, S-Corp 전환, 구이 관리." },
-      { en: "Gas Station / Hotel", ko: "주유소·호텔 — 주유소 판매세 신고, 호텔 점유율(Occupancy Tax), 가맹점 임대료 수입 회계 전문." }
+      { en: "Professional Services", ko: "전문 서비스업 — 변호사, 컨설턴트, 디자이너 등 전문직의 S corp 전환, 적정 급여 책정, 분기 예정세." },
+      { en: "Gas Station / Hotel", ko: "주유소·호텔 — 주유소 판매세 신고, 호텔 숙박세(Transient Occupancy Tax) 자료 정리, 매출과 입금 대사." }
     ],
     process: [
       { en: "Industry Compliance Review", ko: "업종 컴플라이언스 점검 — 해당 업종의 특수 세무 의무와 리스크 요소를 상담에서 직접 파악합니다." },
@@ -937,7 +937,7 @@ function ResourcesPage({ lang, colors, fonts }) {
 
   return (
     <div>
-      <div style={{ background: `linear-gradient(165deg, #0A1628 0%, #1B4F8A 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
+      <div style={{ background: `linear-gradient(165deg, #0A1628 0%, #1B4F8A 100%)`, padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center" }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
           {isKo ? "고객 자료실" : "Client Resources"}
         </div>
@@ -992,6 +992,83 @@ function ResourcesPage({ lang, colors, fonts }) {
 // ============================================================
 // SERVICE DETAIL PAGE
 // ============================================================
+const DOCS_KO = {
+  "W-2 (Employment Income)": "W-2 (근로 소득)",
+  "1099-NEC / 1099-MISC": "1099-NEC / 1099-MISC",
+  "1099-INT / 1099-DIV": "1099-INT / 1099-DIV (이자·배당)",
+  "1098 (Mortgage Interest)": "1098 (모기지 이자)",
+  "Schedule K-1": "Schedule K-1",
+  "Prior Year Tax Returns": "지난해 세금 신고서",
+  "Rental Income Records": "임대 소득 기록",
+  "Business Income/Expense Records": "사업 수입·지출 기록",
+  "Foreign Account Information": "해외 계좌 정보",
+  "Bank Statements": "은행 거래 내역서",
+  "Credit Card Statements": "신용카드 명세서",
+  "Invoices / Receipts": "청구서·영수증",
+  "Payroll Records": "급여 기록",
+  "Existing QuickBooks File": "사용 중인 QuickBooks 파일",
+  "EIN Documentation": "EIN 서류",
+  "Employee W-4 / DE-4": "직원 W-4 / DE 4",
+  "Bank Account Info (Direct Deposit)": "급여 입금용 은행 계좌 정보",
+  "Payroll History": "지난 급여 내역",
+  "Prior 941/940 Returns": "지난 941·940 신고서",
+  "CA EDD Account Information": "캘리포니아 EDD 계정 정보",
+  "Original IRS/FTB Notice": "받으신 IRS·FTB 통지서 원본",
+  "CP2000 / CP3219A or Other Letters": "CP2000, CP3219A 등 받은 편지",
+  "Tax Balance Verification": "체납액 확인 자료",
+  "CDTFA Audit Notice": "CDTFA 조사 통지서",
+  "Prior Year Tax Records": "지난 연도 세금 기록",
+  "Asset / Property List": "자산·부동산 목록",
+  "Owner ID / Identification": "대표자 신분증",
+  "Proof of State Residency": "거주 주(州) 확인 서류",
+  "Proposed Business Name": "사용할 회사 이름",
+  "Existing Business Plan": "사업 계획서(있는 경우)",
+  "Investor / Partner Information": "투자자·동업자 정보",
+  "Last 3 Years of Financial Statements": "최근 3년 재무제표",
+  "Tax Returns": "세금 신고서",
+  "Business Registration Documents": "사업자 등록 서류",
+  "Existing Contracts / Leases": "현재 계약서·임대 계약서",
+  "Bank Statements (3–6 months)": "은행 거래 내역서 (3~6개월)",
+  "Business Plan Materials": "사업 계획 자료",
+  "Recent Tax Returns": "최근 세금 신고서",
+  "Bank / Investment Account Statements": "은행·투자 계좌 명세서",
+  "Real Estate Holdings": "보유 부동산 목록",
+  "Life Insurance Policies": "생명보험 증권",
+  "Retirement Account Balances": "은퇴 계좌 잔액",
+  "Trust / Will Copies": "신탁·유언장 사본",
+  "Trust Document Copies": "신탁 문서 사본",
+  "Will / Testament Copy": "유언장 사본",
+  "Real Estate Title Documents": "부동산 등기 서류",
+  "Beneficiary Designation Forms": "수혜자 지정 서류",
+  "Foreign Account Details (Institution & Balance)": "해외 계좌 정보 (금융기관·잔액)",
+  "Foreign Corporate Financial Statements": "해외 법인 재무제표",
+  "Korean Tax Returns": "한국 세금 신고서",
+  "US Tax Returns": "미국 세금 신고서",
+  "Foreign Income Documentation": "해외 소득 증빙",
+  "Passport & Visa Information": "여권·비자 정보",
+  "Exchange CSV Downloads": "거래소 거래 내역(CSV)",
+  "Wallet Address List": "지갑 주소 목록",
+  "Staking / Mining Reward History": "스테이킹·채굴 보상 내역",
+  "NFT Transaction History": "NFT 거래 내역",
+  "Foreign Exchange Account Information": "해외 거래소 계정 정보",
+  "IRS Determination Letter": "IRS 면세 승인서(Determination Letter)",
+  "Fiscal Year Financial Records": "회계연도 재정 기록",
+  "Donation / Grant Records": "기부금·보조금 기록",
+  "Board Meeting Minutes": "이사회 회의록",
+  "Prior Form 990": "지난 Form 990",
+  "CA AG Registration Documents": "캘리포니아 검찰청(AG) 등록 서류",
+  "Last 2 Years of Financial Statements": "최근 2년 재무제표",
+  "Sales Tax Registration Certificate": "판매세 등록증(Seller's Permit)",
+  "Industry-Specific License Documents": "업종별 면허 서류",
+  "Tax Returns (Last 2 Years)": "최근 2년 세금 신고서"
+};
+// Bilingual entries ("English / 한국어") show one side per language
+const docLabel = (doc, isKo) => {
+  const m = doc.match(/^(.*?) \/ ([^/]*[\uAC00-\uD7A3][^/]*)$/);
+  if (m) return isKo ? m[2] : m[1];
+  return isKo ? (DOCS_KO[doc] || doc) : doc;
+};
+
 function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
   const isKo = lang === "ko";
   const t = (obj) => isKo ? obj.ko : obj.en;
@@ -1006,7 +1083,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
   return (
     <div>
       {/* Hero */}
-      <div style={{ background: `linear-gradient(165deg, ${catColor} 0%, ${catColor}cc 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
+      <div style={{ background: `linear-gradient(165deg, ${catColor} 0%, ${catColor}cc 100%)`, padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center" }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 500 }}>
           {isKo ? ({ "CORE TAX & ACCOUNTING": "세금 · 회계", "BUSINESS & FINANCIAL ADVISORY": "사업 · 재무 자문", "SPECIALTY SERVICES": "전문 분야" }[service.category] || service.category) : service.category}
         </div>
@@ -1016,7 +1093,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         <p style={{ fontFamily: fonts.body, fontSize: 18, color: "#ffffffbb", marginTop: 20, maxWidth: 640, margin: "20px auto 0", fontStyle: "italic" }}>{t(service.tagline)}</p>
       </div>
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
         {/* Intro */}
         <div style={{ maxWidth: 800, margin: "0 auto 64px", textAlign: "center" }}>
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
@@ -1030,7 +1107,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 32, fontWeight: 600, textAlign: "center" }}>
             {isKo ? "서비스 항목" : "What this covers"}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
+          <div className="sd-items" style={{ "--cols-d": service.items.length % 3 === 0 ? 3 : service.items.length % 4 === 0 ? 4 : 2 }}>
             {service.items.map((item, i) => {
               const parts = isKo ? item.ko.split(" — ") : item.en.split(" — ");
               const itemTitle = parts[0];
@@ -1050,20 +1127,22 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         </div>
 
         {/* Process */}
-        <div style={{ marginBottom: 72, background: colors.cream, borderRadius: 8, padding: "48px" }}>
+        <div style={{ marginBottom: 72, background: colors.cream, borderRadius: 8, padding: "clamp(28px, 5vw, 48px)" }}>
           <div style={{ fontSize: 11, letterSpacing: 4, color: colors.gold, textTransform: "uppercase", marginBottom: 36, fontWeight: 600, textAlign: "center" }}>
             {isKo ? "진행 절차" : "How it works"}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 24 }}>
+          <div className="sd-steps" style={{ "--n": service.process.length }}>
             {service.process.map((step, i) => {
               const parts = isKo ? step.ko.split(" — ") : step.en.split(" — ");
               const stepTitle = parts[0];
               const stepDesc = isKo ? parts[1] || step.ko : parts[1] || "";
               return (
-                <div key={i} style={{ textAlign: "center" }}>
-                  <div style={{ width: 48, height: 48, borderRadius: "50%", background: catColor, color: "#fff", fontFamily: fonts.display, fontSize: 20, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>{i + 1}</div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: colors.navy, marginBottom: 8 }}>{stepTitle}</div>
-                  {stepDesc && <p style={{ fontSize: 12, color: colors.gray, lineHeight: 1.7 }}>{stepDesc}</p>}
+                <div key={i} className="sd-step">
+                  <div className="sd-num" style={{ width: 48, height: 48, borderRadius: "50%", background: catColor, color: "#fff", fontFamily: fonts.display, fontSize: 20, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: colors.navy, marginBottom: 6 }}>{stepTitle}</div>
+                    {stepDesc && <p style={{ fontSize: 12.5, color: colors.gray, lineHeight: 1.7 }}>{stepDesc}</p>}
+                  </div>
                 </div>
               );
             })}
@@ -1081,7 +1160,7 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
               {service.docs.map((doc, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: i < service.docs.length - 1 ? `1px solid ${colors.lightGray}` : "none" }}>
                   <div style={{ width: 6, height: 6, borderRadius: "50%", background: catColor, flexShrink: 0 }} />
-                  <span style={{ fontSize: 13, color: colors.navy }}>{doc}</span>
+                  <span style={{ fontSize: 13, color: colors.navy }}>{docLabel(doc, isKo)}</span>
                 </div>
               ))}
             </div>
@@ -1104,12 +1183,12 @@ function ServiceDetailPage({ service, lang, colors, fonts, navigate }) {
         </div>
 
         {/* CTA */}
-        <div style={{ background: `linear-gradient(135deg, ${catColor}, ${catColor}bb)`, borderRadius: 8, padding: "48px", textAlign: "center" }}>
+        <div style={{ background: `linear-gradient(135deg, ${catColor}, ${catColor}bb)`, borderRadius: 8, padding: "clamp(32px, 5vw, 48px) clamp(20px, 5vw, 48px)", textAlign: "center" }}>
           <h3 style={{ fontFamily: fonts.display, fontSize: 26, color: "#fff", marginBottom: 12 }}>
             {isKo ? "지금 바로 상담을 시작하세요" : "Schedule a Free Consultation"}
           </h3>
           <p style={{ fontSize: 14, color: "#ffffffbb", marginBottom: 24 }}>
-            {isKo ? "무료 상담 · Los Angeles 지역 · 8개 언어 서비스 가능" : "Free consultation · Los Angeles · Available in 8 languages"}
+            {isKo ? "첫 상담 30분 무료 · LA 코리아타운 · 이메일 문의 무료" : "First 30 minutes free · Koreatown, LA · Email questions are free"}
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 20 }}>
             <button onClick={() => navigate("contact")} style={{ background: colors.gold, border: "none", color: colors.darkNavy, fontFamily: fonts.sans, fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", padding: "16px 40px", cursor: "pointer", borderRadius: 4 }}>
@@ -1234,7 +1313,7 @@ export default function CRAccountancy() {
     sans: "'DM Sans', 'Helvetica Neue', sans-serif"
   };
   const baseStyles = {
-    page: { minHeight: "100vh", background: colors.white, fontFamily: fonts.sans, color: colors.navy, overflowX: "hidden" },
+    page: { minHeight: "100vh", background: colors.white, fontFamily: fonts.sans, color: colors.navy, overflowX: "clip" },
     nav: { position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, padding: scrolled ? "12px 0" : "20px 0", background: scrolled ? "rgba(10, 22, 40, 0.97)" : "rgba(10, 22, 40, 0.9)", backdropFilter: "blur(20px)", transition: "all 0.4s ease", borderBottom: scrolled ? `1px solid ${colors.gold}33` : "none" },
     navInner: { maxWidth: 1200, margin: "0 auto", padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between" },
     section: { maxWidth: 1200, margin: "0 auto", padding: "100px clamp(16px, 5vw, 40px)" }
@@ -1598,7 +1677,7 @@ export default function CRAccountancy() {
     return (
       <div style={{ background: colors.darkNavy, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `radial-gradient(circle at 85% 20%, ${colors.gold}1c 0%, transparent 45%), radial-gradient(circle at 10% 90%, ${colors.gold}10 0%, transparent 40%)`, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px", position: "relative" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px clamp(16px, 5vw, 40px)", position: "relative" }}>
           <div style={{ maxWidth: 760, marginBottom: 40 }}>
             <div style={{ fontSize: 11, letterSpacing: 5, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 700 }}>
               CR Consulting · {ko ? "컨설팅 사업부" : "Consulting Division"}
@@ -1611,7 +1690,7 @@ export default function CRAccountancy() {
             </p>
           </div>
 
-          <div className="cs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 20 }}>
+          <div className="cs-grid">
             {cards.map((c, i) => (
               <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className="cs-card" style={{
                 position: "relative", display: "flex", flexDirection: "column", textDecoration: "none",
@@ -1652,6 +1731,21 @@ export default function CRAccountancy() {
   // ============================================================
   // SERVICES PAGE — 13 service subpages
   // ============================================================
+  const SVC_FILL = {
+    "CORE TAX & ACCOUNTING": { to: "contact",
+      k: { en: "Not sure where to start?", ko: "어떤 서비스가 필요한지 모르겠다면" },
+      t: { en: "Tell me what is going on. In the free 30-minute consultation we sort out what you need.", ko: "상황만 말씀해 주세요. 30분 무료 상담에서 무엇이 필요한지 같이 정리해 드립니다." },
+      a: { en: "Request a consultation →", ko: "상담 신청하기 →" } },
+    "BUSINESS & FINANCIAL ADVISORY": { to: "client-info",
+      k: { en: "Fees and how we start", ko: "수수료와 진행 순서" },
+      t: { en: "How fees are set, what the engagement letter covers, and what to bring to the first meeting.", ko: "수수료가 어떻게 정해지는지, 계약서에 무엇이 들어가는지, 첫 상담에 무엇을 가져오시면 되는지 정리했습니다." },
+      a: { en: "Read the client guide →", ko: "고객 안내 보기 →" } },
+    "SPECIALTY SERVICES": { to: "contact",
+      k: { en: "Email questions are free", ko: "이메일 문의는 무료입니다" },
+      t: { en: "Send your question to info.dkcpa@gmail.com and I'll answer at no charge.", ko: "info.dkcpa@gmail.com으로 보내 주시면 비용 없이 답변드립니다." },
+      a: { en: "Contact →", ko: "연락처 보기 →" } },
+  };
+
   const ServicesPage = () => {
     const categories = ["CORE TAX & ACCOUNTING", "BUSINESS & FINANCIAL ADVISORY", "SPECIALTY SERVICES"];
     const catLabels = {
@@ -1661,7 +1755,7 @@ export default function CRAccountancy() {
     };
     return (
       <div>
-        <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`, padding: "160px 40px 80px", textAlign: "center" }}>
+        <div style={{ background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`, padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center" }}>
           <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
             {lang === "en" ? "Services" : "서비스 안내"}
           </div>
@@ -1670,12 +1764,14 @@ export default function CRAccountancy() {
           <p style={{ fontFamily: fonts.body, fontSize: 20, color: colors.gray, marginTop: 24, maxWidth: 600, margin: "24px auto 0" }}>{t.services.subtitle}</p>
         </div>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
-          {categories.map((cat) => {
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
+          {categories.map((cat, ci) => {
             const catSvcs = serviceDetails.filter(s => s.category === cat);
             const label = catLabels[cat];
+            const n = catSvcs.length;
+            const fill = SVC_FILL[cat];
             return (
-              <div key={cat} style={{ marginBottom: 72 }}>
+              <div key={cat} style={{ marginBottom: ci === categories.length - 1 ? 0 : 64 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 36 }}>
                   <div style={{ width: 4, height: 40, background: label.color, borderRadius: 2 }} />
                   <div>
@@ -1683,7 +1779,7 @@ export default function CRAccountancy() {
                     <h2 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.navy, fontWeight: 700 }}>{lang === "ko" ? label.ko : label.en}</h2>
                   </div>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(260px, 100%), 1fr))", gap: 20 }}>
+                <div className="svc-grid">
                   {catSvcs.map((svc) => (
                     <div key={svc.id}
                       onClick={() => navigate(svc.id)}
@@ -1698,6 +1794,15 @@ export default function CRAccountancy() {
                       <div style={{ fontSize: 12, fontWeight: 700, color: label.color, letterSpacing: 1 }}>{lang === "ko" ? "자세히 보기 →" : "Learn More →"}</div>
                     </div>
                   ))}
+                  {fill && (n % 3 !== 0 || n % 2 !== 0) && (
+                    <button type="button" onClick={() => navigate(fill.to)}
+                      className={`svc-fill${n % 3 !== 0 ? " on-d" : ""}${n % 2 !== 0 ? " on-t" : ""}`}
+                      style={{ "--span-d": 3 - (n % 3) }}>
+                      <span className="svc-fill-k">{fill.k[lang]}</span>
+                      <span className="svc-fill-t">{fill.t[lang]}</span>
+                      <span className="svc-fill-a">{fill.a[lang]}</span>
+                    </button>
+                  )}
                 </div>
               </div>
             );
@@ -1719,7 +1824,7 @@ export default function CRAccountancy() {
     <div>
       <div style={{
         background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`,
-        padding: "160px 40px 80px", textAlign: "center"
+        padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
           {"Danny Kim, CPA"}
@@ -1727,14 +1832,21 @@ export default function CRAccountancy() {
         <h1 style={{ fontFamily: fonts.display, fontSize: "clamp(36px, 5vw, 56px)", color: colors.navy, fontWeight: 700, marginBottom: 20 }}>{t.about.title}</h1>
         <GoldDivider />
       </div>
-      <div style={baseStyles.section}>
-        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, marginBottom: 80, alignItems: "start" }}>
-          <div className="about-card" style={{ background: colors.cream, padding: 48, borderRadius: 4, textAlign: "center", position: "sticky", top: 120 }}>
+      <div style={{ ...baseStyles.section, padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
+        <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, alignItems: "start" }}>
+          <div className="about-card" style={{ background: colors.cream, padding: "40px 36px 36px", borderRadius: 4, textAlign: "center", position: "sticky", top: 108 }}>
             <div style={{ width: 120, height: 120, borderRadius: "50%", background: `linear-gradient(135deg, ${colors.gold}, ${colors.lightGold})`, margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 40, fontFamily: fonts.display, color: colors.darkNavy, fontWeight: 700 }}>DK</div>
             <h3 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.navy, marginBottom: 8 }}>Danny Kim</h3>
             <div style={{ fontSize: 13, color: colors.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>CPA</div>
             <div style={{ width: 40, height: 1, background: colors.gold, margin: "0 auto 16px" }} />
             <p style={{ fontSize: 13, color: colors.gray, lineHeight: 1.6 }}>{t.about.credentials}</p>
+            <div className="about-facts">
+              <div><LineIcon name="globe" size={16} color={colors.gold} /><span>{lang === "en" ? "Korean · English" : "한국어 · English"}</span></div>
+              <div><LineIcon name="pin" size={16} color={colors.gold} /><span>611 S Catalina St #216, Los Angeles</span></div>
+              <div><LineIcon name="phone" size={16} color={colors.gold} /><a href="tel:2133259800">213-325-9800</a></div>
+              <div><LineIcon name="mail" size={16} color={colors.gold} /><a href="mailto:info.dkcpa@gmail.com">info.dkcpa@gmail.com</a></div>
+            </div>
+            <button type="button" className="about-cta" onClick={() => navigate("contact")}>{lang === "en" ? "Request a consultation" : "상담 신청하기"}</button>
           </div>
           <div>
             <h2 style={{ fontFamily: fonts.display, fontSize: 28, color: colors.navy, marginBottom: 24 }}>{t.about.subtitle}</h2>
@@ -1764,7 +1876,7 @@ export default function CRAccountancy() {
     <div>
       <div style={{
         background: `linear-gradient(165deg, ${colors.white} 0%, ${colors.cream} 100%)`,
-        padding: "160px 40px 80px", textAlign: "center"
+        padding: "clamp(116px, 13vw, 136px) clamp(16px, 5vw, 40px) clamp(44px, 6vw, 60px)", textAlign: "center"
       }}>
         <div style={{ fontSize: 11, letterSpacing: 6, color: colors.gold, textTransform: "uppercase", marginBottom: 20, fontWeight: 500 }}>
           {lang === "en" ? "Koreatown · Los Angeles" : "LA 코리아타운 사무실"}
@@ -1774,7 +1886,7 @@ export default function CRAccountancy() {
         <p style={{ fontFamily: fonts.body, fontSize: 20, color: colors.gray, marginTop: 24 }}>{t.contact.subtitle}</p>
       </div>
 
-      <div style={{ ...baseStyles.section, paddingTop: 80 }}>
+      <div style={{ ...baseStyles.section, padding: "64px clamp(16px, 5vw, 40px) 88px" }}>
         <div className="stack-mobile" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 60, alignItems: "start" }}>
           {/* Contact Info */}
           <div>
@@ -1808,49 +1920,36 @@ export default function CRAccountancy() {
               <p style={{ fontSize: 15, color: colors.navy, lineHeight: 1.8, whiteSpace: "pre-line" }}>{t.contact.info.hours}</p>
             </div>
 
-            {/* Multilingual Welcome Section (작업 3) */}
-            <div style={{
-              background: `linear-gradient(135deg, ${colors.navy}08, ${colors.blue}06)`,
-              border: `1px solid ${colors.lightGray}`,
-              borderRadius: 8, padding: "28px 24px", marginTop: 8
-            }}>
-              <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 6, fontWeight: 600 }}>
-                {t.contact.multilingualTitle}
-              </div>
-              <p style={{ fontSize: 12.5, color: colors.gray, marginBottom: 20, lineHeight: 1.6, wordBreak: "keep-all" }}>
-                {t.contact.multilingualSubtitle}
-              </p>
-              <div style={{ display: "grid", gap: 8 }}>
-                {multilingualWelcome.map((item, i) => (
-                  <div key={i} style={{
-                    display: "flex", alignItems: "center", gap: 12,
-                    padding: "10px 14px", borderRadius: 6,
-                    background: (i === 0 || i === 1) ? `${colors.gold}10` : colors.white,
-                    border: (i === 0 || i === 1) ? `1px solid ${colors.gold}30` : `1px solid ${colors.lightGray}`,
-                    transition: "all 0.2s"
-                  }}>
-                    <span style={{ flexShrink: 0, width: 34, height: 34, borderRadius: 6, border: `1px solid ${colors.gold}55`, color: colors.gold, fontSize: 11, fontWeight: 700, letterSpacing: 0.5, display: "flex", alignItems: "center", justifyContent: "center" }}>{item.flag}</span>
-                    <div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: colors.navy, letterSpacing: 1 }}>{item.lang}</span>
-                      <p style={{ fontSize: 12, color: colors.gray, marginTop: 2, lineHeight: 1.4, wordBreak: (item.flag === "ZH" || item.flag === "JA") ? "normal" : "keep-all" }}>{item.message}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Map placeholder */}
-            <div style={{ background: colors.cream, padding: 32, borderRadius: 4, textAlign: "center", marginTop: 24 }}>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}><LineIcon name="pin" size={32} color={colors.gold} stroke={1.5} /></div>
-              <p style={{ fontSize: 13, color: colors.navy, lineHeight: 1.6 }}>Koreatown, Los Angeles</p>
-              <p style={{ fontSize: 11, color: colors.gray, marginTop: 8 }}>
-                {lang === "en" ? "Conveniently located in the heart of Koreatown" : "코리아타운 중심부에 위치"}
-              </p>
-            </div>
           </div>
 
           {/* Contact Form */}
           <ContactForm lang={lang} t={t} colors={colors} fonts={fonts} />
+        </div>
+
+        {/* Languages */}
+        <div className="lang-sec">
+          <div className="lang-head">
+            <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 8, fontWeight: 600 }}>
+              {t.contact.multilingualTitle}
+            </div>
+            <p style={{ fontSize: 14, color: colors.gray, lineHeight: 1.6, wordBreak: "keep-all" }}>{t.contact.multilingualSubtitle}</p>
+          </div>
+          <div className="lang-grid">
+            {multilingualWelcome.map((item, i) => (
+              <div key={i} style={{
+                display: "flex", alignItems: "flex-start", gap: 12,
+                padding: "14px 16px", borderRadius: 6,
+                background: (i === 0 || i === 1) ? `${colors.gold}10` : colors.white,
+                border: (i === 0 || i === 1) ? `1px solid ${colors.gold}30` : `1px solid ${colors.lightGray}`
+              }}>
+                <span style={{ flexShrink: 0, width: 34, height: 34, borderRadius: 6, border: `1px solid ${colors.gold}55`, color: colors.gold, fontSize: 11, fontWeight: 700, letterSpacing: 0.5, display: "flex", alignItems: "center", justifyContent: "center" }}>{item.flag}</span>
+                <div>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: colors.navy, letterSpacing: 1 }}>{item.lang}</span>
+                  <p style={{ fontSize: 12.5, color: colors.gray, marginTop: 3, lineHeight: 1.5, wordBreak: (item.flag === "ZH" || item.flag === "JA") ? "normal" : "keep-all" }}>{item.message}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -1937,7 +2036,7 @@ export default function CRAccountancy() {
   const pages = {}; // kept for reference — routing handled above
 
   return (
-    <div style={baseStyles.page}>
+    <div className="site" data-ko={lang === "ko" ? "1" : "0"} style={baseStyles.page}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Source+Serif+4:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@500;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1946,8 +2045,6 @@ export default function CRAccountancy() {
         .res-row a { overflow-wrap: anywhere; }
         .cs-card { transition: transform .2s ease, box-shadow .2s ease; }
         .cs-card:hover { transform: translateY(-4px); }
-        /* tablets: the grid has two columns, so let a lone last card use the full row */
-        @media (min-width: 660px) and (max-width: 959px) { .cs-grid > .cs-card:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 
         /* ── Logo lockup (mark | name over firm name) ── */
         .brand { --s: 0.9; display: flex; flex-shrink: 0; margin-right: 20px; align-items: center; gap: calc(13px * var(--s)); text-decoration: none; cursor: pointer; }
@@ -2101,6 +2198,58 @@ export default function CRAccountancy() {
         .ind-btn-main:hover { background: ${colors.darkNavy}; }
         .ind-btn-sub { background: none; border: 0; border-bottom: 1px solid ${colors.navy}40; padding: 0 0 3px; color: ${colors.navy}; font-family: ${fonts.sans}; font-size: 14px; font-weight: 600; cursor: pointer; }
         .ind-btn-sub:hover { border-color: ${colors.navy}; }
+
+        .cs-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 700px) { .cs-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+
+        /* Korean: break lines between words, never inside a word */
+        .site[data-ko="1"] { word-break: keep-all; overflow-wrap: break-word; }
+
+        /* Services list: 1 / 2 / 3 columns, with a filler card so no row ends with a gap */
+        .svc-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .svc-fill { display: none; flex-direction: column; justify-content: center; gap: 10px; text-align: left; cursor: pointer; font-family: ${fonts.sans}; background: ${colors.cream}; border: 1px dashed ${colors.gold}88; border-radius: 6px; padding: 26px 28px; transition: border-color .2s, background .2s; }
+        .svc-fill:hover { border-color: ${colors.gold}; background: #F6F1E8; }
+        .svc-fill-k { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: ${colors.gold}; font-weight: 700; }
+        .svc-fill-t { font-size: 13.5px; color: ${colors.navy}; line-height: 1.65; word-break: keep-all; }
+        .svc-fill-a { font-size: 12.5px; font-weight: 700; color: ${colors.navy}; letter-spacing: .5px; }
+        @media (min-width: 600px) and (max-width: 999px) {
+          .svc-grid { grid-template-columns: repeat(2, 1fr); }
+          .svc-fill.on-t { display: flex; }
+        }
+        @media (min-width: 1000px) {
+          .svc-grid { grid-template-columns: repeat(3, 1fr); }
+          .svc-fill.on-d { display: flex; grid-column: span var(--span-d); }
+        }
+
+        /* Service detail: items and steps */
+        .sd-items { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .sd-steps { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .sd-step { display: flex; gap: 16px; align-items: flex-start; text-align: left; }
+        .sd-step p { word-break: keep-all; }
+        @media (min-width: 640px) { .sd-items { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 700px) {
+          .sd-steps { grid-template-columns: repeat(var(--n), 1fr); gap: 20px; }
+          .sd-step { flex-direction: column; align-items: center; text-align: center; }
+        }
+        @media (min-width: 1000px) {
+          .sd-items { grid-template-columns: repeat(var(--cols-d), 1fr); }
+          .sd-steps { gap: 24px; }
+        }
+
+        /* About card */
+        .about-facts { margin: 22px auto 0; padding-top: 20px; border-top: 1px solid ${colors.lightGray}; display: grid; gap: 11px; text-align: left; max-width: 280px; }
+        .about-facts > div { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: ${colors.navy}; line-height: 1.4; }
+        .about-facts a { color: ${colors.navy}; text-decoration: none; border-bottom: 1px solid ${colors.gold}55; }
+        .about-facts span, .about-facts a { overflow-wrap: anywhere; }
+        .about-cta { margin-top: 24px; width: 100%; max-width: 280px; background: ${colors.navy}; color: ${colors.white}; border: 0; border-radius: 4px; padding: 13px 18px; font-family: ${fonts.sans}; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .about-cta:hover { background: ${colors.darkNavy}; }
+
+        /* Contact: languages */
+        .lang-sec { margin-top: 64px; padding-top: 40px; border-top: 1px solid ${colors.lightGray}; }
+        .lang-head { margin-bottom: 22px; max-width: 720px; }
+        .lang-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        @media (min-width: 600px) { .lang-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1000px) { .lang-grid { grid-template-columns: repeat(4, 1fr); } }
         @keyframes indFade { from { opacity: 0; } to { opacity: 1; } }
         @keyframes indUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
         @media (prefers-reduced-motion: reduce) { .ind-ov, .ind-dlg { animation: none; } }

@@ -229,6 +229,9 @@ export const LANDINGS = {
       ],
     },
     includesTitle: { en: "What I handle", ko: "제가 맡는 일" },
+    includesFill: { t: { en: "Not sure which letter it is?", ko: "어떤 편지인지 모르겠다면" },
+      d: { en: "Email a photo of the letter, with SSNs and account numbers covered. I'll tell you what it is at no charge.",
+           ko: "SSN과 계좌번호를 가리고 편지 사진을 이메일로 보내 주세요. 무슨 편지인지 무료로 알려 드립니다." } },
     includes: [
       { t: { en: "Responses", ko: "답변서" },
         d: { en: "Reading the letter, gathering the records and writing the response before the deadline.",
@@ -321,7 +324,11 @@ export default function LandingPage({ id, lang, colors, fonts, form }) {
         .lp-note h3 { font-size: 16px; color: ${colors.navy}; margin: 0 0 12px; }
         .lp-note ul, .lp-fit ul { margin: 0; padding-left: 20px; }
         .lp-note li, .lp-fit li { font-size: 15.5px; line-height: 1.7; color: #374151; margin-bottom: 8px; }
-        .lp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px; }
+        .lp-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 600px) { .lp-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1000px) { .lp-grid { grid-template-columns: repeat(var(--cols), 1fr); } }
+        .lp-card-fill { display: block; text-decoration: none; background: #F6F4F0; border: 1px dashed ${colors.gold}99; border-top: 3px solid ${colors.gold}; }
+        .lp-card-fill span { display: inline-block; margin-top: 12px; font-size: 14px; font-weight: 700; color: ${colors.navy}; border-bottom: 1px solid ${colors.navy}40; }
         .lp-card { background: #fff; border: 1px solid ${colors.lightGray}; border-top: 3px solid ${colors.navy}; padding: 22px 22px 20px; }
         .lp-card h3 { font-size: 16px; color: ${colors.navy}; margin: 0 0 8px; }
         .lp-card p { font-size: 14.5px; line-height: 1.7; color: ${colors.gray}; margin: 0; }
@@ -333,6 +340,11 @@ export default function LandingPage({ id, lang, colors, fonts, form }) {
           display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; }
         .lp-steps b { display: block; color: ${colors.navy}; font-size: 16px; margin-bottom: 4px; }
         .lp-steps span { font-size: 14.5px; line-height: 1.7; color: ${colors.gray}; }
+        .lp-steps-row { display: grid; grid-template-columns: 1fr; gap: 4px; }
+        @media (min-width: 821px) { .lp-steps-row { grid-template-columns: repeat(var(--n), 1fr); gap: 32px; } .lp-steps-row li { padding-bottom: 0; } }
+        .lp-fit-cta { margin-top: 28px; padding: 20px 22px; background: #fff; border: 1px solid ${colors.lightGray}; border-radius: 4px; }
+        .lp-fit-cta p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: #374151; }
+        .lp-btn-navy { background: ${colors.navy}; color: #fff; padding: 12px 22px; font-size: 14.5px; }
         .lp-not { margin-top: 28px; font-size: 14.5px; line-height: 1.7; color: #374151; background: #fff; border: 1px dashed #c9c3b8; padding: 16px 18px; }
         .lp-faq details { border-bottom: 1px solid ${colors.lightGray}; padding: 16px 0; }
         .lp-faq summary { cursor: pointer; font-weight: 600; color: ${colors.navy}; font-size: 16px; line-height: 1.5; }
@@ -373,13 +385,20 @@ export default function LandingPage({ id, lang, colors, fonts, form }) {
         <section className="lp-sec">
           <div className="lp-in">
             <h2 className="lp-h2">{tx(L.includesTitle)}</h2>
-            <div className="lp-grid">
+            <div className="lp-grid" style={{ "--cols": ((L.includes.length + (L.includesFill ? 1 : 0)) % 3 === 0) ? 3 : 4 }}>
               {L.includes.map((c, i) => (
                 <div className="lp-card" key={i}>
                   <h3>{tx(c.t)}</h3>
                   <p>{tx(c.d)}</p>
                 </div>
               ))}
+              {L.includesFill && (
+                <a className="lp-card lp-card-fill" href="mailto:info.dkcpa@gmail.com">
+                  <h3>{tx(L.includesFill.t)}</h3>
+                  <p>{tx(L.includesFill.d)}</p>
+                  <span>info.dkcpa@gmail.com →</span>
+                </a>
+              )}
             </div>
             {L.not && (
               <div className="lp-not">
@@ -391,22 +410,35 @@ export default function LandingPage({ id, lang, colors, fonts, form }) {
         </section>
 
         <section className="lp-sec alt">
-          <div className="lp-in lp-two">
-            {L.fit ? (
+          {L.fit ? (
+            <div className="lp-in lp-two">
               <div className="lp-fit">
                 <h2 className="lp-h2">{tx(L.fitTitle)}</h2>
                 <ul>{L.fit.map((f, i) => <li key={i}>{tx(f)}</li>)}</ul>
+                <div className="lp-fit-cta">
+                  <p>{ko ? "해당된다면 먼저 짧게 통화해 보세요. 상담은 무료입니다." : "If this sounds like you, start with a short call. It's free."}</p>
+                  <button type="button" className="lp-btn lp-btn-navy" onClick={goForm}>{ko ? "무료 상담 신청" : "Request a free call"}</button>
+                </div>
               </div>
-            ) : <div />}
-            <div>
+              <div>
+                <h2 className="lp-h2">{ko ? "진행 방식" : "How it starts"}</h2>
+                <ol className="lp-steps">
+                  {L.steps.map((s, i) => (
+                    <li key={i}><b>{tx(s.t)}</b><span>{tx(s.d)}</span></li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          ) : (
+            <div className="lp-in">
               <h2 className="lp-h2">{ko ? "진행 방식" : "How it starts"}</h2>
-              <ol className="lp-steps">
+              <ol className="lp-steps lp-steps-row" style={{ "--n": L.steps.length }}>
                 {L.steps.map((s, i) => (
                   <li key={i}><b>{tx(s.t)}</b><span>{tx(s.d)}</span></li>
                 ))}
               </ol>
             </div>
-          </div>
+          )}
         </section>
 
         <section className="lp-sec">
