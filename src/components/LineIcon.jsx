@@ -42,6 +42,14 @@ const PATHS = {
   bulb: (<><path d="M9 18h6M10 21h4" /><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" /></>),
   phone: (<><path d="M5 4h3.5l2 5-2.5 1.6a11 11 0 0 0 5.4 5.4L15 13.5l5 2V19a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z" /></>),
   mail: (<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3.5 6.5L12 13l8.5-6.5" /></>),
+  car: (<><path d="M5 11l1.6-4.2A1.5 1.5 0 0 1 8 5.8h8a1.5 1.5 0 0 1 1.4 1L19 11" /><rect x="3" y="11" width="18" height="6" rx="1.5" /><path d="M6 17v2.2M18 17v2.2" /><path d="M6.8 14h1.6M15.6 14h1.6" /></>),
+  package: (<><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z" /><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9" /><path d="M7.8 5.2l8.5 4.6" /></>),
+  factory: (<><path d="M3 20.5v-9l5 2.8v-2.8l5 2.8v-2.8l5 2.8V4.5h3v16z" /><path d="M6.5 17.5h1.5M11 17.5h1.5M15.5 17.5h1.5" /></>),
+  cart: (<><circle cx="9" cy="19.5" r="1.4" /><circle cx="17" cy="19.5" r="1.4" /><path d="M2.5 4h2.6l2.2 10.5h11l2-7.5H6.2" /></>),
+  shirt: (<><path d="M8.5 3.5L4 5.8 2.5 10l3 1.3v9.2h13v-9.2l3-1.3L20 5.8l-4.5-2.3a3.5 3.5 0 0 1-7 0z" /></>),
+  cap: (<><path d="M2.5 9L12 4.5 21.5 9 12 13.5z" /><path d="M6.5 11v4.5c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8V11" /><path d="M21.5 9v5" /></>),
+  bottle: (<><path d="M9.5 3h5v3.2h-5z" /><path d="M8 9a2.8 2.8 0 0 1 2-2.8h4A2.8 2.8 0 0 1 16 9v10.5a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 8 19.5z" /><path d="M8 13h8" /></>),
+  jar: (<><path d="M7.5 3.5h9" /><path d="M8.5 3.5V6L6.5 8.5v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-10L15.5 6V3.5" /><path d="M6.5 12h11" /></>),
 };
 
 export default function LineIcon({ name, size = 24, color = "currentColor", stroke = 1.6, style, title }) {

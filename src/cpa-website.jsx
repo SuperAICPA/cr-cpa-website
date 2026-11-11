@@ -3,6 +3,7 @@ import ReviewsSection, { loadReviews } from "./components/ReviewsSection";
 import LineIcon from "./components/LineIcon";
 import ConstructionPage from "./components/ConstructionPage";
 import LandingPage, { LANDINGS } from "./components/LandingPage";
+import IndustryPicker from "./components/IndustryPicker";
 import ClientStories from "./components/ClientStories";
 import SCorpCalculator from "./components/SCorpCalculator";
 import ClientInfoPage from "./components/ClientInfoPage";
@@ -94,7 +95,7 @@ const translations = {
     },
     contact: {
       title: "Get In Touch",
-      subtitle: "Call, or use the form below. The first 30 minutes are free.",
+      subtitle: "Call, email, or use the form below. The first 30 minutes are free.",
       info: {
         address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005",
         phone: "213-325-9800",
@@ -112,7 +113,7 @@ const translations = {
         success: "Thank you. I'll be in touch within 24 hours."
       },
       multilingualTitle: "Write in your language",
-      multilingualSubtitle: "Written inquiries are answered in these languages"
+      multilingualSubtitle: "English and Korean: by phone, at the office or by email. All other languages: the work is handled by email."
     },
     footer: {
       tagline: "Tax · Accounting · Accounting systems",
@@ -206,7 +207,7 @@ const translations = {
     },
     contact: {
       title: "문의하기",
-      subtitle: "전화나 아래 양식으로 연락 주세요. 첫 상담 30분은 무료입니다.",
+      subtitle: "전화, 이메일, 아래 양식 중 편한 방법으로 연락 주세요. 첫 상담 30분은 무료입니다.",
       info: {
         address: "611 S Catalina St, Unit #216\nLos Angeles, CA 90005",
         phone: "213-325-9800",
@@ -224,7 +225,7 @@ const translations = {
         success: "감사합니다! 24시간 이내에 연락드리겠습니다."
       },
       multilingualTitle: "어떤 언어로든 문의해 주세요",
-      multilingualSubtitle: "아래 언어로 서면 문의에 응대합니다"
+      multilingualSubtitle: "영어와 한국어는 전화·방문·이메일로, 그 밖의 언어는 이메일로 업무를 진행합니다."
     },
     footer: {
       tagline: "세무 · 회계 · 회계 시스템",
@@ -584,14 +585,14 @@ const homeServiceSubpages = ["svc_1", "svc_2", "svc_5", "svc_14"];
 
 // Multilingual welcome messages for Contact section
 const multilingualWelcome = [
-  { flag: "EN", lang: "English", message: "Write to me in English." },
-  { flag: "KO", lang: "한국어", message: "한국어로 편하게 문의하세요." },
-  { flag: "ES", lang: "Español", message: "Puede contactarnos en español. Respondemos por correo electrónico." },
-  { flag: "ZH", lang: "中文", message: "欢迎用中文联系我们，我们将通过邮件回复。" },
-  { flag: "VI", lang: "Tiếng Việt", message: "Vui lòng liên hệ bằng tiếng Việt. Chúng tôi sẽ phản hồi qua email." },
-  { flag: "JA", lang: "日本語", message: "日本語でのお問い合わせも承ります。メールにて対応いたします。" },
-  { flag: "TL", lang: "Tagalog", message: "Maaari kayong makipag-ugnayan sa Tagalog. Sasagutin namin sa email." },
-  { flag: "MN", lang: "Монгол", message: "Монгол хэлээр холбогдож болно. Имэйлээр хариулна." }
+  { flag: "EN", lang: "English", message: "Phone, office visits or email." },
+  { flag: "KO", lang: "한국어", message: "전화, 방문, 이메일 모두 편하게 이용하세요." },
+  { flag: "ES", lang: "Español", message: "Escríbame por correo electrónico. Las consultas y el trabajo en español se atienden por correo." },
+  { flag: "ZH", lang: "中文", message: "请通过电子邮件联系我。中文咨询和业务均通过电子邮件进行。" },
+  { flag: "VI", lang: "Tiếng Việt", message: "Vui lòng liên hệ qua email. Tư vấn và công việc bằng tiếng Việt được thực hiện qua email." },
+  { flag: "JA", lang: "日本語", message: "メールでお問い合わせください。日本語でのご相談・業務はメールで対応いたします。" },
+  { flag: "TL", lang: "Tagalog", message: "Sumulat po kayo sa email. Ang konsultasyon at trabaho sa Tagalog ay ginagawa sa email." },
+  { flag: "MN", lang: "Монгол", message: "Имэйлээр холбогдоно уу. Монгол хэл дээрх зөвлөгөө, ажлыг имэйлээр гүйцэтгэнэ." }
 ];
 
 // ============================================================
@@ -1160,6 +1161,7 @@ export default function CRAccountancy() {
     }).catch(() => {});
   }, []);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [industryOpen, setIndustryOpen] = useState(null); // About: industry card that is open
   const [scrolled, setScrolled] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
   const t = translations[lang];
@@ -1171,6 +1173,7 @@ export default function CRAccountancy() {
   const navigate = (p) => {
     setPage(p);
     setMenuOpen(false);
+    setIndustryOpen(null);
     const url = p === "home" ? "/" : `/${p}`;
     if (window.location.pathname !== url) window.history.pushState({ page: p }, "", url);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1745,16 +1748,8 @@ export default function CRAccountancy() {
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 40 }}>
-              <h3 style={{ fontFamily: fonts.display, fontSize: 22, color: colors.navy, marginBottom: 20 }}>{t.about.industriesTitle}</h3>
-              <div className="two-col-sm" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                {t.about.industries.map((ind, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 16px", borderRadius: 4, background: i % 2 === 0 ? colors.cream : colors.white, border: `1px solid ${colors.lightGray}` }}>
-                    <LineIcon name={ind.icon} size={22} color={colors.gold} stroke={1.5} />
-                    <span style={{ fontSize: 14, color: colors.navy, fontWeight: 500 }}>{ind.name}</span>
-                  </div>
-                ))}
-              </div>
+            <div style={{ marginTop: 44 }}>
+              <IndustryPicker lang={lang} colors={colors} fonts={fonts} navigate={navigate} openId={industryOpen} setOpenId={setIndustryOpen} />
             </div>
           </div>
         </div>
@@ -1795,11 +1790,16 @@ export default function CRAccountancy() {
               </div>
               <a href="tel:2133259800" style={{ fontSize: 15, color: colors.navy, textDecoration: "none", fontWeight: 600 }}>{t.contact.info.phone}</a>
             </div>
-            <div style={{ marginBottom: 36 }}>
-              <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
-                {lang === "en" ? "Email" : "이메일"}
+            <div className="mail-free" style={{ marginBottom: 36, background: colors.navy, borderTop: `3px solid ${colors.gold}`, borderRadius: 8, padding: "22px 24px 24px" }}>
+              <div style={{ fontSize: 11, letterSpacing: 3, color: colors.lightGold, textTransform: "uppercase", marginBottom: 12, fontWeight: 600 }}>
+                {lang === "en" ? "Email · No charge" : "이메일 문의 · 무료"}
               </div>
-              <a href="mailto:info.dkcpa@gmail.com" style={{ fontSize: 15, color: colors.navy, textDecoration: "none", fontWeight: 600 }}>{t.contact.info.email}</a>
+              <a href="mailto:info.dkcpa@gmail.com" style={{ fontSize: 18, color: colors.white, textDecoration: "none", fontWeight: 600, borderBottom: `1px solid ${colors.gold}88`, paddingBottom: 2, wordBreak: "break-all" }}>{t.contact.info.email}</a>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.82)", lineHeight: 1.75, marginTop: 14, wordBreak: "keep-all" }}>
+                {lang === "en"
+                  ? "Email me and I'll answer at no charge, faster and more precisely than on a call. If you received a notice, attach a photo of it with SSNs and account numbers covered."
+                  : "이메일로 보내 주시면 비용 없이, 더 빠르고 정확하게 답변드립니다. 받으신 통지서가 있으면 사진을 함께 보내 주세요. SSN과 계좌번호는 가리고 보내 주시면 됩니다."}
+              </p>
             </div>
             <div style={{ marginBottom: 36 }}>
               <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 16, fontWeight: 600 }}>
@@ -1817,7 +1817,7 @@ export default function CRAccountancy() {
               <div style={{ fontSize: 11, letterSpacing: 3, color: colors.gold, textTransform: "uppercase", marginBottom: 6, fontWeight: 600 }}>
                 {t.contact.multilingualTitle}
               </div>
-              <p style={{ fontSize: 12, color: colors.gray, marginBottom: 20, lineHeight: 1.5 }}>
+              <p style={{ fontSize: 12.5, color: colors.gray, marginBottom: 20, lineHeight: 1.6, wordBreak: "keep-all" }}>
                 {t.contact.multilingualSubtitle}
               </p>
               <div style={{ display: "grid", gap: 8 }}>
@@ -1832,7 +1832,7 @@ export default function CRAccountancy() {
                     <span style={{ flexShrink: 0, width: 34, height: 34, borderRadius: 6, border: `1px solid ${colors.gold}55`, color: colors.gold, fontSize: 11, fontWeight: 700, letterSpacing: 0.5, display: "flex", alignItems: "center", justifyContent: "center" }}>{item.flag}</span>
                     <div>
                       <span style={{ fontSize: 11, fontWeight: 700, color: colors.navy, letterSpacing: 1 }}>{item.lang}</span>
-                      <p style={{ fontSize: 12, color: colors.gray, marginTop: 2, lineHeight: 1.4 }}>{item.message}</p>
+                      <p style={{ fontSize: 12, color: colors.gray, marginTop: 2, lineHeight: 1.4, wordBreak: (item.flag === "ZH" || item.flag === "JA") ? "normal" : "keep-all" }}>{item.message}</p>
                     </div>
                   </div>
                 ))}
@@ -2070,6 +2070,47 @@ export default function CRAccountancy() {
         .fy2-d { font-size: 15px; line-height: 1.7; color: #4B5563; margin: 0; }
         .fy2-fee { margin-top: 28px; background: none; border: 0; padding: 0 0 3px; border-bottom: 1px solid ${colors.navy}40; color: ${colors.navy}; font-family: ${fonts.sans}; font-size: 14.5px; font-weight: 600; cursor: pointer; }
         .fy2-fee:hover { border-color: ${colors.navy}; }
+
+        /* About: industries */
+        .ind-hint { font-size: 13.5px; color: ${colors.gray}; margin-bottom: 22px; }
+        .ind-group + .ind-group { margin-top: 28px; }
+        .ind-group-k { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: ${colors.gold}; font-weight: 600; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid ${colors.lightGray}; }
+        .ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .ind-chip { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; text-align: left; padding: 12px 14px 12px 16px; background: ${colors.white}; border: 1px solid ${colors.lightGray}; border-radius: 4px; cursor: pointer; font-family: ${fonts.sans}; transition: border-color .15s, background .15s; }
+        .ind-chip:hover { border-color: ${colors.gold}; background: ${colors.cream}; }
+        .ind-chip:focus-visible { outline: 2px solid ${colors.gold}; outline-offset: 2px; }
+        .ind-chip-t { flex: 1; font-size: 14px; color: ${colors.navy}; font-weight: 500; line-height: 1.35; word-break: keep-all; }
+        .ind-chip-a { font-size: 20px; color: ${colors.gold}; line-height: 1; transition: transform .15s; }
+        .ind-chip:hover .ind-chip-a { transform: translateX(3px); }
+        .ind-ov { position: fixed; inset: 0; z-index: 3000; background: rgba(15,23,32,.55); display: flex; align-items: center; justify-content: center; padding: 16px; animation: indFade .18s ease; }
+        .ind-dlg { position: relative; width: 100%; max-width: 540px; max-height: calc(100vh - 32px); overflow: auto; background: ${colors.white}; border-top: 3px solid ${colors.gold}; border-radius: 8px; padding: 32px 32px 28px; box-shadow: 0 24px 60px rgba(0,0,0,.25); animation: indUp .2s ease; font-family: ${fonts.sans}; }
+        .ind-x { position: absolute; top: 10px; right: 12px; width: 40px; height: 40px; border: 0; background: none; border-radius: 50%; font-size: 28px; line-height: 1; color: ${colors.gray}; cursor: pointer; }
+        .ind-x:hover { background: ${colors.cream}; color: ${colors.navy}; }
+        .ind-dlg-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; padding-right: 32px; }
+        .ind-dlg-ic { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; border: 1px solid ${colors.gold}66; display: flex; align-items: center; justify-content: center; }
+        .ind-dlg-k { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: ${colors.gold}; font-weight: 600; margin-bottom: 4px; }
+        .ind-dlg h3 { margin: 0; font-size: 24px; color: ${colors.navy}; line-height: 1.25; word-break: keep-all; }
+        .ind-dlg-sum { font-size: 15.5px; color: #3D4756; line-height: 1.75; margin-bottom: 20px; word-break: keep-all; }
+        .ind-dlg-lbl { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: ${colors.gold}; font-weight: 600; margin-bottom: 8px; }
+        .ind-dlg-list { list-style: none; padding: 0; margin: 0 0 24px; }
+        .ind-dlg-list li { position: relative; padding: 10px 0 10px 20px; border-top: 1px solid ${colors.lightGray}; font-size: 14.5px; color: ${colors.navy}; line-height: 1.5; word-break: keep-all; }
+        .ind-dlg-list li:last-child { border-bottom: 1px solid ${colors.lightGray}; }
+        .ind-dlg-list li::before { content: "–"; position: absolute; left: 0; top: 10px; color: ${colors.gold}; font-weight: 600; }
+        .ind-dlg-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+        .ind-btn-main { background: ${colors.navy}; color: ${colors.white}; border: 0; border-radius: 4px; padding: 13px 22px; font-family: ${fonts.sans}; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .ind-btn-main:hover { background: ${colors.darkNavy}; }
+        .ind-btn-sub { background: none; border: 0; border-bottom: 1px solid ${colors.navy}40; padding: 0 0 3px; color: ${colors.navy}; font-family: ${fonts.sans}; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .ind-btn-sub:hover { border-color: ${colors.navy}; }
+        @keyframes indFade { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes indUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .ind-ov, .ind-dlg { animation: none; } }
+        @media (max-width: 560px) {
+          .ind-grid { grid-template-columns: 1fr; }
+          .ind-ov { align-items: flex-end; padding: 0; }
+          .ind-dlg { max-width: none; max-height: 88vh; border-radius: 12px 12px 0 0; padding: 28px 22px 24px; }
+          .ind-dlg h3 { font-size: 21px; }
+          .ind-btn-main { width: 100%; }
+        }
         @media (max-width: 1024px) {
           .fy2-grid { grid-template-columns: 1fr 1fr; }
           .fy2-card { padding: 22px 18px 24px 0; }
